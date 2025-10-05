@@ -4,7 +4,7 @@
 </p>
 
 <h1 align="center">👋 Hey, I'm Vaibhav</h1>
-<h3 align="center">🔐 AI x Cybersecurity Enthusiast | 🤖 ML Research Learner | 💻 Full Stack & Flutter Developer</h3>
+<h3 align="center">AI x Cybersecurity Enthusiast | ML Research Learner | Full Stack & Flutter Developer</h3>
 
 ---
 
@@ -23,22 +23,21 @@ I’m a **developer and learner** passionate about building at the intersection 
 ---
 
 ## 🧠 What I’m Exploring Right Now
-- 🤖 **Machine Learning for Cyber Defense** — using ML to detect anomalies, intrusions, and fraud.  
-- 🧩 **Synthetic Data Generation** — building realistic datasets for model training using LLMs.  
-- 🔐 **Offensive & Defensive Security** — pentesting, vulnerability research, and automation.  
-- ☁️ **Secure Backend Systems** — integrating AI with decentralized and cloud-native architectures.  
-- 📱 **Smart Flutter Apps** — embedding AI models and privacy-first design into mobile apps.
+- **Machine Learning for Cyber Defense** — using ML to detect anomalies, intrusions, and fraud.  
+- **Synthetic Data Generation** — building realistic datasets for model training using LLMs.  
+- **Offensive & Defensive Security** — pentesting, vulnerability research, and automation.  
+- **Secure Backend Systems** — integrating AI with decentralized and cloud-native architectures.  
+- **Smart Flutter Apps** — embedding AI models and privacy-first design into mobile apps.
 
 ---
 ## 💼 Experience
 
-**🌐 AI/ML Intern – Infosys SpringBoard**  
+**AI/ML Intern – Infosys SpringBoard**  
 *September 2025 – Present*  
 - Developing a AI-Based Music Composition System: "Whispers of the Wires"
   
-
-**🌐 Flutter Developer Intern – ClubChat (IIIT Delhi)**  
-*June 2024 – August 2024* 
+**Flutter Developer Intern – ClubChat (IIIT Delhi)**  
+*July 2025 – September 2025* 
 - Helped launch core features for a mobile app that now connects over 10,000 college students across India, seeing the direct impact of my work on real users.
 - Tackled more than 20 bugs and took on UI/UX improvements, making the app more intuitive and enjoyable for the student community.
 - Was part of two major feature rollouts, collaborating with designer, backend engineers, to turn ideas into live experiences during fast-moving agile sprints.
@@ -46,7 +45,7 @@ I’m a **developer and learner** passionate about building at the intersection 
 - Enjoyed the autonomy of remote work, reporting directly to the Tech Head, participating in daily planning, and iterating quickly thanks to daily feedback.
 - Learned firsthand how a startup team collaborates and problem-solves, deepening my appreciation for the process behind building a product from scratch.
 
-**🧠 Open Source Contributor – Synthetic Data Generator**  
+**Open Source Contributor – Synthetic Data Generator**  
 *2024 – Present*  
 - Created a domain-agnostic synthetic dataset generator.  
 - Integrated Hugging Face models for AI-driven field and data synthesis.
@@ -56,7 +55,7 @@ I’m a **developer and learner** passionate about building at the intersection 
 
 ## 🚀 Featured Projects
 
-### 🧠 **Synthetic Data Generator**
+### **Synthetic Data Generator**
 > A domain-agnostic AI tool that generates realistic, contextual datasets using Hugging Face models.  
 **Highlights:** Field auto-generation, contextual dataset synthesis, CSV/Excel export, web UI.  
 **Tech Stack:** Flask • Streamlit • Transformers • Pandas • Python  
@@ -87,7 +86,7 @@ I’m a **developer and learner** passionate about building at the intersection 
 **Highlights:** Lightweight shell built in C, local AI inference without internet access.  
 **Tech Stack:** C • OS-level programming • Offline LLM • System-level AI Integration  
 **Vision:** Privacy-first AI interaction for secure offline environments.  
-🔗 [Repository Link]([https://github.com/sharmavaibhav31](https://github.com/sharmavaibhav31/mini-shell-C-programming.git)) *(coming soon)*  
+🔗 [Repository Link]((https://github.com/sharmavaibhav31/mini-shell-C-programming.git))
 
 ---
 ### 💼 **JobConnect**
@@ -95,9 +94,11 @@ I’m a **developer and learner** passionate about building at the intersection 
 **Highlights:** Real-time job listings, location filters, and secure authentication.  
 **Tech Stack:** Flutter • Firebase • Google Cloud  
 **Goal:** Democratize access to local employment opportunities.  
-🔗 [Repository Link]([https://github.com/sharmavaibhav31](https://github.com/sharmavaibhav31/jobSeek.git))
+🔗 [Repository Link]((https://github.com/sharmavaibhav31/jobSeek.git))
 
 ---
+#### Work Under Progress
+
 ### 🩺 **Organ Transplant Matching System**
 > Blockchain + ML-powered system that ensures fair and secure organ donor–recipient matching.  
 **Highlights:** Synthetic data generation, ML compatibility scoring, transparent blockchain logging.  
@@ -114,11 +115,11 @@ I’m a **developer and learner** passionate about building at the intersection 
 
 ---
 
-###**Campus & Workflow Tools**
+### **Campus & Workflow Tools**
 - **Hostel Permission Management System** – Full-stack (Firebase + React) app that simplifies hostel gate pass management for students and wardens.  
 - **Schedule Planner / Manager** – A modular app for managing class schedules and personal productivity.
 
-###**Experimental / Hardware-based Apps**
+### **Experimental / Hardware-based Apps**
 - **Air Notepad** – A gesture-controlled Flutter app that lets users draw or write on a virtual whiteboard using computer vision.  
 - **Decentralized Cloud Storage (IPFS)** – A privacy-focused file storage app with encryption and distributed architecture.
 
