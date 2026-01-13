@@ -154,7 +154,8 @@ Backend, ML, or applied AI roles where:
 - Data matters
 - Users matter
 
-If you’re building real products and need someone who can ship, we should talk.
+If you’re building real products, and you need someone who can: understand systems, work with data, and ship code
+> We Should Talk.
 
 ---
 
