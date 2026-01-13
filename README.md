@@ -19,6 +19,10 @@ B.E. Computer Engineering (2027)
   <img src="https://img.shields.io/badge/GitHub-Follow-4F46E5?style=for-the-badge&logo=github&logoColor=white"/>
 </a>
 
+<br/>
+
+<img src="https://komarev.com/ghpvc/?username=sharmavaibhav31&label=Profile%20Views&color=4F46E5&style=flat" />
+
 </div>
 
 ---
@@ -35,19 +39,13 @@ I’ve worked on:
 My core interest sits at the intersection of:
 **Machine Learning · Backend Systems · Security-aware design**
 
-I don’t chase buzzwords. I ship things that people actually use.
-
 ---
 
 ## 💼 Experience
 
 ### **AI/ML Intern — Infosys Springboard**
-*Sep 2025 – Dec 2025*
-
-Working on applied AI systems focused on:
-- Model pipelines
-- Data handling
-- Practical ML integration in software products
+*Sep 2025 – Dec 2025*  
+Working on applied ML systems, model pipelines, and real-world AI integration.
 
 ---
 
@@ -56,79 +54,61 @@ Working on applied AI systems focused on:
 
 Worked on a production Flutter app connecting **10,000+ college students across India**.
 
-What I actually did:
-- Shipped **core product features** used by real users
-- Fixed **20+ production bugs**
-- Implemented **UI/UX improvements** that reduced friction for students
-- Collaborated directly with **backend engineers & designers**
-- Worked in **agile sprints**, code reviews, and real release cycles
-
-This was not a demo.  
-This was **live software with users depending on it**.
+- Shipped **core features** used by real users  
+- Fixed **20+ production bugs**  
+- Implemented **UI/UX improvements**  
+- Collaborated with **backend engineers & designers**  
+- Worked inside **agile release cycles**
 
 ---
 
-## 🛠️ What I build
+## 🚀 Project Spotlight
 
-### **Synthetic Data Generator**
-AI-powered system to generate realistic datasets when real data is unavailable.
+These are not demos — these are systems that solve real problems.
 
-**Why it matters**
-Most ML projects fail due to lack of quality data. This tool solves that.
+### 🥇 **Synthetic Data Generator**
+AI-powered tool for generating **realistic training data** when real datasets are missing.
 
-**What it does**
 - Auto-generates dataset schemas
-- Uses Hugging Face models to synthesize realistic records
-- Exports CSV / Excel for direct ML training
+- Uses Hugging Face models to synthesize records
+- Exports directly for ML training (CSV / Excel)
 
-**Stack**
-Python · Transformers · Pandas · Flask · Streamlit  
-
+**Stack:** Python · Transformers · Pandas · Flask · Streamlit  
 🔗 https://github.com/sharmavaibhav31/Synthetic-Data-Generator
 
 ---
 
-### **FinTrix — AI-powered Personal Finance App**
-Flutter-based finance & budgeting system built for students and young professionals.
+### 🥈 **FinTrix — AI Personal Finance System**
+AI-powered expense tracking & budgeting for students and professionals.
 
-**Features**
-- Expense tracking
+- Spending analysis
 - Budget forecasting
-- AI-based insights
-- Anomaly detection on spending
+- Anomaly detection
+- Personalized insights
 
-**Stack**
-Flutter · Dart · Firebase · Supabase · ML Kit  
-
+**Stack:** Flutter · Firebase · Supabase · ML Kit  
 🔗 https://github.com/sharmavaibhav31/PersonalFinanceTracker
 
 ---
 
-### **Offline AI Assistant (Mini OS Shell)**
-A C-based mini shell with a **locally running LLM** for offline environments.
+### 🥉 **Offline AI Assistant (Mini OS Shell)**
+A C-based OS shell with an **offline local LLM** for privacy-first AI use.
 
-Built to explore:
-- Privacy-first AI
-- System-level AI integration
-- Running inference without cloud dependence
-
-**Stack**
-C · OS-level programming · Offline LLMs  
-
+**Stack:** C · OS-level programming · Offline LLM  
 🔗 https://github.com/sharmavaibhav31/mini-shell-C-programming
 
 ---
 
 ## 🧠 What I focus on
 
-I’m not trying to be “everything”.
+I don’t try to be “everything”.
 
-My technical direction is:
-
-- **Backend systems** — APIs, databases, cloud
-- **Machine Learning** — data, models, inference pipelines
-- **Security-aware design** — privacy, safe data handling, attack surfaces
-- **Real-world software** — not just notebooks or demos
+I specialize in:
+- Backend engineering
+- Machine learning pipelines
+- Data systems
+- Secure, privacy-aware architectures
+- Production-grade applications
 
 ---
 
@@ -138,7 +118,7 @@ My technical direction is:
 Python · Java · C · Dart  
 
 **Backend & Cloud**  
-Firebase · Supabase · Google Cloud · REST APIs · PostgreSQL  
+Firebase · Supabase · PostgreSQL · REST APIs · Google Cloud  
 
 **AI & Data**  
 Hugging Face · Pandas · NumPy · Scikit-learn  
@@ -151,7 +131,7 @@ Linux · Burp Suite · Wireshark
 
 ---
 
-## 📊 Activity
+## 📊 Engineering Footprint
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=sharmavaibhav31&show_icons=true&theme=tokyonight" height="160"/>
@@ -160,17 +140,14 @@ Linux · Burp Suite · Wireshark
 
 ---
 
-## 🎯 What I’m aiming for
+## 🎯 What I’m looking for
 
-I’m looking for:
-- Backend / ML engineering roles
-- Open source projects in AI, data, or security
-- Teams building **real software**, not just slides
+Backend, ML, or applied AI roles where:
+- Systems matter
+- Data matters
+- Users matter
 
-If you need someone who can:
-> understand systems, work with data, and ship code
-
-We should talk.
+If you’re building real products and need someone who can ship, we should talk.
 
 ---
 
