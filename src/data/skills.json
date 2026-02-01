@@ -1,0 +1,30 @@
+{
+    "backend": [
+        "Java",
+        "Spring Boot",
+        "Python",
+        "Node.js",
+        "PostgreSQL",
+        "Redis"
+    ],
+    "infrastructure": [
+        "AWS",
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "CI/CD"
+    ],
+    "ai_ml": [
+        "PyTorch",
+        "TensorFlow",
+        "scikit-learn",
+        "RAG Pipelines",
+        "LLM Integration"
+    ],
+    "concepts": [
+        "System Design",
+        "Microservices",
+        "Event-Driven Architecture",
+        "Domain-Driven Design"
+    ]
+}

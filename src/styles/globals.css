@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-blueprint-dark text-slate-200 font-sans overflow-hidden;
+  }
+}
+
+@layer utilities {
+  .blueprint-grid {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, #1e3a8a 1px, transparent 1px),
+      linear-gradient(to bottom, #1e3a8a 1px, transparent 1px);
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  }
+
+  .scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom,
+        transparent 50%,
+        rgba(6, 182, 212, 0.02) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 50;
+  }
+}

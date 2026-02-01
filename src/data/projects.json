@@ -1,0 +1,35 @@
+[
+    {
+        "id": "student-permissions",
+        "title": "Automated Student Permissions System",
+        "context": "University admin workflow handling 1,200+ permission requests/month.",
+        "problem": "Manual approvals caused 3–5 day delays and frequent errors.",
+        "constraints": "Legacy Java stack, no new paid tools, SMS required.",
+        "solution": "Built a Spring Boot service with rules engine + SMS gateway integration.",
+        "architecture": "Client -> API Gateway -> Permission Service -> Legacy DB",
+        "impact": "80% faster processing, 60% fewer errors, 10 hrs/week admin time saved.",
+        "stack": [
+            "Java",
+            "Spring Boot",
+            "MySQL",
+            "Twilio API"
+        ],
+        "role": "Owned backend architecture and automation logic."
+    },
+    {
+        "id": "code-quality",
+        "title": "Structural Code Quality Analyzer",
+        "context": "Tool to detect fragile modules in large codebases.",
+        "problem": "Developers lacked insight into change-impact risk.",
+        "constraints": "No runtime profiling, static analysis only.",
+        "solution": "Built dependency graph + fragility scoring engine.",
+        "architecture": "Source Code -> AST Parser -> Graph Builder -> Scorer -> Report",
+        "impact": "Identified 30% of high-risk modules in test repo.",
+        "stack": [
+            "Python",
+            "NetworkX",
+            "AST parsing"
+        ],
+        "role": "Designed scoring model and dependency analyzer."
+    }
+]

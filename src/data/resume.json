@@ -1,0 +1,22 @@
+{
+    "summary": "Systems-oriented engineer focused on backend architecture, automation, and applied machine learning. Experienced in designing production-grade systems under real-world constraints. Interested in roles spanning backend engineering, ML systems, and techno-consulting.",
+    "experience": [
+        {
+            "company": "Tech Consult",
+            "role": "Senior Backend Consultant",
+            "period": "2024 - Present",
+            "description": "Architecting scalable solutions for enterprise clients."
+        },
+        {
+            "company": "Data Systems Inc",
+            "role": "Backend Engineer",
+            "period": "2021 - 2024",
+            "description": "Built high-throughput data processing pipelines."
+        }
+    ],
+    "socials": {
+        "github": "https://github.com/yourusername",
+        "linkedin": "https://linkedin.com/in/yourusername",
+        "email": "mailto:contact@example.com"
+    }
+}
