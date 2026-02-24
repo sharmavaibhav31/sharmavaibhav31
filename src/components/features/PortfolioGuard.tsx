@@ -17,6 +17,7 @@ export const PortfolioGuard: React.FC<PortfolioGuardProps> = ({ onAccessGranted 
     const [dialogue, setDialogue] = useState<string[]>([]);
     const eyeRef = useRef<SVGSVGElement>(null);
     const messagesEndRef = useRef<HTMLDivElement>(null);
+    const introRanRef = useRef(false);
 
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -36,18 +37,21 @@ export const PortfolioGuard: React.FC<PortfolioGuardProps> = ({ onAccessGranted 
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
-    // Faster intro sequence
+    // Intro sequence — guarded against StrictMode double-render
     useEffect(() => {
-        if (!isMinimized) {
-            setTimeout(() => setGuardState('tracking'), 500);
-            setTimeout(() => addToDialogue("UNIDENTIFIED USER DETECTED."), 800);
-            setTimeout(() => addToDialogue("INITIATING SECURITY PROTOCOL..."), 1800);
-            setTimeout(() => {
-                setGuardState('questioning');
-                setStep(1);
-                addToDialogue("ENTER ALIAS:");
-            }, 2800);
-        }
+        if (introRanRef.current || isMinimized) return;
+        introRanRef.current = true;
+
+        const t1 = setTimeout(() => setGuardState('tracking'), 500);
+        const t2 = setTimeout(() => addToDialogue("UNIDENTIFIED USER DETECTED."), 800);
+        const t3 = setTimeout(() => addToDialogue("INITIATING SECURITY PROTOCOL..."), 1800);
+        const t4 = setTimeout(() => {
+            setGuardState('questioning');
+            setStep(1);
+            addToDialogue("ENTER ALIAS:");
+        }, 2800);
+
+        return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); };
     }, [isMinimized]);
 
     const addToDialogue = (text: string) => {
