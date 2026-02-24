@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { clsx } from 'clsx';
 
@@ -10,50 +10,74 @@ interface NodeProps {
     isActive?: boolean;
     onClick: (id: string) => void;
     icon?: React.ReactNode;
+    tooltip?: string;
+    index?: number;
 }
 
-export const Node: React.FC<NodeProps> = ({ id, label, x, y, isActive, onClick, icon }) => {
+export const Node: React.FC<NodeProps> = ({ id, label, x, y, isActive, onClick, icon, tooltip, index = 0 }) => {
+    const [showTooltip, setShowTooltip] = useState(false);
+
     return (
         <motion.div
             className={clsx(
-                "absolute cursor-pointer flex flex-col items-center justify-center p-4 transition-all duration-300",
-                isActive ? "z-20 scale-110" : "z-10 hover:scale-105"
+                "absolute cursor-pointer flex flex-col items-center justify-center p-3 group",
+                isActive ? "z-20" : "z-10"
             )}
             style={{ left: `${x}%`, top: `${y}%`, transform: 'translate(-50%, -50%)' }}
             onClick={() => onClick(id)}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{
-                opacity: 1,
-                scale: isActive ? 1.1 : 1,
-                y: isActive ? [0, -5, 0] : [0, -10, 0]
-            }}
+            onMouseEnter={() => setShowTooltip(true)}
+            onMouseLeave={() => setShowTooltip(false)}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{
-                duration: 0.5,
-                delay: Math.random() * 0.3,
-                y: {
-                    duration: 4,
-                    repeat: Infinity,
-                    repeatType: 'reverse',
-                    ease: "easeInOut",
-                    delay: Math.random() * 2
-                }
+                duration: 0.25,
+                delay: 0.08 * index,
+                ease: "easeOut"
             }}
+            role="button"
+            tabIndex={0}
+            aria-label={`Navigate to ${label}`}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClick(id); }}
         >
+            {/* Tooltip */}
+            {tooltip && showTooltip && !isActive && (
+                <motion.div
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-surface border border-line-blueprint text-xs font-mono text-slate-300 whitespace-nowrap rounded-sm shadow-lg z-30"
+                >
+                    {tooltip}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-line-blueprint" />
+                </motion.div>
+            )}
+
+            {/* Node circle */}
             <div className={clsx(
-                "w-12 h-12 lg:w-16 lg:h-16 rounded-full border-2 flex items-center justify-center backdrop-blur-md transition-all duration-500",
+                "w-12 h-12 lg:w-16 lg:h-16 rounded-full border-2 flex items-center justify-center backdrop-blur-sm transition-all duration-200",
                 isActive
-                    ? "border-accent-cyan bg-accent-cyan/10 shadow-[0_0_30px_rgba(6,182,212,0.4)]"
-                    : "border-line-blueprint bg-blueprint-dark/50 hover:border-accent-cyan/50"
+                    ? "border-accent-cyan bg-accent-cyan/10 shadow-[0_0_25px_rgba(6,182,212,0.35)]"
+                    : "border-line-blueprint bg-blueprint-dark/60 group-hover:border-accent-cyan/50 group-hover:bg-accent-cyan/5"
             )}>
                 {icon ? (
-                    <div className={isActive ? "text-accent-cyan" : "text-slate-400"}>{icon}</div>
+                    <div className={clsx(
+                        "transition-colors duration-200",
+                        isActive ? "text-accent-cyan" : "text-slate-400 group-hover:text-accent-cyan/70"
+                    )}>
+                        {icon}
+                    </div>
                 ) : (
                     <div className="w-3 h-3 bg-current rounded-full" />
                 )}
             </div>
+
+            {/* Label */}
             <span className={clsx(
-                "mt-3 font-mono text-xs lg:text-sm tracking-widest uppercase transition-colors duration-300 whitespace-nowrap bg-blueprint-dark/80 px-2 py-0.5 rounded",
-                isActive ? "text-accent-cyan font-bold glow-text border border-accent-cyan/20" : "text-text-dim border border-transparent"
+                "mt-2.5 font-mono text-[10px] lg:text-xs tracking-wider uppercase transition-colors duration-200 whitespace-nowrap bg-blueprint-dark/80 px-2 py-0.5 rounded-sm",
+                isActive
+                    ? "text-accent-cyan font-semibold glow-text border border-accent-cyan/20"
+                    : "text-text-dim border border-transparent group-hover:text-slate-300"
             )}>
                 {label}
             </span>
