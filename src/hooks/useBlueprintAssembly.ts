@@ -28,37 +28,32 @@ export function useBlueprintAssembly(): AssemblyState {
             : false
     ).current;
 
-    const [state, setState] = useState<AssemblyState>(() => {
-        if (reducedMotion) {
-            return {
-                gridVisible: true,
-                linesDrawing: true,
-                peripheralNodes: true,
-                centralNode: true,
-                complete: true,
-                reducedMotion: true,
-            };
-        }
-        return {
+    const [state, setState] = useState<AssemblyState>({
+        gridVisible: reducedMotion,
+        linesDrawing: reducedMotion,
+        peripheralNodes: reducedMotion,
+        centralNode: reducedMotion,
+        complete: reducedMotion,
+        reducedMotion,
+    });
+
+    useEffect(() => {
+        if (reducedMotion) return;
+
+        // Reset state on mount (handles StrictMode remount)
+        setState({
             gridVisible: false,
             linesDrawing: false,
             peripheralNodes: false,
             centralNode: false,
             complete: false,
             reducedMotion: false,
-        };
-    });
-
-    const hasRun = useRef(false);
-
-    useEffect(() => {
-        if (reducedMotion || hasRun.current) return;
-        hasRun.current = true;
+        });
 
         // Step 1: Grid fade in at 0ms
         const t1 = setTimeout(() => {
             setState(s => ({ ...s, gridVisible: true }));
-        }, 0);
+        }, 10); // Tiny delay to ensure reset takes effect first
 
         // Step 2: Lines begin drawing at 100ms
         const t2 = setTimeout(() => {
