@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Node } from '../ui/Node';
+import type { AssemblyState } from '../../hooks/useBlueprintAssembly';
 
 export interface MapNode {
     id: string;
@@ -22,10 +23,16 @@ interface BlueprintMapProps {
     connections: Connection[];
     activeNodeId: string | null;
     onNodeClick: (id: string) => void;
+    assembly: AssemblyState;
 }
 
-export const BlueprintMap: React.FC<BlueprintMapProps> = ({ nodes, connections, activeNodeId, onNodeClick }) => {
-    // Memoize connection paths for performance
+export const BlueprintMap: React.FC<BlueprintMapProps> = ({
+    nodes,
+    connections,
+    activeNodeId,
+    onNodeClick,
+    assembly,
+}) => {
     const connectionPaths = useMemo(() => {
         return connections.map((conn) => {
             const start = nodes.find(n => n.id === conn.from);
@@ -34,6 +41,10 @@ export const BlueprintMap: React.FC<BlueprintMapProps> = ({ nodes, connections, 
             return { conn, start, end };
         }).filter(Boolean) as { conn: Connection; start: MapNode; end: MapNode }[];
     }, [connections, nodes]);
+
+    // Separate central node from peripheral nodes
+    const centralNode = nodes.find(n => n.type === 'root');
+    const peripheralNodes = nodes.filter(n => n.type !== 'root');
 
     return (
         <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -50,16 +61,33 @@ export const BlueprintMap: React.FC<BlueprintMapProps> = ({ nodes, connections, 
                 </defs>
                 {connectionPaths.map(({ conn, start, end }, index) => {
                     const isRelatedToActive = activeNodeId && (activeNodeId === conn.from || activeNodeId === conn.to);
-
-                    // Calculate line length for dash animation
                     const dx = (end.x - start.x);
                     const dy = (end.y - start.y);
-                    const length = Math.sqrt(dx * dx + dy * dy) * 10; // Approximate pixel length
+                    const length = Math.sqrt(dx * dx + dy * dy) * 10;
+
+                    // During assembly: lines draw from center outward
+                    const lineVariants = assembly.reducedMotion
+                        ? {
+                            hidden: { strokeDashoffset: 0, opacity: 0.5 },
+                            visible: { strokeDashoffset: 0, opacity: 0.5 },
+                        }
+                        : {
+                            hidden: { strokeDashoffset: length, opacity: 0 },
+                            visible: {
+                                strokeDashoffset: 0,
+                                opacity: 0.5,
+                                transition: {
+                                    duration: 0.25,
+                                    delay: 0.02 * index,
+                                    ease: 'easeOut' as const,
+                                },
+                            },
+                        };
 
                     return (
                         <React.Fragment key={`${conn.from}-${conn.to}`}>
-                            {/* Base dashed line */}
-                            <line
+                            {/* Base dashed line (always visible once lines start) */}
+                            <motion.line
                                 x1={`${start.x}%`}
                                 y1={`${start.y}%`}
                                 x2={`${end.x}%`}
@@ -67,10 +95,12 @@ export const BlueprintMap: React.FC<BlueprintMapProps> = ({ nodes, connections, 
                                 stroke="#1e3a8a"
                                 strokeWidth="1"
                                 strokeDasharray="6,6"
-                                opacity={0.3}
+                                initial={assembly.reducedMotion ? { opacity: 0.3 } : { opacity: 0 }}
+                                animate={assembly.linesDrawing ? { opacity: 0.3 } : { opacity: 0 }}
+                                transition={{ duration: 0.15, ease: 'easeOut' }}
                             />
 
-                            {/* Animated path-draw line on load */}
+                            {/* Animated path-draw line */}
                             <motion.line
                                 x1={`${start.x}%`}
                                 y1={`${start.y}%`}
@@ -79,14 +109,9 @@ export const BlueprintMap: React.FC<BlueprintMapProps> = ({ nodes, connections, 
                                 stroke="#1e3a8a"
                                 strokeWidth="1"
                                 strokeDasharray={length}
-                                initial={{ strokeDashoffset: length }}
-                                animate={{ strokeDashoffset: 0 }}
-                                transition={{
-                                    duration: 1.2,
-                                    delay: 0.1 * index,
-                                    ease: "easeOut"
-                                }}
-                                opacity={0.5}
+                                variants={lineVariants}
+                                initial={assembly.reducedMotion ? 'visible' : 'hidden'}
+                                animate={assembly.linesDrawing ? 'visible' : 'hidden'}
                             />
 
                             {/* Active highlight */}
@@ -107,8 +132,8 @@ export const BlueprintMap: React.FC<BlueprintMapProps> = ({ nodes, connections, 
                 })}
             </svg>
 
-            {/* Nodes Layer */}
-            {nodes.map((node, index) => (
+            {/* Peripheral Nodes — appear staggered at 250ms mark */}
+            {peripheralNodes.map((node, index) => (
                 <Node
                     key={node.id}
                     id={node.id}
@@ -119,9 +144,31 @@ export const BlueprintMap: React.FC<BlueprintMapProps> = ({ nodes, connections, 
                     isActive={activeNodeId === node.id}
                     onClick={onNodeClick}
                     tooltip={node.tooltip}
-                    index={index}
+                    assemblyVisible={assembly.peripheralNodes}
+                    assemblyDelay={assembly.reducedMotion ? 0 : 0.04 * index}
+                    reducedMotion={assembly.reducedMotion}
+                    isCentral={false}
                 />
             ))}
+
+            {/* Central Node — appears last at ~550ms */}
+            {centralNode && (
+                <Node
+                    key={centralNode.id}
+                    id={centralNode.id}
+                    label={centralNode.label}
+                    x={centralNode.x}
+                    y={centralNode.y}
+                    icon={centralNode.icon}
+                    isActive={activeNodeId === centralNode.id}
+                    onClick={onNodeClick}
+                    tooltip={centralNode.tooltip}
+                    assemblyVisible={assembly.centralNode}
+                    assemblyDelay={0}
+                    reducedMotion={assembly.reducedMotion}
+                    isCentral={true}
+                />
+            )}
         </div>
     );
 };

@@ -1,9 +1,19 @@
 import React, { useEffect, useRef } from 'react';
 
-export const BlueprintCanvas: React.FC = () => {
+interface BlueprintCanvasProps {
+    visible?: boolean;
+}
+
+export const BlueprintCanvas: React.FC<BlueprintCanvasProps> = ({ visible = true }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const animationRef = useRef<number>(0);
     const offsetRef = useRef({ x: 0, y: 0 });
+    const opacityRef = useRef(0);
+    const targetOpacityRef = useRef(0);
+
+    useEffect(() => {
+        targetOpacityRef.current = visible ? 1 : 0;
+    }, [visible]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -15,7 +25,7 @@ export const BlueprintCanvas: React.FC = () => {
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const gridSize = 40;
         const majorGridSize = 200;
-        const driftSpeed = 0.15; // Very slow drift
+        const driftSpeed = 0.15;
 
         const resize = () => {
             const dpr = window.devicePixelRatio || 1;
@@ -35,7 +45,17 @@ export const BlueprintCanvas: React.FC = () => {
             const ox = offsetRef.current.x % gridSize;
             const oy = offsetRef.current.y % gridSize;
 
+            // Smoothly interpolate opacity
+            const target = targetOpacityRef.current;
+            opacityRef.current += (target - opacityRef.current) * 0.12;
+
+            const alpha = opacityRef.current;
+
             ctx.clearRect(0, 0, w, h);
+
+            if (alpha < 0.01) return; // Skip drawing if invisible
+
+            ctx.globalAlpha = alpha;
 
             // Minor grid lines
             ctx.strokeStyle = 'rgba(30, 58, 138, 0.15)';
@@ -89,40 +109,37 @@ export const BlueprintCanvas: React.FC = () => {
             ctx.fillText('GRID_SYS_RDY', 16, 24);
             ctx.fillText('RENDER_ENGINE: VITE', w - 170, 24);
 
-            // Decorative corner brackets
+            // Corner brackets
             const bracketLen = 30;
             ctx.strokeStyle = 'rgba(30, 58, 138, 0.25)';
             ctx.lineWidth = 1;
 
-            // Top-left
             ctx.beginPath();
             ctx.moveTo(8, 8 + bracketLen);
             ctx.lineTo(8, 8);
             ctx.lineTo(8 + bracketLen, 8);
             ctx.stroke();
 
-            // Top-right
             ctx.beginPath();
             ctx.moveTo(w - 8 - bracketLen, 8);
             ctx.lineTo(w - 8, 8);
             ctx.lineTo(w - 8, 8 + bracketLen);
             ctx.stroke();
 
-            // Bottom-left
             ctx.beginPath();
             ctx.moveTo(8, h - 8 - bracketLen);
             ctx.lineTo(8, h - 8);
             ctx.lineTo(8 + bracketLen, h - 8);
             ctx.stroke();
 
-            // Bottom-right
             ctx.beginPath();
             ctx.moveTo(w - 8 - bracketLen, h - 8);
             ctx.lineTo(w - 8, h - 8);
             ctx.lineTo(w - 8, h - 8 - bracketLen);
             ctx.stroke();
 
-            // Vignette overlay via radial gradient
+            // Vignette
+            ctx.globalAlpha = 1; // Vignette always at full
             const gradient = ctx.createRadialGradient(cx, cy, Math.min(w, h) * 0.25, cx, cy, Math.max(w, h) * 0.7);
             gradient.addColorStop(0, 'rgba(11, 17, 33, 0)');
             gradient.addColorStop(1, 'rgba(11, 17, 33, 0.6)');

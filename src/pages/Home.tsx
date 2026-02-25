@@ -6,7 +6,7 @@ import { BlueprintMap, type MapNode, type Connection } from '../components/layou
 import { Panel } from '../components/ui/Panel';
 import { Terminal } from '../components/features/Terminal';
 import { CaseFile } from '../components/features/CaseFile';
-import { PortfolioGuard } from '../components/features/PortfolioGuard';
+import { useBlueprintAssembly } from '../hooks/useBlueprintAssembly';
 import { Server, Brain, Cloud, Users, FolderKanban, User, Mail, Terminal as TerminalIcon } from 'lucide-react';
 import projectsData from '../data/projects.json';
 import resumeData from '../data/resume.json';
@@ -40,7 +40,8 @@ export const Home: React.FC = () => {
     const [panelOpen, setPanelOpen] = useState(false);
     const [terminalOpen, setTerminalOpen] = useState(false);
     const [selectedProject, setSelectedProject] = useState<typeof projectsData[0] | null>(null);
-    const [accessGranted, setAccessGranted] = useState(false);
+
+    const assembly = useBlueprintAssembly();
 
     const handleNodeClick = (id: string) => {
         setActiveNode(id);
@@ -238,55 +239,52 @@ export const Home: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-blueprint-dark text-slate-200 overflow-hidden relative">
-            <PortfolioGuard onAccessGranted={() => setAccessGranted(true)} />
+            {/* Canvas background — fades in as Step 1 of assembly */}
+            <BlueprintCanvas visible={assembly.gridVisible} />
 
-            <div className={`transition-opacity duration-700 ${accessGranted ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                {/* Canvas background */}
-                <BlueprintCanvas />
+            <Navbar />
+            <SidebarMetrics />
 
-                <Navbar />
-                <SidebarMetrics />
-
-                {/* Main blueprint area */}
-                <main className="fixed inset-0 lg:left-72 xl:left-80 top-16" id="blueprint-main">
-                    <BlueprintMap
-                        nodes={NODES}
-                        connections={CONNECTIONS}
-                        activeNodeId={activeNode}
-                        onNodeClick={handleNodeClick}
-                    />
-                </main>
-
-                {/* Terminal Toggle */}
-                <div className="fixed bottom-6 right-6 z-20">
-                    <button
-                        onClick={() => setTerminalOpen(true)}
-                        className="flex items-center gap-2 px-4 py-2 bg-black/80 border border-accent-cyan/30 text-accent-cyan font-mono text-xs hover:bg-accent-cyan hover:text-black transition-all duration-200 shadow-[0_0_12px_rgba(6,182,212,0.15)] rounded-sm hover:border-accent-cyan"
-                        aria-label="Open terminal mode"
-                        id="terminal-toggle"
-                    >
-                        <TerminalIcon size={14} />
-                        TERMINAL
-                    </button>
-                </div>
-
-                <Panel
-                    isOpen={panelOpen}
-                    onClose={() => setPanelOpen(false)}
-                    title={activeNode ? activeNode.toUpperCase() : 'DETAILS'}
-                >
-                    {renderPanelContent()}
-                </Panel>
-
-                <Terminal
-                    isOpen={terminalOpen}
-                    onClose={() => setTerminalOpen(false)}
-                    onOpenProject={(id) => {
-                        setTerminalOpen(false);
-                        handleProjectClick(id);
-                    }}
+            {/* Main blueprint area — interactive immediately */}
+            <main className="fixed inset-0 lg:left-72 xl:left-80 top-16" id="blueprint-main">
+                <BlueprintMap
+                    nodes={NODES}
+                    connections={CONNECTIONS}
+                    activeNodeId={activeNode}
+                    onNodeClick={handleNodeClick}
+                    assembly={assembly}
                 />
+            </main>
+
+            {/* Terminal Toggle */}
+            <div className="fixed bottom-6 right-6 z-20">
+                <button
+                    onClick={() => setTerminalOpen(true)}
+                    className="flex items-center gap-2 px-4 py-2 bg-black/80 border border-accent-cyan/30 text-accent-cyan font-mono text-xs hover:bg-accent-cyan hover:text-black transition-all duration-200 shadow-[0_0_12px_rgba(6,182,212,0.15)] rounded-sm hover:border-accent-cyan"
+                    aria-label="Open terminal mode"
+                    id="terminal-toggle"
+                >
+                    <TerminalIcon size={14} />
+                    TERMINAL
+                </button>
             </div>
+
+            <Panel
+                isOpen={panelOpen}
+                onClose={() => setPanelOpen(false)}
+                title={activeNode ? activeNode.toUpperCase() : 'DETAILS'}
+            >
+                {renderPanelContent()}
+            </Panel>
+
+            <Terminal
+                isOpen={terminalOpen}
+                onClose={() => setTerminalOpen(false)}
+                onOpenProject={(id) => {
+                    setTerminalOpen(false);
+                    handleProjectClick(id);
+                }}
+            />
         </div>
     );
 };

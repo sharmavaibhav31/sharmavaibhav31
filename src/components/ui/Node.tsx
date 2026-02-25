@@ -11,11 +11,43 @@ interface NodeProps {
     onClick: (id: string) => void;
     icon?: React.ReactNode;
     tooltip?: string;
-    index?: number;
+    assemblyVisible?: boolean;
+    assemblyDelay?: number;
+    reducedMotion?: boolean;
+    isCentral?: boolean;
 }
 
-export const Node: React.FC<NodeProps> = ({ id, label, x, y, isActive, onClick, icon, tooltip, index = 0 }) => {
+export const Node: React.FC<NodeProps> = ({
+    id, label, x, y, isActive, onClick, icon, tooltip,
+    assemblyVisible = true, assemblyDelay = 0, reducedMotion = false, isCentral = false,
+}) => {
     const [showTooltip, setShowTooltip] = useState(false);
+
+    // Assembly animation variants
+    const variants = reducedMotion
+        ? {
+            hidden: { opacity: 1, y: 0, scale: 1 },
+            visible: { opacity: 1, y: 0, scale: 1 },
+        }
+        : isCentral
+            ? {
+                hidden: { opacity: 0, y: 0, scale: 0.98 },
+                visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: { duration: 0.15, ease: 'easeOut' as const, delay: assemblyDelay },
+                },
+            }
+            : {
+                hidden: { opacity: 0, y: 4, scale: 1 },
+                visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: { duration: 0.12, ease: 'easeOut' as const, delay: assemblyDelay },
+                },
+            };
 
     return (
         <motion.div
@@ -27,13 +59,9 @@ export const Node: React.FC<NodeProps> = ({ id, label, x, y, isActive, onClick, 
             onClick={() => onClick(id)}
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-                duration: 0.25,
-                delay: 0.08 * index,
-                ease: "easeOut"
-            }}
+            variants={variants}
+            initial="hidden"
+            animate={assemblyVisible ? 'visible' : 'hidden'}
             role="button"
             tabIndex={0}
             aria-label={`Navigate to ${label}`}
@@ -58,7 +86,8 @@ export const Node: React.FC<NodeProps> = ({ id, label, x, y, isActive, onClick, 
                 "w-12 h-12 lg:w-16 lg:h-16 rounded-full border-2 flex items-center justify-center backdrop-blur-sm transition-all duration-200",
                 isActive
                     ? "border-accent-cyan bg-accent-cyan/10 shadow-[0_0_25px_rgba(6,182,212,0.35)]"
-                    : "border-line-blueprint bg-blueprint-dark/60 group-hover:border-accent-cyan/50 group-hover:bg-accent-cyan/5"
+                    : "border-line-blueprint bg-blueprint-dark/60 group-hover:border-accent-cyan/50 group-hover:bg-accent-cyan/5",
+                isCentral && !isActive && "shadow-[0_0_12px_rgba(30,58,138,0.3)]"
             )}>
                 {icon ? (
                     <div className={clsx(
