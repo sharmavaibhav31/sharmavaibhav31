@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Github, Linkedin, Mail, Menu, X } from 'lucide-react';
 import resumeData from '../../data/resume.json';
+import CardNav from '../ui/CardNav';
 
 const NAV_LINKS = [
     { label: 'Work', href: '#work' },
@@ -15,20 +16,87 @@ const SOCIAL_LINKS = [
     { href: resumeData.socials.email, icon: <Mail size={16} />, label: 'Email', external: false },
 ];
 
+// The three cards shown in the CardNav when VS logo is clicked
+const CARD_NAV_ITEMS = [
+    {
+        label: 'Work',
+        bgColor: '#0D0716',
+        textColor: '#fff',
+        links: [
+            { label: 'Systems Built', href: '#work', ariaLabel: 'View projects' },
+            { label: 'Capabilities', href: '#capabilities', ariaLabel: 'Core competencies' },
+        ],
+    },
+    {
+        label: 'Experience',
+        bgColor: '#170D27',
+        textColor: '#fff',
+        links: [
+            { label: 'Timeline', href: '#experience', ariaLabel: 'View experience timeline' },
+            { label: 'Philosophy', href: '#about', ariaLabel: 'Engineering philosophy' },
+        ],
+    },
+    {
+        label: 'Contact',
+        bgColor: '#271E37',
+        textColor: '#fff',
+        links: [
+            { label: 'Email', href: resumeData.socials.email, ariaLabel: 'Send an email' },
+            { label: 'GitHub', href: resumeData.socials.github, ariaLabel: 'GitHub profile' },
+            { label: 'LinkedIn', href: resumeData.socials.linkedin, ariaLabel: 'LinkedIn profile' },
+        ],
+    },
+];
+
 export const Header: React.FC = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [cardNavOpen, setCardNavOpen] = useState(false);
+
+    const handleVSClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        setCardNavOpen((prev) => !prev);
+    };
 
     return (
         <header className="sticky top-0 z-40 bg-canvas border-b border-border" role="banner">
             <div className="max-w-7xl mx-auto px-6 lg:px-16 h-14 flex items-center justify-between">
-                {/* Logotype */}
-                <a
-                    href="#hero"
-                    className="font-display text-sm font-bold text-primary tracking-widest uppercase link-underline"
-                    aria-label="Vaibhav Sharma – home"
-                >
-                    VS
-                </a>
+                {/* VS Logotype — triggers CardNav */}
+                <div className="relative">
+                    <button
+                        onClick={handleVSClick}
+                        className="font-display text-sm font-bold text-primary tracking-widest uppercase transition-opacity hover:opacity-60"
+                        aria-label="Open navigation card"
+                        aria-expanded={cardNavOpen}
+                        id="vs-logo-btn"
+                    >
+                        VS
+                    </button>
+
+                    {/* CardNav — anchored below the VS button */}
+                    {cardNavOpen && (
+                        <div
+                            className="absolute top-[calc(100%+10px)] left-0"
+                            style={{ width: 'min(88vw, 720px)' }}
+                        >
+                            <CardNav
+                                logoContent={
+                                    <button
+                                        onClick={handleVSClick}
+                                        className="font-display text-sm font-bold text-primary tracking-widest uppercase"
+                                        aria-label="Close navigation card"
+                                    >
+                                        VS
+                                    </button>
+                                }
+                                items={CARD_NAV_ITEMS}
+                                baseColor="#FFFFFF"
+                                menuColor="#0F172A"
+                                ease="circ.out"
+                                onClose={() => setCardNavOpen(false)}
+                            />
+                        </div>
+                    )}
+                </div>
 
                 {/* Desktop nav */}
                 <nav className="hidden lg:flex items-center gap-8" aria-label="Primary navigation">
