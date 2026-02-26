@@ -10,7 +10,9 @@
   }
 
   body {
-    @apply bg-blueprint-dark text-slate-200 font-sans;
+    background-color: #F8FAFC;
+    color: #0F172A;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
   /* Respect reduced motion */
@@ -23,43 +25,91 @@
   }
 
   ::selection {
-    @apply bg-accent-cyan/30 text-white;
+    background-color: #BFDBFE;
+    color: #0F172A;
   }
 }
 
 @layer utilities {
-  .blueprint-grid {
-    background-size: 40px 40px;
-    background-image: linear-gradient(to right, #1e3a8a 1px, transparent 1px),
-      linear-gradient(to bottom, #1e3a8a 1px, transparent 1px);
-    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  /* ─── SCROLL REVEAL ─────────────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 200ms ease-out, transform 200ms ease-out;
   }
 
-  .glow-text {
-    text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
-  /* Custom scrollbar */
-  .custom-scrollbar::-webkit-scrollbar {
+  /* ─── LINK HOVER — underline expands left-to-right ─────────── */
+  .link-underline {
+    position: relative;
+    text-decoration: none;
+  }
+
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 200ms ease-out;
+  }
+
+  .link-underline:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* ─── ACCENT LINK HOVER ─────────────────────────────────────── */
+  .link-accent {
+    position: relative;
+    color: #2563EB;
+    text-decoration: none;
+  }
+
+  .link-accent::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 1px;
+    background-color: #2563EB;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 200ms ease-out;
+  }
+
+  .link-accent:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* ─── SCROLLBAR ─────────────────────────────────────────────── */
+  ::-webkit-scrollbar {
     width: 6px;
   }
 
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
+  ::-webkit-scrollbar-track {
+    background: #F1F5F9;
   }
 
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #1e3a8a;
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
     border-radius: 3px;
   }
 
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #06b6d4;
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
   }
 
-  /* Firefox scrollbar */
-  .custom-scrollbar {
+  * {
     scrollbar-width: thin;
-    scrollbar-color: #1e3a8a transparent;
+    scrollbar-color: #CBD5E1 #F1F5F9;
   }
 }

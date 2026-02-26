@@ -1,30 +1,56 @@
 {
-    "backend": [
-        "Java",
-        "Spring Boot",
-        "Python",
-        "Node.js",
-        "PostgreSQL",
-        "Redis"
-    ],
-    "infrastructure": [
-        "AWS",
-        "Docker",
-        "Kubernetes",
-        "Terraform",
-        "CI/CD"
-    ],
-    "ai_ml": [
-        "PyTorch",
-        "TensorFlow",
-        "scikit-learn",
-        "RAG Pipelines",
-        "LLM Integration"
-    ],
-    "concepts": [
-        "System Design",
-        "Microservices",
-        "Event-Driven Architecture",
-        "Domain-Driven Design"
+    "capabilities": [
+        {
+            "category": "Backend Architecture",
+            "items": [
+                "Java & Spring Boot (REST, Security, Data JPA)",
+                "API design — resource modeling, versioning, validation",
+                "PostgreSQL schema design & query optimization",
+                "Redis caching & session management",
+                "Constraint-based rule engines",
+                "Domain-Driven Design patterns"
+            ]
+        },
+        {
+            "category": "Distributed Systems",
+            "items": [
+                "Microservices decomposition & service boundaries",
+                "Event-driven architecture & async messaging",
+                "Idempotency, retry, and failure handling",
+                "Transaction management & data consistency",
+                "Load balancing & horizontal scaling patterns"
+            ]
+        },
+        {
+            "category": "Cloud & DevOps",
+            "items": [
+                "AWS (EC2, RDS, S3, Lambda)",
+                "Docker & Kubernetes",
+                "Terraform infrastructure as code",
+                "CI/CD pipeline design (GitHub Actions)",
+                "Flyway database migrations",
+                "Observability — structured logging, metrics"
+            ]
+        },
+        {
+            "category": "Data Engineering",
+            "items": [
+                "Python data pipelines & ETL workflows",
+                "PyTorch & scikit-learn for ML workloads",
+                "RAG pipeline design & LLM integration",
+                "Static analysis via AST & graph modeling",
+                "Apache POI for structured data export"
+            ]
+        },
+        {
+            "category": "Leadership & Execution",
+            "items": [
+                "Technical roadmap planning & scoping",
+                "Architecture decision records (ADRs)",
+                "Code review standards & quality gates",
+                "Mentorship & knowledge transfer",
+                "Cross-team alignment on system boundaries"
+            ]
+        }
     ]
 }

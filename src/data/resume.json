@@ -1,22 +1,43 @@
 {
-    "summary": "Systems-oriented engineer focused on backend architecture, automation, and applied machine learning. Experienced in designing production-grade systems under real-world constraints. Interested in roles spanning backend engineering, ML systems, and techno-consulting.",
+    "name": "Vaibhav Sharma",
+    "title": "Systems / Backend Engineer",
+    "tagline": "I design reliable backend systems and production-grade architecture.",
+    "summary": "Systems-oriented engineer with a track record of shipping production backend systems under real-world constraints — from constraint-based scheduling engines to database migration projects. I work across the full backend stack: API design, schema modeling, service architecture, and infrastructure automation.",
+    "philosophy": "Good systems are invisible. They handle edge cases silently, scale without drama, and let teams move fast without breaking things. I build for maintainability first — not for demos.",
     "experience": [
         {
-            "company": "Tech Consult",
-            "role": "Senior Backend Consultant",
-            "period": "2024 - Present",
-            "description": "Architecting scalable solutions for enterprise clients."
+            "company": "Independent / Consulting",
+            "role": "Senior Backend Engineer",
+            "period": "2024 – Present",
+            "bullets": [
+                "Architecting production-grade backend systems for university and enterprise clients.",
+                "Designing constraint-based automation engines replacing manual administrative workflows.",
+                "Delivering full-stack API layers with Spring Boot, PostgreSQL, and cloud deployment."
+            ]
         },
         {
-            "company": "Data Systems Inc",
+            "company": "University Projects",
             "role": "Backend Engineer",
-            "period": "2021 - 2024",
-            "description": "Built high-throughput data processing pipelines."
+            "period": "2022 – 2024",
+            "bullets": [
+                "Built timetable scheduling engine handling 40+ sections and 200+ course-faculty assignments.",
+                "Migrated legacy Firestore-based system to PostgreSQL with Spring Security and JWT auth.",
+                "Implemented rule-based student permission system reducing processing time by 80%."
+            ]
+        },
+        {
+            "company": "Open Source / Tooling",
+            "role": "Tool Developer",
+            "period": "2021 – 2022",
+            "bullets": [
+                "Developed static code analysis tool for dependency graph modeling and fragility scoring.",
+                "Built AST-driven pipeline identifying high-change-risk modules in large codebases."
+            ]
         }
     ],
     "socials": {
-        "github": "https://github.com/yourusername",
-        "linkedin": "https://linkedin.com/in/yourusername",
-        "email": "mailto:contact@example.com"
+        "github": "https://github.com/sharmavaibhav31",
+        "linkedin": "https://linkedin.com/in/sharmavaibhav31",
+        "email": "mailto:contact@sharmavaibhav31.dev"
     }
 }
