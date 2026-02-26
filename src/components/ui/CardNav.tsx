@@ -16,6 +16,7 @@ export type CardNavItem = {
 };
 
 export interface CardNavProps {
+    autoOpen?: boolean;
     logoContent: React.ReactNode;
     items: CardNavItem[];
     className?: string;
@@ -37,6 +38,7 @@ const CardNav: React.FC<CardNavProps> = ({
     buttonBgColor,
     buttonTextColor,
     onClose,
+    autoOpen = false,
 }) => {
     const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
@@ -100,6 +102,11 @@ const CardNav: React.FC<CardNavProps> = ({
     useLayoutEffect(() => {
         const tl = createTimeline();
         tlRef.current = tl;
+        if (autoOpen && tl) {
+            setIsHamburgerOpen(true);
+            setIsExpanded(true);
+            tl.play(0);
+        }
         return () => {
             tl?.kill();
             tlRef.current = null;

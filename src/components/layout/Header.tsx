@@ -92,6 +92,7 @@ export const Header: React.FC = () => {
                                 baseColor="#FFFFFF"
                                 menuColor="#0F172A"
                                 ease="circ.out"
+                                autoOpen
                                 onClose={() => setCardNavOpen(false)}
                             />
                         </div>
