@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, Menu, X } from 'lucide-react';
+import { Github, Linkedin, Mail, Menu, X, Sun, Moon } from 'lucide-react';
 import resumeData from '../../data/resume.json';
 import CardNav from '../ui/CardNav';
+import { useTheme } from '../../context/ThemeContext';
 
 const NAV_LINKS = [
     { label: 'Work', href: '#work' },
@@ -16,7 +17,6 @@ const SOCIAL_LINKS = [
     { href: resumeData.socials.email, icon: <Mail size={16} />, label: 'Email', external: false },
 ];
 
-// The three cards shown in the CardNav when VS logo is clicked
 const CARD_NAV_ITEMS = [
     {
         label: 'Work',
@@ -51,6 +51,7 @@ const CARD_NAV_ITEMS = [
 export const Header: React.FC = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [cardNavOpen, setCardNavOpen] = useState(false);
+    const { isDark, toggleTheme } = useTheme();
 
     const handleVSClick = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -58,13 +59,17 @@ export const Header: React.FC = () => {
     };
 
     return (
-        <header className="sticky top-0 z-40 bg-canvas border-b border-border" role="banner">
+        <header
+            className="sticky top-0 z-40 bg-canvas dark:bg-black/70 dark:backdrop-blur-md border-b border-border dark:border-white/10 transition-colors duration-200"
+            role="banner"
+        >
             <div className="max-w-7xl mx-auto px-6 lg:px-16 h-14 flex items-center justify-between">
+
                 {/* VS Logotype — triggers CardNav */}
                 <div className="relative">
                     <button
                         onClick={handleVSClick}
-                        className="font-display text-sm font-bold text-primary tracking-widest uppercase transition-opacity hover:opacity-60"
+                        className="font-display text-sm font-bold text-primary dark:text-white tracking-widest uppercase transition-opacity hover:opacity-60"
                         aria-label="Open navigation card"
                         aria-expanded={cardNavOpen}
                         id="vs-logo-btn"
@@ -72,7 +77,6 @@ export const Header: React.FC = () => {
                         VS
                     </button>
 
-                    {/* CardNav — anchored below the VS button */}
                     {cardNavOpen && (
                         <div
                             className="absolute top-[calc(100%+10px)] left-0"
@@ -82,15 +86,15 @@ export const Header: React.FC = () => {
                                 logoContent={
                                     <button
                                         onClick={handleVSClick}
-                                        className="font-display text-sm font-bold text-primary tracking-widest uppercase"
+                                        className="font-display text-sm font-bold text-primary dark:text-white tracking-widest uppercase"
                                         aria-label="Close navigation card"
                                     >
                                         VS
                                     </button>
                                 }
                                 items={CARD_NAV_ITEMS}
-                                baseColor="#FFFFFF"
-                                menuColor="#0F172A"
+                                baseColor={isDark ? '#111111' : '#FFFFFF'}
+                                menuColor={isDark ? '#ffffff' : '#0F172A'}
                                 ease="circ.out"
                                 autoOpen
                                 onClose={() => setCardNavOpen(false)}
@@ -105,14 +109,14 @@ export const Header: React.FC = () => {
                         <a
                             key={link.label}
                             href={link.href}
-                            className="text-xs font-medium text-secondary hover:text-primary tracking-wider uppercase transition-colors duration-150 link-underline"
+                            className="text-xs font-medium text-secondary dark:text-white/60 hover:text-primary dark:hover:text-white tracking-wider uppercase transition-colors duration-150 link-underline"
                         >
                             {link.label}
                         </a>
                     ))}
                 </nav>
 
-                {/* Desktop right: socials + resume */}
+                {/* Right: socials + theme toggle + resume */}
                 <div className="hidden lg:flex items-center gap-4">
                     {SOCIAL_LINKS.map((s) => (
                         <a
@@ -120,42 +124,62 @@ export const Header: React.FC = () => {
                             href={s.href}
                             target={s.external ? '_blank' : undefined}
                             rel={s.external ? 'noopener noreferrer' : undefined}
-                            className="text-muted hover:text-primary transition-colors duration-150"
+                            className="text-muted dark:text-white/40 hover:text-primary dark:hover:text-white transition-colors duration-150"
                             aria-label={s.label}
                         >
                             {s.icon}
                         </a>
                     ))}
+
+                    {/* Dark mode toggle */}
+                    <button
+                        onClick={toggleTheme}
+                        id="theme-toggle"
+                        aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+                        className="p-1.5 text-muted dark:text-white/50 hover:text-primary dark:hover:text-white transition-colors duration-150"
+                    >
+                        {isDark ? <Sun size={16} /> : <Moon size={16} />}
+                    </button>
+
                     <a
                         href="/resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="ml-2 px-4 py-1.5 border border-primary text-primary text-xs font-semibold tracking-wider uppercase hover:bg-primary hover:text-white transition-all duration-200"
+                        className="ml-2 px-4 py-1.5 border border-primary dark:border-white/40 text-primary dark:text-white text-xs font-semibold tracking-wider uppercase hover:bg-primary hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-200"
                         id="header-resume-btn"
                     >
                         Resume
                     </a>
                 </div>
 
-                {/* Mobile hamburger */}
-                <button
-                    className="lg:hidden p-1.5 text-secondary hover:text-primary transition-colors"
-                    onClick={() => setMobileOpen(!mobileOpen)}
-                    aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-                    aria-expanded={mobileOpen}
-                >
-                    {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-                </button>
+                {/* Mobile: theme toggle + hamburger */}
+                <div className="lg:hidden flex items-center gap-2">
+                    <button
+                        onClick={toggleTheme}
+                        aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+                        className="p-1.5 text-secondary dark:text-white/60 hover:text-primary dark:hover:text-white transition-colors"
+                    >
+                        {isDark ? <Sun size={18} /> : <Moon size={18} />}
+                    </button>
+                    <button
+                        className="p-1.5 text-secondary dark:text-white/60 hover:text-primary dark:hover:text-white transition-colors"
+                        onClick={() => setMobileOpen(!mobileOpen)}
+                        aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+                        aria-expanded={mobileOpen}
+                    >
+                        {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+                    </button>
+                </div>
             </div>
 
             {/* Mobile menu */}
             {mobileOpen && (
-                <div className="lg:hidden border-t border-border bg-canvas px-6 py-4 space-y-3">
+                <div className="lg:hidden border-t border-border dark:border-white/10 bg-canvas dark:bg-black/80 px-6 py-4 space-y-3">
                     {NAV_LINKS.map((link) => (
                         <a
                             key={link.label}
                             href={link.href}
-                            className="block text-sm font-medium text-secondary hover:text-primary tracking-wider uppercase py-1"
+                            className="block text-sm font-medium text-secondary dark:text-white/60 hover:text-primary dark:hover:text-white tracking-wider uppercase py-1"
                             onClick={() => setMobileOpen(false)}
                         >
                             {link.label}
@@ -165,7 +189,7 @@ export const Header: React.FC = () => {
                         href="/resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block text-sm font-medium text-accent py-1"
+                        className="block text-sm font-medium text-accent dark:text-[#61dca3] py-1"
                         onClick={() => setMobileOpen(false)}
                     >
                         Download Resume →
