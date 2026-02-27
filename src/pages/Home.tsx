@@ -16,21 +16,35 @@ const PortfolioContent: React.FC = () => {
     const { isDark } = useTheme();
 
     return (
-        <div className="min-h-screen bg-canvas dark:bg-transparent text-primary dark:text-white relative">
-            {/* LetterGlitch — fixed full-screen background in dark mode */}
+        <div className="min-h-screen relative" style={{ backgroundColor: isDark ? '#07090f' : '#F8FAFC', color: isDark ? '#fff' : '#0F172A' }}>
+
             {isDark && (
-                <div className="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
-                    <LetterGlitch
-                        glitchSpeed={50}
-                        centerVignette={true}
-                        outerVignette={false}
-                        smooth={true}
+                <>
+                    {/* 1 — solid very-dark base (always behind everything) */}
+                    <div
+                        className="fixed inset-0 pointer-events-none"
+                        style={{ zIndex: 0, backgroundColor: '#07090f' }}
+                        aria-hidden="true"
                     />
-                </div>
+
+                    {/* 2 — LetterGlitch at 18% opacity: visible but never overwhelming */}
+                    <div
+                        className="fixed inset-0 pointer-events-none"
+                        style={{ zIndex: 1, opacity: 0.18 }}
+                        aria-hidden="true"
+                    >
+                        <LetterGlitch
+                            glitchSpeed={50}
+                            centerVignette={false}
+                            outerVignette={false}
+                            smooth={true}
+                        />
+                    </div>
+                </>
             )}
 
-            {/* All page content sits above the canvas */}
-            <div className="relative z-10">
+            {/* All page content sits above both layers */}
+            <div className="relative" style={{ zIndex: 10 }}>
                 <Header />
                 <main id="main-content">
                     <HeroSection />
