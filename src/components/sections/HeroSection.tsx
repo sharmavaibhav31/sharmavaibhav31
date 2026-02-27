@@ -47,7 +47,7 @@ export const HeroSection: React.FC = () => {
                     {/* Status label */}
                     <div className="reveal flex items-center gap-2.5 mb-10">
                         <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent dark:bg-[#61dca3]" />
-                        <span className="text-xs font-medium tracking-widest-plus text-secondary dark:text-white/60 uppercase">
+                        <span className="text-xs font-medium tracking-widest-plus text-secondary dark:text-white/90 uppercase">
                             Available for Backend Roles
                         </span>
                     </div>
@@ -62,7 +62,7 @@ export const HeroSection: React.FC = () => {
 
                     {/* Subtitle */}
                     <p
-                        className="reveal text-secondary dark:text-white/50 font-medium mb-8 tracking-widest-plus uppercase"
+                        className="reveal text-secondary dark:text-white/75 font-medium mb-8 tracking-widest-plus uppercase"
                         style={{ fontSize: 'clamp(0.7rem, 1.2vw, 0.85rem)' }}
                     >
                         Systems / Backend Engineer
@@ -70,7 +70,7 @@ export const HeroSection: React.FC = () => {
 
                     {/* Positioning statement */}
                     <p
-                        className="reveal text-secondary dark:text-white/70 leading-relaxed mb-12 max-w-xl"
+                        className="reveal text-secondary dark:text-white/90 leading-relaxed mb-12 max-w-xl"
                         style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)' }}
                     >
                         I design reliable backend systems and production-grade architecture.

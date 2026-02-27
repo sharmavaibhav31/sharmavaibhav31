@@ -109,7 +109,7 @@ export const Header: React.FC = () => {
                         <a
                             key={link.label}
                             href={link.href}
-                            className="text-xs font-medium text-secondary dark:text-white/60 hover:text-primary dark:hover:text-white tracking-wider uppercase transition-colors duration-150 link-underline"
+                            className="text-xs font-medium text-secondary dark:text-white/80 hover:text-primary dark:hover:text-white tracking-wider uppercase transition-colors duration-150 link-underline"
                         >
                             {link.label}
                         </a>
@@ -124,7 +124,7 @@ export const Header: React.FC = () => {
                             href={s.href}
                             target={s.external ? '_blank' : undefined}
                             rel={s.external ? 'noopener noreferrer' : undefined}
-                            className="text-muted dark:text-white/40 hover:text-primary dark:hover:text-white transition-colors duration-150"
+                            className="text-muted dark:text-white/65 hover:text-primary dark:hover:text-white transition-colors duration-150"
                             aria-label={s.label}
                         >
                             {s.icon}
@@ -136,7 +136,7 @@ export const Header: React.FC = () => {
                         onClick={toggleTheme}
                         id="theme-toggle"
                         aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-                        className="p-1.5 text-muted dark:text-white/50 hover:text-primary dark:hover:text-white transition-colors duration-150"
+                        className="p-1.5 text-muted dark:text-white/70 hover:text-primary dark:hover:text-white transition-colors duration-150"
                     >
                         {isDark ? <Sun size={16} /> : <Moon size={16} />}
                     </button>
@@ -157,12 +157,12 @@ export const Header: React.FC = () => {
                     <button
                         onClick={toggleTheme}
                         aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-                        className="p-1.5 text-secondary dark:text-white/60 hover:text-primary dark:hover:text-white transition-colors"
+                        className="p-1.5 text-secondary dark:text-white/80 hover:text-primary dark:hover:text-white transition-colors"
                     >
                         {isDark ? <Sun size={18} /> : <Moon size={18} />}
                     </button>
                     <button
-                        className="p-1.5 text-secondary dark:text-white/60 hover:text-primary dark:hover:text-white transition-colors"
+                        className="p-1.5 text-secondary dark:text-white/80 hover:text-primary dark:hover:text-white transition-colors"
                         onClick={() => setMobileOpen(!mobileOpen)}
                         aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
                         aria-expanded={mobileOpen}
@@ -179,7 +179,7 @@ export const Header: React.FC = () => {
                         <a
                             key={link.label}
                             href={link.href}
-                            className="block text-sm font-medium text-secondary dark:text-white/60 hover:text-primary dark:hover:text-white tracking-wider uppercase py-1"
+                            className="block text-sm font-medium text-secondary dark:text-white/80 hover:text-primary dark:hover:text-white tracking-wider uppercase py-1"
                             onClick={() => setMobileOpen(false)}
                         >
                             {link.label}

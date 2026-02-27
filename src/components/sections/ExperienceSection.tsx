@@ -33,7 +33,7 @@ export const ExperienceSection: React.FC = () => (
                         >
                             {/* Period */}
                             <div className="md:w-[160px] md:pr-8 md:text-right shrink-0 mb-3 md:mb-0">
-                                <span className="text-xs font-medium text-muted dark:text-white/35 whitespace-nowrap">
+                                <span className="text-xs font-medium text-muted dark:text-white/60 whitespace-nowrap">
                                     {exp.period}
                                 </span>
                             </div>
@@ -49,13 +49,13 @@ export const ExperienceSection: React.FC = () => (
                                 <h3 className="text-sm font-bold text-primary dark:text-white leading-snug">
                                     {exp.role}
                                 </h3>
-                                <p className="text-xs font-medium text-secondary dark:text-white/45 mt-0.5 mb-3">
+                                <p className="text-xs font-medium text-secondary dark:text-white/70 mt-0.5 mb-3">
                                     {exp.company}
                                 </p>
                                 <ul className="space-y-1.5">
                                     {exp.bullets.map((bullet, j) => (
-                                        <li key={j} className="text-sm text-secondary dark:text-white/55 leading-relaxed flex items-start gap-2">
-                                            <span className="text-muted dark:text-white/25 mt-1.5 shrink-0 text-[8px]">▪</span>
+                                        <li key={j} className="text-sm text-secondary dark:text-white/80 leading-relaxed flex items-start gap-2">
+                                            <span className="text-muted dark:text-white/50 mt-1.5 shrink-0 text-[8px]">▪</span>
                                             <span>{bullet}</span>
                                         </li>
                                     ))}

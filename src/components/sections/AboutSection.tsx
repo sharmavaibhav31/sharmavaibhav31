@@ -24,7 +24,7 @@ export const AboutSection: React.FC = () => (
                     </p>
                 </blockquote>
 
-                <p className="reveal text-secondary dark:text-white/60 leading-relaxed text-[15px] mb-10">
+                <p className="reveal text-secondary dark:text-white/85 leading-relaxed text-[15px] mb-10">
                     {resumeData.summary}
                 </p>
 
@@ -39,7 +39,7 @@ export const AboutSection: React.FC = () => (
                         href={resumeData.socials.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-medium text-secondary dark:text-white/55 link-underline hover:text-primary dark:hover:text-white transition-colors"
+                        className="text-sm font-medium text-secondary dark:text-white/80 link-underline hover:text-primary dark:hover:text-white transition-colors"
                     >
                         {resumeData.socials.github.replace('https://', '')}
                     </a>
@@ -47,7 +47,7 @@ export const AboutSection: React.FC = () => (
                         href={resumeData.socials.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-medium text-secondary dark:text-white/55 link-underline hover:text-primary dark:hover:text-white transition-colors"
+                        className="text-sm font-medium text-secondary dark:text-white/80 link-underline hover:text-primary dark:hover:text-white transition-colors"
                     >
                         {resumeData.socials.linkedin.replace('https://', '')}
                     </a>

@@ -24,13 +24,13 @@ export const CapabilitiesSection: React.FC = () => (
                         className="reveal"
                         style={{ transitionDelay: `${i * 60}ms` }}
                     >
-                        <h3 className="text-[11px] font-semibold text-primary dark:text-white/80 tracking-widest uppercase mb-4 pb-3 border-b border-border dark:border-white/10">
+                        <h3 className="text-[11px] font-semibold text-primary dark:text-white/95 tracking-widest uppercase mb-4 pb-3 border-b border-border dark:border-white/10">
                             {cap.category}
                         </h3>
                         <ul className="space-y-2">
                             {cap.items.map((item) => (
-                                <li key={item} className="text-sm text-secondary dark:text-white/55 leading-relaxed flex items-start gap-2">
-                                    <span className="text-border dark:text-white/20 mt-1.5 shrink-0 text-[8px]">▪</span>
+                                <li key={item} className="text-sm text-secondary dark:text-white/80 leading-relaxed flex items-start gap-2">
+                                    <span className="text-border dark:text-white/50 mt-1.5 shrink-0 text-[8px]">▪</span>
                                     <span>{item}</span>
                                 </li>
                             ))}

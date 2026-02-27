@@ -13,7 +13,7 @@ const ProjectCard: React.FC<{ project: Project; delay: number }> = ({ project, d
             <h3 className="text-base font-bold text-primary dark:text-white mb-2 leading-snug">
                 {project.title}
             </h3>
-            <p className="text-sm text-secondary dark:text-white/55 leading-relaxed">
+            <p className="text-sm text-secondary dark:text-white/80 leading-relaxed">
                 {project.problem}
             </p>
         </div>
@@ -28,7 +28,7 @@ const ProjectCard: React.FC<{ project: Project; delay: number }> = ({ project, d
             {project.stack.map((tag) => (
                 <span
                     key={tag}
-                    className="text-[11px] px-2.5 py-1 border border-border dark:border-white/15 text-secondary dark:text-white/50 font-medium"
+                    className="text-[11px] px-2.5 py-1 border border-border dark:border-white/15 text-secondary dark:text-white/70 font-medium"
                 >
                     {tag}
                 </span>
@@ -37,7 +37,7 @@ const ProjectCard: React.FC<{ project: Project; delay: number }> = ({ project, d
 
         {/* Footer */}
         <div className="mt-auto pt-4 border-t border-border dark:border-white/10 flex items-center justify-between">
-            <span className="text-[11px] text-muted dark:text-white/30 font-medium uppercase tracking-wider">
+            <span className="text-[11px] text-muted dark:text-white/55 font-medium uppercase tracking-wider">
                 {project.role.split('—')[0].trim()}
             </span>
             {project.caseStudy && (
