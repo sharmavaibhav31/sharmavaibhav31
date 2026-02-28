@@ -8,6 +8,7 @@ import { ProjectsSection } from '../components/sections/ProjectsSection';
 import { CapabilitiesSection } from '../components/sections/CapabilitiesSection';
 import { ExperienceSection } from '../components/sections/ExperienceSection';
 import { AboutSection } from '../components/sections/AboutSection';
+import { CertificationsSection } from '../components/sections/CertificationsSection';
 import { useIntersectionObserver } from '../hooks/useScrollReveal';
 import LetterGlitch from '../components/ui/LetterGlitch';
 import { useTheme } from '../context/ThemeContext';
@@ -61,8 +62,9 @@ const PortfolioContent: React.FC = () => {
                 <main id="main-content">
                     <HeroSection />
                     <ProjectsSection />
-                    <CapabilitiesSection />
                     <ExperienceSection />
+                    <CapabilitiesSection />
+                    <CertificationsSection />
                     <AboutSection />
                 </main>
                 <Footer />
