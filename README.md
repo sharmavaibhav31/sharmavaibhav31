@@ -5,7 +5,7 @@
 <br/>
 
 Backend & ML Engineer · AIML Intern @ Infosys Springboard · President, Coders Club @ MITE  
-B.E. Computer Engineering (2027)
+B.E. Computer Science & Engineering (2027)
 
 <br/>
 
@@ -44,7 +44,7 @@ My core interest sits at the intersection of:
 ## 💼 Experience
 
 ### **AI/ML Intern — Infosys Springboard**
-*Sep 2025 – Dec 2025*  
+*Sep 2025 – Nov 2025*  
 Working on applied ML systems, model pipelines, and real-world AI integration.
 
 ---
