@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, Menu, X, Sun, Moon } from 'lucide-react';
+import { Github, Linkedin, Mail, Menu, X } from 'lucide-react';
 import resumeData from '../../data/resume.json';
 import CardNav from '../ui/CardNav';
 import { useTheme } from '../../context/ThemeContext';
 
 const NAV_LINKS = [
     { label: 'Work', href: '#work' },
-    { label: 'Capabilities', href: '#capabilities' },
     { label: 'Experience', href: '#experience' },
+    { label: 'Skills', href: '#capabilities' },
     { label: 'About', href: '#about' },
 ];
 
@@ -24,7 +24,7 @@ const CARD_NAV_ITEMS = [
         textColor: '#fff',
         links: [
             { label: 'Systems Built', href: '#work', ariaLabel: 'View projects' },
-            { label: 'Capabilities', href: '#capabilities', ariaLabel: 'Core competencies' },
+            { label: 'Skills', href: '#capabilities', ariaLabel: 'Core competencies' },
         ],
     },
     {
@@ -51,7 +51,7 @@ const CARD_NAV_ITEMS = [
 export const Header: React.FC = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [cardNavOpen, setCardNavOpen] = useState(false);
-    const { isDark, toggleTheme } = useTheme();
+    const { isDark } = useTheme();
 
     const handleVSClick = (e: React.MouseEvent) => {
         e.preventDefault();
