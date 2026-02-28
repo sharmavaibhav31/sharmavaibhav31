@@ -179,15 +179,6 @@ export const Header: React.FC = () => {
                 </div>
             )}
 
-            {/* Fixed Bottom-Left Theme Toggle */}
-            <button
-                onClick={toggleTheme}
-                id="fixed-theme-toggle"
-                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-                className="fixed bottom-6 left-6 z-50 p-3 rounded-full bg-canvas dark:bg-[#111111] border border-border dark:border-white/20 text-primary dark:text-white shadow-card hover:scale-110 hover:shadow-card-hover hover:border-border-hover dark:hover:border-[#61dca3] transition-all duration-300"
-            >
-                {isDark ? <Sun size={20} className="text-[#61dca3]" /> : <Moon size={20} className="text-primary" />}
-            </button>
         </header>
     );
 };
