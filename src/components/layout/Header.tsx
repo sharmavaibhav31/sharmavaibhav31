@@ -48,6 +48,24 @@ const CARD_NAV_ITEMS = [
     },
 ];
 
+const Monogram = ({ inverted = false }: { inverted?: boolean }) => {
+    const heavyColor = inverted ? "text-white dark:text-primary" : "text-primary dark:text-white";
+    const lightColor = inverted ? "text-white/70 dark:text-primary/70" : "text-secondary dark:text-white/70";
+    const dotColor = "bg-accent dark:bg-[#61dca3]";
+
+    return (
+        <span className="flex items-baseline tracking-tighter">
+            <span className={`font-display font-black text-2xl leading-none ${heavyColor}`}>
+                V
+            </span>
+            <span className={`font-display font-light text-2xl leading-none ${lightColor}`} style={{ marginLeft: '-0.05em' }}>
+                S
+            </span>
+            <span className={`w-1.5 h-1.5 ml-1 mb-0.5 ${dotColor}`} />
+        </span>
+    );
+};
+
 export const Header: React.FC = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [cardNavOpen, setCardNavOpen] = useState(false);
@@ -69,12 +87,12 @@ export const Header: React.FC = () => {
                 <div className="relative">
                     <button
                         onClick={handleVSClick}
-                        className="font-display text-base font-bold text-primary dark:text-white tracking-widest uppercase transition-opacity hover:opacity-60"
+                        className="transition-opacity hover:opacity-60"
                         aria-label="Open navigation card"
                         aria-expanded={cardNavOpen}
                         id="vs-logo-btn"
                     >
-                        VS
+                        <Monogram />
                     </button>
 
                     {cardNavOpen && (
@@ -86,10 +104,10 @@ export const Header: React.FC = () => {
                                 logoContent={
                                     <button
                                         onClick={handleVSClick}
-                                        className="font-display text-sm font-bold text-primary dark:text-white tracking-widest uppercase"
+                                        className="transition-opacity hover:opacity-60"
                                         aria-label="Close navigation card"
                                     >
-                                        VS
+                                        <Monogram inverted />
                                     </button>
                                 }
                                 items={CARD_NAV_ITEMS}
