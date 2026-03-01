@@ -64,7 +64,7 @@ Worked on a production Flutter app connecting **10,000+ college students across 
 
 ## 🚀 Project Spotlight
 
-These are not demos — these are systems that solve real problems.
+These are systems that I have built and tried to solve real problems.
 
 ### 🥇 **Synthetic Data Generator**
 AI-powered tool for generating **realistic training data** when real datasets are missing.
