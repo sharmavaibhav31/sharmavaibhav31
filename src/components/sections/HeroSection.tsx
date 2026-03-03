@@ -25,7 +25,7 @@ export const HeroSection: React.FC = () => {
         >
             {/* Structural grid — visible in light mode, hidden in dark (LetterGlitch takes over) */}
             <div
-                className="absolute inset-0 pointer-events-none select-none dark:opacity-0 transition-opacity duration-500"
+                className="absolute inset-0 pointer-events-none select-none"
                 aria-hidden="true"
                 style={{
                     transform: `translateY(${gridOffset}px)`,
