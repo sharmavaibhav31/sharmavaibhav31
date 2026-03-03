@@ -1,5 +1,6 @@
 import React from 'react';
 import { useIntersectionObserver } from '../../hooks/useScrollReveal';
+import { useParallax } from '../../hooks/useParallax';
 
 const DOT_POSITIONS = [
     { cx: 16.7, cy: 14.3 }, { cx: 33.3, cy: 28.6 }, { cx: 50.0, cy: 42.9 },
@@ -11,6 +12,11 @@ const DOT_POSITIONS = [
 export const HeroSection: React.FC = () => {
     useIntersectionObserver();
 
+    // SVG grid drifts slower than the page — classic parallax depth
+    const gridOffset = useParallax(0.25);
+    // Hero text floats very subtly upward — understated depth
+    const textOffset = useParallax(0.08);
+
     return (
         <section
             id="hero"
@@ -18,7 +24,14 @@ export const HeroSection: React.FC = () => {
             aria-label="Hero"
         >
             {/* Structural grid — visible in light mode, hidden in dark (LetterGlitch takes over) */}
-            <div className="absolute inset-0 pointer-events-none select-none dark:opacity-0 transition-opacity duration-500" aria-hidden="true">
+            <div
+                className="absolute inset-0 pointer-events-none select-none dark:opacity-0 transition-opacity duration-500"
+                aria-hidden="true"
+                style={{
+                    transform: `translateY(${gridOffset}px)`,
+                    willChange: 'transform',
+                }}
+            >
                 <svg
                     className="absolute right-0 top-0 h-full w-1/2 animate-[gridDrift_20s_ease-in-out_infinite_alternate]"
                     xmlns="http://www.w3.org/2000/svg"
@@ -41,8 +54,14 @@ export const HeroSection: React.FC = () => {
                 </svg>
             </div>
 
-            {/* Content */}
-            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 py-32 lg:py-0">
+            {/* Content — gentle upward drift on scroll */}
+            <div
+                className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 py-32 lg:py-0"
+                style={{
+                    transform: `translateY(${-textOffset}px)`,
+                    willChange: 'transform',
+                }}
+            >
                 <div className="max-w-3xl">
                     {/* Status label */}
                     <div className="reveal flex items-center gap-2.5 mb-10">

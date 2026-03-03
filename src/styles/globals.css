@@ -53,6 +53,11 @@
     transform: translateY(0);
   }
 
+  /* ─── PARALLAX ──────────────────────────────────────────────── */
+  .parallax-layer {
+    will-change: transform;
+  }
+
   /* ─── LINK HOVER — underline expands left-to-right ─────────── */
   .link-underline {
     position: relative;
