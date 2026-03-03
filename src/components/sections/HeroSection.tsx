@@ -56,7 +56,7 @@ export const HeroSection: React.FC = () => {
 
             {/* Content — gentle upward drift on scroll */}
             <div
-                className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 py-32 lg:py-0"
+                className="relative z-10 w-full max-w-screen-2xl mx-auto px-8 lg:px-12 py-32 lg:py-0"
                 style={{
                     transform: `translateY(${-textOffset}px)`,
                     willChange: 'transform',
