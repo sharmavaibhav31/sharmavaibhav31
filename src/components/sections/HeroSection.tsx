@@ -39,18 +39,18 @@ export const HeroSection: React.FC = () => {
                 >
                     <defs>
                         <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-                            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#E2E8F0" strokeWidth="0.8" />
+                            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#94A3B8" strokeWidth="1.2" />
                         </pattern>
                     </defs>
-                    <rect width="100%" height="100%" fill="url(#grid)" opacity="0.7" />
+                    <rect width="100%" height="100%" fill="url(#grid)" opacity="1" />
                     {DOT_POSITIONS.map((dot, i) => (
-                        <circle key={i} cx={`${dot.cx}%`} cy={`${dot.cy}%`} r="2" fill="#2563EB" opacity="0.18" />
+                        <circle key={i} cx={`${dot.cx}%`} cy={`${dot.cy}%`} r="2.5" fill="#2563EB" opacity="0.35" />
                     ))}
-                    <line x1="16.7%" y1="14.3%" x2="33.3%" y2="28.6%" stroke="#2563EB" strokeWidth="0.6" opacity="0.12" />
-                    <line x1="33.3%" y1="28.6%" x2="50%" y2="14.3%" stroke="#2563EB" strokeWidth="0.6" opacity="0.12" />
-                    <line x1="50%" y1="42.9%" x2="66.7%" y2="57.1%" stroke="#2563EB" strokeWidth="0.6" opacity="0.12" />
-                    <line x1="66.7%" y1="14.3%" x2="83.3%" y2="28.6%" stroke="#2563EB" strokeWidth="0.6" opacity="0.12" />
-                    <line x1="16.7%" y1="57.1%" x2="33.3%" y2="71.4%" stroke="#2563EB" strokeWidth="0.6" opacity="0.12" />
+                    <line x1="16.7%" y1="14.3%" x2="33.3%" y2="28.6%" stroke="#2563EB" strokeWidth="1" opacity="0.28" />
+                    <line x1="33.3%" y1="28.6%" x2="50%" y2="14.3%" stroke="#2563EB" strokeWidth="1" opacity="0.28" />
+                    <line x1="50%" y1="42.9%" x2="66.7%" y2="57.1%" stroke="#2563EB" strokeWidth="1" opacity="0.28" />
+                    <line x1="66.7%" y1="14.3%" x2="83.3%" y2="28.6%" stroke="#2563EB" strokeWidth="1" opacity="0.28" />
+                    <line x1="16.7%" y1="57.1%" x2="33.3%" y2="71.4%" stroke="#2563EB" strokeWidth="1" opacity="0.28" />
                 </svg>
             </div>
 
