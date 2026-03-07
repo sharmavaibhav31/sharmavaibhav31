@@ -12,6 +12,7 @@ import { CertificationsSection } from '../components/sections/CertificationsSect
 import { useIntersectionObserver } from '../hooks/useScrollReveal';
 import { ShootingStars } from '../components/ui/ShootingStars';
 import { useTheme } from '../context/ThemeContext';
+import { ArchitectureSection } from '../components/sections/ArchitectureSection';
 
 const PortfolioContent: React.FC = () => {
     useIntersectionObserver();
@@ -36,6 +37,7 @@ const PortfolioContent: React.FC = () => {
             <Header />
             <main id="main-content">
                 <HeroSection />
+                <ArchitectureSection />
                 <ProjectsSection />
                 <ExperienceSection />
                 <CapabilitiesSection />

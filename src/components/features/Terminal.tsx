@@ -180,7 +180,7 @@ export const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose, onOpenProje
                         '  │  RESUME                              │',
                         '  └──────────────────────────────────────┘',
                         ...resumeData.experience.map(exp =>
-                            `  ${exp.role} @ ${exp.company} (${exp.period})\n    ${exp.description}`
+                            `  ${exp.role} @ ${exp.company} (${exp.period})\n    ${exp.bullets.join('\n    ')}`
                         ),
                         ''
                     );
