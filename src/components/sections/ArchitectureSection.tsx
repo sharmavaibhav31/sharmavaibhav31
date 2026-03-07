@@ -224,12 +224,13 @@ export const ArchitectureSection: React.FC = () => {
                         return (
                             <motion.div
                                 key={node.id}
-                                className="absolute flex flex-col border border-solid overflow-hidden cursor-pointer z-10 bg-[#071A2F]"
+                                className="absolute flex flex-col border border-solid overflow-hidden cursor-pointer z-10 bg-white"
                                 style={{
-                                    left: node.cx - node.width / 2,
-                                    top: node.cy - node.height / 2,
-                                    width: node.width,
-                                    height: node.height,
+                                    left: node.cx,
+                                    top: node.cy,
+                                    x: "-50%",
+                                    y: "-50%",
+                                    minWidth: 220,
                                     borderWidth: '2px',
                                     borderColor: node.color,
                                     boxShadow: isHovered ? `0 0 20px ${node.color}30 inset, 0 0 15px ${node.color}40` : 'none',
@@ -254,24 +255,24 @@ export const ArchitectureSection: React.FC = () => {
                                     className="w-full flex flex-col items-center justify-center py-2 px-3 border-b-2"
                                     style={{ backgroundColor: node.color, borderColor: node.color }}
                                 >
-                                    <span className="text-[#071A2F] font-bold text-[13px] tracking-wide uppercase transition-transform duration-200" style={{ transform: isHovered ? 'scale(1.05)' : 'scale(1)' }}>
+                                    <span className="text-white font-bold text-[13px] tracking-wide uppercase transition-transform duration-200" style={{ transform: isHovered ? 'scale(1.05)' : 'scale(1)' }}>
                                         {node.title}
                                     </span>
                                 </div>
 
                                 {/* UML Attributes Compartment */}
-                                <div className="flex flex-col p-3 border-b-2 border-dashed bg-[#2D6CDF]/[0.02]" style={{ borderColor: `${node.color}50` }}>
+                                <div className="flex flex-col p-3 border-b border-gray-300">
                                     {node.attributes.map((attr, idx) => (
-                                        <span key={idx} className="font-mono text-[11px] text-[#CFE3FF]/90 leading-tight mb-1.5 last:mb-0">
+                                        <span key={idx} className="font-mono text-[11px] text-gray-700 leading-tight mb-1.5 last:mb-0 whitespace-nowrap">
                                             {attr}
                                         </span>
                                     ))}
                                 </div>
 
                                 {/* UML Methods Compartment */}
-                                <div className="flex-1 flex flex-col p-3 bg-[#2D6CDF]/[0.05]">
+                                <div className="flex-1 flex flex-col p-3 bg-gray-50/50">
                                     {node.methods.map((method, idx) => (
-                                        <span key={idx} className="font-mono text-[11px] font-semibold leading-tight mb-1.5 last:mb-0" style={{ color: node.color }}>
+                                        <span key={idx} className="font-mono text-[11px] font-semibold text-gray-900 leading-tight mb-1.5 last:mb-0 whitespace-nowrap">
                                             {method}
                                         </span>
                                     ))}
