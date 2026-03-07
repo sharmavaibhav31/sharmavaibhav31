@@ -3,6 +3,7 @@ import { Github, Linkedin, Mail, Menu, X } from 'lucide-react';
 import resumeData from '../../data/resume.json';
 import CardNav from '../ui/CardNav';
 import { useTheme } from '../../context/ThemeContext';
+import { ThemeToggle } from '../ui/theme-toggle';
 
 const NAV_LINKS = [
     { label: 'Work', href: '#work' },
@@ -149,6 +150,10 @@ export const Header: React.FC = () => {
                         </a>
                     ))}
 
+                    <div className="pl-2 border-l border-border dark:border-white/10 flex items-center">
+                        <ThemeToggle />
+                    </div>
+
                     <a
                         href="/resume.pdf"
                         target="_blank"
@@ -161,7 +166,8 @@ export const Header: React.FC = () => {
                 </div>
 
                 {/* Mobile hamburger */}
-                <div className="lg:hidden flex items-center gap-2">
+                <div className="lg:hidden flex items-center gap-3">
+                    <ThemeToggle className="scale-90" />
                     <button
                         className="p-2 text-secondary dark:text-white/80 hover:text-primary dark:hover:text-white transition-colors"
                         onClick={() => setMobileOpen(!mobileOpen)}
