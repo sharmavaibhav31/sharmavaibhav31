@@ -13,7 +13,8 @@ type ArchitectureNode = {
     description: string;
 };
 
-const nodes: ArchitectureNode[] = [
+// Extracted globally to prevent re-creation on render
+const ARCHITECTURE_NODES: ArchitectureNode[] = [
     {
         id: 'center',
         label: ['Vaibhav Sharma', 'Systems / Backend Engineer'],
@@ -73,6 +74,21 @@ const nodes: ArchitectureNode[] = [
 export const ArchitectureSection: React.FC = () => {
     const [hoveredNode, setHoveredNode] = useState<ArchitectureNode | null>(null);
 
+    // Optimized grid style using linear gradients (no SVG DOM nodes)
+    const gridStyle = React.useMemo(() => ({
+        backgroundColor: '#071A2F',
+        backgroundImage: `
+            linear-gradient(to right, rgba(45, 108, 223, 0.15) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(45, 108, 223, 0.15) 1px, transparent 1px),
+            linear-gradient(to right, rgba(45, 108, 223, 0.25) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(45, 108, 223, 0.25) 1px, transparent 1px)
+        `,
+        backgroundSize: '40px 40px, 40px 40px, 200px 200px, 200px 200px'
+    }), []);
+
+    const centerNode = ARCHITECTURE_NODES.find(n => n.id === 'center')!;
+    const peripheralNodes = ARCHITECTURE_NODES.filter(n => n.id !== 'center');
+
     return (
         <section
             id="architecture"
@@ -80,27 +96,15 @@ export const ArchitectureSection: React.FC = () => {
             style={{ backgroundColor: '#071A2F' }}
             aria-label="Architecture Overview"
         >
-            {/* Blueprint grid background */}
+            {/* Blueprint gradient background CSS */}
             <motion.div
                 className="absolute inset-0 z-0 pointer-events-none"
+                style={gridStyle}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.8 }}
-            >
-                <svg width="100%" height="100%">
-                    <defs>
-                        <pattern id="blueprint-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2D6CDF" strokeWidth="0.5" opacity="0.15" />
-                        </pattern>
-                        <pattern id="blueprint-grid-large" width="200" height="200" patternUnits="userSpaceOnUse">
-                            <rect width="200" height="200" fill="url(#blueprint-grid)" />
-                            <path d="M 200 0 L 0 0 0 200" fill="none" stroke="#2D6CDF" strokeWidth="1" opacity="0.25" />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#blueprint-grid-large)" />
-                </svg>
-            </motion.div>
+                transition={{ duration: 0.15 }}
+            />
 
             {/* Main Interactive Diagram Container */}
             <div className="relative z-10 flex flex-col w-full max-w-7xl mx-auto items-center justify-center -mt-10">
@@ -114,94 +118,101 @@ export const ArchitectureSection: React.FC = () => {
 
                 {/* Diagram */}
                 <motion.div
-                    className="relative w-[850px] h-[650px] max-w-full transform scale-75 sm:scale-90 lg:scale-100 origin-center"
+                    className="relative w-[850px] h-[650px] max-w-full transform scale-75 sm:scale-90 lg:scale-100 origin-center will-change-transform"
                     animate={{ x: hoveredNode ? -100 : 0 }}
-                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                    transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                    {/* SVG Lines */}
+                    {/* SVG Lines - rendered as a single SVG element */}
                     <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 850 650">
-                        {nodes.filter(n => n.id !== 'center').map((node, i) => {
-                            const center = nodes.find(n => n.id === 'center')!;
+                        {peripheralNodes.map((node) => {
                             const isHovered = hoveredNode?.id === node.id || hoveredNode?.id === 'center';
                             const isDimmed = hoveredNode && !isHovered && hoveredNode.id !== 'center' && hoveredNode.id !== node.id;
 
                             return (
                                 <motion.line
                                     key={`line-${node.id}`}
-                                    x1={center.cx}
-                                    y1={center.cy}
+                                    x1={centerNode.cx}
+                                    y1={centerNode.cy}
                                     x2={node.cx}
                                     y2={node.cy}
-                                    stroke="#2D6CDF"
-                                    strokeWidth={isHovered ? 2.5 : 1.5}
-                                    className="transition-all duration-300"
+                                    stroke={isHovered ? '#61dca3' : '#2D6CDF'}
+                                    strokeWidth={1.5}
                                     style={{
-                                        filter: isHovered ? 'drop-shadow(0 0 5px rgba(45,108,223,0.9))' : 'none',
-                                        opacity: isDimmed ? 0.2 : 1
+                                        filter: isHovered ? 'drop-shadow(0 0 6px rgba(97,220,163,0.8))' : 'none',
                                     }}
+                                    animate={{ opacity: isDimmed ? 0.2 : 1 }}
                                     initial={{ pathLength: 0 }}
                                     whileInView={{ pathLength: 1 }}
-                                    viewport={{ once: true, amount: 0.4 }}
-                                    transition={{ duration: 0.6, delay: 0.2 + i * 0.08, ease: "easeOut" }}
+                                    viewport={{ once: true, amount: 0.2 }}
+                                    transition={{ duration: 0.25, delay: 0.15, ease: "easeOut" }}
                                 />
                             );
                         })}
                     </svg>
 
-                    {/* HTML Nodes */}
-                    {nodes.map((node, i) => {
+                    {/* HTML Nodes - Absolute positioned wrappers using transform instead of top/left animation */}
+                    {ARCHITECTURE_NODES.map((node, i) => {
                         const isCenter = node.id === 'center';
                         const isHovered = hoveredNode?.id === node.id;
                         const isDimmed = hoveredNode && !isHovered;
 
+                        // Strict 600ms bound sequence:
+                        // Background (0ms - 150ms)
+                        // Center node (100ms - 300ms)
+                        // Lines (150ms - 400ms)
+                        // Peripheral Nodes (250ms -> 250+60n)
+                        const nodeDelay = isCenter ? 0.1 : 0.25 + (i - 1) * 0.06;
+
                         return (
                             <motion.div
                                 key={node.id}
-                                className={`absolute flex flex-col border border-solid overflow-hidden cursor-pointer transition-all duration-300 z-10 bg-[#071A2F]`}
+                                className="absolute flex flex-col border border-solid overflow-hidden cursor-pointer z-10 bg-[#071A2F]"
                                 style={{
-                                    left: node.cx,
-                                    top: node.cy,
+                                    left: node.cx - node.width / 2,
+                                    top: node.cy - node.height / 2,
                                     width: node.width,
                                     height: node.height,
-                                    x: '-50%',
-                                    y: '-50%',
                                     borderWidth: '1.5px',
                                     borderColor: isHovered ? '#61dca3' : '#2D6CDF',
-                                    opacity: isDimmed ? 0.3 : 1,
                                     boxShadow: isHovered ? '0 0 15px rgba(97,220,163,0.15) inset, 0 0 10px rgba(97,220,163,0.2)' : 'none',
                                 }}
-                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{
+                                    opacity: isDimmed ? 0.3 : 1,
+                                    scale: isHovered && !isCenter ? 1.03 : 1
+                                }}
+                                initial={{ opacity: 0, scale: isCenter ? 0.95 : 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true, amount: 0.4 }}
+                                viewport={{ once: true, amount: 0.2 }}
                                 transition={{
-                                    duration: 0.4,
-                                    delay: isCenter ? 0.1 : 0.4 + (i - 1) * 0.08
+                                    duration: isCenter ? 0.2 : 0.25,
+                                    delay: nodeDelay,
+                                    scale: { duration: 0.2 } // Hover scale transition
                                 }}
                                 onMouseEnter={() => setHoveredNode(node)}
                                 onMouseLeave={() => setHoveredNode(null)}
                             >
                                 {isCenter ? (
-                                    <div className="flex flex-col w-full h-full text-center transition-colors duration-300">
+                                    <div className="flex flex-col w-full h-full text-center">
                                         <div className="flex-1 flex items-center justify-center border-b-[1.5px] border-[#2D6CDF]/70 px-4">
-                                            <div className={`font-bold text-lg tracking-wide ${isHovered ? 'text-white' : 'text-[#CFE3FF]'}`}>
+                                            <div className={`font-bold text-lg tracking-wide transition-colors duration-200 ${isHovered ? 'text-white' : 'text-[#CFE3FF]'}`}>
                                                 {(node.label as string[])[0]}
                                             </div>
                                         </div>
                                         <div className="h-[38px] flex items-center justify-center bg-[#2D6CDF]/[0.03]">
-                                            <div className={`text-sm font-semibold tracking-wider ${isHovered ? 'text-[#61dca3]' : 'text-[#2D6CDF]'}`}>
+                                            <div className={`text-sm font-semibold tracking-wider transition-colors duration-200 ${isHovered ? 'text-[#61dca3]' : 'text-[#2D6CDF]'}`}>
                                                 {(node.label as string[])[1]}
                                             </div>
                                         </div>
                                     </div>
                                 ) : (
-                                    <div className="flex flex-col w-full h-full text-center transition-colors duration-300">
+                                    <div className="flex flex-col w-full h-full text-center">
                                         <div className="h-[38px] flex items-center justify-center border-b-[1.5px] border-[#2D6CDF]/70 px-2 bg-[#2D6CDF]/[0.08]">
-                                            <div className={`text-[13px] font-bold tracking-wide uppercase ${isHovered ? 'text-white' : 'text-[#CFE3FF]'}`}>
+                                            <div className={`text-[13px] font-bold tracking-wide uppercase transition-colors duration-200 ${isHovered ? 'text-white' : 'text-[#CFE3FF]'}`}>
                                                 {node.label}
                                             </div>
                                         </div>
                                         <div className="flex-1 p-2 flex items-center justify-center bg-[#2D6CDF]/[0.02]">
-                                            <span className={`text-[10px] font-mono tracking-[0.2em] transition-colors ${isHovered ? 'text-[#61dca3]' : 'text-[#2D6CDF]/60'}`}>
+                                            <span className={`text-[10px] font-mono tracking-[0.2em] transition-colors duration-200 ${isHovered ? 'text-[#61dca3]' : 'text-[#2D6CDF]/60'}`}>
                                                 [{node.id.toUpperCase()}]
                                             </span>
                                         </div>
@@ -216,11 +227,11 @@ export const ArchitectureSection: React.FC = () => {
                 <AnimatePresence>
                     {hoveredNode && (
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
+                            initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: 30, transition: { duration: 0.2 } }}
-                            transition={{ duration: 0.3, ease: 'easeOut' }}
-                            className="absolute right-[-20px] lg:right-4 w-[280px] md:w-[320px] p-6 border-[1.5px] border-[#2D6CDF] bg-[#071A2F]/95 backdrop-blur-md z-20 pointer-events-none shadow-2xl"
+                            exit={{ opacity: 0, x: 20, transition: { duration: 0.15 } }}
+                            transition={{ duration: 0.2, ease: 'easeOut' }}
+                            className="absolute right-[-20px] lg:right-4 w-[280px] md:w-[320px] p-6 border-[1.5px] border-[#2D6CDF] bg-[#071A2F]/95 backdrop-blur-md z-20 pointer-events-none shadow-2xl will-change-transform"
                             style={{
                                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.6)'
                             }}
