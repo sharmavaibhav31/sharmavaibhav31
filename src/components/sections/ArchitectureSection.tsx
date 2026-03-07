@@ -134,7 +134,6 @@ export const ArchitectureSection: React.FC = () => {
 
     // Optimized grid style using linear gradients (no SVG DOM nodes)
     const gridStyle = React.useMemo(() => ({
-        backgroundColor: '#071A2F',
         backgroundImage: `
             linear-gradient(to right, rgba(45, 108, 223, 0.15) 1px, transparent 1px),
             linear-gradient(to bottom, rgba(45, 108, 223, 0.15) 1px, transparent 1px),
@@ -150,8 +149,7 @@ export const ArchitectureSection: React.FC = () => {
     return (
         <section
             id="architecture"
-            className="relative w-full min-h-[900px] flex items-center justify-center py-24 overflow-hidden border-b border-[#2D6CDF]/20"
-            style={{ backgroundColor: '#071A2F' }}
+            className="relative w-full min-h-[900px] flex items-center justify-center py-24 overflow-hidden border-b border-border bg-[#F8FAFC]"
             aria-label="Architecture Overview"
         >
             {/* Blueprint gradient background CSS */}
@@ -290,19 +288,18 @@ export const ArchitectureSection: React.FC = () => {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: 20, transition: { duration: 0.15 } }}
                             transition={{ duration: 0.2, ease: 'easeOut' }}
-                            className="absolute right-[-20px] lg:right-4 w-[280px] md:w-[320px] p-6 border-[2px] bg-[#071A2F]/95 backdrop-blur-md z-20 pointer-events-none shadow-2xl will-change-transform"
+                            className="absolute right-[-20px] lg:right-4 w-[280px] md:w-[320px] p-6 border-[2px] bg-white/95 backdrop-blur-md z-20 pointer-events-none shadow-card-hover will-change-transform"
                             style={{
                                 borderColor: hoveredNode.color,
-                                boxShadow: `0 8px 32px rgba(0, 0, 0, 0.6), 0 0 20px ${hoveredNode.color}20 inset`
                             }}
                         >
                             <div className="font-mono text-[10px] mb-2 uppercase tracking-widest font-bold" style={{ color: hoveredNode.color }}>
                                 Class Details
                             </div>
-                            <h3 className="text-white text-[17px] md:text-xl font-bold mb-4 border-b-2 pb-3 uppercase tracking-wide" style={{ borderColor: `${hoveredNode.color}40` }}>
+                            <h3 className="text-primary text-[17px] md:text-xl font-bold mb-4 border-b-2 pb-3 uppercase tracking-wide" style={{ borderColor: `${hoveredNode.color}40` }}>
                                 {hoveredNode.title}
                             </h3>
-                            <p className="text-[#CFE3FF]/85 text-[13px] leading-relaxed">
+                            <p className="text-secondary text-[13px] leading-relaxed">
                                 {hoveredNode.description}
                             </p>
                             <div className="mt-5 border-t border-[#2D6CDF]/20 pt-3 flex justify-between items-center opacity-80">

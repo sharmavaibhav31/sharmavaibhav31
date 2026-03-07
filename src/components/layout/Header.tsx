@@ -150,10 +150,6 @@ export const Header: React.FC = () => {
                         </a>
                     ))}
 
-                    <div className="pl-2 border-l border-border dark:border-white/10 flex items-center">
-                        <ThemeToggle />
-                    </div>
-
                     <a
                         href="/resume.pdf"
                         target="_blank"
@@ -163,6 +159,10 @@ export const Header: React.FC = () => {
                     >
                         Resume
                     </a>
+
+                    <div className="pl-2 ml-2 border-l border-border dark:border-white/10 flex items-center">
+                        <ThemeToggle />
+                    </div>
                 </div>
 
                 {/* Mobile hamburger */}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { ThemeProvider } from '../context/ThemeContext';
-import { ThemeProvider } from '../context/ThemeContext';
 import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { HeroSection } from '../components/sections/HeroSection';
@@ -12,11 +11,11 @@ import { CertificationsSection } from '../components/sections/CertificationsSect
 import { useIntersectionObserver } from '../hooks/useScrollReveal';
 import { ShootingStars } from '../components/ui/ShootingStars';
 import { useTheme } from '../context/ThemeContext';
-import { ArchitectureSection } from '../components/sections/ArchitectureSection';
+//import { ArchitectureSection } from '../components/sections/ArchitectureSection';
 
 const PortfolioContent: React.FC = () => {
     useIntersectionObserver();
-    const { isDark, toggleTheme } = useTheme();
+    const { isDark } = useTheme();
 
     return (
         <div className="min-h-screen" style={{ backgroundColor: isDark ? '#000000' : '#F8FAFC', color: isDark ? '#fff' : '#0F172A' }}>
@@ -27,7 +26,7 @@ const PortfolioContent: React.FC = () => {
             <Header />
             <main id="main-content">
                 <HeroSection />
-                <ArchitectureSection />
+                {/* {!isDark && <ArchitectureSection />} */}
                 <ProjectsSection />
                 <ExperienceSection />
                 <CapabilitiesSection />
