@@ -5,7 +5,10 @@ type NodeId = 'center' | 'projects' | 'experience' | 'skills' | 'about' | 'conta
 
 type ArchitectureNode = {
     id: NodeId;
-    label: string | string[];
+    title: string;
+    attributes: string[];
+    methods: string[];
+    color: string;
     cx: number;
     cy: number;
     width: number;
@@ -17,56 +20,111 @@ type ArchitectureNode = {
 const ARCHITECTURE_NODES: ArchitectureNode[] = [
     {
         id: 'center',
-        label: ['Vaibhav Sharma', 'Systems / Backend Engineer'],
+        title: 'SystemRoot',
+        attributes: [
+            '- architect: "Vaibhav Sharma"',
+            '- role: "Backend Engineer"',
+        ],
+        methods: [
+            '+ orchestrateSystem()',
+            '+ deployToProduction()',
+            '+ optimizeArchitecture()',
+        ],
+        color: '#E48525', // Orange
         cx: 425,
         cy: 325,
         width: 320,
-        height: 100,
+        height: 165,
         description: 'System Root: Orchestrating backend architecture, API design, and production-grade software deployments.',
     },
     {
         id: 'projects',
-        label: 'Projects',
+        title: 'Projects',
+        attributes: [
+            '- repositories: Map<ID, Repo>',
+            '- activeDeployments: int',
+        ],
+        methods: [
+            '+ architectSolutions()',
+            '+ scaleInfrastructure()',
+        ],
+        color: '#50A7B0', // Teal
         cx: 400,
-        cy: 90,
-        width: 200,
-        height: 70,
+        cy: 70,
+        width: 240,
+        height: 140,
         description: 'Repository of robust systems, APIs, and scalable infrastructure deployments.',
     },
     {
         id: 'experience',
-        label: 'Experience',
+        title: 'Experience',
+        attributes: [
+            '- timeline: List<Role>',
+            '- totalYears: float',
+        ],
+        methods: [
+            '+ leadEngineering()',
+            '+ maintainSystems()',
+        ],
+        color: '#9B51E0', // Purple
         cx: 120,
         cy: 300,
-        width: 200,
-        height: 70,
+        width: 230,
+        height: 140,
         description: 'Professional timeline recounting engineering roles and critical system ownership.',
     },
     {
         id: 'skills',
-        label: 'Skills & Tech Stack',
+        title: 'Skills',
+        attributes: [
+            '- languages: Set<String>',
+            '- frameworks: Set<String>',
+        ],
+        methods: [
+            '+ implementFeatures()',
+            '+ reviewCode()',
+        ],
+        color: '#27AE60', // Green
         cx: 730,
         cy: 350,
-        width: 220,
-        height: 70,
+        width: 230,
+        height: 140,
         description: 'Inventory of languages, frameworks, databases, and operational tooling.',
     },
     {
         id: 'about',
-        label: 'About',
+        title: 'About',
+        attributes: [
+            '- background: String',
+            '- philosophy: String',
+        ],
+        methods: [
+            '+ solveProblems()',
+            '+ analyzeRequirements()',
+        ],
+        color: '#F2C94C', // Yellow
         cx: 260,
         cy: 560,
-        width: 200,
-        height: 70,
+        width: 230,
+        height: 140,
         description: 'Personal background, engineering philosophy, and analytical approach to problem-solving.',
     },
     {
         id: 'contact',
-        label: 'Contact',
+        title: 'Contact',
+        attributes: [
+            '- email: String',
+            '- channels: List<URL>',
+        ],
+        methods: [
+            '+ initiateDiscussion()',
+            '+ scheduleMeeting()',
+        ],
+        color: '#EB5757', // Red
         cx: 620,
-        cy: 540,
-        width: 200,
-        height: 70,
+        cy: 550,
+        width: 230,
+        height: 140,
         description: 'Communication channels for technical discussions, roles, and consulting inquiries.',
     }
 ];
@@ -135,12 +193,12 @@ export const ArchitectureSection: React.FC = () => {
                                     y1={centerNode.cy}
                                     x2={node.cx}
                                     y2={node.cy}
-                                    stroke={isHovered ? '#61dca3' : '#2D6CDF'}
-                                    strokeWidth={1.5}
+                                    stroke={node.color}
+                                    strokeWidth={isHovered ? 2 : 1.5}
                                     style={{
-                                        filter: isHovered ? 'drop-shadow(0 0 6px rgba(97,220,163,0.8))' : 'none',
+                                        filter: isHovered ? `drop-shadow(0 0 6px ${node.color})` : 'none',
                                     }}
-                                    animate={{ opacity: isDimmed ? 0.2 : 1 }}
+                                    animate={{ opacity: isDimmed ? 0.15 : (isHovered ? 1 : 0.6) }}
                                     initial={{ pathLength: 0 }}
                                     whileInView={{ pathLength: 1 }}
                                     viewport={{ once: true, amount: 0.2 }}
@@ -172,9 +230,9 @@ export const ArchitectureSection: React.FC = () => {
                                     top: node.cy - node.height / 2,
                                     width: node.width,
                                     height: node.height,
-                                    borderWidth: '1.5px',
-                                    borderColor: isHovered ? '#61dca3' : '#2D6CDF',
-                                    boxShadow: isHovered ? '0 0 15px rgba(97,220,163,0.15) inset, 0 0 10px rgba(97,220,163,0.2)' : 'none',
+                                    borderWidth: '2px',
+                                    borderColor: node.color,
+                                    boxShadow: isHovered ? `0 0 20px ${node.color}30 inset, 0 0 15px ${node.color}40` : 'none',
                                 }}
                                 animate={{
                                     opacity: isDimmed ? 0.3 : 1,
@@ -191,33 +249,33 @@ export const ArchitectureSection: React.FC = () => {
                                 onMouseEnter={() => setHoveredNode(node)}
                                 onMouseLeave={() => setHoveredNode(null)}
                             >
-                                {isCenter ? (
-                                    <div className="flex flex-col w-full h-full text-center">
-                                        <div className="flex-1 flex items-center justify-center border-b-[1.5px] border-[#2D6CDF]/70 px-4">
-                                            <div className={`font-bold text-lg tracking-wide transition-colors duration-200 ${isHovered ? 'text-white' : 'text-[#CFE3FF]'}`}>
-                                                {(node.label as string[])[0]}
-                                            </div>
-                                        </div>
-                                        <div className="h-[38px] flex items-center justify-center bg-[#2D6CDF]/[0.03]">
-                                            <div className={`text-sm font-semibold tracking-wider transition-colors duration-200 ${isHovered ? 'text-[#61dca3]' : 'text-[#2D6CDF]'}`}>
-                                                {(node.label as string[])[1]}
-                                            </div>
-                                        </div>
-                                    </div>
-                                ) : (
-                                    <div className="flex flex-col w-full h-full text-center">
-                                        <div className="h-[38px] flex items-center justify-center border-b-[1.5px] border-[#2D6CDF]/70 px-2 bg-[#2D6CDF]/[0.08]">
-                                            <div className={`text-[13px] font-bold tracking-wide uppercase transition-colors duration-200 ${isHovered ? 'text-white' : 'text-[#CFE3FF]'}`}>
-                                                {node.label}
-                                            </div>
-                                        </div>
-                                        <div className="flex-1 p-2 flex items-center justify-center bg-[#2D6CDF]/[0.02]">
-                                            <span className={`text-[10px] font-mono tracking-[0.2em] transition-colors duration-200 ${isHovered ? 'text-[#61dca3]' : 'text-[#2D6CDF]/60'}`}>
-                                                [{node.id.toUpperCase()}]
-                                            </span>
-                                        </div>
-                                    </div>
-                                )}
+                                {/* UML Class Header Compartment */}
+                                <div
+                                    className="w-full flex flex-col items-center justify-center py-2 px-3 border-b-2"
+                                    style={{ backgroundColor: node.color, borderColor: node.color }}
+                                >
+                                    <span className="text-[#071A2F] font-bold text-[13px] tracking-wide uppercase transition-transform duration-200" style={{ transform: isHovered ? 'scale(1.05)' : 'scale(1)' }}>
+                                        {node.title}
+                                    </span>
+                                </div>
+
+                                {/* UML Attributes Compartment */}
+                                <div className="flex flex-col p-3 border-b-2 border-dashed bg-[#2D6CDF]/[0.02]" style={{ borderColor: `${node.color}50` }}>
+                                    {node.attributes.map((attr, idx) => (
+                                        <span key={idx} className="font-mono text-[11px] text-[#CFE3FF]/90 leading-tight mb-1.5 last:mb-0">
+                                            {attr}
+                                        </span>
+                                    ))}
+                                </div>
+
+                                {/* UML Methods Compartment */}
+                                <div className="flex-1 flex flex-col p-3 bg-[#2D6CDF]/[0.05]">
+                                    {node.methods.map((method, idx) => (
+                                        <span key={idx} className="font-mono text-[11px] font-semibold leading-tight mb-1.5 last:mb-0" style={{ color: node.color }}>
+                                            {method}
+                                        </span>
+                                    ))}
+                                </div>
                             </motion.div>
                         );
                     })}
@@ -231,23 +289,24 @@ export const ArchitectureSection: React.FC = () => {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: 20, transition: { duration: 0.15 } }}
                             transition={{ duration: 0.2, ease: 'easeOut' }}
-                            className="absolute right-[-20px] lg:right-4 w-[280px] md:w-[320px] p-6 border-[1.5px] border-[#2D6CDF] bg-[#071A2F]/95 backdrop-blur-md z-20 pointer-events-none shadow-2xl will-change-transform"
+                            className="absolute right-[-20px] lg:right-4 w-[280px] md:w-[320px] p-6 border-[2px] bg-[#071A2F]/95 backdrop-blur-md z-20 pointer-events-none shadow-2xl will-change-transform"
                             style={{
-                                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.6)'
+                                borderColor: hoveredNode.color,
+                                boxShadow: `0 8px 32px rgba(0, 0, 0, 0.6), 0 0 20px ${hoveredNode.color}20 inset`
                             }}
                         >
-                            <div className="font-mono text-[10px] text-[#2D6CDF] mb-2 uppercase tracking-widest font-semibold">
-                                Node Details
+                            <div className="font-mono text-[10px] mb-2 uppercase tracking-widest font-bold" style={{ color: hoveredNode.color }}>
+                                Class Details
                             </div>
-                            <h3 className="text-[#CFE3FF] text-[17px] md:text-xl font-bold mb-4 border-b-[1.5px] border-[#2D6CDF]/30 pb-3 uppercase tracking-wide">
-                                {Array.isArray(hoveredNode.label) ? 'System Root' : hoveredNode.label}
+                            <h3 className="text-white text-[17px] md:text-xl font-bold mb-4 border-b-2 pb-3 uppercase tracking-wide" style={{ borderColor: `${hoveredNode.color}40` }}>
+                                {hoveredNode.title}
                             </h3>
-                            <p className="text-[#CFE3FF]/75 text-[13px] leading-loose">
+                            <p className="text-[#CFE3FF]/85 text-[13px] leading-relaxed">
                                 {hoveredNode.description}
                             </p>
-                            <div className="mt-5 border-t border-[#2D6CDF]/20 pt-3 flex justify-between items-center opacity-60">
-                                <span className="font-mono text-[9px] text-[#2D6CDF] tracking-widest">STATUS: SYSTEM_ONLINE</span>
-                                <span className="w-2 h-2 rounded-full bg-[#61dca3] animate-pulse"></span>
+                            <div className="mt-5 border-t border-[#2D6CDF]/20 pt-3 flex justify-between items-center opacity-80">
+                                <span className="font-mono text-[9px] text-[#2D6CDF] tracking-widest">STATUS: ONLINE</span>
+                                <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: hoveredNode.color }}></span>
                             </div>
                         </motion.div>
                     )}
