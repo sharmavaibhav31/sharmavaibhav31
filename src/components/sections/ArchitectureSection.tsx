@@ -34,7 +34,7 @@ const ARCHITECTURE_NODES: ArchitectureNode[] = [
         cx: 425,
         cy: 325,
         width: 320,
-        height: 165,
+        height: 175,
         description: 'System Root: Orchestrating backend architecture, API design, and production-grade software deployments.',
     },
     {
@@ -52,7 +52,7 @@ const ARCHITECTURE_NODES: ArchitectureNode[] = [
         cx: 400,
         cy: 70,
         width: 240,
-        height: 140,
+        height: 160,
         description: 'Repository of robust systems, APIs, and scalable infrastructure deployments.',
     },
     {
@@ -70,7 +70,7 @@ const ARCHITECTURE_NODES: ArchitectureNode[] = [
         cx: 120,
         cy: 300,
         width: 230,
-        height: 140,
+        height: 160,
         description: 'Professional timeline recounting engineering roles and critical system ownership.',
     },
     {
@@ -88,7 +88,7 @@ const ARCHITECTURE_NODES: ArchitectureNode[] = [
         cx: 730,
         cy: 350,
         width: 230,
-        height: 140,
+        height: 160,
         description: 'Inventory of languages, frameworks, databases, and operational tooling.',
     },
     {
@@ -106,7 +106,7 @@ const ARCHITECTURE_NODES: ArchitectureNode[] = [
         cx: 260,
         cy: 560,
         width: 230,
-        height: 140,
+        height: 160,
         description: 'Personal background, engineering philosophy, and analytical approach to problem-solving.',
     },
     {
@@ -124,7 +124,7 @@ const ARCHITECTURE_NODES: ArchitectureNode[] = [
         cx: 620,
         cy: 550,
         width: 230,
-        height: 140,
+        height: 160,
         description: 'Communication channels for technical discussions, roles, and consulting inquiries.',
     }
 ];
