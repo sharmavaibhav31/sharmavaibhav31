@@ -11,7 +11,7 @@ import { CertificationsSection } from '../components/sections/CertificationsSect
 import { useIntersectionObserver } from '../hooks/useScrollReveal';
 import { ShootingStars } from '../components/ui/ShootingStars';
 import { useTheme } from '../context/ThemeContext';
-//import { ArchitectureSection } from '../components/sections/ArchitectureSection';
+// ArchitectureSection is now integrated directly into the HeroSection
 
 const PortfolioContent: React.FC = () => {
     useIntersectionObserver();
@@ -26,7 +26,6 @@ const PortfolioContent: React.FC = () => {
             <Header />
             <main id="main-content">
                 <HeroSection />
-                {/* {!isDark && <ArchitectureSection />} */}
                 <ProjectsSection />
                 <ExperienceSection />
                 <CapabilitiesSection />

@@ -1,6 +1,7 @@
-import React from 'react';
 import { useIntersectionObserver } from '../../hooks/useScrollReveal';
 import { useParallax } from '../../hooks/useParallax';
+import { useTheme } from '../../context/ThemeContext';
+import { ArchitectureDiagram } from './ArchitectureSection';
 
 const DOT_POSITIONS = [
     { cx: 16.7, cy: 14.3 }, { cx: 33.3, cy: 28.6 }, { cx: 50.0, cy: 42.9 },
@@ -11,6 +12,7 @@ const DOT_POSITIONS = [
 
 export const HeroSection: React.FC = () => {
     useIntersectionObserver();
+    const { isDark } = useTheme();
 
     // SVG grid drifts slower than the page — classic parallax depth
     const gridOffset = useParallax(0.25);
@@ -56,13 +58,14 @@ export const HeroSection: React.FC = () => {
 
             {/* Content — gentle upward drift on scroll */}
             <div
-                className="relative z-10 w-full max-w-screen-2xl mx-auto px-8 lg:px-12 py-32 lg:py-0"
+                className="relative z-20 w-full max-w-screen-2xl mx-auto px-8 lg:px-12 py-32 lg:py-0 flex flex-col lg:flex-row items-center justify-between pointer-events-none"
                 style={{
                     transform: `translateY(${-textOffset}px)`,
                     willChange: 'transform',
                 }}
             >
-                <div className="max-w-3xl">
+                {/* Left Side: Hero Text */}
+                <div className="max-w-3xl lg:w-1/2 relative pointer-events-auto">
                     {/* Status label */}
                     <div className="reveal flex items-center gap-2.5 mb-10">
                         <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent dark:bg-[#61dca3]" />
@@ -115,6 +118,13 @@ export const HeroSection: React.FC = () => {
                         </a>
                     </div>
                 </div>
+
+                {/* Right Side: Architecture Diagram (Only visible in Light Mode) */}
+                {!isDark && (
+                    <div className="hidden lg:flex w-full lg:w-1/2 relative min-h-[600px] pointer-events-none items-center justify-end">
+                        <ArchitectureDiagram />
+                    </div>
+                )}
             </div>
         </section>
     );
