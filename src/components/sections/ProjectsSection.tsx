@@ -14,9 +14,9 @@ const GitHubIcon: React.FC = () => (
     </svg>
 );
 
-const ProjectCard: React.FC<{ project: Project; delay: number }> = ({ project, delay }) => (
+const ProjectCard: React.FC<{ project: Project; delay: number; forceVisible?: boolean }> = ({ project, delay, forceVisible }) => (
     <article
-        className="reveal group flex flex-col h-full p-8 border border-border dark:border-white/10 bg-surface dark:bg-black/50 shadow-card hover:shadow-card-hover hover:border-border-hover dark:hover:border-white/25 transition-all duration-200"
+        className={`${forceVisible ? 'is-visible' : 'reveal'} group flex flex-col h-full p-8 border border-border dark:border-white/10 bg-surface dark:bg-black/50 shadow-card hover:shadow-card-hover hover:border-border-hover dark:hover:border-white/25 transition-all duration-200`}
         style={{ transitionDelay: `${delay}ms` }}
     >
         {/* Header */}
@@ -67,29 +67,45 @@ const ProjectCard: React.FC<{ project: Project; delay: number }> = ({ project, d
     </article>
 );
 
-export const ProjectsSection: React.FC = () => (
-    <section id="work" className="py-28 border-b border-border dark:border-white/10" aria-labelledby="work-heading">
-        <div className="max-w-7xl mx-auto px-6 lg:px-16">
-            <div className="reveal mb-16">
-                <p className="text-[11px] font-semibold text-accent dark:text-[#61dca3] tracking-widest uppercase mb-3">
-                    Selected Work
-                </p>
-                <h2
-                    id="work-heading"
-                    className="font-display font-bold text-primary dark:text-white"
-                    style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', letterSpacing: '-0.02em' }}
-                >
-                    Systems Built
-                </h2>
-            </div>
+export const ProjectsSection: React.FC = () => {
+    const [showAll, setShowAll] = React.useState(false);
+    const displayedProjects = showAll ? projectsData : projectsData.slice(0, 4);
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border dark:bg-white/10 auto-rows-fr">
-                {projectsData.map((project, i) => (
-                    <div key={project.id} className="bg-canvas dark:bg-transparent">
-                        <ProjectCard project={project} delay={i * 50} />
+    return (
+        <section id="work" className="py-28 border-b border-border dark:border-white/10" aria-labelledby="work-heading">
+            <div className="max-w-7xl mx-auto px-6 lg:px-16">
+                <div className="reveal mb-16">
+                    <p className="text-[11px] font-semibold text-accent dark:text-[#61dca3] tracking-widest uppercase mb-3">
+                        Selected Work
+                    </p>
+                    <h2
+                        id="work-heading"
+                        className="font-display font-bold text-primary dark:text-white"
+                        style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', letterSpacing: '-0.02em' }}
+                    >
+                        Systems Built
+                    </h2>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border dark:bg-white/10 auto-rows-fr">
+                    {displayedProjects.map((project, i) => (
+                        <div key={project.id} className="bg-canvas dark:bg-transparent">
+                            <ProjectCard project={project} delay={(i % 4) * 50} forceVisible={showAll && i >= 4} />
+                        </div>
+                    ))}
+                </div>
+
+                {projectsData.length > 4 && (
+                    <div className="mt-12 flex justify-center reveal">
+                        <button
+                            onClick={() => setShowAll(!showAll)}
+                            className="px-6 py-3 border border-border dark:border-white/20 text-sm font-semibold text-primary dark:text-white uppercase tracking-wider hover:bg-primary hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200"
+                        >
+                            {showAll ? 'View Less' : 'Explore More'}
+                        </button>
                     </div>
-                ))}
+                )}
             </div>
-        </div>
-    </section>
-);
+        </section>
+    );
+};
