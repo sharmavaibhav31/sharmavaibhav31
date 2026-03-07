@@ -10,6 +10,7 @@ import { ExperienceSection } from '../components/sections/ExperienceSection';
 import { AboutSection } from '../components/sections/AboutSection';
 import { CertificationsSection } from '../components/sections/CertificationsSection';
 import { useIntersectionObserver } from '../hooks/useScrollReveal';
+import { ShootingStars } from '../components/ui/ShootingStars';
 import { useTheme } from '../context/ThemeContext';
 
 const PortfolioContent: React.FC = () => {
@@ -18,6 +19,9 @@ const PortfolioContent: React.FC = () => {
 
     return (
         <div className="min-h-screen" style={{ backgroundColor: isDark ? '#000000' : '#F8FAFC', color: isDark ? '#fff' : '#0F172A' }}>
+
+            {/* Shooting stars — dark mode only, behind all content */}
+            {isDark && <ShootingStars />}
 
             {/* Fixed Bottom-Right Theme Toggle */}
             <button

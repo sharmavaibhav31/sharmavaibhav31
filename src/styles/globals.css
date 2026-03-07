@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes shootingStar {
+  0% {
+    transform: rotate(-35deg) translateX(0);
+    opacity: 0;
+  }
+
+  5% {
+    opacity: var(--star-opacity, 0.35);
+  }
+
+  80% {
+    opacity: var(--star-opacity, 0.35);
+  }
+
+  100% {
+    transform: rotate(-35deg) translateX(110vw);
+    opacity: 0;
+  }
+}
+
+
 @layer base {
   html {
     scroll-behavior: smooth;
