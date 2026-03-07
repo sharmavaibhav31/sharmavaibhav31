@@ -48,11 +48,11 @@ export const HeroSection: React.FC = () => {
                     {DOT_POSITIONS.map((dot, i) => (
                         <circle key={i} cx={`${dot.cx}%`} cy={`${dot.cy}%`} r="2.5" fill="#2563EB" opacity="0.35" />
                     ))}
-                    <line x1="16.7%" y1="14.3%" x2="33.3%" y2="28.6%" stroke="#2563EB" strokeWidth="1" opacity="0.28" />
-                    <line x1="33.3%" y1="28.6%" x2="50%" y2="14.3%" stroke="#2563EB" strokeWidth="1" opacity="0.28" />
-                    <line x1="50%" y1="42.9%" x2="66.7%" y2="57.1%" stroke="#2563EB" strokeWidth="1" opacity="0.28" />
-                    <line x1="66.7%" y1="14.3%" x2="83.3%" y2="28.6%" stroke="#2563EB" strokeWidth="1" opacity="0.28" />
-                    <line x1="16.7%" y1="57.1%" x2="33.3%" y2="71.4%" stroke="#2563EB" strokeWidth="1" opacity="0.28" />
+                    <line x1="16.7%" y1="14.3%" x2="33.3%" y2="28.6%" stroke="#FFFFFF" strokeWidth="1" opacity="1" />
+                    <line x1="33.3%" y1="28.6%" x2="50%" y2="14.3%" stroke="#FFFFFF" strokeWidth="1" opacity="1" />
+                    <line x1="50%" y1="42.9%" x2="66.7%" y2="57.1%" stroke="#FFFFFF" strokeWidth="1" opacity="1" />
+                    <line x1="66.7%" y1="14.3%" x2="83.3%" y2="28.6%" stroke="#FFFFFF" strokeWidth="1" opacity="1" />
+                    <line x1="16.7%" y1="57.1%" x2="33.3%" y2="71.4%" stroke="#FFFFFF" strokeWidth="1" opacity="1" />
                 </svg>
             </div>
 
@@ -121,7 +121,7 @@ export const HeroSection: React.FC = () => {
 
                 {/* Right Side: Architecture Diagram (Only visible in Light Mode) */}
                 {!isDark && (
-                    <div className="hidden lg:flex w-full lg:w-1/2 relative min-h-[600px] pointer-events-none items-center justify-end">
+                    <div className="hidden lg:flex w-full lg:w-1/2 relative min-h-[600px] pointer-events-none items-center justify-center">
                         <ArchitectureDiagram />
                     </div>
                 )}

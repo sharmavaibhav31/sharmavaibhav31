@@ -12,8 +12,10 @@
             "+ optimizeArchitecture()"
         ],
         "color": "#E48525",
-        "cx": 425,
-        "cy": 325,
+        "cx": 600,
+        "cy": 450,
+        "width": 320,
+        "height": 175,
         "description": "System Root: Orchestrating backend architecture, API design, and production-grade software deployments."
     },
     {
@@ -28,8 +30,10 @@
             "+ scaleInfrastructure()"
         ],
         "color": "#50A7B0",
-        "cx": 400,
-        "cy": 70,
+        "cx": 600,
+        "cy": 150,
+        "width": 240,
+        "height": 160,
         "description": "Repository of robust systems, APIs, and scalable infrastructure deployments."
     },
     {
@@ -44,8 +48,11 @@
             "+ maintainSystems()"
         ],
         "color": "#9B51E0",
-        "cx": 120,
-    "cy: 300,"description": "Professional timeline recounting engineering roles and critical system ownership."
+        "cx": 200,
+        "cy": 300,
+        "width": 230,
+        "height": 160,
+        "description": "Professional timeline recounting engineering roles and critical system ownership."
     },
     {
         "id": "skills",
@@ -59,8 +66,11 @@
             "+ reviewCode()"
         ],
         "color": "#27AE60",
-        "cx": 730,
-    "cy: 350,"description": "Inventory of languages, frameworks, databases, and operational tooling."
+        "cx": 1000,
+        "cy": 300,
+        "width": 230,
+        "height": 160,
+        "description": "Inventory of languages, frameworks, databases, and operational tooling."
     },
     {
         "id": "about",
@@ -74,8 +84,11 @@
             "+ analyzeRequirements()"
         ],
         "color": "#F2C94C",
-        "cx": 260,
-    "cy: 560,"description": "Personal background, engineering philosophy, and analytical approach to problem-solving."
+        "cx": 350,
+        "cy": 750,
+        "width": 230,
+        "height": 160,
+        "description": "Personal background, engineering philosophy, and analytical approach to problem-solving."
     },
     {
         "id": "contact",
@@ -89,7 +102,10 @@
             "+ scheduleMeeting()"
         ],
         "color": "#EB5757",
-        "cx": 620,
-    "cy: 550,"description": "Communication channels for technical discussions, roles, and consulting inquiries."
+        "cx": 850,
+        "cy": 750,
+        "width": 230,
+        "height": 160,
+        "description": "Communication channels for technical discussions, roles, and consulting inquiries."
     }
 ]
