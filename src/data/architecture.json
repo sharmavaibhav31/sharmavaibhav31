@@ -1,111 +1,93 @@
 [
     {
         "id": "center",
-        "title": "SystemRoot",
+        "title": "VAIBHAV SHARMA",
         "attributes": [
-            "- architect: \"Vaibhav Sharma\"",
-            "- role: \"Backend Engineer\""
+            "- role: \"Systems Engineer\"",
+            "- status: \"Active\""
         ],
-        "methods": [
-            "+ orchestrateSystem()",
-            "+ deployToProduction()",
-            "+ optimizeArchitecture()"
-        ],
-        "color": "#1E3A8A",
+        "methods": [],
+        "color": "#94A3B8",
         "cx": 600,
         "cy": 450,
-        "width": 320,
-        "height": 175,
+        "width": 260,
+        "height": 130,
         "description": "System Root: Orchestrating backend architecture, API design, and production-grade software deployments."
     },
     {
         "id": "projects",
-        "title": "Projects",
+        "title": "PROJECTS",
         "attributes": [
-            "- repositories: Map<ID, Repo>",
-            "- activeDeployments: int"
+            "* repositories: Map<ID, Repo>",
+            "* deployments: int",
+            "* architectures: list"
         ],
-        "methods": [
-            "+ architectSolutions()",
-            "+ scaleInfrastructure()"
-        ],
-        "color": "#1D4ED8",
+        "methods": [],
+        "color": "#3B82F6",
         "cx": 600,
         "cy": 150,
         "width": 240,
-        "height": 160,
+        "height": 140,
         "description": "Repository of robust systems, APIs, and scalable infrastructure deployments."
     },
     {
         "id": "experience",
-        "title": "Experience",
+        "title": "EXPERIENCE",
         "attributes": [
-            "- timeline: List<Role>",
-            "- totalYears: float"
+            "* timeline: List<Role>",
+            "* systemsBuilt: int"
         ],
-        "methods": [
-            "+ leadEngineering()",
-            "+ maintainSystems()"
-        ],
-        "color": "#2563EB",
+        "methods": [],
+        "color": "#8B5CF6",
         "cx": 200,
         "cy": 300,
         "width": 230,
-        "height": 160,
+        "height": 120,
         "description": "Professional timeline recounting engineering roles and critical system ownership."
     },
     {
         "id": "skills",
-        "title": "Skills",
+        "title": "SKILLS",
         "attributes": [
-            "- languages: Set<String>",
-            "- frameworks: Set<String>"
+            "* languages: Set<String>",
+            "* frameworks: Set<String>"
         ],
-        "methods": [
-            "+ implementFeatures()",
-            "+ reviewCode()"
-        ],
-        "color": "#3B82F6",
+        "methods": [],
+        "color": "#10B981",
         "cx": 1000,
         "cy": 300,
         "width": 230,
-        "height": 160,
+        "height": 120,
         "description": "Inventory of languages, frameworks, databases, and operational tooling."
     },
     {
         "id": "about",
-        "title": "About",
+        "title": "ABOUT",
         "attributes": [
-            "- background: String",
-            "- philosophy: String"
+            "* background: String",
+            "* philosophy: String"
         ],
-        "methods": [
-            "+ solveProblems()",
-            "+ analyzeRequirements()"
-        ],
-        "color": "#60A5FA",
+        "methods": [],
+        "color": "#F59E0B",
         "cx": 350,
         "cy": 750,
         "width": 230,
-        "height": 160,
+        "height": 120,
         "description": "Personal background, engineering philosophy, and analytical approach to problem-solving."
     },
     {
         "id": "contact",
-        "title": "Contact",
+        "title": "CONTACT",
         "attributes": [
-            "- email: String",
-            "- channels: List<URL>"
+            "* email: String",
+            "* channels: List<URL>"
         ],
-        "methods": [
-            "+ initiateDiscussion()",
-            "+ scheduleMeeting()"
-        ],
-        "color": "#93C5FD",
+        "methods": [],
+        "color": "#F97316",
         "cx": 850,
         "cy": 750,
         "width": 230,
-        "height": 160,
+        "height": 120,
         "description": "Communication channels for technical discussions, roles, and consulting inquiries."
     }
 ]
