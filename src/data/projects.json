@@ -38,12 +38,48 @@
         "github": "https://github.com/sharmavaibhav31/offline-shell-assistant"
     },
     {
+        "id": "air-notepad",
+        "title": "Air Notepad — Gesture-Based Drawing Interface",
+        "problem": "Traditional input devices limit natural human-computer interaction. This project explores how computer vision can convert hand movements into structured drawing commands in real time.",
+        "solution": "Built a gesture-controlled drawing interface using MediaPipe hand landmark detection. Raw hand keypoints are processed with custom gesture recognition and smoothing algorithms to convert finger motion into stable drawing strokes.",
+        "architecture": "Webcam → MediaPipe Hand Landmarks → Gesture Recognition → Coordinate Smoothing → OpenCV Canvas Rendering",
+        "impact": "Demonstrates real-time ML inference, landmark processing, gesture classification, and signal smoothing for interactive computer vision systems.",
+        "stack": [
+            "Python",
+            "OpenCV",
+            "MediaPipe",
+            "NumPy"
+        ],
+        "role": "Designed gesture recognition logic, implemented smoothing algorithms to stabilize drawing strokes, and built the real-time computer vision processing pipeline.",
+        "github": "https://github.com/sharmavaibhav31/air-notepad"
+    },
+    {
+        "id": "moodharmonics",
+        "title": "MoodHarmonics — Multi-Model AI Music Generation System",
+        "problem": "AI media generation often requires multiple specialized models for text, audio, and classification. Coordinating these models while managing heavy inference workloads and reliability is a systems challenge.",
+        "solution": "Built an end-to-end ML system that converts text prompts into generated music and lyrics while automatically classifying genre using audio embeddings.",
+        "architecture": "React UI → Flask API → Model Orchestration Layer → (MusicGen | GPT-based Lyrics | YAMNet Classification) → MongoDB + Local Storage",
+        "impact": "Demonstrates multi-model ML orchestration, inference optimization via model preloading, and fault-tolerant API design with fallback inference paths.",
+        "stack": [
+            "Python",
+            "Flask",
+            "React",
+            "Meta MusicGen",
+            "YAMNet",
+            "PyTorch",
+            "TensorFlow",
+            "MongoDB"
+        ],
+        "role": "Designed the ML orchestration pipeline, implemented model preloading to reduce inference latency, and built API layers to expose AI capabilities to the frontend.",
+        "github": "<repo-link>"
+    },
+    {
         "id": "system-design-url-shortener",
         "title": "Distributed URL Shortener (System Design Study)",
         "problem": "URL shortening services must handle massive traffic while generating collision-free short codes, preventing abuse, and scaling across multiple backend instances.",
         "solution": "Built a full-stack URL shortener implementing Base62 encoding for compact ID generation, sliding-window rate limiting to prevent abuse, and a round-robin load balancing simulation for multi-instance deployments.",
         "architecture": "React SPA → Spring Boot API → Rate Limiter Interceptor → URL Service → SQLite (JPA) with Base62 encoding",
-        "impact": "Demonstrates core distributed systems patterns including ID encoding, request throttling, and horizontal scaling strategies.",
+        "impact": "Demonstrates core distributed systems patterns including ID encoding, request throttling, and horizontal scaling strategies. Designed with a roadmap for Redis caching, distributed ID generation, and horizontal scaling.",
         "stack": [
             "Java 17",
             "Spring Boot",
