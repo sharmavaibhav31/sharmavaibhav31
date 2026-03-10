@@ -3,60 +3,50 @@
         "category": "Professional Certifications",
         "items": [
             {
-                "title": "OCI Certified Data Science Professional",
+                "title": "OCI-2025 Certified DevOps Professional",
                 "issuer": "Oracle University",
                 "date": "Oct 2025",
                 "link": "#"
             },
             {
-                "title": "OCI Certified Generative AI Professional",
+                "title": "OCI-2025 Certified Data Science Professional",
                 "issuer": "Oracle University",
                 "date": "Oct 2025",
+                "link": "#"
+            },
+            {
+                "title": "OCI-2025 Certified Generative AI Professional",
+                "issuer": "Oracle University",
+                "date": "Oct 2025",
+                "link": "#"
+            },
+            {
+                "title": "OCI-2025 Certified Generative AI Foundations Associate",
+                "issuer": "Oracle University",
+                "date": "Sep 2025",
+                "link": "#"
+            }
+        ]
+    },
+    {
+        "category": "Specializations & Courses",
+        "items": [
+            {
+                "title": "Security in Google Cloud Specialization",
+                "issuer": "Coursera / Google Cloud",
+                "date": "Aug 2024 – Sep 2024",
                 "link": "#"
             },
             {
                 "title": "Google Cloud Security Engineer",
-                "issuer": "Google Cloud",
-                "date": "2024",
-                "link": "#"
-            }
-        ]
-    },
-    {
-        "category": "Associate / Foundations",
-        "items": [
-            {
-                "title": "OCI Generative AI Foundations Associate",
-                "issuer": "Oracle University",
-                "date": "2024",
-                "link": "#"
-            }
-        ]
-    },
-    {
-        "category": "Specializations",
-        "items": [
-            {
-                "title": "Security in Google Cloud",
-                "issuer": "Google Cloud",
-                "date": "2024",
+                "issuer": "Coursera / Google Cloud",
+                "date": "Jul 2024",
                 "link": "#"
             },
             {
                 "title": "Google Cybersecurity Specialization",
-                "issuer": "Google",
-                "date": "2023",
-                "link": "#"
-            }
-        ]
-    },
-    {
-        "category": "Ongoing",
-        "items": [
-            {
-                "title": "MERN Stack Development (Ongoing)",
-                "issuer": "Independent",
-                "date": "Present",
+                "issuer": "Coursera / Google",
+                "date": "Sep 2023 – Mar 2024",
                 "link": "#"
             }
         ]

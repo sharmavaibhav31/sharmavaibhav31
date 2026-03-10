@@ -95,3 +95,18 @@
                 "Built AST-driven pipeline identifying high-change-risk modules in large codebases."
             ]
         }
+
+
+
+        Certifications
+        {
+        "category": "Ongoing",
+        "items": [
+            {
+                "title": "MERN Stack Development (Ongoing)",
+                "issuer": "Independent",
+                "date": "Present",
+                "link": "#"
+            }
+        ]
+    }
