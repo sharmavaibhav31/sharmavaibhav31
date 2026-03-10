@@ -6,32 +6,23 @@
     "philosophy": "Good systems are invisible. They handle edge cases silently, scale without drama, and let teams move fast without breaking things. I build for maintainability first — not for demos.",
     "experience": [
         {
-            "company": "Independent / Consulting",
-            "role": "Senior Backend Engineer",
-            "period": "2024 – Present",
+            "company": "Infosys Springboard",
+            "role": "AI / ML Intern (Virtual)",
+            "period": "Sep 2025 – Nov 2025",
             "bullets": [
-                "Architecting production-grade backend systems for university and enterprise clients.",
-                "Designing constraint-based automation engines replacing manual administrative workflows.",
-                "Delivering full-stack API layers with Spring Boot, PostgreSQL, and cloud deployment."
+                "Built an end-to-end AI music generation system integrating multiple ML models for audio generation, lyric synthesis, and genre classification.",
+                "Developed a Flask-based backend API orchestrating MusicGen, GPT-based lyric models, and YAMNet embeddings.",
+                "Implemented model preloading and fallback inference paths to reduce initialization latency and improve inference reliability."
             ]
         },
         {
-            "company": "University Projects",
-            "role": "Backend Engineer",
-            "period": "2022 – 2024",
+            "company": "ClubChat (Startup)",
+            "role": "Flutter Developer Intern",
+            "period": "Jul 2025 – Sep 2025",
             "bullets": [
-                "Built timetable scheduling engine handling 40+ sections and 200+ course-faculty assignments.",
-                "Migrated legacy Firestore-based system to PostgreSQL with Spring Security and JWT auth.",
-                "Implemented rule-based student permission system reducing processing time by 80%."
-            ]
-        },
-        {
-            "company": "Open Source / Tooling",
-            "role": "Tool Developer",
-            "period": "2021 – 2022",
-            "bullets": [
-                "Developed static code analysis tool for dependency graph modeling and fragility scoring.",
-                "Built AST-driven pipeline identifying high-change-risk modules in large codebases."
+                "Developed UI modules for a production mobile application used by 8,000+ users.",
+                "Implemented event feed and real-time chat interface components using Flutter and Dart.",
+                "Diagnosed and resolved 18+ stability issues across two releases in collaboration with backend and design teams."
             ]
         }
     ],

@@ -66,3 +66,32 @@
         "role": "Sole architect — owned schema design, constraint logic, and all API layers.",
         "github": "https://github.com/sharmavaibhav31/timetable-scheduler"
     },
+
+
+
+
+
+
+
+    Experience
+    
+{
+            "company": "University Systems",
+            "role": "Backend Engineer",
+            "period": "2022 – 2024",
+            "bullets": [
+                "Built a timetable scheduling engine supporting 40+ sections and 200+ course–faculty assignments.",
+                "Migrated a legacy Firestore-based system to PostgreSQL with Spring Security and JWT-based authentication.",
+                "Implemented rule-based student permission workflows reducing manual approval processing time by 80%."
+            ]
+        },
+        ,
+        {
+            "company": "Open Source / Tooling",
+            "role": "Tool Developer",
+            "period": "2021 – 2022",
+            "bullets": [
+                "Developed static code analysis tool for dependency graph modeling and fragility scoring.",
+                "Built AST-driven pipeline identifying high-change-risk modules in large codebases."
+            ]
+        }
