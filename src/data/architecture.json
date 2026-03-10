@@ -11,7 +11,7 @@
             "+ deployToProduction()",
             "+ optimizeArchitecture()"
         ],
-        "color": "#E48525",
+        "color": "#1E3A8A",
         "cx": 600,
         "cy": 450,
         "width": 320,
@@ -29,7 +29,7 @@
             "+ architectSolutions()",
             "+ scaleInfrastructure()"
         ],
-        "color": "#50A7B0",
+        "color": "#1D4ED8",
         "cx": 600,
         "cy": 150,
         "width": 240,
@@ -47,7 +47,7 @@
             "+ leadEngineering()",
             "+ maintainSystems()"
         ],
-        "color": "#9B51E0",
+        "color": "#2563EB",
         "cx": 200,
         "cy": 300,
         "width": 230,
@@ -65,7 +65,7 @@
             "+ implementFeatures()",
             "+ reviewCode()"
         ],
-        "color": "#27AE60",
+        "color": "#3B82F6",
         "cx": 1000,
         "cy": 300,
         "width": 230,
@@ -83,7 +83,7 @@
             "+ solveProblems()",
             "+ analyzeRequirements()"
         ],
-        "color": "#F2C94C",
+        "color": "#60A5FA",
         "cx": 350,
         "cy": 750,
         "width": 230,
@@ -101,7 +101,7 @@
             "+ initiateDiscussion()",
             "+ scheduleMeeting()"
         ],
-        "color": "#EB5757",
+        "color": "#93C5FD",
         "cx": 850,
         "cy": 750,
         "width": 230,

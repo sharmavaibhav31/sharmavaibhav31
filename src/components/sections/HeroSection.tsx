@@ -25,36 +25,8 @@ export const HeroSection: React.FC = () => {
             className="relative min-h-screen flex items-center border-b border-border dark:border-white/10 overflow-hidden"
             aria-label="Hero"
         >
-            {/* Structural grid — visible in light mode, hidden in dark (LetterGlitch takes over) */}
-            <div
-                className="absolute inset-0 pointer-events-none select-none"
-                aria-hidden="true"
-                style={{
-                    transform: `translateY(${gridOffset}px)`,
-                    willChange: 'transform',
-                }}
-            >
-                <svg
-                    className="absolute right-0 top-0 h-full w-1/2 animate-[gridDrift_20s_ease-in-out_infinite_alternate]"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="xMidYMid slice"
-                >
-                    <defs>
-                        <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-                            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#94A3B8" strokeWidth="1.2" />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#grid)" opacity="1" />
-                    {DOT_POSITIONS.map((dot, i) => (
-                        <circle key={i} cx={`${dot.cx}%`} cy={`${dot.cy}%`} r="2.5" fill="#2563EB" opacity="0.35" />
-                    ))}
-                    <line x1="16.7%" y1="14.3%" x2="33.3%" y2="28.6%" stroke="#FFFFFF" strokeWidth="1" opacity="1" />
-                    <line x1="33.3%" y1="28.6%" x2="50%" y2="14.3%" stroke="#FFFFFF" strokeWidth="1" opacity="1" />
-                    <line x1="50%" y1="42.9%" x2="66.7%" y2="57.1%" stroke="#FFFFFF" strokeWidth="1" opacity="1" />
-                    <line x1="66.7%" y1="14.3%" x2="83.3%" y2="28.6%" stroke="#FFFFFF" strokeWidth="1" opacity="1" />
-                    <line x1="16.7%" y1="57.1%" x2="33.3%" y2="71.4%" stroke="#FFFFFF" strokeWidth="1" opacity="1" />
-                </svg>
-            </div>
+            {/* Removed noisy background grid based on feedback */}
+            <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true"></div>
 
             {/* Content — gentle upward drift on scroll */}
             <div
@@ -67,9 +39,12 @@ export const HeroSection: React.FC = () => {
                 {/* Left Side: Hero Text */}
                 <div className="max-w-3xl lg:w-1/2 relative pointer-events-auto">
                     {/* Status label */}
-                    <div className="reveal flex items-center gap-2.5 mb-10">
-                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent dark:bg-[#61dca3]" />
-                        <span className="text-xs font-medium tracking-widest-plus text-secondary dark:text-white/90 uppercase">
+                    <div className="reveal flex items-center gap-3 mb-8">
+                        <span className="relative flex h-3 w-3">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent dark:bg-[#61dca3] opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-accent dark:bg-[#61dca3]"></span>
+                        </span>
+                        <span className="text-sm font-semibold tracking-wide text-secondary dark:text-white/90 uppercase">
                             Available for Backend Roles
                         </span>
                     </div>
@@ -84,37 +59,37 @@ export const HeroSection: React.FC = () => {
 
                     {/* Subtitle */}
                     <p
-                        className="reveal text-secondary dark:text-white/75 font-medium mb-8 tracking-widest-plus uppercase"
-                        style={{ fontSize: 'clamp(0.7rem, 1.2vw, 0.85rem)' }}
+                        className="reveal text-secondary dark:text-white/75 font-bold mb-6 tracking-widest uppercase"
+                        style={{ fontSize: 'clamp(0.85rem, 1.5vw, 1rem)' }}
                     >
                         Systems / Backend Engineer
                     </p>
 
                     {/* Positioning statement */}
                     <p
-                        className="reveal text-secondary dark:text-white/90 leading-relaxed mb-12 max-w-xl"
-                        style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)' }}
+                        className="reveal text-secondary dark:text-white/90 leading-relaxed mb-10 max-w-xl"
+                        style={{ fontSize: 'clamp(1.1rem, 1.8vw, 1.4rem)' }}
                     >
-                        I design reliable backend systems and production-grade architecture.
+                        Architecting high-performance backend systems focused on scale, resilience, and measurable business impact.
                     </p>
 
                     {/* CTAs */}
-                    <div className="reveal flex flex-wrap gap-4">
+                    <div className="reveal flex flex-wrap gap-5 mt-4">
                         <a
                             href="#work"
                             id="hero-cta-work"
-                            className="inline-flex items-center px-7 py-3.5 bg-accent dark:bg-[#61dca3] text-white dark:text-black text-sm font-semibold hover:bg-accent-hover dark:hover:bg-[#4ec994] transition-colors duration-200"
+                            className="inline-flex items-center px-8 py-4 bg-primary dark:bg-white text-white dark:text-primary text-base font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                         >
-                            View Work
+                            View Engineering Work
                         </a>
                         <a
                             href="/resume.pdf"
                             id="hero-cta-resume"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center px-7 py-3.5 border border-border dark:border-white/20 text-primary dark:text-white text-sm font-semibold hover:border-border-hover dark:hover:border-white/50 hover:shadow-card transition-all duration-200"
+                            className="inline-flex items-center px-8 py-4 border-2 border-primary/20 dark:border-white/30 text-primary dark:text-white text-base font-bold hover:border-primary dark:hover:border-white hover:bg-primary/5 dark:hover:bg-white/5 transition-all duration-300"
                         >
-                            Download Resume
+                            Review Architecture Resume
                         </a>
                     </div>
                 </div>
