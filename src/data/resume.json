@@ -1,9 +1,9 @@
 {
     "name": "Vaibhav Sharma",
-    "title": "Backend / Systems Engineer",
-    "tagline": "I design reliable backend systems and production-grade architecture.",
-    "summary": "Systems-oriented engineer with a track record of shipping production backend systems under real-world constraints — from constraint-based scheduling engines to database migration projects. I work across the full backend stack: API design, schema modeling, service architecture, and infrastructure automation.",
-    "philosophy": "Good systems are invisible. They handle edge cases silently, scale without drama, and let teams move fast without breaking things. I build for maintainability first — not for demos.",
+    "title": "Backend / Systems Engineering Student",
+    "tagline": "I build backend systems, developer tools, and systems-level projects focused on reliability and security.",
+    "summary": "Systems-oriented engineering student with experience building backend APIs, database-driven applications, and systems-level projects. My work ranges from Spring Boot services and scheduling engines to Linux sandboxing using seccomp and namespaces.",
+    "philosophy": "Systems-oriented engineering student with experience building backend APIs, database-driven applications, and systems-level projects. My work ranges from Spring Boot services and scheduling engines to Linux sandboxing using seccomp and namespaces.",
     "experience": [
         {
             "company": "Infosys Springboard",

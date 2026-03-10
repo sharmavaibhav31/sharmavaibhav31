@@ -60,7 +60,7 @@ export const HeroSection: React.FC = () => {
                         className="reveal text-secondary dark:text-white/75 font-bold mb-3 tracking-widest uppercase"
                         style={{ fontSize: 'clamp(0.85rem, 1.5vw, 1rem)' }}
                     >
-                        Backend / Systems Engineer
+                        Backend / Systems Engineering Student
                     </p>
 
                     {/* Positioning statement */}
