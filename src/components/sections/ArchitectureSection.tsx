@@ -66,11 +66,27 @@ export const ArchitectureDiagram: React.FC = () => {
 
             {/* Diagram */}
             <motion.div
-                className="relative w-[1200px] h-[900px] transform scale-[0.40] sm:scale-[0.55] lg:scale-[0.65] origin-center will-change-transform"
+                className="relative w-[1200px] h-[900px] transform scale-[0.60] sm:scale-[0.75] lg:scale-[0.80] origin-center will-change-transform"
                 transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
             >
                 {/* SVG Lines - rendered as a single SVG element */}
                 <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 1200 900">
+                    <defs>
+                        {peripheralNodes.map((node) => (
+                            <marker
+                                key={`arrow-${node.id}`}
+                                id={`arrow-${node.id}`}
+                                viewBox="0 0 10 10"
+                                refX="10"
+                                refY="5"
+                                markerWidth="6"
+                                markerHeight="6"
+                                orient="auto-start-reverse"
+                            >
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill={node.color} />
+                            </marker>
+                        ))}
+                    </defs>
                     {peripheralNodes.map((node) => {
                         const isHovered = hoveredNode?.id === node.id || hoveredNode?.id === 'center';
                         const isDimmed = hoveredNode && !isHovered && hoveredNode.id !== 'center' && hoveredNode.id !== node.id;
@@ -81,15 +97,17 @@ export const ArchitectureDiagram: React.FC = () => {
                                 d={generateOrthogonalPath(centerNode, node)}
                                 fill="none"
                                 stroke={node.color}
-                                strokeWidth={isHovered ? 3 : 2}
+                                strokeWidth={isHovered ? 4 : 2.5}
+                                markerEnd={`url(#arrow-${node.id})`}
                                 style={{
-                                    filter: isHovered ? `drop-shadow(0 0 6px ${node.color})` : 'none',
+                                    filter: isHovered ? `drop-shadow(0 0 8px ${node.color}80)` : 'none',
+                                    transition: 'stroke-width 0.2s ease, filter 0.2s ease'
                                 }}
-                                animate={{ opacity: isDimmed ? 0.15 : (isHovered ? 1 : 0.6) }}
+                                animate={{ opacity: isDimmed ? 0.1 : (isHovered ? 1 : 0.7) }}
                                 initial={{ opacity: 0 }}
-                                whileInView={{ opacity: isDimmed ? 0.15 : (isHovered ? 1 : 0.6) }}
+                                whileInView={{ opacity: isDimmed ? 0.1 : (isHovered ? 1 : 0.7) }}
                                 viewport={{ once: true, amount: 0.2 }}
-                                transition={{ duration: 0.4, delay: 0.2 }}
+                                transition={{ duration: 0.3 }}
                             />
                         );
                     })}

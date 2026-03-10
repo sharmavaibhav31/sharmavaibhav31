@@ -3,19 +3,10 @@ import { useParallax } from '../../hooks/useParallax';
 import { useTheme } from '../../context/ThemeContext';
 import { ArchitectureDiagram } from './ArchitectureSection';
 
-const DOT_POSITIONS = [
-    { cx: 16.7, cy: 14.3 }, { cx: 33.3, cy: 28.6 }, { cx: 50.0, cy: 42.9 },
-    { cx: 66.7, cy: 57.1 }, { cx: 83.3, cy: 71.4 }, { cx: 16.7, cy: 57.1 },
-    { cx: 33.3, cy: 71.4 }, { cx: 50.0, cy: 85.7 }, { cx: 66.7, cy: 14.3 },
-    { cx: 83.3, cy: 28.6 }, { cx: 50.0, cy: 14.3 }, { cx: 33.3, cy: 57.1 },
-];
-
 export const HeroSection: React.FC = () => {
     useIntersectionObserver();
     const { isDark } = useTheme();
 
-    // SVG grid drifts slower than the page — classic parallax depth
-    const gridOffset = useParallax(0.25);
     // Hero text floats very subtly upward — understated depth
     const textOffset = useParallax(0.08);
 
