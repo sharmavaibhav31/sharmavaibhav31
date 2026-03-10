@@ -28,16 +28,16 @@ export const HeroSection: React.FC = () => {
                 </svg>
             </div>
 
-            {/* Content — gentle upward drift on scroll */}
+            {/* Content — fluid padding and flexible stacked/row layout */}
             <div
-                className="relative z-20 w-full max-w-screen-2xl mx-auto px-8 lg:px-12 py-32 lg:py-0 flex flex-col lg:flex-row items-center justify-between pointer-events-none"
+                className="relative z-20 w-full max-w-[1920px] mx-auto px-6 md:px-12 xl:px-16 pt-32 pb-24 lg:py-0 min-h-screen flex flex-col lg:flex-row items-center justify-center lg:justify-between pointer-events-none gap-10 lg:gap-8"
                 style={{
                     transform: `translateY(${-textOffset}px)`,
                     willChange: 'transform',
                 }}
             >
                 {/* Left Side: Hero Text */}
-                <div className="max-w-3xl lg:w-1/2 relative pointer-events-auto">
+                <div className="w-full lg:w-[45%] xl:w-[40%] flex flex-col items-start text-left relative pointer-events-auto shrink-0 z-20">
                     {/* Status label */}
                     <div className="reveal flex items-center gap-2 mb-6">
                         <span className="relative flex h-2.5 w-2.5">
@@ -51,15 +51,15 @@ export const HeroSection: React.FC = () => {
 
                     {/* Name */}
                     <h1
-                        className="reveal font-display font-extrabold text-primary dark:text-white leading-none tracking-tight mb-4"
-                        style={{ fontSize: 'clamp(3rem, 9vw, 6.5rem)', letterSpacing: '-0.04em' }}
+                        className="reveal font-display font-extrabold text-primary dark:text-white leading-none tracking-tight mb-3"
+                        style={{ fontSize: 'clamp(3.5rem, 8vw, 6.5rem)', letterSpacing: '-0.04em' }}
                     >
                         VAIBHAV<br />SHARMA
                     </h1>
 
                     {/* Subtitle */}
                     <p
-                        className="reveal text-secondary dark:text-white/75 font-bold mb-4 tracking-widest uppercase"
+                        className="reveal text-secondary dark:text-white/75 font-bold mb-3 tracking-widest uppercase"
                         style={{ fontSize: 'clamp(0.85rem, 1.5vw, 1rem)' }}
                     >
                         Systems / Backend Engineer
@@ -68,7 +68,7 @@ export const HeroSection: React.FC = () => {
                     {/* Positioning statement */}
                     <p
                         className="reveal text-secondary dark:text-white/90 leading-relaxed mb-8 max-w-xl"
-                        style={{ fontSize: 'clamp(1rem, 1.5vw, 1.25rem)' }}
+                        style={{ fontSize: 'clamp(1.05rem, 1.8vw, 1.25rem)' }}
                     >
                         Backend engineer building scalable APIs, ML pipelines, and distributed systems.
                     </p>
@@ -95,7 +95,7 @@ export const HeroSection: React.FC = () => {
                 </div>
 
                 {/* Right Side: Architecture Diagram */}
-                <div className="hidden lg:flex w-full lg:w-1/2 relative min-h-[600px] pointer-events-none items-center justify-center">
+                <div className="w-full lg:w-[50%] xl:w-[55%] relative pointer-events-none flex items-center justify-center mt-4 border-t border-border/50 lg:border-t-0 pt-8 lg:mt-0 lg:pt-0">
                     <ArchitectureDiagram />
                 </div>
             </div>
