@@ -1,11 +1,9 @@
 import { useIntersectionObserver } from '../../hooks/useScrollReveal';
 import { useParallax } from '../../hooks/useParallax';
-import { useTheme } from '../../context/ThemeContext';
 import { ArchitectureDiagram } from './ArchitectureSection';
 
 export const HeroSection: React.FC = () => {
     useIntersectionObserver();
-    const { isDark } = useTheme();
 
     // Hero text floats very subtly upward — understated depth
     const textOffset = useParallax(0.08);
@@ -13,15 +11,15 @@ export const HeroSection: React.FC = () => {
     return (
         <section
             id="hero"
-            className="relative min-h-screen flex items-center border-b border-border dark:border-white/10 overflow-hidden"
+            className="relative min-h-screen flex items-center border-b border-border/50 dark:border-slate-800/50 bg-slate-50 dark:bg-[#0B1120] overflow-hidden transition-colors duration-300"
             aria-label="Hero"
         >
-            {/* Clean engineering grid background (low opacity) */}
-            <div className="absolute inset-0 pointer-events-none select-none opacity-20 dark:opacity-10" aria-hidden="true">
+            {/* Subtle engineering blueprint grid overlay */}
+            <div className="absolute inset-0 pointer-events-none select-none opacity-[0.05] dark:opacity-[0.03]" aria-hidden="true">
                 <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-slate-400 dark:text-slate-600" />
+                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-slate-900 dark:text-white" />
                         </pattern>
                     </defs>
                     <rect width="100%" height="100%" fill="url(#hero-grid)" />
@@ -78,7 +76,7 @@ export const HeroSection: React.FC = () => {
                         <a
                             href="#work"
                             id="hero-cta-work"
-                            className="inline-flex items-center justify-center px-8 py-4 bg-primary dark:bg-white text-white dark:text-primary text-sm font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
+                            className="inline-flex items-center justify-center px-8 py-4 bg-primary dark:bg-white text-white dark:text-[#0B1120] text-sm font-bold shadow-lg hover:shadow-xl hover:bg-primary/90 dark:hover:bg-slate-100 hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto border border-transparent dark:border-white/10"
                         >
                             View Projects
                         </a>
@@ -87,7 +85,7 @@ export const HeroSection: React.FC = () => {
                             id="hero-cta-resume"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center px-8 py-4 border-2 border-primary/20 dark:border-white/30 text-primary dark:text-white text-sm font-bold hover:border-primary dark:hover:border-white hover:bg-primary/5 dark:hover:bg-white/5 transition-all duration-300 w-full sm:w-auto"
+                            className="inline-flex items-center justify-center px-8 py-4 border-2 border-primary/20 dark:border-white/20 text-primary dark:text-white text-sm font-bold hover:border-primary/50 dark:hover:border-white/50 hover:bg-primary/5 dark:hover:bg-white/5 transition-all duration-300 w-full sm:w-auto"
                         >
                             Download Resume
                         </a>

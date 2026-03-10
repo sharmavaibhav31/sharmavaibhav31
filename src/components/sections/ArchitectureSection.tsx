@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import architectureData from '../../data/architecture.json';
 
 type NodeId = 'center' | 'projects' | 'experience' | 'skills' | 'about' | 'contact';
@@ -21,6 +21,30 @@ const ARCHITECTURE_NODES = architectureData as ArchitectureNode[];
 
 export const ArchitectureDiagram: React.FC = () => {
     const [hoveredNode, setHoveredNode] = useState<ArchitectureNode | null>(null);
+    const [activeNodeId, setActiveNodeId] = useState<string | null>(null);
+
+    React.useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    if (id === 'work') setActiveNodeId('projects');
+                    else if (id === 'experience') setActiveNodeId('experience');
+                    else if (id === 'skills') setActiveNodeId('skills');
+                    else if (id === 'about') setActiveNodeId('about');
+                    else if (id === 'contact') setActiveNodeId('contact');
+                    else if (id === 'hero') setActiveNodeId('center');
+                }
+            });
+        }, { threshold: 0.3, rootMargin: '-10% 0px -40% 0px' });
+
+        ['hero', 'work', 'experience', 'skills', 'about', 'contact'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
+
+        return () => observer.disconnect();
+    }, []);
 
     const centerNode = ARCHITECTURE_NODES.find(n => n.id === 'center')!;
     const peripheralNodes = ARCHITECTURE_NODES.filter(n => n.id !== 'center');
@@ -53,18 +77,22 @@ export const ArchitectureDiagram: React.FC = () => {
         return '';
     };
 
-    const NodeCard = ({ node, index }: { node: ArchitectureNode, index: number }) => {
+    const NodeCard = ({ node }: { node: ArchitectureNode }) => {
         const isCenter = node.id === 'center';
         const isHovered = hoveredNode?.id === node.id;
+        const isActive = activeNodeId === node.id;
+        // Hover takes precedence, or if active and nothing is hovered
+        const shined = isHovered || (isActive && !hoveredNode);
 
         return (
             <div
-                className={`w-full h-full flex flex-col border border-solid shadow-sm relative pointer-events-auto transition-colors duration-300 ${isCenter ? 'bg-slate-50 dark:bg-[#0B1120]' : 'bg-white dark:bg-[#0F172A] cursor-pointer'}`}
+                className={`w-full h-full flex flex-col relative pointer-events-auto transition-all duration-300 overflow-hidden ${isCenter ? 'bg-white dark:bg-[#0B1120]' : 'bg-slate-50 dark:bg-[#0F172A] cursor-pointer'} rounded-lg`}
                 style={{
-                    borderWidth: '2px',
-                    borderColor: node.color,
-                    boxShadow: isHovered ? `0 0 20px ${node.color}30 inset, 0 0 15px ${node.color}40` : 'none',
-                    transform: isHovered && !isCenter ? 'scale(1.03)' : 'scale(1)',
+                    border: `1px solid ${shined ? node.color : isCenter ? 'rgba(148, 163, 184, 0.4)' : 'rgba(148, 163, 184, 0.15)'}`,
+                    boxShadow: shined
+                        ? `0 10px 25px -5px ${node.color}40, 0 0 15px ${node.color}30 inset`
+                        : '0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3)',
+                    transform: isHovered && !isCenter ? 'translateY(-4px) scale(1.02)' : (isActive && !isCenter ? 'translateY(-2px) scale(1.01)' : 'translateY(0) scale(1)'),
                     transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
                 }}
                 onMouseEnter={() => setHoveredNode(node)}
@@ -77,35 +105,21 @@ export const ArchitectureDiagram: React.FC = () => {
                 }}
             >
                 <div
-                    className="w-full flex items-center justify-center py-2.5 px-3 border-b-2"
-                    style={{ backgroundColor: isCenter ? 'transparent' : `${node.color}15`, borderColor: node.color }}
+                    className="w-full flex items-center justify-center py-3 px-4 border-b border-border/40 dark:border-white/5 relative z-10"
+                    style={{ backgroundColor: isCenter ? 'transparent' : `${node.color}10` }}
                 >
-                    <span className={`font-bold text-[13px] tracking-widest uppercase ${isCenter ? 'text-slate-800 dark:text-white' : 'dark:text-white'}`} style={{ color: isCenter ? node.color : 'inherit' }}>
+                    <span className={`font-display font-black text-[13px] tracking-[0.15em] uppercase text-primary dark:text-white/90`} style={{ color: isCenter ? 'inherit' : node.color }}>
                         {node.title}
                     </span>
                 </div>
-                <div className="flex flex-col flex-1 p-3.5 bg-gray-50/30 dark:bg-slate-900/40 justify-center">
+                <div className="flex flex-col flex-1 p-4 bg-transparent justify-center relative z-10">
                     {node.attributes.map((attr, idx) => (
-                        <span key={idx} className="font-mono text-[11.5px] font-medium text-slate-700 dark:text-slate-300 leading-relaxed mb-1.5 last:mb-0 whitespace-nowrap overflow-hidden text-ellipsis">
-                            {attr}
+                        <span key={idx} className="font-mono text-[11.5px] font-medium text-secondary dark:text-slate-400 leading-relaxed mb-2 last:mb-0 whitespace-nowrap overflow-hidden text-ellipsis flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-[2px] opacity-70 flex-shrink-0" style={{ backgroundColor: node.color }}></span>
+                            {attr.replace(/\* /g, '').trim()}
                         </span>
                     ))}
                 </div>
-
-                {/* Tooltip */}
-                <AnimatePresence>
-                    {isHovered && !isCenter && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 5, scale: 0.95 }}
-                            transition={{ duration: 0.15 }}
-                            className="hidden md:block absolute left-1/2 -bottom-3 translate-y-full -translate-x-1/2 w-[115%] p-3.5 bg-slate-800 dark:bg-black border border-slate-700 dark:border-white/20 text-white dark:text-white/90 text-[12.5px] leading-relaxed rounded-md shadow-2xl z-50 pointer-events-none text-center"
-                        >
-                            {node.description}
-                        </motion.div>
-                    )}
-                </AnimatePresence>
             </div>
         );
     };
@@ -141,7 +155,12 @@ export const ArchitectureDiagram: React.FC = () => {
 
                 {peripheralNodes.map((node) => {
                     const isHovered = hoveredNode?.id === node.id || hoveredNode?.id === 'center';
-                    const isDimmed = hoveredNode && !isHovered && hoveredNode.id !== 'center' && hoveredNode.id !== node.id;
+                    const isActive = activeNodeId === node.id || activeNodeId === 'center';
+                    const shinedLine = isHovered || (isActive && !hoveredNode);
+
+                    const isDimmed = (hoveredNode && !isHovered && hoveredNode.id !== 'center')
+                        || (!hoveredNode && activeNodeId && !isActive && activeNodeId !== 'center');
+
                     const pathD = generateOrthogonalPath(centerNode, node);
 
                     return (
@@ -150,11 +169,11 @@ export const ArchitectureDiagram: React.FC = () => {
                                 d={pathD}
                                 fill="none"
                                 stroke={node.color}
-                                strokeWidth={isHovered ? 4 : 2}
+                                strokeWidth={shinedLine ? 4 : 2}
                                 markerEnd={`url(#arrow-${node.id})`}
                                 style={{
-                                    filter: isHovered ? `drop-shadow(0 0 8px ${node.color}80)` : 'none',
-                                    transition: 'stroke-width 0.2s ease'
+                                    filter: shinedLine ? `drop-shadow(0 0 8px ${node.color}80)` : 'none',
+                                    transition: 'stroke-width 0.3s ease, filter 0.3s ease'
                                 }}
                                 initial={{ pathLength: 0, opacity: 0 }}
                                 whileInView={{ pathLength: 1, opacity: isDimmed ? 0.15 : (isHovered ? 1 : 0.6) }}
@@ -162,7 +181,7 @@ export const ArchitectureDiagram: React.FC = () => {
                                 transition={{ duration: 1.2, ease: "easeInOut" }}
                             />
                             {!isDimmed && (
-                                <circle r="4.5" fill={node.color} style={{ filter: `drop-shadow(0 0 4px ${node.color})` }}>
+                                <circle r="4.5" fill={node.color} style={{ filter: `drop-shadow(0 0 5px ${node.color})`, opacity: shinedLine ? 1 : 0.4, transition: 'opacity 0.3s ease' }}>
                                     <animateMotion dur={`${2.5 + Math.random() * 1.5}s`} repeatCount="indefinite" path={pathD} />
                                 </circle>
                             )}
@@ -173,7 +192,12 @@ export const ArchitectureDiagram: React.FC = () => {
                 {/* Draw HTML Nodes inside SVG via foreignObject */}
                 {ARCHITECTURE_NODES.map((node, i) => {
                     const isHovered = hoveredNode?.id === node.id;
-                    const isDimmed = hoveredNode && !isHovered && node.id !== 'center';
+                    const isActive = activeNodeId === node.id;
+                    const shinedNode = isHovered || (isActive && !hoveredNode);
+
+                    const isDimmedNode = (hoveredNode && !isHovered && node.id !== 'center')
+                        || (!hoveredNode && activeNodeId && !isActive && node.id !== 'center');
+
                     // Provide extra padding around foreignObject to prevent tooltip/shadow clipping
                     const paddingX = 100;
                     const paddingY = 150;
@@ -193,22 +217,22 @@ export const ArchitectureDiagram: React.FC = () => {
                                     style={{ width: node.width, height: node.height }}
                                     initial={{ opacity: 0, y: 15 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    animate={{ opacity: isDimmed ? 0.4 : 1 }}
+                                    animate={{ opacity: isDimmedNode ? 0.3 : 1 }}
                                     viewport={{ once: true, amount: 0.2 }}
                                     transition={{ duration: 0.4, delay: 0.3 + (i * 0.1) }}
                                 >
                                     <motion.div
                                         className="w-full h-full"
-                                        animate={{ y: isHovered ? -5 : [0, -4, 0] }}
+                                        animate={{ y: shinedNode ? -5 : [0, -3, 0] }}
                                         transition={{
                                             y: {
-                                                duration: isHovered ? 0.2 : 3 + (i % 3),
-                                                repeat: isHovered ? 0 : Infinity,
+                                                duration: shinedNode ? 0.2 : 4 + (i % 3),
+                                                repeat: shinedNode ? 0 : Infinity,
                                                 ease: "easeInOut"
                                             }
                                         }}
                                     >
-                                        <NodeCard node={node} index={i} />
+                                        <NodeCard node={node} />
                                     </motion.div>
                                 </motion.div>
                             </div>
@@ -220,7 +244,7 @@ export const ArchitectureDiagram: React.FC = () => {
             {/* Mobile Vertical Simplified Layout (sm and below) */}
             <div className="flex md:hidden flex-col items-center w-full space-y-0 pointer-events-auto max-w-[340px] relative z-10">
                 <div style={{ width: '100%', height: centerNode.height * 0.9 }}>
-                    <NodeCard node={centerNode} index={0} />
+                    <NodeCard node={centerNode} />
                 </div>
 
                 {peripheralNodes.map((node, i) => (
@@ -243,7 +267,7 @@ export const ArchitectureDiagram: React.FC = () => {
                             />
                         </div>
                         <div className="w-full" style={{ height: node.height * 0.9 }}>
-                            <NodeCard node={node} index={i + 1} />
+                            <NodeCard node={node} />
                         </div>
                     </React.Fragment>
                 ))}

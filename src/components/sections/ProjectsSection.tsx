@@ -16,7 +16,7 @@ const GitHubIcon: React.FC = () => (
 
 const ProjectCard: React.FC<{ project: Project; delay: number; forceVisible?: boolean }> = ({ project, delay, forceVisible }) => (
     <article
-        className={`${forceVisible ? 'is-visible' : 'reveal'} group flex flex-col h-full p-8 border border-border dark:border-white/10 bg-surface dark:bg-black/50 shadow-card hover:shadow-card-hover hover:border-border-hover dark:hover:border-white/25 transition-all duration-200`}
+        className={`${forceVisible ? 'is-visible' : 'reveal'} group flex flex-col h-full p-8 border border-border dark:border-slate-700/50 bg-surface dark:bg-[#0F172A] shadow-card dark:shadow-none hover:shadow-card-hover dark:hover:shadow-[0_4px_20px_-5px_rgba(0,0,0,0.5)] transition-all duration-300 transform hover:-translate-y-1`}
         style={{ transitionDelay: `${delay}ms` }}
     >
         {/* Header */}
@@ -39,7 +39,7 @@ const ProjectCard: React.FC<{ project: Project; delay: number; forceVisible?: bo
             {project.stack.map((tag) => (
                 <span
                     key={tag}
-                    className="text-[11px] px-2.5 py-1 border border-border dark:border-white/15 text-secondary dark:text-white/70 font-medium"
+                    className="text-[11px] px-2.5 py-1 border border-border dark:border-slate-700 text-secondary dark:text-slate-300 font-medium"
                 >
                     {tag}
                 </span>
@@ -47,8 +47,8 @@ const ProjectCard: React.FC<{ project: Project; delay: number; forceVisible?: bo
         </div>
 
         {/* Footer */}
-        <div className="mt-auto pt-4 border-t border-border dark:border-white/10 flex items-center justify-between">
-            <span className="text-[11px] text-muted dark:text-white/55 font-medium uppercase tracking-wider">
+        <div className="mt-auto pt-4 border-t border-border dark:border-slate-700/50 flex items-center justify-between">
+            <span className="text-[11px] text-muted dark:text-slate-400 font-medium uppercase tracking-wider">
                 {project.role.split('—')[0].trim()}
             </span>
             {project.github && (
@@ -56,7 +56,7 @@ const ProjectCard: React.FC<{ project: Project; delay: number; forceVisible?: bo
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs font-semibold text-accent dark:text-[#61dca3] hover:opacity-75 transition-opacity duration-150"
+                    className="flex items-center gap-1.5 text-xs font-semibold text-accent dark:text-[#3B82F6] hover:opacity-75 transition-opacity duration-150"
                     aria-label={`View ${project.title} on GitHub`}
                 >
                     <GitHubIcon />
@@ -72,10 +72,10 @@ export const ProjectsSection: React.FC = () => {
     const displayedProjects = showAll ? projectsData : projectsData.slice(0, 4);
 
     return (
-        <section id="work" className="py-28 border-b border-border dark:border-white/10" aria-labelledby="work-heading">
+        <section id="work" className="py-28 border-b border-border dark:border-slate-800/50 dark:bg-[#0B1120] transition-colors duration-300" aria-labelledby="work-heading">
             <div className="max-w-7xl mx-auto px-6 lg:px-16">
                 <div className="reveal mb-16">
-                    <p className="text-[11px] font-semibold text-accent dark:text-[#61dca3] tracking-widest uppercase mb-3">
+                    <p className="text-[11px] font-semibold text-accent dark:text-[#3B82F6] tracking-widest uppercase mb-3">
                         Selected Work
                     </p>
                     <h2
@@ -87,9 +87,9 @@ export const ProjectsSection: React.FC = () => {
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border dark:bg-white/10 auto-rows-fr">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border dark:bg-slate-800/50 auto-rows-fr">
                     {displayedProjects.map((project, i) => (
-                        <div key={project.id} className="bg-canvas dark:bg-transparent">
+                        <div key={project.id} className="bg-canvas dark:bg-[#0B1120]">
                             <ProjectCard project={project} delay={(i % 4) * 50} forceVisible={showAll && i >= 4} />
                         </div>
                     ))}
@@ -99,7 +99,7 @@ export const ProjectsSection: React.FC = () => {
                     <div className="mt-12 flex justify-center reveal">
                         <button
                             onClick={() => setShowAll(!showAll)}
-                            className="px-6 py-3 border border-border dark:border-white/20 text-sm font-semibold text-primary dark:text-white uppercase tracking-wider hover:bg-primary hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200"
+                            className="px-6 py-3 border border-border dark:border-slate-600 text-sm font-semibold text-primary dark:text-white uppercase tracking-wider hover:bg-primary hover:text-white dark:hover:bg-slate-800 transition-colors duration-200"
                         >
                             {showAll ? 'View Less' : 'Explore More'}
                         </button>

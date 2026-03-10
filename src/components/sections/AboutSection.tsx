@@ -2,11 +2,11 @@ import React from 'react';
 import resumeData from '../../data/resume.json';
 
 export const AboutSection: React.FC = () => (
-    <section id="about" className="py-28 border-b border-border dark:border-white/10" aria-labelledby="about-heading">
+    <section id="about" className="py-28 border-b border-border dark:border-slate-800/50 dark:bg-[#0B1120] transition-colors duration-300" aria-labelledby="about-heading">
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
             <div className="max-w-3xl">
                 <div className="reveal mb-12">
-                    <p className="text-[11px] font-semibold text-accent dark:text-[#61dca3] tracking-widest uppercase mb-3">
+                    <p className="text-[11px] font-semibold text-accent dark:text-[#F59E0B] tracking-widest uppercase mb-3">
                         About
                     </p>
                     <h2
@@ -18,20 +18,20 @@ export const AboutSection: React.FC = () => (
                     </h2>
                 </div>
 
-                <blockquote className="reveal mb-10 pl-5 border-l-2 border-accent dark:border-[#61dca3]">
+                <blockquote className="reveal mb-10 pl-5 border-l-2 border-accent dark:border-[#F59E0B]">
                     <p className="text-lg text-primary dark:text-white font-medium leading-relaxed italic">
                         "{resumeData.philosophy}"
                     </p>
                 </blockquote>
 
-                <p className="reveal text-secondary dark:text-white/85 leading-relaxed text-[15px] mb-10">
+                <p className="reveal text-secondary dark:text-slate-300 leading-relaxed text-[15px] mb-10">
                     {resumeData.summary}
                 </p>
 
-                <div className="reveal flex flex-wrap gap-6 pt-6 border-t border-border dark:border-white/10">
+                <div className="reveal flex flex-wrap gap-6 pt-6 border-t border-border dark:border-slate-700/50">
                     <a
                         href={resumeData.socials.email}
-                        className="text-sm font-medium text-accent dark:text-[#61dca3] link-accent"
+                        className="text-sm font-medium text-accent dark:text-[#F59E0B] hover:opacity-80 transition-opacity"
                     >
                         {resumeData.socials.email.replace('mailto:', '')}
                     </a>
@@ -39,7 +39,7 @@ export const AboutSection: React.FC = () => (
                         href={resumeData.socials.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-medium text-secondary dark:text-white/80 link-underline hover:text-primary dark:hover:text-white transition-colors"
+                        className="text-sm font-medium text-secondary dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors"
                     >
                         {resumeData.socials.github.replace('https://', '')}
                     </a>
@@ -47,7 +47,7 @@ export const AboutSection: React.FC = () => (
                         href={resumeData.socials.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-medium text-secondary dark:text-white/80 link-underline hover:text-primary dark:hover:text-white transition-colors"
+                        className="text-sm font-medium text-secondary dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors"
                     >
                         {resumeData.socials.linkedin.replace('https://', '')}
                     </a>

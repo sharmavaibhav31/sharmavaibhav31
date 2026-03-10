@@ -2,10 +2,10 @@ import React from 'react';
 import resumeData from '../../data/resume.json';
 
 export const ExperienceSection: React.FC = () => (
-    <section id="experience" className="py-28 border-b border-border dark:border-white/10" aria-labelledby="experience-heading">
+    <section id="experience" className="py-28 border-b border-border dark:border-slate-800/50 dark:bg-[#0B1120] transition-colors duration-300" aria-labelledby="experience-heading">
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
             <div className="reveal mb-16">
-                <p className="text-[11px] font-semibold text-accent dark:text-[#61dca3] tracking-widest uppercase mb-3">
+                <p className="text-[11px] font-semibold text-accent dark:text-[#8B5CF6] tracking-widest uppercase mb-3">
                     Experience
                 </p>
                 <h2
@@ -20,7 +20,7 @@ export const ExperienceSection: React.FC = () => (
             <div className="relative">
                 {/* Vertical line */}
                 <div
-                    className="hidden md:block absolute left-[160px] top-0 bottom-0 w-px bg-border dark:bg-white/10"
+                    className="hidden md:block absolute left-[160px] top-0 bottom-0 w-px bg-border dark:bg-slate-700/50"
                     aria-hidden="true"
                 />
 
@@ -33,14 +33,14 @@ export const ExperienceSection: React.FC = () => (
                         >
                             {/* Period */}
                             <div className="md:w-[160px] md:pr-8 md:text-right shrink-0 mb-3 md:mb-0">
-                                <span className="text-xs font-medium text-muted dark:text-white/60 whitespace-nowrap">
+                                <span className="text-xs font-medium text-muted dark:text-slate-400 whitespace-nowrap">
                                     {exp.period}
                                 </span>
                             </div>
 
                             {/* Dot */}
                             <div
-                                className="hidden md:block absolute left-[156px] top-1 w-2 h-2 rounded-full bg-primary dark:bg-[#61dca3] border-2 border-canvas dark:border-transparent ring-1 ring-border dark:ring-white/20"
+                                className="hidden md:block absolute left-[156px] top-1 w-2 h-2 rounded-full bg-primary dark:bg-[#8B5CF6] border-2 border-canvas dark:border-transparent ring-1 ring-border dark:ring-slate-600"
                                 aria-hidden="true"
                             />
 
