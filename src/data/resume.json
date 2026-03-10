@@ -1,6 +1,6 @@
 {
     "name": "Vaibhav Sharma",
-    "title": "Systems / Backend Engineer",
+    "title": "Backend / Systems Engineer",
     "tagline": "I design reliable backend systems and production-grade architecture.",
     "summary": "Systems-oriented engineer with a track record of shipping production backend systems under real-world constraints — from constraint-based scheduling engines to database migration projects. I work across the full backend stack: API design, schema modeling, service architecture, and infrastructure automation.",
     "philosophy": "Good systems are invisible. They handle edge cases silently, scale without drama, and let teams move fast without breaking things. I build for maintainability first — not for demos.",
@@ -38,6 +38,6 @@
     "socials": {
         "github": "https://github.com/sharmavaibhav31",
         "linkedin": "https://linkedin.com/in/sharmavaibhav31",
-        "email": "mailto:contact@sharmavaibhav31.dev"
+        "email": "mailto:sharma31stmay@gmail.com"
     }
 }

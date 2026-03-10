@@ -1,21 +1,59 @@
 [
     {
         "id": "timetable-scheduler",
-        "title": "Timetable Scheduling Engine",
-        "problem": "University scheduling was done manually — 40+ sections, 200+ course-faculty assignments, zero conflict detection.",
-        "solution": "Designed a constraint-based scheduling engine with automated conflict resolution, room allocation, and Excel export.",
-        "architecture": "Spring Boot → Scheduling Engine → PostgreSQL (Flyway migrations) → Apache POI Excel reporter",
-        "impact": "Reduced schedule generation time from 3 days to under 2 minutes. Zero data-entry conflicts post-launch.",
+        "title": "Academic Timetable Scheduling Engine",
+        "problem": "University timetables were created manually — managing 40+ sections, hundreds of course assignments, room constraints, and faculty load limits with no automatic conflict detection.",
+        "solution": "Built a constraint-based scheduling engine that automatically assigns courses to time slots and rooms while enforcing faculty load limits, room capacity rules, section conflicts, and institutional break windows.",
+        "architecture": "React Admin Dashboard → Spring Boot REST API → Constraint Scheduling Engine → PostgreSQL (Flyway migrations)",
+        "impact": "Automates timetable generation in under 2 minutes with guaranteed conflict-free schedules and Excel export for departments.",
         "stack": [
-            "Java",
+            "Java 17",
             "Spring Boot 3",
             "PostgreSQL",
             "Flyway",
             "Apache POI",
-            "Spring Security"
+            "Spring Security",
+            "Docker",
+            "React"
         ],
-        "role": "Sole architect — owned schema design, constraint logic, and all API layers.",
+        "role": "Designed the domain model, implemented the scheduling algorithm, built the REST API, and developed the admin dashboard.",
         "github": "https://github.com/sharmavaibhav31/timetable-scheduler"
+    },
+    {
+        "id": "offline-ai-shell",
+        "title": "Offline AI Assistant Shell",
+        "problem": "Developers rely on online AI assistants, but integrating AI directly into system environments introduces major security risks such as privilege escalation, unsafe system calls, and data exposure.",
+        "solution": "Built a custom C-based shell with an embedded offline LLM assistant using llama.cpp, designed with a security-first architecture including syscall filtering, namespace isolation, and resource limits.",
+        "architecture": "Custom C Shell → Sandboxed AI Worker → llama.cpp Inference Engine → TinyLlama Local Model",
+        "impact": "Enables private, offline AI assistance directly inside the terminal while enforcing strict syscall filtering and process isolation.",
+        "stack": [
+            "C",
+            "llama.cpp",
+            "TinyLlama",
+            "Seccomp",
+            "Linux Namespaces",
+            "CMake"
+        ],
+        "role": "Designed the shell architecture, implemented sandboxed AI worker execution, integrated local LLM inference, and engineered syscall filtering with Seccomp.",
+        "github": "https://github.com/sharmavaibhav31/offline-shell-assistant"
+    },
+    {
+        "id": "system-design-url-shortener",
+        "title": "Distributed URL Shortener (System Design Study)",
+        "problem": "URL shortening services must handle massive traffic while generating collision-free short codes, preventing abuse, and scaling across multiple backend instances.",
+        "solution": "Built a full-stack URL shortener implementing Base62 encoding for compact ID generation, sliding-window rate limiting to prevent abuse, and a round-robin load balancing simulation for multi-instance deployments.",
+        "architecture": "React SPA → Spring Boot API → Rate Limiter Interceptor → URL Service → SQLite (JPA) with Base62 encoding",
+        "impact": "Demonstrates core distributed systems patterns including ID encoding, request throttling, and horizontal scaling strategies.",
+        "stack": [
+            "Java 17",
+            "Spring Boot",
+            "React",
+            "SQLite",
+            "JPA/Hibernate",
+            "Tailwind CSS"
+        ],
+        "role": "Designed the URL encoding system, implemented sliding-window rate limiting, and simulated multi-instance load balancing.",
+        "github": "https://github.com/sharmavaibhav31/urlshortner"
     },
     {
         "id": "Faculty-Appraisal-system",

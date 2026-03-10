@@ -60,7 +60,7 @@ export const HeroSection: React.FC = () => {
                         className="reveal text-secondary dark:text-white/75 font-bold mb-3 tracking-widest uppercase"
                         style={{ fontSize: 'clamp(0.85rem, 1.5vw, 1rem)' }}
                     >
-                        Systems / Backend Engineer
+                        Backend / Systems Engineer
                     </p>
 
                     {/* Positioning statement */}
@@ -68,8 +68,7 @@ export const HeroSection: React.FC = () => {
                         className="reveal text-secondary dark:text-white/90 leading-relaxed mb-8 max-w-xl"
                         style={{ fontSize: 'clamp(1.05rem, 1.8vw, 1.25rem)' }}
                     >
-                        Backend engineer building scalable APIs, ML pipelines, and distributed systems.
-                    </p>
+                        I build reliable backend systems, scalable APIs, and ML-powered applications.                    </p>
 
                     {/* CTAs */}
                     <div className="reveal flex flex-wrap gap-4 mt-2">
