@@ -33,29 +33,29 @@ export const ExperienceSection: React.FC = () => (
                         >
                             {/* Period */}
                             <div className="md:w-[160px] md:pr-8 md:text-right shrink-0 mb-3 md:mb-0">
-                                <span className="text-xs font-medium text-muted dark:text-slate-400 whitespace-nowrap">
+                                <span className="text-xs font-medium font-mono text-slate-500 dark:text-slate-400 whitespace-nowrap">
                                     {exp.period}
                                 </span>
                             </div>
 
-                            {/* Dot */}
+                            {/* Dot (GitHub Commit Style) */}
                             <div
-                                className="hidden md:block absolute left-[156px] top-1 w-2 h-2 rounded-full bg-primary dark:bg-[#8B5CF6] border-2 border-canvas dark:border-transparent ring-1 ring-border dark:ring-slate-600"
+                                className="hidden md:block absolute left-[156px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-600 ring-4 ring-white dark:ring-[#0B1120]"
                                 aria-hidden="true"
                             />
 
                             {/* Content */}
                             <div className="md:pl-10 flex-1">
-                                <h3 className="text-sm font-bold text-primary dark:text-white leading-snug">
+                                <h3 className="text-sm font-semibold text-primary dark:text-slate-100 leading-snug">
                                     {exp.role}
                                 </h3>
-                                <p className="text-xs font-medium text-secondary dark:text-white/70 mt-0.5 mb-3">
+                                <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5 mb-4 font-medium">
                                     {exp.company}
                                 </p>
-                                <ul className="space-y-1.5">
+                                <ul className="space-y-2.5">
                                     {exp.bullets.map((bullet, j) => (
-                                        <li key={j} className="text-sm text-secondary dark:text-white/80 leading-relaxed flex items-start gap-2">
-                                            <span className="text-muted dark:text-white/50 mt-1.5 shrink-0 text-[8px]">▪</span>
+                                        <li key={j} className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed flex items-start gap-3">
+                                            <span className="text-slate-300 dark:text-slate-600 mt-1.5 shrink-0 text-[10px]">●</span>
                                             <span>{bullet}</span>
                                         </li>
                                     ))}

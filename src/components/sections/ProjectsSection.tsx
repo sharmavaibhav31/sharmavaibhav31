@@ -14,66 +14,157 @@ const GitHubIcon: React.FC = () => (
     </svg>
 );
 
-const ProjectCard: React.FC<{ project: Project; delay: number; forceVisible?: boolean }> = ({ project, delay, forceVisible }) => (
-    <article
-        className={`${forceVisible ? 'is-visible' : 'reveal'} group flex flex-col h-full p-8 border border-border dark:border-slate-700/50 bg-surface dark:bg-[#0F172A] shadow-card dark:shadow-none hover:shadow-card-hover dark:hover:shadow-[0_4px_20px_-5px_rgba(0,0,0,0.5)] transition-all duration-300 transform hover:-translate-y-1`}
-        style={{ transitionDelay: `${delay}ms` }}
-    >
-        {/* Header */}
-        <div className="mb-5">
-            <h3 className="text-base font-bold text-primary dark:text-white mb-2 leading-snug">
-                {project.title}
-            </h3>
-            <p className="text-sm text-secondary dark:text-white/80 leading-relaxed">
-                {project.problem}
-            </p>
-        </div>
+const CategoryIcon: React.FC<{ category?: string }> = ({ category }) => {
+    if (!category) return null;
+    return (
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 whitespace-nowrap mb-4">
+            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                {category === 'Security' && <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />}
+                {category === 'Automation' && <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />}
+                {category === 'HCI' && <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />}
+                {category === 'ML Orchestration' && <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />}
+                {category === 'Scalability' && <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />}
+                {category === 'IoT Systems' && <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />}
+            </svg>
+            {category}
+        </span>
+    );
+};
 
-        {/* Impact metric */}
-        <p className="text-sm font-semibold text-primary dark:text-white mb-5 leading-relaxed">
-            {project.impact}
-        </p>
+const ProjectCard: React.FC<{ project: Project; delay: number; forceVisible?: boolean }> = ({ project, delay, forceVisible }) => {
+    const [isRoleExpanded, setIsRoleExpanded] = React.useState(false);
+    const [isArchitectureExpanded, setIsArchitectureExpanded] = React.useState(false);
+    const ROLE_LIMIT = 50;
+    const shouldTruncate = project.role.length > ROLE_LIMIT;
 
-        {/* Stack tags */}
-        <div className="flex flex-wrap gap-2 mb-6">
-            {project.stack.map((tag) => (
-                <span
-                    key={tag}
-                    className="text-[11px] px-2.5 py-1 border border-border dark:border-slate-700 text-secondary dark:text-slate-300 font-medium"
-                >
-                    {tag}
-                </span>
-            ))}
-        </div>
+    return (
+        <article
+            className={`${forceVisible ? 'is-visible' : 'reveal'} group flex flex-col h-full p-8 border border-border dark:border-slate-800 bg-surface dark:bg-[#0F172A] shadow-sm hover:shadow-md transition-all duration-300 relative`}
+            style={{ transitionDelay: `${delay}ms` }}
+        >
+            {/* Top: Project Name + Category Badge + Tech Tags */}
+            <div className="mb-6">
+                <div className="flex items-start justify-between mb-4">
+                    <h3 className="text-xl font-bold text-primary dark:text-slate-100 leading-snug">
+                        {project.title}
+                    </h3>
+                    <CategoryIcon category={project.category} />
+                </div>
 
-        {/* Footer */}
-        <div className="mt-auto pt-4 border-t border-border dark:border-slate-700/50 flex items-center justify-between">
-            <span className="text-[11px] text-muted dark:text-slate-400 font-medium uppercase tracking-wider">
-                {project.role.split('—')[0].trim()}
-            </span>
-            {project.github && (
-                <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs font-semibold text-accent dark:text-[#3B82F6] hover:opacity-75 transition-opacity duration-150"
-                    aria-label={`View ${project.title} on GitHub`}
-                >
-                    <GitHubIcon />
-                    GitHub →
-                </a>
-            )}
-        </div>
-    </article>
-);
+                {/* Stack tags */}
+                <div className="flex flex-wrap gap-2">
+                    {project.stack.map((tag) => (
+                        <span
+                            key={tag}
+                            className="text-[10px] px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-medium"
+                        >
+                            {tag}
+                        </span>
+                    ))}
+                </div>
+            </div>
+
+            {/* Middle: Summary & Highlights */}
+            <div className="flex-1 mb-8">
+                <p className="text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed mb-5">
+                    {project.description}
+                </p>
+
+                <ul className="space-y-2">
+                    {project.highlights?.map((highlight, idx) => (
+                        <li key={idx} className="flex items-start gap-2.5">
+                            <svg className="w-3.5 h-3.5 text-accent dark:text-[#3B82F6] mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span className="text-[12px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                                {highlight}
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            {/* Bottom Actions & Role */}
+            <div className="mt-auto">
+                <div className="pt-5 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                    <div className="flex-1 min-w-0 pr-4">
+                        <span
+                            className={`text-[11px] text-slate-400 dark:text-slate-500 font-medium tracking-wide block ${!isRoleExpanded ? 'truncate' : ''}`}
+                            title={!isRoleExpanded ? project.role : undefined}
+                        >
+                            Role: {project.role}
+                        </span>
+                        {shouldTruncate && (
+                            <button
+                                onClick={() => setIsRoleExpanded(!isRoleExpanded)}
+                                className="text-[10px] text-accent dark:text-[#3B82F6] hover:underline mt-1 focus:outline-none"
+                            >
+                                {isRoleExpanded ? 'Read Less' : 'Read More...'}
+                            </button>
+                        )}
+                    </div>
+
+                    <div className="flex items-center gap-4 flex-shrink-0 mt-1">
+                        {project.architecture && (
+                            <button
+                                onClick={() => setIsArchitectureExpanded(!isArchitectureExpanded)}
+                                className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-accent dark:hover:text-[#3B82F6] transition-colors duration-150 focus:outline-none"
+                            >
+                                <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${isArchitectureExpanded ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                </svg>
+                                Architecture
+                            </button>
+                        )}
+                        {project.github && (
+                            <a
+                                href={project.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-accent dark:hover:text-[#3B82F6] transition-colors duration-150"
+                                aria-label={`View ${project.title} on GitHub`}
+                            >
+                                <GitHubIcon />
+                                Source
+                            </a>
+                        )}
+                    </div>
+                </div>
+
+                {/* Expandable Architecture Flow */}
+                {isArchitectureExpanded && Array.isArray(project.architecture) && project.architecture.length > 0 && (
+                    <div className="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800/50">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3 block">System Architecture Flow</span>
+                        <div className="flex flex-col space-y-1.5 bg-slate-50 dark:bg-[#0B1120] p-4 rounded-md border border-slate-200 dark:border-slate-800">
+                            {project.architecture.map((node, index) => (
+                                <div key={index} className="flex flex-col">
+                                    <div className="px-3 py-2 text-[11px] leading-snug font-mono text-slate-600 dark:text-slate-300">
+                                        {node}
+                                    </div>
+                                    {index < (project.architecture as string[]).length - 1 && (
+                                        <div className="flex justify-start ml-4 my-0.5 opacity-40">
+                                            <svg className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                                            </svg>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </div>
+        </article>
+    );
+};
 
 export const ProjectsSection: React.FC = () => {
     const [showAll, setShowAll] = React.useState(false);
-    const displayedProjects = showAll ? projectsData : projectsData.slice(0, 4);
+    const displayedProjects = showAll ? projectsData : projectsData.slice(0, 6);
 
     return (
         <section id="work" className="py-28 border-b border-border dark:border-slate-800/50 dark:bg-[#0B1120] transition-colors duration-300" aria-labelledby="work-heading">
-            <div className="max-w-7xl mx-auto px-6 lg:px-16">
+            <div className="w-full max-w-[1920px] mx-auto px-6 md:px-12 xl:px-16">
                 <div className="reveal mb-16">
                     <p className="text-[11px] font-semibold text-accent dark:text-[#3B82F6] tracking-widest uppercase mb-3">
                         Selected Work
@@ -87,15 +178,15 @@ export const ProjectsSection: React.FC = () => {
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border dark:bg-slate-800/50 auto-rows-fr">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 auto-rows-fr">
                     {displayedProjects.map((project, i) => (
                         <div key={project.id} className="bg-canvas dark:bg-[#0B1120]">
-                            <ProjectCard project={project} delay={(i % 4) * 50} forceVisible={showAll && i >= 4} />
+                            <ProjectCard project={project} delay={(i % 4) * 50} forceVisible={showAll && i >= 6} />
                         </div>
                     ))}
                 </div>
 
-                {projectsData.length > 4 && (
+                {projectsData.length > 6 && (
                     <div className="mt-12 flex justify-center reveal">
                         <button
                             onClick={() => setShowAll(!showAll)}

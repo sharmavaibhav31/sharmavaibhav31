@@ -49,7 +49,7 @@ export const HeroSection: React.FC = () => {
 
                     {/* Name */}
                     <h1
-                        className="reveal font-display font-extrabold text-primary dark:text-white leading-none tracking-tight mb-3"
+                        className="reveal font-display font-extrabold text-primary dark:text-white leading-none tracking-tight mb-6"
                         style={{ fontSize: 'clamp(3.5rem, 8vw, 6.5rem)', letterSpacing: '-0.04em' }}
                     >
                         VAIBHAV<br />SHARMA
@@ -57,7 +57,7 @@ export const HeroSection: React.FC = () => {
 
                     {/* Subtitle */}
                     <p
-                        className="reveal text-secondary dark:text-white/75 font-bold mb-3 tracking-widest uppercase"
+                        className="reveal text-secondary dark:text-white/75 font-bold mb-6 tracking-widest uppercase"
                         style={{ fontSize: 'clamp(0.85rem, 1.5vw, 1rem)' }}
                     >
                         Backend / Systems Engineering Student
@@ -65,13 +65,13 @@ export const HeroSection: React.FC = () => {
 
                     {/* Positioning statement */}
                     <p
-                        className="reveal text-secondary dark:text-white/90 leading-relaxed mb-8 max-w-xl"
+                        className="reveal text-secondary dark:text-white/90 leading-relaxed mb-10 max-w-xl"
                         style={{ fontSize: 'clamp(1.05rem, 1.8vw, 1.25rem)' }}
                     >
                         I build reliable backend systems, scalable APIs, and ML-powered applications.                    </p>
 
                     {/* CTAs */}
-                    <div className="reveal flex flex-wrap gap-4 mt-2">
+                    <div className="reveal flex flex-wrap gap-6 mt-4">
                         <a
                             href="#work"
                             id="hero-cta-work"

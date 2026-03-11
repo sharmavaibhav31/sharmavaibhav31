@@ -25,32 +25,34 @@ export const CertificationsSection: React.FC = () => (
                         style={{ transitionDelay: `${i * 60}ms` }}
                     >
                         {/* Tier Heading */}
-                        <h3 className="text-sm font-bold text-primary dark:text-white mb-6">
+                        <h3 className="text-sm font-semibold text-primary dark:text-slate-100 uppercase tracking-wide mb-4">
                             {group.category}
                         </h3>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div className="flex flex-col border border-slate-200 dark:border-slate-800 rounded-lg overflow-hidden bg-white dark:bg-[#0B1120]">
                             {group.items.map((cert, j) => (
                                 <div
                                     key={j}
-                                    className="p-5 border border-border dark:border-slate-700/50 bg-surface dark:bg-[#0F172A] flex flex-col justify-between group hover:border-border-hover dark:hover:border-slate-500 transition-colors"
+                                    className="group flex flex-col sm:flex-row sm:items-center justify-between p-4 border-b last:border-0 border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-[#0F172A] transition-colors"
                                 >
-                                    <div>
-                                        <h4 className="text-sm font-bold text-primary dark:text-white leading-snug mb-2">
+                                    <div className="flex-1">
+                                        <h4 className="text-sm font-semibold text-primary dark:text-slate-200">
                                             {cert.title}
                                         </h4>
-                                        <p className="text-xs text-secondary dark:text-slate-400">
-                                            {cert.issuer} <span className="text-border dark:text-slate-600 mx-1">•</span> {cert.date}
-                                        </p>
+                                        <div className="text-[12px] text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-2">
+                                            <span>{cert.issuer}</span>
+                                            <span className="opacity-50">•</span>
+                                            <span className="font-mono">{cert.date}</span>
+                                        </div>
                                     </div>
-                                    <div className="mt-4 flex justify-end">
+                                    <div className="mt-3 sm:mt-0">
                                         <a
                                             href={cert.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-[11px] font-semibold text-accent dark:text-[#94A3B8] opacity-0 group-hover:opacity-100 transition-opacity"
+                                            className="text-[11px] font-semibold text-accent dark:text-[#3B82F6] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
                                         >
-                                            Verify →
+                                            Verify Status →
                                         </a>
                                     </div>
                                 </div>

@@ -17,24 +17,28 @@ export const CapabilitiesSection: React.FC = () => (
                 </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-12">
+            <div className="flex flex-col space-y-12">
                 {skillsData.capabilities.map((cap, i) => (
                     <div
                         key={cap.category}
-                        className="reveal"
+                        className="reveal flex flex-col md:flex-row md:items-start gap-4 md:gap-12"
                         style={{ transitionDelay: `${i * 60}ms` }}
                     >
-                        <h3 className="text-[11px] font-semibold text-primary dark:text-white/95 tracking-widest uppercase mb-4 pb-3 border-b border-border dark:border-slate-700/50">
+                        <h3 className="w-56 shrink-0 text-sm font-semibold text-primary dark:text-slate-100 tracking-wide mt-0.5">
                             {cap.category}
                         </h3>
-                        <ul className="space-y-2">
-                            {cap.items.map((item) => (
-                                <li key={item} className="text-sm text-secondary dark:text-slate-300 leading-relaxed flex items-start gap-2">
-                                    <span className="text-border dark:text-slate-600 mt-1.5 shrink-0 text-[8px]">▪</span>
-                                    <span>{item}</span>
-                                </li>
+                        <div className="flex-1 flex flex-wrap items-center gap-x-3 gap-y-2">
+                            {cap.items.map((item, index) => (
+                                <React.Fragment key={item}>
+                                    <span className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                                        {item}
+                                    </span>
+                                    {index < cap.items.length - 1 && (
+                                        <span className="text-slate-300 dark:text-slate-700/50 text-xs">/</span>
+                                    )}
+                                </React.Fragment>
                             ))}
-                        </ul>
+                        </div>
                     </div>
                 ))}
             </div>

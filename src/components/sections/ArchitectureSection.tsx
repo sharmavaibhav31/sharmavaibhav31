@@ -90,8 +90,8 @@ export const ArchitectureDiagram: React.FC = () => {
                 style={{
                     border: `1px solid ${shined ? node.color : isCenter ? 'rgba(148, 163, 184, 0.4)' : 'rgba(148, 163, 184, 0.15)'}`,
                     boxShadow: shined
-                        ? `0 10px 25px -5px ${node.color}40, 0 0 15px ${node.color}30 inset`
-                        : '0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3)',
+                        ? `0 8px 20px -5px ${node.color}30`
+                        : '0 2px 4px -1px rgba(0,0,0,0.2)',
                     transform: isHovered && !isCenter ? 'translateY(-4px) scale(1.02)' : (isActive && !isCenter ? 'translateY(-2px) scale(1.01)' : 'translateY(0) scale(1)'),
                     transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
                 }}
@@ -129,10 +129,10 @@ export const ArchitectureDiagram: React.FC = () => {
 
             {/* Desktop & Tablet Graph (md and above) */}
             <motion.svg
-                className="hidden md:block w-full max-w-[1000px] h-auto pointer-events-none drop-shadow-sm origin-center"
+                className="hidden md:block w-full max-w-[1000px] h-auto pointer-events-none origin-center"
                 viewBox="0 0 1200 900"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                animate={{ opacity: 0.85 }}
                 transition={{ duration: 0.6 }}
                 style={{ overflow: 'visible' }}
             >
@@ -242,7 +242,7 @@ export const ArchitectureDiagram: React.FC = () => {
             </motion.svg>
 
             {/* Mobile Vertical Simplified Layout (sm and below) */}
-            <div className="flex md:hidden flex-col items-center w-full space-y-0 pointer-events-auto max-w-[340px] relative z-10">
+            <div className="flex md:hidden flex-col items-center w-full space-y-0 pointer-events-auto max-w-[340px] relative z-10 opacity-90">
                 <div style={{ width: '100%', height: centerNode.height * 0.9 }}>
                     <NodeCard node={centerNode} />
                 </div>
