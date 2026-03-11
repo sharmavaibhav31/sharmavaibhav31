@@ -31,6 +31,8 @@ const CategoryIcon: React.FC<{ category?: string }> = ({ category }) => {
     );
 };
 
+// CategoryIcon removed as categories are no longer in the dataset
+
 const ProjectCard: React.FC<{ project: Project; delay: number; forceVisible?: boolean }> = ({ project, delay, forceVisible }) => {
     const [isRoleExpanded, setIsRoleExpanded] = React.useState(false);
     const [isArchitectureExpanded, setIsArchitectureExpanded] = React.useState(false);
@@ -67,20 +69,28 @@ const ProjectCard: React.FC<{ project: Project; delay: number; forceVisible?: bo
             {/* Middle: Summary & Highlights */}
             <div className="flex-1 mb-8">
                 <p className="text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed mb-5">
-                    {project.description}
+                    {project.solution}
                 </p>
 
                 <ul className="space-y-2">
-                    {project.highlights?.map((highlight, idx) => (
-                        <li key={idx} className="flex items-start gap-2.5">
-                            <svg className="w-3.5 h-3.5 text-accent dark:text-[#3B82F6] mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
+                    {project.problem && (
+                        <li className="flex items-start gap-2.5">
+                            <span className="text-slate-300 dark:text-slate-600 mt-1 shrink-0 text-[10px]">●</span>
                             <span className="text-[12px] text-slate-500 dark:text-slate-400 leading-relaxed">
-                                {highlight}
+                                <strong className="font-semibold text-slate-600 dark:text-slate-300">Problem: </strong>
+                                {project.problem}
                             </span>
                         </li>
-                    ))}
+                    )}
+                    {project.impact && (
+                        <li className="flex items-start gap-2.5">
+                            <span className="text-slate-300 dark:text-slate-600 mt-1 shrink-0 text-[10px]">●</span>
+                            <span className="text-[12px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                                <strong className="font-semibold text-slate-600 dark:text-slate-300">Impact: </strong>
+                                {project.impact}
+                            </span>
+                        </li>
+                    )}
                 </ul>
             </div>
 
@@ -132,17 +142,17 @@ const ProjectCard: React.FC<{ project: Project; delay: number; forceVisible?: bo
                 </div>
 
                 {/* Expandable Architecture Flow */}
-                {isArchitectureExpanded && Array.isArray(project.architecture) && project.architecture.length > 0 && (
+                {isArchitectureExpanded && typeof project.architecture === 'string' && project.architecture.length > 0 && (
                     <div className="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800/50">
                         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3 block">System Architecture Flow</span>
                         <div className="flex flex-col space-y-1.5 bg-slate-50 dark:bg-[#0B1120] p-4 rounded-md border border-slate-200 dark:border-slate-800">
-                            {project.architecture.map((node, index) => (
+                            {project.architecture.split(' → ').map((node, index, arr) => (
                                 <div key={index} className="flex flex-col">
-                                    <div className="px-3 py-2 text-[11px] leading-snug font-mono text-slate-600 dark:text-slate-300">
-                                        {node}
+                                    <div className="px-3 py-2 text-[11px] leading-snug font-mono text-slate-600 dark:text-slate-300 bg-white dark:bg-[#0F172A] rounded border border-slate-100 dark:border-slate-800 shadow-sm inline-block self-start">
+                                        {node.trim()}
                                     </div>
-                                    {index < (project.architecture as string[]).length - 1 && (
-                                        <div className="flex justify-start ml-4 my-0.5 opacity-40">
+                                    {index < arr.length - 1 && (
+                                        <div className="flex justify-start ml-4 my-1 opacity-40">
                                             <svg className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                                             </svg>

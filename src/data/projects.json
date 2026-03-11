@@ -2,6 +2,7 @@
     {
         "id": "timetable-scheduler",
         "title": "Academic Timetable Scheduling Engine",
+        "category": "Automation",
         "problem": "University timetables were created manually — managing 40+ sections, hundreds of course assignments, room constraints, and faculty load limits with no automatic conflict detection.",
         "solution": "Built a constraint-based scheduling engine that automatically assigns courses to time slots and rooms while enforcing faculty load limits, room capacity rules, section conflicts, and institutional break windows.",
         "architecture": "React Admin Dashboard → Spring Boot REST API → Constraint Scheduling Engine → PostgreSQL (Flyway migrations)",
@@ -22,6 +23,7 @@
     {
         "id": "offline-ai-shell",
         "title": "Offline AI Assistant Shell",
+        "category": "Security",
         "problem": "Developers rely on online AI assistants, but integrating AI directly into system environments introduces major security risks such as privilege escalation, unsafe system calls, and data exposure.",
         "solution": "Built a custom C-based shell with an embedded offline LLM assistant using llama.cpp, designed with a security-first architecture including syscall filtering, namespace isolation, and resource limits.",
         "architecture": "Custom C Shell → Sandboxed AI Worker → llama.cpp Inference Engine → TinyLlama Local Model",
@@ -40,6 +42,7 @@
     {
         "id": "air-notepad",
         "title": "Air Notepad — Gesture-Based Drawing Interface",
+        "category": "HCI",
         "problem": "Traditional input devices limit natural human-computer interaction. This project explores how computer vision can convert hand movements into structured drawing commands in real time.",
         "solution": "Built a gesture-controlled drawing interface using MediaPipe hand landmark detection. Raw hand keypoints are processed with custom gesture recognition and smoothing algorithms to convert finger motion into stable drawing strokes.",
         "architecture": "Webcam → MediaPipe Hand Landmarks → Gesture Recognition → Coordinate Smoothing → OpenCV Canvas Rendering",
@@ -56,6 +59,7 @@
     {
         "id": "moodharmonics",
         "title": "MoodHarmonics — Multi-Model AI Music Generation System",
+        "category": "ML Orchestration",
         "problem": "AI media generation often requires multiple specialized models for text, audio, and classification. Coordinating these models while managing heavy inference workloads and reliability is a systems challenge.",
         "solution": "Built an end-to-end ML system that converts text prompts into generated music and lyrics while automatically classifying genre using audio embeddings.",
         "architecture": "React UI → Flask API → Model Orchestration Layer → (MusicGen | GPT-based Lyrics | YAMNet Classification) → MongoDB + Local Storage",
@@ -76,6 +80,7 @@
     {
         "id": "system-design-url-shortener",
         "title": "Distributed URL Shortener (System Design Study)",
+        "category": "Scalability",
         "problem": "URL shortening services must handle massive traffic while generating collision-free short codes, preventing abuse, and scaling across multiple backend instances.",
         "solution": "Built a full-stack URL shortener implementing Base62 encoding for compact ID generation, sliding-window rate limiting to prevent abuse, and a round-robin load balancing simulation for multi-instance deployments.",
         "architecture": "React SPA → Spring Boot API → Rate Limiter Interceptor → URL Service → SQLite (JPA) with Base62 encoding",
@@ -94,6 +99,7 @@
     {
         "id": "soothefoot-smart-insole",
         "title": "SootheFoot — Smart Insole Companion Application",
+        "category": "IoT Systems",
         "problem": "Wearable health devices generate sensor data that must be translated into meaningful user feedback and control interfaces.",
         "solution": "Developed a Flutter-based companion application to visualize foot pressure data and manage adaptive massage control for a prototype smart insole system.",
         "architecture": "Flutter Mobile App → Sensor Data Simulation API → User Profile Manager → SAP HANA Cloud (planned)",
