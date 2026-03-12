@@ -1,0 +1,236 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[margin=1.1cm]{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\usepackage{multicol}
+\usepackage{fontawesome5}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+%--------------------------------------
+% ADJUST SPACING (TIGHTENED)
+%--------------------------------------
+\setlength{\parskip}{1pt} % Reduced paragraph spacing (was 2pt)
+\renewcommand{\baselinestretch}{1.0} % Slightly tighter line spacing (was 1.03)
+\setlist[itemize]{itemsep=1pt, topsep=1pt}
+\pagestyle{empty}
+
+%--------------------------------------
+% COLORS
+%--------------------------------------
+\definecolor{myblue}{RGB}{33,93,175}
+
+%--------------------------------------
+% SECTION FORMATTING
+%--------------------------------------
+\titleformat{\section}{\color{myblue}\large\bfseries\uppercase}{}{0em}{}
+\titleformat{\subsection}[runin]{\bfseries}{}{0em}{}[ -- ]
+% Reduced spacing before and after section titles
+\titlespacing*{\section}{0pt}{6pt plus 2pt minus 2pt}{4pt plus 2pt minus 2pt}
+
+%--------------------------------------
+% HORIZONTAL LINE COMMAND (TIGHTER)
+%--------------------------------------
+\newcommand{\sectionline}{\vspace{0.1cm}\noindent\textcolor{myblue}{\rule{\linewidth}{0.35pt}}\vspace{0.1cm}}
+
+\begin{document}
+
+%--------------------------------------
+% HEADER
+%--------------------------------------
+\begin{minipage}[t]{0.78\textwidth}
+    {\Huge \textbf{Vaibhav Sharma}}\\[1.5pt]
+    \href{mailto:sharma31stmay@gmail.com}{sharma31stmay@gmail.com} \quad | \quad +91 70107 63467 \\
+    \href{https://www.linkedin.com/in/sharmavaibhav-}{linkedin.com/in/sharmavaibhav-} \quad | \quad 
+    \href{https://github.com/sharmavaibhav31}{github.com/sharmavaibhav31} \\
+    Whitefield, Bangalore, India
+\end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.12\textwidth}
+%     \vspace{-0.2cm}
+%     \centering
+%     % Auto-scaled image (keeps aspect ratio)
+%     \includegraphics[width=\linewidth, keepaspectratio]{VAIBHAVSHARMA.jpg}
+%     % Uncomment below line if you want a border placeholder instead
+%     % \fbox{\includegraphics[width=\linewidth, keepaspectratio]{profile.jpg}}
+% \end{minipage}
+
+% {\Huge \textbf{Vaibhav Sharma}}\\[1.5pt]
+% \href{mailto:sharma31stmay@gmail.com}{sharma31stmay@gmail.com} \quad | \quad +91 70107 63467 \\
+% \href{https://www.linkedin.com/in/vaibhav-sharma-2b9774293}{linkedin.com/in/vaibhav-sharma} \quad | \quad 
+% \href{https://github.com/sharmavaibhav31}{github.com/sharmavaibhav31} \\
+% Bangalore, India
+
+% \hfill
+% \begin{minipage}[t]{0.18\textwidth}
+%     \vspace{-0.4cm}
+%     \centering
+%     % Placeholder box (replace 'profile.jpg' with your image later)
+%     \fbox{\includegraphics[width=2.4cm, height=2.8cm]{profile.jpg}}\\
+%     % Optional caption below image
+%     % {\footnotesize \textit{Profile Picture}}
+% \end{minipage}
+
+
+
+\vspace{0.40cm}
+
+%--------------------------------------
+% SUMMARY
+%--------------------------------------
+\section*{Profile Summary}
+Passionate AI and Cybersecurity enthusiast pursuing B.E. in Computer Science with practical experience in developing intelligent, secure, and scalable applications. Proficient in full-stack development and secure software engineering, and actively developing proficiency in generative AI and machine learning. Eager to expand knowledge in automation and cyber defense to build impactful, real-world solutions that balance innovation with security.
+\vspace{0.25cm}
+
+% \sectionline
+
+%--------------------------------------
+% EDUCATION
+%--------------------------------------
+\section*{Education}
+\textbf{B.E. – Computer Science and Engineering} \\
+Mangalore Institute of Technology and Engineering \hfill \textit{Sep 2023 – Jun 2027} \\
+GPA: 9.43 \\
+Relevant Courses: DSA, OS, DBMS, OOP, Software Engineering, Cloud Computing, AI, Cybersecurity.\\
+
+\textbf{Senior Secondary (12th)} \\
+Maharishi Vidya Mandir, Hosur \hfill \textit{Feb 2022 - May 2023} \\
+Percentage: 87.4 \\
+Relevant Courses: Python, MySql.\\
+
+\textbf{Secondary School (SSLC)} \\
+Maharishi Vidya Mandir, Hosur \hfill \textit{Feb 2020 - May 2021} \\
+Percentage: 88.4
+
+\vspace{0.25cm}
+% \sectionline
+
+%--------------------------------------
+% TECHNICAL SKILLS
+%--------------------------------------
+\section*{Technical Skills}
+\begin{tabularx}{\textwidth}{@{} l X @{}}
+\textbf{Languages:} & Python, Java, C, Dart, SQL \\[3pt]
+\textbf{Frameworks/Tools:} & Flask, Flutter, Firebase, REST APIs, Git, GitHub, ReactJS  \\[3pt]
+\textbf{AI/ML:} & TensorFlow, Hugging Face, Scikit-learn, Generative AI, LLM Integration \\[3pt]
+\textbf{Database:} & PostgreSQL, MySQL, Pinecone VectorDB \\[3pt]
+\textbf{Cybersecurity:} & Ethical Hacking (Cisco), Cloud Security (Google), Secure SDLC \\[3pt]
+\textbf{Cloud:} & GCP, Firebase Auth, Firestore, CI/CD (basic)
+\end{tabularx}\\
+
+\vspace{0.25cm}
+% \sectionline
+
+%--------------------------------------
+% INTERNSHIP / EXPERIENCE
+%--------------------------------------
+\section*{Internships}
+\textbf{AI/ML Intern} \hfill Infosys Springboard \\
+\textit{Sep 2025 – Present} \hfill Virtual
+\begin{itemize}[leftmargin=*]
+\textbf{Technology:} TensorFlow-Keras, YAMNet-GTZAN,META-MusicGen, fine-tuned GPT-2 for lyrics \\[2pt]
+  Developed an \textbf{AI-Based Music Composition System} that generates personalized musical pieces and lyrics based on user-defined moods and contexts in form of prompts. Researched and implemented Deep Learning, NLP, and Generative AI models to map emotional prompt to contextual compositions. Conducted model evaluation, performance fine-tuning, and secure deployment testing for data integrity and scalability of the system.\\ Leveraged \textbf{Agile, Scrum, and DevOps methodologies} learned through Infosys courses to streamline the development lifecycle.
+\end{itemize}
+
+\vspace{0.20cm}
+
+\textbf{Flutter Developer Intern} \hfill ClubChat (Startup) \\
+\textit{Jul 2025 – Sep 2025} \hfill Remote
+\begin{itemize}[leftmargin=*]
+\textbf{Technology:} Flutter, Dart, Provider, Git  \\[2pt]
+  Built and shipped core features for a production app serving 10,000+ college students across India. Resolved 18+ bugs and optimized UI/UX, improving app stability and consistent UX. Contributed to multiple feature releases in agile sprints, collaborating with design and back-end teams. Ensured modular, maintainable, and secure code through clean architecture and documentation.
+  Worked in a remote setup, reporting directly to the Tech Head with consistent sprint-based deliverables.
+\end{itemize}
+
+\vspace{0.25cm}
+% \sectionline
+
+%--------------------------------------
+% PROJECTS
+%--------------------------------------
+\section*{Projects}
+
+% COMMENTED PROJECT (KEPT AS REQUESTED)
+% \subsection*{AI-Based Music Composition System (Infosys Springboard Internship)}
+% An intelligent system capable of composing personalized musical pieces based on user-defined moods and contexts.
+% \begin{itemize}[leftmargin=*]
+%   \item Explored advanced \textbf{Deep Learning, NLP, and Generative AI models} to map emotional cues to music.
+%   \item Built using \textbf{Streamlit} for interactive user input and real-time audio output.
+%   \item Designed evaluation metrics for music relevance, quality, and emotional alignment.
+%   \item Followed Agile and DevOps practices to ensure structured model development and deployment.
+% \end{itemize}
+\subsection*{Offline AI Assistant Shell: Secure, Local LLM Integration} \hfill \textit{Apr 2025 - Oct 2025}\\[2pt]
+\textbf{Technologies:} C, CMake, llama.cpp, TinyLlama-1.1B, \textbf{Seccomp} (Secure Computing Mode), Linux Syscalls \\[2pt]
+\textbf{GitHub:} \href{https://github.com/sharmavaibhav31/offline-ai-shell}{github.com/sharmavaibhav31/offline-ai-shell}\\[4pt]
+Developed a secure, \textbf{offline AI assistant} embedded within a custom \textbf{C shell} for local command-line inference, eliminating data transfer and ensuring privacy. Architected a robust security model using \textbf{Seccomp} syscall filtering, process isolation, and resource limits (Rlimits) to sandbox the AI worker and prevent unauthorized system access or privilege escalation. \\Used \textbf{llama.cpp} to achieve efficient, CPU-only local inference with the TinyLlama-1.1B model. The assistant helps users execute, interpret, and learn terminal commands conversationally, demonstrating proficiency in low-level system programming and kernel-level security.
+
+\subsection*{Air-Notepad: AI-Powered Virtual Notepad - Individual Project} \hfill \textit{Sept 2025}\\[2pt]
+% \textbf{Position:} Computer Vision/Python Developer \\[2pt]
+\textbf{Technologies:} Python, OpenCV, NumPy, MediaPipe Hand Landmarker, Jupyter Notebook \\[2pt]
+\textbf{GitHub:} \href{https://github.com/sharmavaibhav31/air-notepad}{github.com/sharmavaibhav31/air-notepad}\\[4pt]
+A computer vision application that functions as a virtual notepad, allowing users to draw and write on the screen using \textbf{real-time hand gestures}. Developed in \textbf{Python} using \textbf{OpenCV} for video processing and \textbf{MediaPipe Hand Landmarker} for precise hand and finger tracking. \\Implemented drawing functionality, color selection, and screen clearing features based on finger landmarks and proximity. This project showcases proficiency in low-latency computer vision and human-computer interaction (HCI) principles.
+
+\subsection*{FinTrix: AI-Powered Financial Mentor - Individual Project} \hfill \textit{June 2025 - Present }\\[2pt]
+\textbf{Position:} Flutter/ML Developer \\[2pt]
+\textbf{Technologies:} Flutter, Supabase, Pinecone, ML Kit, TensorFlow, Firebase \\[2pt]
+\textbf{GitHub:} \href{https://github.com/sharmavaibhav31/PersonalFinanceTracker}{github.com/sharmavaibhav31/FinTrix}\\[4pt]
+An AI-powered financial management app that acts as a personalized money mentor, helping users manage budgets, spending, and savings intelligently. Developed in \textbf{Flutter} using \textbf{Supabase} and Pinecone vector database for real-time data management. \\Implemented \textbf{ML-based anomaly detection}, budget forecasting, and user-specific insights. Integrated \textbf{AI-driven financial literacy modules} to provide learning pathways based on user behavior and level of knowledge.
+
+\vspace{0.12cm}
+
+\subsection*{SootheFoot – Smart Insole Health Companion - Hackathon Project} \hfill \textit{July 2025}\\[2pt]
+\textbf{Position:} Flutter/Backend Developer \\[2pt]
+\textbf{Technologies:} SAP HANA Cloud, fl\_chart, Node.js, Flutter, Dart, Provider \\[2pt]
+\textbf{GitHub:} \href{https://github.com/sharmavaibhav31/soothefoot} {github.com/sharmavaibhav31/soothefoot}\\[4pt]
+Developed a cross-platform (Flutter) application for women's wellness utilizing simulated real-time sensor data from a smart insole to deliver adaptive massage responses. Integrated SAP HANA Cloud for secure, scalable health analytics, establishing a foundation for AI-driven personalization. \\Built the front-end using Flutter and Provider architecture, featuring multi-user profiles and data visualization with fl_chart.
+
+\vspace{0.12cm}
+
+\subsection*{Hostel Permission Management System - Team Project} \hfill \textit{Aug 2025 - Oct 2025}\\[2pt]
+\textbf{Position:} Developer \\[2pt]
+\textbf{Technologies:} Flutter, Firebase, Cloud Firestore, PostgreSQ \\[2pt]
+\textbf{GitHub:} \href{github.com/sharmavaibhav31/Hostel-outing-manager}{github.com/sharmavaibhav31/Hostel-outing-manager}\\[4pt]
+A full-stack solution to digitize and secure hostel outing permissions for 1,000+ students. The system integrates a biometric microservice and automates gate operations for secure entry-exit validation.\\Integrated a Flutter-based mobile app with \textbf{QR scanning} to retrieve student data. Reduced manual approval time by 40\% and enhanced data transparency using secure cloud logging. \\ Implementing PostgreSQL - RDBMS based storage and logging to reduce financial overhead. 
+% Integrated a \textbf{biometric microservice} using \textbf{Tatvik TMF20} fingerprint scanner and \textbf{ASP.NET Core}, linked to Firebase for identity validation. Created a bridge application in \textbf{.NET Framework} to expose the Tatvik SDK over HTTP, enabling device communication. Automated gate in/out logging by matching captured fingerprints with stored templates in Firestore.
+
+\vspace{0.25cm}
+% \sectionline
+
+%--------------------------------------
+% CERTIFICATIONS
+%--------------------------------------
+\section*{Certifications}
+\begin{itemize}[leftmargin=*]
+  \item OCI Certified Data Science Professional – Oracle University (Oct 2025)
+  \item OCI Certified Generative AI Professional – Oracle University (Oct 2025)
+  \item OCI Certified Generative AI Foundations Associate – Oracle University (Sept 2025)
+  
+  
+
+  \item MERN Stack Development – GeeksforGeeks (July 2025, Ongoing)
+  % \item Cisco Certified Ethical Hacker – Cisco NetAcad (Mar 2025-July 2025)
+  \item Security in Google Cloud Specialization – Coursera (Aug 2024–Sep 2024)
+  \item Google Cloud Security Engineer – Coursera (Jul 2024)
+  \item Google Cybersecurity Specialization – Coursera (Sep 2023–Mar 2024)
+\end{itemize}
+
+\vspace{0.25cm}
+% \sectionline
+
+%--------------------------------------
+% LEADERSHIP & ACTIVITIES
+%--------------------------------------
+\section*{Leadership \& Activities}
+\begin{itemize}[leftmargin=*]
+  \item President of the Coders Club at MITE Campus
+  \item Led the organization of \textbf{Hack n' Seek}, a hybrid technical challenge that attracted 700+ participants online and 180+ on-site.
+  \item Finalist at \textbf{SAP Hackfest 2025} – Built a health-tech solution integrating SAP HANA Cloud, APIs, and Flutter.
+  \item Mentored peers in DSA, OOP, Application Development, and Python.
+  \item Active participant in hackathons and AI–Cybersecurity innovation challenges.
+  \item Member of the GDG, AI, Cloud, and Cybersecurity communities.
+\end{itemize}
+
+\end{document}

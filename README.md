@@ -1,73 +1,166 @@
-# React + TypeScript + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=30&duration=2800&pause=1500&color=4F46E5&center=true&vCenter=true&width=700&lines=Hi%2C+I'm+Vaibhav+Sharma;Backend+%26+ML+Engineer;I+build+systems+used+by+real+users" />
 
-Currently, two official plugins are available:
+<br/>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Backend & ML Engineer · AIML Intern @ Infosys Springboard · President, Coders Club @ MITE  
+B.E. Computer Science & Engineering (2027)
 
-## React Compiler
+<br/>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+<a href="mailto:sharma31stmay@gmail.com">
+  <img src="https://img.shields.io/badge/Email-Contact-4F46E5?style=for-the-badge&logo=gmail&logoColor=white"/>
+</a>
+<a href="https://www.linkedin.com/in/sharmavaibhav-">
+  <img src="https://img.shields.io/badge/LinkedIn-Connect-4F46E5?style=for-the-badge&logo=linkedin&logoColor=white"/>
+</a>
+<a href="https://github.com/sharmavaibhav31">
+  <img src="https://img.shields.io/badge/GitHub-Follow-4F46E5?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
 
-## Expanding the ESLint configuration
+<br/>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+<img src="https://komarev.com/ghpvc/?username=sharmavaibhav31&label=Profile%20Views&color=4F46E5&style=flat" />
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+</div>
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧭 Who I am
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+I’m a **backend & ML-focused engineer** who builds software that runs in the real world.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+I’ve worked on:
+- A **Flutter mobile app used by 10,000+ students across India**
+- **AI-powered data systems** for training machine learning models
+- **Secure backend pipelines** and cloud-based applications
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+My core interest sits at the intersection of:
+**Machine Learning · Backend Systems · Security-aware design**
+
+---
+
+## 💼 Experience
+
+### **AI/ML Intern — Infosys Springboard**
+*Sep 2025 – Nov 2025*  
+Working on applied ML systems, model pipelines, and real-world AI integration.
+
+---
+
+### **Mobile Application Developer — ClubChat (IIIT Delhi Startup)**
+*Jul 2025 – Sep 2025*
+
+Worked on a production Flutter app connecting **10,000+ college students across India**.
+
+- Shipped **core features** used by real users  
+- Fixed **20+ production bugs**  
+- Implemented **UI/UX improvements**  
+- Collaborated with **backend engineers & designers**  
+- Worked inside **agile release cycles**
+
+---
+
+## 🚀 Project Spotlight
+
+These are systems that I have built and tried to solve real problems.
+
+### 🥇 **Synthetic Data Generator**
+AI-powered tool for generating **realistic training data** when real datasets are missing.
+
+- Auto-generates dataset schemas
+- Uses Hugging Face models to synthesize records
+- Exports directly for ML training (CSV / Excel)
+
+**Stack:** Python · Transformers · Pandas · Flask · Streamlit  
+🔗 https://github.com/sharmavaibhav31/Synthetic-Data-Generator
+
+---
+
+### 🥈 **FinTrix — AI Personal Finance System**
+AI-powered expense tracking & budgeting for students and professionals.
+
+- Spending analysis
+- Budget forecasting
+- Anomaly detection
+- Personalized insights
+
+**Stack:** Flutter · Firebase · Supabase · ML Kit  
+🔗 https://github.com/sharmavaibhav31/PersonalFinanceTracker
+
+---
+
+### 🥉 **Offline AI Assistant (Mini OS Shell)**
+A C-based OS shell with an **offline local LLM** for privacy-first AI use.
+
+**Stack:** C · OS-level programming · Offline LLM  
+🔗 https://github.com/sharmavaibhav31/mini-shell-C-programming
+
+---
+
+## 🧠 What I focus on
+
+I don’t try to be “everything”.
+
+I specialize in:
+- Backend engineering
+- Machine learning pipelines
+- Data systems
+- Secure, privacy-aware architectures
+- Production-grade applications
+
+---
+
+## 🧩 Tech I actually use
+
+**Languages**  
+Python · Java · C · Dart  
+
+**Backend & Cloud**  
+Firebase · Supabase · PostgreSQL · REST APIs · Google Cloud  
+
+**AI & Data**  
+Hugging Face · Pandas · NumPy · Scikit-learn  
+
+**Frontend & Mobile**  
+Flutter · React  
+
+**Security & Systems**  
+Linux · Burp Suite · Wireshark  
+
+---
+
+## 📊 Engineering Footprint
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=sharmavaibhav31&show_icons=true&count_private=true&include_all_commits=true&theme=tokyonight" height="160"/>
+</p>
+
+<p align="center">
+  <img src="https://streak-stats.demolab.com?user=sharmavaibhav31&theme=tokyonight" height="160"/>
+</p>
+
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=sharmavaibhav31&theme=tokyo-night&area=true" />
+</p>
+
+---
+
+## 🎯 What I’m looking for
+
+Backend, ML, or applied AI roles where:
+- Systems matter
+- Data matters
+- Users matter
+
+If you’re building real products, and you need someone who can: understand systems, work with data, and ship code
+> We Should Talk.
+
+---
+
+<div align="center">
+
+⭐ *I build systems where intelligence meets reliability.*
+
+</div>
