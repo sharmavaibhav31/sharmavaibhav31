@@ -1,5 +1,5 @@
 import React from 'react';
-import { SquareTerminal, Database, Braces, Link as LinkIcon, Info } from 'lucide-react';
+import { SquareTerminal, Database, Braces, Link as LinkIcon, Info, Cpu } from 'lucide-react';
 import skillsData from '../../data/skills.json';
 import projectsData from '../../data/projects.json';
 
@@ -18,12 +18,14 @@ const typedSkillsData = skillsData as { capabilities: CapabilityCategory[] };
 
 const CardIcon = ({ category }: { category: string }) => {
     switch (category) {
-        case 'Core Backend':
+        case 'Backend Engineering':
             return <Braces className="w-5 h-5 text-accent dark:text-[#10B981]" />;
-        case 'System Design':
+        case 'Distributed Systems':
             return <Database className="w-5 h-5 text-accent dark:text-[#10B981]" />;
-        case 'AI & Data':
+        case 'Infrastructure & DevOps':
             return <SquareTerminal className="w-5 h-5 text-accent dark:text-[#10B981]" />;
+        case 'Applied ML Systems':
+            return <Cpu className="w-5 h-5 text-accent dark:text-[#10B981]" />;
         default:
             return <SquareTerminal className="w-5 h-5 text-accent dark:text-[#10B981]" />;
     }

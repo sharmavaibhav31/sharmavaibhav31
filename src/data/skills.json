@@ -1,23 +1,31 @@
 {
     "capabilities": [
         {
-            "category": "Core Backend",
+            "category": "Backend Engineering",
             "items": [
                 {
-                    "name": "Java & Spring Boot",
+                    "name": "Java",
+                    "tooltip": "Core backend language for scalable enterprise systems"
+                },
+                {
+                    "name": "Spring Boot",
                     "tooltip": "REST APIs, Security, Data JPA, Validation"
                 },
                 {
-                    "name": "Transactional Consistency",
-                    "tooltip": "Ensuring ACID properties using Spring @Transactional across boundary layers"
-                },
-                {
-                    "name": "Resource Modeling",
-                    "tooltip": "Designing clean RESTful domain entities and relationships"
+                    "name": "REST API Design",
+                    "tooltip": "Clean resource modeling and stateless interface design"
                 },
                 {
                     "name": "PostgreSQL",
                     "tooltip": "Relational schema design, constraints, and JSONB"
+                },
+                {
+                    "name": "Data Modeling",
+                    "tooltip": "Entity relationships and domain-driven design"
+                },
+                {
+                    "name": "Transactional Consistency",
+                    "tooltip": "Ensuring ACID properties using Spring @Transactional across boundaries"
                 },
                 {
                     "name": "Constraint Scheduling Engine",
@@ -27,7 +35,7 @@
             ]
         },
         {
-            "category": "System Design",
+            "category": "Distributed Systems",
             "items": [
                 {
                     "name": "Distributed Systems",
@@ -38,7 +46,7 @@
                     "tooltip": "Load balancing and stateless API design"
                 },
                 {
-                    "name": "Sliding-Window Rate Limiting",
+                    "name": "Sliding Window Rate Limiting",
                     "projectRef": "system-design-url-shortener",
                     "tooltip": "Preventing abuse while allowing short traffic bursts"
                 },
@@ -55,32 +63,7 @@
             ]
         },
         {
-            "category": "AI & Data",
-            "items": [
-                {
-                    "name": "PyTorch / TensorFlow",
-                    "projectRef": "moodharmonics",
-                    "tooltip": "Inference pipelines for embedded model execution"
-                },
-                {
-                    "name": "Local LLM Inference (llama.cpp)",
-                    "projectRef": "offline-ai-shell",
-                    "tooltip": "Running high-performance sandboxed LLMs locally in C/C++"
-                },
-                {
-                    "name": "Computer Vision (MediaPipe/OpenCV)",
-                    "projectRef": "air-notepad",
-                    "tooltip": "Real-time keypoint extraction and gesture algorithms"
-                },
-                {
-                    "name": "Audio Processing (Librosa)",
-                    "projectRef": "moodharmonics",
-                    "tooltip": "Extracting spectrograms and MFCC embeddings"
-                }
-            ]
-        },
-        {
-            "category": "Infrastructure",
+            "category": "Infrastructure & DevOps",
             "items": [
                 {
                     "name": "Docker",
@@ -88,21 +71,51 @@
                     "tooltip": "Containerizing backend services for reproducible deployments"
                 },
                 {
-                    "name": "CI/CD",
-                    "tooltip": "Automated build workflows and testing pipelines"
+                    "name": "CI/CD Pipelines",
+                    "tooltip": "Automated build workflows and testing orchestration"
                 },
                 {
-                    "name": "Flyway Migrations",
+                    "name": "Flyway Database Migrations",
                     "projectRef": "timetable-scheduler",
                     "tooltip": "Version-controlled SQL schema evolutions"
                 },
                 {
-                    "name": "Firebase / Supabase",
-                    "tooltip": "Real-time datastores and serverless auth integration"
+                    "name": "GitHub Actions",
+                    "tooltip": "Automated linting, testing, and continuous deployment"
                 },
                 {
-                    "name": "Git Workflows",
-                    "tooltip": "Branching strategies, code review, and history management"
+                    "name": "Deployment Automation",
+                    "tooltip": "Scripting infrastructure provisioning and application delivery"
+                }
+            ]
+        },
+        {
+            "category": "Applied ML Systems",
+            "items": [
+                {
+                    "name": "PyTorch",
+                    "projectRef": "moodharmonics",
+                    "tooltip": "Inference pipelines for deep learning models"
+                },
+                {
+                    "name": "TensorFlow",
+                    "projectRef": "moodharmonics",
+                    "tooltip": "Deploying and serving trained machine learning models"
+                },
+                {
+                    "name": "Local LLM Inference (llama.cpp)",
+                    "projectRef": "offline-ai-shell",
+                    "tooltip": "Running high-performance sandboxed LLMs locally in C/C++"
+                },
+                {
+                    "name": "Computer Vision (MediaPipe / OpenCV)",
+                    "projectRef": "air-notepad",
+                    "tooltip": "Real-time keypoint extraction and gesture algorithms"
+                },
+                {
+                    "name": "Audio Processing (Librosa)",
+                    "projectRef": "moodharmonics",
+                    "tooltip": "Extracting spectrograms and MFCC embeddings"
                 }
             ]
         }
