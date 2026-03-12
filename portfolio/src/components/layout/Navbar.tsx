@@ -6,7 +6,7 @@ export const Navbar: React.FC = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const links = [
-        { href: '/resume.pdf', icon: <FileText size={18} />, label: 'Resume', external: false },
+        { href: 'resume.pdf', icon: <FileText size={18} />, label: 'Resume', external: false },
         { href: resumeData.socials.github, icon: <Github size={18} />, label: 'GitHub', external: true },
         { href: resumeData.socials.linkedin, icon: <Linkedin size={18} />, label: 'LinkedIn', external: true },
     ];
