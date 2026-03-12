@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Github, Linkedin, Mail } from 'lucide-react';
@@ -125,15 +125,15 @@ export const ArchitectureDiagram: React.FC = () => {
                     className="w-full flex items-center justify-center py-3 px-4 border-b border-border/40 dark:border-white/5 relative z-10"
                     style={{ backgroundColor: isCenter ? 'transparent' : `${node.color}10` }}
                 >
-                    <span className={`font-display font-black text-[13px] tracking-[0.15em] uppercase text-primary dark:text-white/90`} style={{ color: isCenter ? 'inherit' : node.color }}>
+                    <span className={`font-display font-black text-[14px] tracking-[0.15em] uppercase text-primary dark:text-white/90`} style={{ color: isCenter ? 'inherit' : node.color }}>
                         {node.title}
                     </span>
                 </div>
                 <div className="flex flex-col flex-1 p-4 bg-transparent justify-center relative z-10">
                     {node.attributes.map((attr, idx) => (
-                        <span key={idx} className="font-mono text-[11.5px] font-medium text-secondary dark:text-slate-400 leading-relaxed mb-2 last:mb-0 whitespace-nowrap overflow-hidden text-ellipsis flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-[2px] opacity-70 flex-shrink-0" style={{ backgroundColor: node.color }}></span>
-                            {attr.replace(/\* /g, '').trim()}
+                        <span key={idx} className="font-mono text-[11.5px] font-medium text-secondary dark:text-slate-400 leading-relaxed mb-2 last:mb-0 whitespace-normal break-words flex items-start gap-2 pt-0.5">
+                            <span className="w-1.5 h-1.5 rounded-[2px] opacity-70 flex-shrink-0 mt-[6px]" style={{ backgroundColor: node.color }}></span>
+                            <span className="flex-1">{attr.replace(/\* /g, '').replace(/- /g, '').trim()}</span>
                         </span>
                     ))}
                 </div>

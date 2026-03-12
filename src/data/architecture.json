@@ -10,7 +10,7 @@
         "color": "#94A3B8",
         "cx": 600,
         "cy": 450,
-        "width": 260,
+        "width": 310,
         "height": 130,
         "description": "System Root: Orchestrating backend architecture, API design, and production-grade software deployments."
     },
@@ -26,7 +26,7 @@
         "color": "#3B82F6",
         "cx": 600,
         "cy": 150,
-        "width": 240,
+        "width": 280,
         "height": 140,
         "description": "Repository of robust systems, APIs, and scalable infrastructure deployments."
     },
@@ -42,8 +42,8 @@
         "color": "#8B5CF6",
         "cx": 200,
         "cy": 300,
-        "width": 230,
-        "height": 120,
+        "width": 300,
+        "height": 130,
         "description": "Professional timeline recounting engineering roles and critical system ownership."
     },
     {
@@ -58,8 +58,8 @@
         "color": "#10B981",
         "cx": 1000,
         "cy": 300,
-        "width": 230,
-        "height": 120,
+        "width": 300,
+        "height": 130,
         "description": "Inventory of languages, frameworks, databases, and operational tooling."
     },
     {
@@ -73,7 +73,7 @@
         "color": "#F59E0B",
         "cx": 350,
         "cy": 750,
-        "width": 230,
+        "width": 280,
         "height": 120,
         "description": "Personal background, engineering philosophy, and analytical approach to problem-solving."
     },
@@ -89,7 +89,7 @@
         "color": "#F97316",
         "cx": 850,
         "cy": 750,
-        "width": 230,
+        "width": 280,
         "height": 120,
         "description": "Communication channels for technical discussions, roles, and consulting inquiries."
     }
