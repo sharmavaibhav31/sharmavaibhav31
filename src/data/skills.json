@@ -58,10 +58,6 @@
             "category": "AI & Data",
             "items": [
                 {
-                    "name": "Intelligent Systems",
-                    "tooltip": "Bridging deterministic backends with probabilistic ML models"
-                },
-                {
                     "name": "PyTorch / TensorFlow",
                     "projectRef": "moodharmonics",
                     "tooltip": "Inference pipelines for embedded model execution"

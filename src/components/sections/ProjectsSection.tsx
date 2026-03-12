@@ -131,7 +131,7 @@ const ProjectCard: React.FC<{ project: Project; delay: number; forceVisible?: bo
                                 href={project.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-accent dark:hover:text-[#3B82F6] transition-colors duration-150"
+                                className="flex items-center gap-1.5 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 bg-slate-900 text-white dark:bg-white dark:text-slate-900 rounded shadow-sm hover:bg-accent dark:hover:bg-[#10B981] dark:hover:text-white hover:text-white transition-all duration-200"
                                 aria-label={`View ${project.title} on GitHub`}
                             >
                                 <GitHubIcon />
@@ -190,7 +190,7 @@ export const ProjectsSection: React.FC = () => {
 
                 <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 auto-rows-fr">
                     {displayedProjects.map((project, i) => (
-                        <div key={project.id} className="bg-canvas dark:bg-[#0B1120]">
+                        <div key={project.id} className="bg-canvas dark:bg-[#0B1120] h-full">
                             <ProjectCard project={project} delay={(i % 4) * 50} forceVisible={showAll && i >= 6} />
                         </div>
                     ))}

@@ -165,8 +165,16 @@ export const Header: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Mobile hamburger */}
+                {/* Mobile hamburger & floating actions */}
                 <div className="lg:hidden flex items-center gap-3">
+                    <a
+                        href="/resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 border border-primary dark:border-white/40 text-primary dark:text-white rounded-sm hover:bg-primary hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-200"
+                    >
+                        Resume
+                    </a>
                     <ThemeToggle className="scale-90" />
                     <button
                         className="p-2 text-secondary dark:text-white/80 hover:text-primary dark:hover:text-white transition-colors"

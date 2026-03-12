@@ -2,8 +2,8 @@
     "name": "Vaibhav Sharma",
     "title": "Backend / Systems Engineering Student",
     "tagline": "I build backend systems, developer tools, and systems-level projects focused on reliability and security.",
-    "summary": "Systems-oriented engineering student with experience building backend APIs, database-driven applications, and systems-level projects. My work ranges from Spring Boot services and scheduling engines to Linux sandboxing using seccomp and namespaces.",
-    "philosophy": "Systems-oriented engineering student with experience building backend APIs, database-driven applications, and systems-level projects. My work ranges from Spring Boot services and scheduling engines to Linux sandboxing using seccomp and namespaces.",
+    "summary": "Systems-oriented engineering student focused on backend infrastructure and production-grade systems. My work spans API services, database-driven applications, and systems-level tooling — from Spring Boot scheduling engines to Linux sandboxing using seccomp and namespaces.",
+    "philosophy": "Good systems are predictable, maintainable, and resilient under real-world constraints. I focus on building backend services that handle edge cases gracefully, minimize operational complexity, and remain understandable for the engineers who maintain them.",
     "experience": [
         {
             "company": "Infosys Springboard",

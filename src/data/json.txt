@@ -132,3 +132,9 @@
         "role": "Sole architect — owned schema design, constraint logic, and all API layers.",
         "github": "https://github.com/sharmavaibhav31/timetable-scheduler"
     },
+
+
+    {
+                    "name": "Intelligent Systems",
+                    "tooltip": "Bridging deterministic backends with probabilistic ML models"
+                },
