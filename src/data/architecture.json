@@ -3,8 +3,8 @@
         "id": "center",
         "title": "VAIBHAV SHARMA",
         "attributes": [
-            "- role: \"Systems Engineer\"",
-            "- status: \"Active\""
+            "- role: \"Backend / Systems Engineer\"",
+            "- focus: \"APIs • Distributed Systems • ML Integration\""
         ],
         "methods": [],
         "color": "#94A3B8",
@@ -18,9 +18,9 @@
         "id": "projects",
         "title": "PROJECTS",
         "attributes": [
-            "* repositories: Map<ID, Repo>",
-            "* deployments: int",
-            "* architectures: list"
+            "* systemsBuilt: 6",
+            "* domains: Backend • ML • Systems",
+            "* repos: github.com/sharmavaibhav31"
         ],
         "methods": [],
         "color": "#3B82F6",
@@ -34,8 +34,9 @@
         "id": "experience",
         "title": "EXPERIENCE",
         "attributes": [
-            "* timeline: List<Role>",
-            "* systemsBuilt: int"
+            "* roles: 2",
+            "* productionAppUsers: 8000+",
+            "* internships: ClubChat • Infosys Springboard"
         ],
         "methods": [],
         "color": "#8B5CF6",
@@ -49,8 +50,9 @@
         "id": "skills",
         "title": "SKILLS",
         "attributes": [
-            "* languages: Set<String>",
-            "* frameworks: Set<String>"
+            "* languages: Java • Python • Dart",
+            "* backend: Spring Boot • PostgreSQL",
+            "* systems: Linux • Seccomp • Docker"
         ],
         "methods": [],
         "color": "#10B981",
@@ -64,8 +66,8 @@
         "id": "about",
         "title": "ABOUT",
         "attributes": [
-            "* background: String",
-            "* philosophy: String"
+            "* focus: Backend Infrastructure",
+            "* interests: System Design • Automation"
         ],
         "methods": [],
         "color": "#F59E0B",
@@ -79,8 +81,9 @@
         "id": "contact",
         "title": "CONTACT",
         "attributes": [
-            "* email: String",
-            "* channels: List<URL>"
+            "* email: sharma31stmay@gmail.com",
+            "* github: github.com/sharmavaibhav31",
+            "* linkedin: linkedin.com/in/sharmavaibhav31"
         ],
         "methods": [],
         "color": "#F97316",
