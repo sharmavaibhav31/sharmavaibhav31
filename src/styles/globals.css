@@ -4,7 +4,7 @@
 
 @keyframes shootingStar {
   0% {
-    transform: rotate(-35deg) translateX(0);
+    transform: rotate(35deg) translateX(0);
     opacity: 0;
   }
 
@@ -17,7 +17,7 @@
   }
 
   100% {
-    transform: rotate(-35deg) translateX(110vw);
+    transform: rotate(35deg) translateX(110vw);
     opacity: 0;
   }
 }

@@ -20,8 +20,8 @@ const PortfolioContent: React.FC = () => {
     return (
         <div className="min-h-screen" style={{ backgroundColor: isDark ? '#000000' : '#F8FAFC', color: isDark ? '#fff' : '#0F172A' }}>
 
-            {/* Shooting stars — dark mode only, behind all content */}
-            {isDark && <ShootingStars />}
+            {/* Shooting stars — behind all content */}
+            <ShootingStars />
 
             <Header />
             <main id="main-content">

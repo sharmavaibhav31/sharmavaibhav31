@@ -20,9 +20,9 @@
             "role": "Flutter Developer Intern",
             "period": "Jul 2025 – Sep 2025",
             "bullets": [
-                "Developed UI modules for a production mobile application used by 8,000+ users.",
-                "Implemented event feed and real-time chat interface components using Flutter and Dart.",
-                "Diagnosed and resolved 18+ stability issues across two releases in collaboration with backend and design teams."
+                "Built Flutter UI modules for a production mobile application serving 8,000+ users.",
+                "Implemented event feed and real-time chat interface features using Flutter and Dart.",
+                "Diagnosed and resolved 18+ stability issues across two production releases in collaboration with backend and design teams."
             ]
         }
     ],

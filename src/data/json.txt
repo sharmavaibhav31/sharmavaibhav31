@@ -110,3 +110,25 @@
             }
         ]
     }
+
+
+
+      {
+        "id": "Faculty-Appraisal-system",
+        "title": "Faculty Appraisal System",
+        "category": "Backend System",
+        "problem": "University scheduling was done manually — 40+ sections, 200+ course-faculty assignments, zero conflict detection.",
+        "solution": "Designed a constraint-based scheduling engine with automated conflict resolution, room allocation, and Excel export.",
+        "architecture": "Spring Boot → Scheduling Engine → PostgreSQL (Flyway migrations) → Apache POI Excel reporter",
+        "impact": "Reduced schedule generation time from 3 days to under 2 minutes. Zero data-entry conflicts post-launch.",
+        "stack": [
+            "Java",
+            "Spring Boot 3",
+            "PostgreSQL",
+            "Flyway",
+            "Apache POI",
+            "Spring Security"
+        ],
+        "role": "Sole architect — owned schema design, constraint logic, and all API layers.",
+        "github": "https://github.com/sharmavaibhav31/timetable-scheduler"
+    },

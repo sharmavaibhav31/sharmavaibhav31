@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from '../../context/ThemeContext';
 
 // Each star: { top%, left%, width(px), duration(s), delay(s), opacity }
 const STARS = [
@@ -16,8 +17,10 @@ const STARS = [
     { top: 35, left: 20, width: 105, duration: 9.5, delay: 13, opacity: 0.25 },
 ];
 
-export const ShootingStars: React.FC = () => (
-    <div
+export const ShootingStars: React.FC = () => {
+    const { isDark } = useTheme();
+    return (
+        <div
         className="fixed inset-0 pointer-events-none overflow-hidden"
         aria-hidden="true"
         style={{ zIndex: 2 }}
@@ -32,13 +35,16 @@ export const ShootingStars: React.FC = () => (
                     width: `${star.width}px`,
                     height: '1.5px',
                     borderRadius: '999px',
-                    background: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(200,220,255,0.6) 100%)',
-                    transform: 'rotate(-35deg)',
+                    background: isDark 
+                        ? 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(200,220,255,0.6) 100%)'
+                        : 'linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.5) 100%)',
+                    transform: 'rotate(35deg)',
                     opacity: 0,
                     animation: `shootingStar ${star.duration}s ease-in ${star.delay}s infinite`,
                     maxOpacity: star.opacity,
                 } as React.CSSProperties}
             />
         ))}
-    </div>
-);
+        </div>
+    );
+};
