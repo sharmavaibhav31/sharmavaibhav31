@@ -10,8 +10,8 @@
         "color": "#94A3B8",
         "cx": 600,
         "cy": 450,
-        "width": 310,
-        "height": 130,
+        "width": 320,
+        "height": 140,
         "description": "System Root: Orchestrating backend architecture, API design, and production-grade software deployments."
     },
     {
@@ -27,7 +27,7 @@
         "cx": 600,
         "cy": 150,
         "width": 280,
-        "height": 140,
+        "height": 145,
         "description": "Repository of robust systems, APIs, and scalable infrastructure deployments."
     },
     {
@@ -43,7 +43,7 @@
         "cx": 200,
         "cy": 300,
         "width": 300,
-        "height": 130,
+        "height": 143,
         "description": "Professional timeline recounting engineering roles and critical system ownership."
     },
     {
@@ -58,8 +58,8 @@
         "color": "#10B981",
         "cx": 1000,
         "cy": 300,
-        "width": 300,
-        "height": 130,
+        "width": 320,
+        "height": 140,
         "description": "Inventory of languages, frameworks, databases, and operational tooling."
     },
     {
@@ -73,8 +73,8 @@
         "color": "#F59E0B",
         "cx": 350,
         "cy": 750,
-        "width": 280,
-        "height": 120,
+        "width": 300,
+        "height": 140,
         "description": "Personal background, engineering philosophy, and analytical approach to problem-solving."
     },
     {
@@ -83,14 +83,14 @@
         "attributes": [
             "* email: sharma31stmay@gmail.com",
             "* github: github.com/sharmavaibhav31",
-            "* linkedin: linkedin.com/in/sharmavaibhav31"
+            "* linkedin: sharmavaibhav31"
         ],
         "methods": [],
         "color": "#F97316",
         "cx": 850,
         "cy": 750,
-        "width": 280,
-        "height": 120,
+        "width": 300,
+        "height": 160,
         "description": "Communication channels for technical discussions, roles, and consulting inquiries."
     }
 ]
