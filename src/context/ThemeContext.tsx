@@ -13,7 +13,7 @@ const ThemeContext = createContext<ThemeContextValue>({
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [isDark, setIsDark] = useState<boolean>(() => {
         try {
-            const savedTheme = localStorage.getItem('theme');
+            const savedTheme = localStorage.getItem('portfolio-theme');
             return savedTheme !== 'light';
         } catch {
             return true;
@@ -24,10 +24,10 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         const root = document.documentElement;
         if (isDark) {
             root.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
+            localStorage.setItem('portfolio-theme', 'dark');
         } else {
             root.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
+            localStorage.setItem('portfolio-theme', 'light');
         }
     }, [isDark]);
 
