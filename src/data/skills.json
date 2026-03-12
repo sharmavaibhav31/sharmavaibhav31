@@ -1,51 +1,113 @@
 {
     "capabilities": [
         {
-            "category": "Backend Engineering",
+            "category": "Core Backend",
             "items": [
-                "Java & Spring Boot (REST APIs, Spring Security, Data JPA)",
-                "API design — resource modeling, validation, error handling",
-                "PostgreSQL schema design & relational data modeling",
-                "Constraint-driven scheduling and rule-based workflows",
-                "Transactional consistency using Spring @Transactional"
+                {
+                    "name": "Java & Spring Boot",
+                    "tooltip": "REST APIs, Security, Data JPA, Validation"
+                },
+                {
+                    "name": "Transactional Consistency",
+                    "tooltip": "Ensuring ACID properties using Spring @Transactional across boundary layers"
+                },
+                {
+                    "name": "Resource Modeling",
+                    "tooltip": "Designing clean RESTful domain entities and relationships"
+                },
+                {
+                    "name": "PostgreSQL",
+                    "tooltip": "Relational schema design, constraints, and JSONB"
+                },
+                {
+                    "name": "Constraint Scheduling Engine",
+                    "projectRef": "timetable-scheduler",
+                    "tooltip": "Rule-based engine for resolving multi-variable scheduling conflicts"
+                }
             ]
         },
         {
-            "category": "Systems Design Concepts",
+            "category": "System Design",
             "items": [
-                "Load balancing and horizontal scaling strategies",
-                "Sliding-window rate limiting algorithms",
-                "Distributed ID generation concepts",
-                "Failure handling and fallback strategies in ML pipelines"
+                {
+                    "name": "Distributed Systems",
+                    "tooltip": "Architecture for high availability and fault tolerance"
+                },
+                {
+                    "name": "Horizontal Scaling",
+                    "tooltip": "Load balancing and stateless API design"
+                },
+                {
+                    "name": "Sliding-Window Rate Limiting",
+                    "projectRef": "system-design-url-shortener",
+                    "tooltip": "Preventing abuse while allowing short traffic bursts"
+                },
+                {
+                    "name": "Distributed ID Generation",
+                    "projectRef": "system-design-url-shortener",
+                    "tooltip": "Base62 encoding strategies for short unique identifiers"
+                },
+                {
+                    "name": "Failure Fallbacks",
+                    "projectRef": "moodharmonics",
+                    "tooltip": "Graceful degradation patterns in multi-service inference architectures"
+                }
             ]
         },
         {
-            "category": "Cloud & Dev Tools",
+            "category": "AI & Data",
             "items": [
-                "Docker containerization",
-                "Git & GitHub workflows",
-                "CI/CD fundamentals",
-                "Firebase & Supabase backend services",
-                "Flyway database migrations"
+                {
+                    "name": "Intelligent Systems",
+                    "tooltip": "Bridging deterministic backends with probabilistic ML models"
+                },
+                {
+                    "name": "PyTorch / TensorFlow",
+                    "projectRef": "moodharmonics",
+                    "tooltip": "Inference pipelines for embedded model execution"
+                },
+                {
+                    "name": "Local LLM Inference (llama.cpp)",
+                    "projectRef": "offline-ai-shell",
+                    "tooltip": "Running high-performance sandboxed LLMs locally in C/C++"
+                },
+                {
+                    "name": "Computer Vision (MediaPipe/OpenCV)",
+                    "projectRef": "air-notepad",
+                    "tooltip": "Real-time keypoint extraction and gesture algorithms"
+                },
+                {
+                    "name": "Audio Processing (Librosa)",
+                    "projectRef": "moodharmonics",
+                    "tooltip": "Extracting spectrograms and MFCC embeddings"
+                }
             ]
         },
         {
-            "category": "AI / Data Systems",
+            "category": "Infrastructure",
             "items": [
-                "ML model integration in backend APIs",
-                "PyTorch and TensorFlow inference pipelines",
-                "Audio processing using Librosa",
-                "Computer vision pipelines with OpenCV and MediaPipe",
-                "Local LLM inference using llama.cpp"
-            ]
-        },
-        {
-            "category": "Leadership & Community",
-            "items": [
-                "Technical mentorship for student developers",
-                "Developer community leadership (Coders Club President)",
-                "Hackathon organization and event management",
-                "Peer mentoring in Git, DSA, and application development"
+                {
+                    "name": "Docker",
+                    "projectRef": "timetable-scheduler",
+                    "tooltip": "Containerizing backend services for reproducible deployments"
+                },
+                {
+                    "name": "CI/CD",
+                    "tooltip": "Automated build workflows and testing pipelines"
+                },
+                {
+                    "name": "Flyway Migrations",
+                    "projectRef": "timetable-scheduler",
+                    "tooltip": "Version-controlled SQL schema evolutions"
+                },
+                {
+                    "name": "Firebase / Supabase",
+                    "tooltip": "Real-time datastores and serverless auth integration"
+                },
+                {
+                    "name": "Git Workflows",
+                    "tooltip": "Branching strategies, code review, and history management"
+                }
             ]
         }
     ]
