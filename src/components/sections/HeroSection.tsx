@@ -42,8 +42,10 @@ export const HeroSection: React.FC = () => {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent dark:bg-[#61dca3] opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent dark:bg-[#61dca3]"></span>
                         </span>
-                        <span className="text-xs font-semibold tracking-wide text-secondary dark:text-white/90 uppercase">
-                            Available for Backend Roles
+                        <span className="text-xs font-semibold tracking-wide text-secondary dark:text-white/90">
+                            $ system.status
+                            <br />
+                            ACTIVE — AVAILABLE FOR BACKEND ROLES
                         </span>
                     </div>
 
