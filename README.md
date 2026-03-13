@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=30&duration=2800&pause=1500&color=4F46E5&center=true&vCenter=true&width=700&lines=Hi%2C+I'm+Vaibhav+Sharma;Backend+%26+ML+Engineer;I+build+systems+used+by+real+users" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=30&duration=2800&pause=1500&color=4F46E5&center=true&vCenter=true&width=700&lines=Hi%2C+I'm+Vaibhav+Sharma;Backend+%26+Systems+Engineer;I+build+systems+used+by+real+users" />
 
 <br/>
 
-Backend & ML Engineer · AIML Intern @ Infosys Springboard · President, Coders Club @ MITE  
+Backend & Systems Engineering Student · AIML Intern @ Infosys Springboard · President, Coders Club @ MITE  
 B.E. Computer Science & Engineering (2027)
 
 <br/>
@@ -29,7 +29,7 @@ B.E. Computer Science & Engineering (2027)
 
 ## 🧭 Who I am
 
-I’m a **backend & ML-focused engineer** who builds software that runs in the real world.
+I’m a **backend & Systems-focused engineering Student** who builds software that runs in the real world.
 
 I’ve worked on:
 - A **Flutter mobile app used by 10,000+ students across India**
