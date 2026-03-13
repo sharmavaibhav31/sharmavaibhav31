@@ -173,8 +173,8 @@ export const ProjectsSection: React.FC = () => {
     const displayedProjects = showAll ? projectsData : projectsData.slice(0, 6);
 
     return (
-        <section id="work" className="py-28 border-b border-border dark:border-slate-800/50 dark:bg-[#0B1120] transition-colors duration-300" aria-labelledby="work-heading">
-            <div className="w-full max-w-[1920px] mx-auto px-6 md:px-12 xl:px-16">
+        <section id="work" className="py-12 md:py-20 lg:py-28 border-b border-border dark:border-slate-800/50 dark:bg-[#0B1120] transition-colors duration-300 w-full overflow-hidden" aria-labelledby="work-heading">
+            <div className="w-full max-w-[1200px] mx-auto px-4">
                 <div className="reveal mb-16">
                     <p className="text-[11px] font-semibold text-accent dark:text-[#3B82F6] tracking-widest uppercase mb-3">
                         Selected Work
@@ -188,9 +188,9 @@ export const ProjectsSection: React.FC = () => {
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 auto-rows-fr">
+                <div className="flex flex-col items-center gap-8 w-full">
                     {displayedProjects.map((project, i) => (
-                        <div key={project.id} className="bg-canvas dark:bg-[#0B1120] h-full">
+                        <div key={project.id} className="bg-canvas dark:bg-[#0B1120] w-full sm:max-w-[90%] lg:max-w-[700px]">
                             <ProjectCard project={project} delay={(i % 4) * 50} forceVisible={showAll && i >= 6} />
                         </div>
                     ))}

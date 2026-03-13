@@ -28,7 +28,7 @@ export const HeroSection: React.FC = () => {
 
             {/* Content — fluid padding and flexible stacked/row layout */}
             <div
-                className="relative z-20 w-full max-w-[1920px] mx-auto px-6 md:px-12 xl:px-16 pt-32 pb-24 lg:py-0 min-h-screen flex flex-col lg:flex-row items-center justify-center lg:justify-between pointer-events-none gap-10 lg:gap-8"
+                className="relative z-20 w-full max-w-[1200px] mx-auto px-4 pt-32 pb-24 lg:py-0 min-h-screen flex flex-col lg:flex-row items-center justify-center lg:justify-between pointer-events-none gap-10 lg:gap-8"
                 style={{
                     transform: `translateY(${-textOffset}px)`,
                     willChange: 'transform',

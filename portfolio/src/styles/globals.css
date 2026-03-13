@@ -24,10 +24,16 @@
 
 
 @layer base {
+  * {
+    box-sizing: border-box;
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   body {
@@ -35,6 +41,8 @@
     color: #0F172A;
     font-family: 'Inter', system-ui, sans-serif;
     transition: color 200ms ease, background-color 200ms ease;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   /* Respect reduced motion */

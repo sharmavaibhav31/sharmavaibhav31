@@ -82,7 +82,7 @@ export const Header: React.FC = () => {
             className="sticky top-0 z-40 bg-canvas dark:bg-black/70 dark:backdrop-blur-md border-b border-border dark:border-white/10 transition-colors duration-200"
             role="banner"
         >
-            <div className="max-w-7xl mx-auto px-6 lg:px-16 h-20 flex items-center justify-between">
+            <div className="max-w-[1200px] mx-auto px-4 h-20 flex flex-wrap items-center justify-between">
 
                 {/* VS Logotype — triggers CardNav */}
                 <div className="relative">
