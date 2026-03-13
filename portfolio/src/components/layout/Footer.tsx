@@ -3,7 +3,7 @@ import resumeData from '../../data/resume.json';
 
 export const Footer: React.FC = () => (
     <footer className="py-8 border-t border-border dark:border-slate-800/50 dark:bg-[#0B1120] transition-colors duration-300" role="contentinfo">
-        <div className="max-w-[1200px] mx-auto px-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <p className="text-xs text-muted dark:text-slate-500 font-medium">
                 © 2026 Vaibhav Sharma. Systems / Backend Engineer.
             </p>
