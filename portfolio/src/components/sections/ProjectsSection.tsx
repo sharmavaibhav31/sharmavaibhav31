@@ -188,9 +188,9 @@ export const ProjectsSection: React.FC = () => {
                     </h2>
                 </div>
 
-                <div className="flex flex-col items-center gap-8 w-full">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 auto-rows-fr">
                     {displayedProjects.map((project, i) => (
-                        <div key={project.id} className="bg-canvas dark:bg-[#0B1120] w-full sm:max-w-[90%] lg:max-w-[700px]">
+                        <div key={project.id} className="bg-canvas dark:bg-[#0B1120] h-full">
                             <ProjectCard project={project} delay={(i % 4) * 50} forceVisible={showAll && i >= 6} />
                         </div>
                     ))}
