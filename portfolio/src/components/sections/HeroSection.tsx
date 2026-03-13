@@ -82,7 +82,7 @@ export const HeroSection: React.FC = () => {
                             View Projects
                         </a>
                         <a
-                            href="resume.pdf"
+                            href="Vaibhav_Sharma_resume.pdf"
                             id="hero-cta-resume"
                             target="_blank"
                             rel="noopener noreferrer"

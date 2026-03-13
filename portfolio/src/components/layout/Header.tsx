@@ -151,7 +151,7 @@ export const Header: React.FC = () => {
                     ))}
 
                     <a
-                        href="resume.pdf"
+                        href="Vaibhav_Sharma_resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="ml-4 px-5 py-2 border border-primary dark:border-white/40 text-primary dark:text-white text-sm font-semibold tracking-wider uppercase hover:bg-primary hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-200"
@@ -168,7 +168,7 @@ export const Header: React.FC = () => {
                 {/* Mobile hamburger & floating actions */}
                 <div className="lg:hidden flex items-center gap-3">
                     <a
-                        href="resume.pdf"
+                        href="Vaibhav_Sharma_resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 border border-primary dark:border-white/40 text-primary dark:text-white rounded-sm hover:bg-primary hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-200"
@@ -200,7 +200,7 @@ export const Header: React.FC = () => {
                         </a>
                     ))}
                     <a
-                        href="resume.pdf"
+                        href="Vaibhav_Sharma_resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block text-base font-semibold text-accent dark:text-[#61dca3] py-1 mt-4"
