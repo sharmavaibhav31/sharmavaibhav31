@@ -27,19 +27,21 @@ AI/ML Intern @ Infosys Springboard • President @ Coders Club, MITE
 
 ---
 
-## 🧭 Who I am
+# 🧠 Engineering Identity
 
-I’m a **backend & Systems-focused engineering Student** who builds software that runs in the real world.
+I’m a **backend & systems-focused engineer** interested in building reliable software infrastructure.
 
-I’ve worked on:
-- A **Flutter mobile app used by 10,000+ students across India**
-- **AI-powered data systems** for training machine learning models
-- **Secure backend pipelines** and cloud-based applications
+My work spans:
 
-My core interest sits at the intersection of:
-**Machine Learning · Backend Systems · Security-aware design**
+• Backend APIs and data systems  
+• Systems programming and Linux security  
+• Distributed systems concepts  
+• ML-powered backend services  
+
+I enjoy designing systems that **handle real workloads, respect constraints, and remain understandable for the engineers who maintain them.**
 
 ---
+
 
 ## 💼 Experience
 
