@@ -1,14 +1,14 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=30&duration=2800&pause=1500&color=4F46E5&center=true&vCenter=true&width=700&lines=Hi%2C+I'm+Vaibhav+Sharma;Backend+%26+Systems+Engineer;I+build+systems+used+by+real+users" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=30&duration=2800&pause=1500&color=4F46E5&center=true&vCenter=true&width=800&lines=Hi%2C+I'm+Vaibhav+Sharma;Backend+Engineer+%7C+Systems+Programming;I+design+systems+that+solves+real+problems" />
 
 <br/>
+Backend Engineer • Systems Programming • ML Exploration
 
-Backend & Systems Engineering Student · AIML Intern @ Infosys Springboard · President, Coders Club @ MITE  
-B.E. Computer Science & Engineering (2027)
+B.E. Computer Science & Engineering (2027)  
+AI/ML Intern @ Infosys Springboard • President @ Coders Club, MITE
 
 <br/>
-
 <a href="mailto:sharma31stmay@gmail.com">
   <img src="https://img.shields.io/badge/Email-Contact-4F46E5?style=for-the-badge&logo=gmail&logoColor=white"/>
 </a>
