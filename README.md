@@ -42,62 +42,119 @@ I enjoy designing systems that **handle real workloads, respect constraints, and
 
 ---
 
+# ⚙️ What I Like Building
+```
+Backend Systems
+├── REST APIs
+├── Data Pipelines
+└── Scheduling Engines
 
-## 💼 Experience
+Systems Programming
+├── Linux tools
+├── Process isolation
+└── Secure execution environments
 
-### **AI/ML Intern — Infosys Springboard**
-*Sep 2025 – Nov 2025*  
-Working on applied ML systems, model pipelines, and real-world AI integration.
+ML Infrastructure
+├── model orchestration
+├── inference pipelines
+└── local AI systems
+```
+
+---
+# 🚀 Selected Systems
+
+These projects represent **engineering problems I tried to solve**, not just apps I built.
 
 ---
 
-### **Mobile Application Developer — ClubChat (IIIT Delhi Startup)**
-*Jul 2025 – Sep 2025*
+## 🧩 Academic Timetable Scheduling Engine
+Constraint-based backend system that generates **conflict-free university timetables automatically**.
 
-Worked on a production Flutter app connecting **10,000+ college students across India**.
+**Key Ideas**
 
-- Shipped **core features** used by real users  
-- Fixed **20+ production bugs**  
-- Implemented **UI/UX improvements**  
-- Collaborated with **backend engineers & designers**  
-- Worked inside **agile release cycles**
+• Faculty load balancing  
+• Room capacity constraints  
+• Section conflict detection  
+• Automated schedule generation  
 
----
+**Stack**
 
-## 🚀 Project Spotlight
+Java · Spring Boot · PostgreSQL · Flyway · Docker · React
 
-These are systems that I have built and tried to solve real problems.
-
-### 🥇 **Synthetic Data Generator**
-AI-powered tool for generating **realistic training data** when real datasets are missing.
-
-- Auto-generates dataset schemas
-- Uses Hugging Face models to synthesize records
-- Exports directly for ML training (CSV / Excel)
-
-**Stack:** Python · Transformers · Pandas · Flask · Streamlit  
-🔗 https://github.com/sharmavaibhav31/Synthetic-Data-Generator
+🔗  https://github.com/sharmavaibhav31/timetable_management
 
 ---
 
-### 🥈 **FinTrix — AI Personal Finance System**
-AI-powered expense tracking & budgeting for students and professionals.
+## 🔒 Secure AI Assistant Shell
+A **C-based command shell with an embedded local LLM** designed with security-first architecture.
 
-- Spending analysis
-- Budget forecasting
-- Anomaly detection
-- Personalized insights
+**Key Ideas**
 
-**Stack:** Flutter · Firebase · Supabase · ML Kit  
-🔗 https://github.com/sharmavaibhav31/PersonalFinanceTracker
+• Seccomp syscall filtering  
+• Linux namespace isolation  
+• Resource limits for safe execution  
+• Offline AI inference via llama.cpp  
+
+**Stack**
+
+C · Linux · Seccomp · Namespaces · TinyLlama
+
+🔗  https://github.com/sharmavaibhav31/mini-shell-C-programming
 
 ---
 
-### 🥉 **Offline AI Assistant (Mini OS Shell)**
-A C-based OS shell with an **offline local LLM** for privacy-first AI use.
+## 🌐 Distributed URL Shortener
+Backend service implementing URL shortening with **rate limiting and scaling concepts**.
 
-**Stack:** C · OS-level programming · Offline LLM  
-🔗 https://github.com/sharmavaibhav31/mini-shell-C-programming
+**Key Ideas**
+
+• Base62 ID encoding  
+• Sliding window rate limiter  
+• Click analytics  
+• multi-instance load balancing simulation  
+
+**Stack**
+
+Java · Spring Boot · React
+
+🔗  https://github.com/sharmavaibhav31/urlshortner
+
+---
+
+## 🎵 ML Music Generation System
+Multi-model ML system orchestrating **music generation, lyrics synthesis, and genre classification**.
+
+**Key Ideas**
+
+• Model orchestration pipelines  
+• inference preloading  
+• fallback inference paths  
+• REST API integration  
+
+**Stack**
+
+Python · Flask · PyTorch · TensorFlow · MongoDB
+🔗  https://github.com/sharmavaibhav31/MoodHarmonics
+
+---
+
+# 💼 Experience
+
+### AI / ML Intern  
+**Infosys Springboard**
+
+• Built backend APIs orchestrating multiple ML models for music generation  
+• Implemented model preloading reducing inference latency by **45%**  
+• Designed REST endpoints for music generation and metadata storage  
+
+---
+
+### Mobile Developer Intern  
+**ClubChat Startup**
+
+• Worked on production Flutter app used by **8,000+ users**  
+• Implemented event feed and chat features  
+• Fixed **18+ stability issues across two releases**
 
 ---
 
