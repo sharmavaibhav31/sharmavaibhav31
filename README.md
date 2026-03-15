@@ -158,68 +158,67 @@ Python · Flask · PyTorch · TensorFlow · MongoDB
 
 ---
 
-## 🧠 What I focus on
+# 🧰 Tech Stack
 
-I don’t try to be “everything”.
+### Languages
 
-I specialize in:
-- Backend engineering
-- Machine learning pipelines
-- Data systems
-- Secure, privacy-aware architectures
-- Production-grade applications
+Java · C · Python · SQL · Dart
 
----
+### Backend
 
-## 🧩 Tech I actually use
+Spring Boot · REST APIs · Flask · PostgreSQL
 
-**Languages**  
-Python · Java · C · Dart  
+### Systems
 
-**Backend & Cloud**  
-Firebase · Supabase · PostgreSQL · REST APIs · Google Cloud  
+Linux · Seccomp · Namespaces · Process Isolation
 
-**AI & Data**  
-Hugging Face · Pandas · NumPy · Scikit-learn  
 
-**Frontend & Mobile**  
-Flutter · React  
+### Infrastructure
 
-**Security & Systems**  
-Linux · Burp Suite · Wireshark  
+Docker · Flyway · Google Cloud · GitHub Actions
+
+
+### ML / Data
+(Exploring)  
+PyTorch · TensorFlow · HuggingFace · OpenCV
 
 ---
 
-## 📊 Engineering Footprint
+# 📊 Engineering Activity
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=sharmavaibhav31&show_icons=true&count_private=true&include_all_commits=true&theme=tokyonight" height="160"/>
+
+<img src="https://github-readme-stats.vercel.app/api?username=sharmavaibhav31&show_icons=true&include_all_commits=true&theme=tokyonight&cache_seconds=1800" height="160"/>
+
+<img src="https://streak-stats.demolab.com?user=sharmavaibhav31&theme=tokyonight" height="160"/>
+
 </p>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=sharmavaibhav31&theme=tokyonight" height="160"/>
-</p>
-
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=sharmavaibhav31&theme=tokyo-night&area=true" />
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=sharmavaibhav31&theme=tokyo-night&area=true"/>
 </p>
 
 ---
 
-## 🎯 What I’m looking for
+# 🧪 Engineering Interests
 
-Backend, ML, or applied AI roles where:
-- Systems matter
-- Data matters
-- Users matter
+Distributed Systems | Backend Infrastructure | System Security | Machine Learning Systems | Developer Tooling
 
-If you’re building real products, and you need someone who can: understand systems, work with data, and ship code
-> We Should Talk.
+---
+
+# 🎯 Currently Exploring
+
+• distributed rate limiting  
+• backend reliability patterns  
+• secure runtime environments  
+• ML systems infrastructure  
 
 ---
 
 <div align="center">
 
-⭐ *I build systems where intelligence meets reliability.*
+### ⚡ Engineering Philosophy
+
+*"Good systems are predictable, maintainable, and resilient under real-world constraints."*
 
 </div>
