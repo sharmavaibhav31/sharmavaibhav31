@@ -16,7 +16,7 @@ const PortfolioContent: React.FC = () => {
     const { isDark } = useTheme();
 
     return (
-        <div className="min-h-screen" style={{ backgroundColor: isDark ? '#000000' : '#F8FAFC', color: isDark ? '#fff' : '#0F172A' }}>
+        <div className="min-h-screen">
             <Header />
             <main id="main-content">
                 <HeroSection />
@@ -36,4 +36,3 @@ export const Home: React.FC = () => (
         <PortfolioContent />
     </ThemeProvider>
 );
-

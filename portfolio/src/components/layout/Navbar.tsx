@@ -1,84 +1,91 @@
+// Theme: Redacted × Kernel/Log — new branch
+// Data source: resume.json — untouched
+
 import React, { useState } from 'react';
-import { Mail, Github, Linkedin, FileText, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import resumeData from '../../data/resume.json';
 
 export const Navbar: React.FC = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-    const links = [
-        { href: `${import.meta.env.BASE_URL}Vaibhav_Sharma_resume.pdf`, icon: <FileText size={18} />, label: 'Resume', external: false },
-        { href: resumeData.socials.github, icon: <Github size={18} />, label: 'GitHub', external: true },
-        { href: resumeData.socials.linkedin, icon: <Linkedin size={18} />, label: 'LinkedIn', external: true },
+    const navLinks = [
+        { label: 'WORK', href: '#work' },
+        { label: 'EXPERIENCE', href: '#experience' },
+        { label: 'SKILLS', href: '#skills' },
+        { label: 'ABOUT', href: '#about' },
     ];
 
     return (
         <nav
-            className="fixed top-0 right-0 left-0 lg:left-72 xl:left-80 h-16 flex items-center justify-between lg:justify-end px-4 lg:px-8 z-20 bg-gradient-to-b from-blueprint-dark via-blueprint-dark/80 to-transparent"
+            className="fixed top-0 left-0 w-full h-[48px] flex items-center justify-between px-4 lg:px-8 z-50 bg-bg-primary border-b-[0.5px] border-border-default"
             aria-label="Main navigation"
         >
-            {/* Mobile brand */}
-            <div className="lg:hidden font-mono text-sm text-slate-100 tracking-wider font-bold">
-                VS
+            {/* Left: Logo */}
+            <div className="font-mono text-sm tracking-widest whitespace-nowrap">
+                <span className="text-text-muted">{'// '}</span>
+                <span className="text-text-primary">SHARMA</span>
+                <span className="text-text-muted">, VAIBHAV</span>
             </div>
 
             {/* Mobile hamburger */}
             <button
-                className="lg:hidden p-2 text-text-dim hover:text-accent-cyan transition-colors"
+                className="lg:hidden p-2 text-text-muted hover:text-text-primary transition-colors"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
                 aria-expanded={mobileMenuOpen}
             >
-                {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+                {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
 
-            {/* Desktop links */}
-            <div className="hidden lg:flex items-center gap-5">
-                {links.map((link) => (
+            {/* Center: nav links */}
+            <div className="hidden lg:flex items-center gap-6 xl:gap-8 absolute left-1/2 -translate-x-1/2">
+                {navLinks.map((link) => (
                     <a
                         key={link.label}
                         href={link.href}
-                        target={link.external ? '_blank' : undefined}
-                        rel={link.external ? 'noopener noreferrer' : undefined}
-                        className="flex items-center gap-2 text-text-dim hover:text-accent-cyan transition-colors font-mono text-sm group"
-                        aria-label={link.label}
+                        className="text-[9px] font-mono tracking-[0.16em] text-text-muted hover:text-text-primary transition-colors duration-150"
                     >
-                        <span className="group-hover:scale-110 transition-transform duration-200">{link.icon}</span>
-                        <span>{link.label}</span>
+                        {link.label}
                     </a>
                 ))}
+            </div>
+
+            {/* Right: RESUME button */}
+            <div className="hidden lg:flex items-center">
                 <a
-                    href={resumeData.socials.email}
-                    className="flex items-center gap-2 px-4 py-1.5 border border-accent-cyan/30 text-accent-cyan hover:bg-accent-cyan/10 transition-all font-mono text-sm rounded-sm hover:border-accent-cyan hover:shadow-[0_0_10px_rgba(6,182,212,0.2)]"
+                    href={`${import.meta.env.BASE_URL}Vaibhav_Sharma_resume.pdf`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-[10px] text-text-secondary px-4 py-1.5 border-[0.5px] border-border-default hover:border-accent-red-border hover:text-accent-red transition-colors duration-150"
                 >
-                    <Mail size={15} />
-                    <span>Contact</span>
+                    RESUME
                 </a>
             </div>
 
             {/* Mobile menu */}
             {mobileMenuOpen && (
-                <div className="lg:hidden absolute top-16 left-0 right-0 bg-blueprint-dark/95 backdrop-blur border-b border-line-blueprint p-4 space-y-3">
-                    {links.map((link) => (
+                <div className="lg:hidden absolute top-[48px] left-0 w-full bg-bg-primary border-b-[0.5px] border-border-default p-4 flex flex-col gap-4">
+                    {navLinks.map((link) => (
                         <a
                             key={link.label}
                             href={link.href}
-                            target={link.external ? '_blank' : undefined}
-                            rel={link.external ? 'noopener noreferrer' : undefined}
-                            className="flex items-center gap-3 text-text-dim hover:text-accent-cyan transition-colors font-mono text-sm p-2"
+                            className="block text-[11px] font-mono tracking-[0.16em] text-text-muted hover:text-text-primary transition-colors duration-150"
                             onClick={() => setMobileMenuOpen(false)}
                         >
-                            {link.icon}
-                            <span>{link.label}</span>
+                            {link.label}
                         </a>
                     ))}
-                    <a
-                        href={resumeData.socials.email}
-                        className="flex items-center gap-3 text-accent-cyan font-mono text-sm p-2"
-                        onClick={() => setMobileMenuOpen(false)}
-                    >
-                        <Mail size={18} />
-                        <span>Contact</span>
-                    </a>
+                    <div className="pt-3 mt-1 border-t-[0.5px] border-border-subtle">
+                        <a
+                            href={`${import.meta.env.BASE_URL}Vaibhav_Sharma_resume.pdf`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block font-mono text-[10px] text-text-secondary px-4 py-2 border-[0.5px] border-border-default hover:border-accent-red-border hover:text-accent-red transition-colors duration-150 w-full text-center"
+                            onClick={() => setMobileMenuOpen(false)}
+                        >
+                            RESUME
+                        </a>
+                    </div>
                 </div>
             )}
         </nav>
