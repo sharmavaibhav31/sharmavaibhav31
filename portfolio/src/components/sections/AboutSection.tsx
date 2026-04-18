@@ -1,21 +1,22 @@
-// Theme: Redacted × Kernel/Log hybrid
+// Theme: Redacted × Kernel/Log hybrid — CSS variables for light/dark support
 // Data: untouched — presentation layer only
 
 import React from 'react';
 import resumeData from '../../data/resume.json';
 
-// Handle potential missing fields based on strict "don't touch data" rule
 const paragraphs = (resumeData as any).about?.paragraphs || [resumeData.philosophy, resumeData.summary].filter(Boolean);
 const hobbies = (resumeData as any).hobbies || ["Systems Architecture", "Low-level Programming", "Open Source Contribution", "Cybersecurity Research"];
 
 export const AboutSection: React.FC = () => (
-    <section id="about" className="w-full bg-bg-primary flex flex-col pt-0">
+    <section id="about" className="w-full flex flex-col pt-0" style={{ background: 'var(--bg-primary)' }}>
         {/* SECTION HEADER BAR */}
-        <div className="w-full h-[36px] bg-[#111111] border-y-[0.5px] border-white/[0.06] px-4 md:px-8 flex justify-between items-center shrink-0">
-            <div className="font-mono text-[8px] sm:text-[9px] text-white/20 tracking-[0.18em]">
+        <div className="w-full h-[36px] border-y-[0.5px] px-4 md:px-8 flex justify-between items-center shrink-0"
+            style={{ background: 'var(--bg-surface)', borderColor: 'var(--border-default)' }}>
+            <div className="font-mono text-[8px] sm:text-[9px] tracking-[0.18em]" style={{ color: 'var(--text-muted)' }}>
                 OPERATIVE PROFILE
             </div>
-            <div className="font-mono text-[8px] sm:text-[9px] text-[#4ade80]/70 tracking-[0.12em] font-bold">
+            <div className="font-mono text-[8px] sm:text-[9px] tracking-[0.12em] font-bold"
+                style={{ color: 'var(--accent-green)' }}>
                 CLEARANCE: LEVEL 5
             </div>
         </div>
@@ -26,13 +27,14 @@ export const AboutSection: React.FC = () => (
                 
                 {/* Left Column - Philosophy/Paragraphs */}
                 <div className="flex flex-col gap-[1.5rem]">
-                    <div className="font-mono text-[8px] text-white/20 tracking-[0.14em] mb-[4px]">
+                    <div className="font-mono text-[8px] tracking-[0.14em] mb-[4px]" style={{ color: 'var(--text-muted)' }}>
                         STATEMENT_OF_INTENT
                     </div>
                     {paragraphs.map((para: string, i: number) => (
-                        <div key={i} className="font-mono text-[13px] leading-[1.8] text-white/[0.6]">
+                        <div key={i} className="font-mono text-[13px] leading-[1.8]"
+                            style={{ color: 'var(--text-secondary)' }}>
                             {i === 0 && (
-                                <span className="text-[#4ade80] mr-2">{'>'}</span>
+                                <span className="mr-2" style={{ color: 'var(--accent-green)' }}>{'>'}</span>
                             )}
                             {para}
                         </div>
@@ -41,44 +43,42 @@ export const AboutSection: React.FC = () => (
 
                 {/* Right Column - Off-duty / Hobbies */}
                 <div className="flex flex-col">
-                    <div className="font-mono text-[8px] text-white/20 tracking-[0.14em] mb-[1.5rem]">
+                    <div className="font-mono text-[8px] tracking-[0.14em] mb-[1.5rem]" style={{ color: 'var(--text-muted)' }}>
                         OFF_DUTY_LOGS
                     </div>
                     <div className="flex flex-col">
                         {hobbies.map((hobby: string, i: number) => (
                             <div key={i} className="flex items-center gap-[10px] mb-[12px]">
-                                <span className="w-[3px] h-[3px] bg-[#ff5050] rounded-full shrink-0"></span>
-                                <span className="font-mono text-[11px] text-white/[0.4]">
+                                <span className="w-[3px] h-[3px] rounded-full shrink-0"
+                                    style={{ background: 'var(--accent-red)' }}></span>
+                                <span className="font-mono text-[11px]" style={{ color: 'var(--text-secondary)' }}>
                                     {hobby}
                                 </span>
                             </div>
                         ))}
                     </div>
 
-                    {/* Quick Socials/Contact block appended here for util */}
-                    <div className="mt-[2rem] pt-[1.5rem] border-t-[0.5px] border-white/[0.06] flex flex-wrap gap-[1rem]">
-                        <a 
-                            href={resumeData.socials.email}
-                            className="font-mono text-[10px] text-white/30 hover:text-white/70 transition-colors"
-                        >
-                            [EMAIL]
-                        </a>
-                        <a 
-                            href={resumeData.socials.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-mono text-[10px] text-white/30 hover:text-white/70 transition-colors"
-                        >
-                            [GITHUB]
-                        </a>
-                        <a 
-                            href={resumeData.socials.linkedin}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-mono text-[10px] text-white/30 hover:text-white/70 transition-colors"
-                        >
-                            [LINKEDIN]
-                        </a>
+                    {/* Socials */}
+                    <div className="mt-[2rem] pt-[1.5rem] border-t-[0.5px] flex flex-wrap gap-[1rem]"
+                        style={{ borderColor: 'var(--border-default)' }}>
+                        {[
+                            { label: '[EMAIL]', href: resumeData.socials.email },
+                            { label: '[GITHUB]', href: resumeData.socials.github, external: true },
+                            { label: '[LINKEDIN]', href: resumeData.socials.linkedin, external: true },
+                        ].map(link => (
+                            <a 
+                                key={link.label}
+                                href={link.href}
+                                target={link.external ? '_blank' : undefined}
+                                rel={link.external ? 'noopener noreferrer' : undefined}
+                                className="font-mono text-[10px] transition-colors"
+                                style={{ color: 'var(--text-muted)' }}
+                                onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
+                                onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
+                            >
+                                {link.label}
+                            </a>
+                        ))}
                     </div>
                 </div>
 

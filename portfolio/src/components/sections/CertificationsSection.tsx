@@ -1,31 +1,28 @@
-// Theme: Redacted × Kernel/Log hybrid
+// Theme: Redacted × Kernel/Log hybrid — CSS variables for light/dark support
 // Data: untouched — presentation layer only
 
 import React from 'react';
 import certData from '../../data/certifications.json';
 
 export const CertificationsSection: React.FC = () => {
-    // Flatten all certs into one list
     const allCerts = certData.flatMap(group => group.items);
     
-    // Sort by date descending
     const sortedCerts = [...allCerts].sort((a, b) => {
         const dateA = new Date(a.date).getTime();
         const dateB = new Date(b.date).getTime();
-        if (!isNaN(dateA) && !isNaN(dateB)) {
-            return dateB - dateA;
-        }
+        if (!isNaN(dateA) && !isNaN(dateB)) return dateB - dateA;
         return 0;
     });
 
     return (
-        <section id="certifications" className="w-full bg-bg-primary flex flex-col pt-0">
+        <section id="certifications" className="w-full flex flex-col pt-0" style={{ background: 'var(--bg-primary)' }}>
             {/* SECTION HEADER BAR */}
-            <div className="w-full h-[36px] bg-[#111111] border-y-[0.5px] border-white/[0.06] px-4 md:px-8 flex justify-between items-center shrink-0">
-                <div className="font-mono text-[8px] sm:text-[9px] text-white/20 tracking-[0.18em]">
+            <div className="w-full h-[36px] border-y-[0.5px] px-4 md:px-8 flex justify-between items-center shrink-0"
+                style={{ background: 'var(--bg-surface)', borderColor: 'var(--border-default)' }}>
+                <div className="font-mono text-[8px] sm:text-[9px] tracking-[0.18em]" style={{ color: 'var(--text-muted)' }}>
                     CREDENTIALS VERIFIED
                 </div>
-                <div className="font-mono text-[8px] sm:text-[9px] text-white/[0.18]">
+                <div className="font-mono text-[8px] sm:text-[9px]" style={{ color: 'var(--text-muted)' }}>
                     {sortedCerts.length} credentials
                 </div>
             </div>
@@ -38,26 +35,31 @@ export const CertificationsSection: React.FC = () => {
                         href={cert.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full p-[12px_2rem] border-b-[0.5px] border-white/[0.04] hover:bg-white/[0.02] transition-colors duration-150 grid grid-cols-1 sm:grid-cols-[1fr_180px_100px] items-center gap-2 sm:gap-0"
+                        className="w-full p-[12px_2rem] border-b-[0.5px] transition-colors duration-150 grid grid-cols-1 sm:grid-cols-[1fr_180px_100px] items-center gap-2 sm:gap-0"
+                        style={{ borderColor: 'var(--border-subtle)' }}
+                        onMouseEnter={e => (e.currentTarget.style.background = 'var(--bg-surface)')}
+                        onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
                     >
                         {/* Left: Name & Issuer */}
                         <div className="flex flex-col">
-                            <span className="font-sans text-[12px] font-semibold text-white/[0.72] mb-[2px]">
+                            <span className="font-sans text-[12px] font-semibold mb-[2px]"
+                                style={{ color: 'var(--text-primary)' }}>
                                 {cert.title}
                             </span>
-                            <span className="font-mono text-[10px] text-white/[0.25]">
+                            <span className="font-mono text-[10px]" style={{ color: 'var(--text-muted)' }}>
                                 {cert.issuer}
                             </span>
                         </div>
                         
                         {/* Middle: Date */}
-                        <div className="font-mono text-[10px] text-white/[0.22] sm:text-center">
+                        <div className="font-mono text-[10px] sm:text-center" style={{ color: 'var(--text-muted)' }}>
                             {cert.date}
                         </div>
                         
                         {/* Right: Badge */}
                         <div className="flex justify-start sm:justify-end">
-                            <span className="font-mono text-[8px] tracking-[0.14em] font-bold text-[#4ade80]/[0.7] border-[0.5px] border-[#4ade80]/25 px-[8px] py-[2px] text-center">
+                            <span className="font-mono text-[8px] tracking-[0.14em] font-bold border-[0.5px] px-[8px] py-[2px] text-center"
+                                style={{ color: 'var(--accent-green)', borderColor: 'var(--accent-green-border)' }}>
                                 VERIFIED
                             </span>
                         </div>

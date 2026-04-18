@@ -18,12 +18,12 @@ const SOCIAL_LINKS = [
 
 export const Header: React.FC = () => {
     return (
-        <header className="sticky top-0 z-[100] w-full h-[48px] bg-bg-primary border-b-[0.5px] border-border-default px-4 md:px-8 flex items-center justify-between">
+        <header className="sticky top-0 z-[100] w-full h-[48px] border-b-[0.5px] px-4 md:px-8 flex items-center justify-between" style={{ background: 'var(--bg-primary)', borderColor: 'var(--border-default)' }}>
             
             {/* Left: Logo */}
             <div className="font-mono text-[13.5px] tracking-[0.1em] shrink-0">
-                <span className="text-white/20">// SHARMA, </span>
-                <span className="text-white/[0.85] font-bold">VAIBHAV</span>
+                <span style={{ color: 'var(--text-muted)' }}>// SHARMA, </span>
+                <span className="font-bold" style={{ color: 'var(--text-primary)' }}>VAIBHAV</span>
             </div>
 
             {/* Center: Nav links (Hidden on small screens) */}
@@ -32,7 +32,10 @@ export const Header: React.FC = () => {
                     <a
                         key={link.label}
                         href={link.href}
-                        className="font-mono text-[10.5px] tracking-[0.16em] uppercase text-white/25 hover:text-white/70 transition-colors duration-150"
+                        className="font-mono text-[10.5px] tracking-[0.16em] uppercase transition-colors duration-150"
+                        style={{ color: 'var(--text-muted)' }}
+                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-primary)')}
+                        onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
                     >
                         {link.label}
                     </a>
@@ -48,7 +51,10 @@ export const Header: React.FC = () => {
                             href={s.href}
                             target={s.external ? '_blank' : undefined}
                             rel={s.external ? 'noopener noreferrer' : undefined}
-                            className="text-white/30 hover:text-white/70 transition-colors duration-150"
+                            className="transition-colors duration-150"
+                            style={{ color: 'var(--text-muted)' }}
+                            onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-primary)')}
+                            onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
                             aria-label={s.label}
                         >
                             {s.icon}
@@ -60,16 +66,23 @@ export const Header: React.FC = () => {
                     href={`${import.meta.env.BASE_URL}Vaibhav_Sharma_resume.pdf`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-mono text-[10.5px] tracking-[0.12em] px-[14px] py-[5px] bg-transparent text-white/50 border-[0.5px] border-white/20 hover:text-[#ff5050]/80 hover:border-[#ff5050]/30 transition-all duration-150 uppercase"
+                    className="font-mono text-[10.5px] tracking-[0.12em] px-[14px] py-[5px] bg-transparent border-[0.5px] transition-all duration-150 uppercase"
+                    style={{ color: 'var(--text-secondary)', borderColor: 'var(--border-default)' }}
+                    onMouseEnter={e => {
+                        e.currentTarget.style.color = 'var(--accent-red)';
+                        e.currentTarget.style.borderColor = 'var(--accent-red-border)';
+                    }}
+                    onMouseLeave={e => {
+                        e.currentTarget.style.color = 'var(--text-secondary)';
+                        e.currentTarget.style.borderColor = 'var(--border-default)';
+                    }}
                 >
                     RESUME
                 </a>
 
-                {/* Theme Toggle styled specifically */}
+                {/* Theme Toggle */}
                 <div className="flex items-center">
-                    <div className="[&>button]:!bg-white/[0.04] [&>button]:!border-[0.5px] [&>button]:!border-white/[0.08] [&>button]:!text-white/30 [&>button]:!rounded-none [&>button]:!p-1">
-                        <ThemeToggle />
-                    </div>
+                    <ThemeToggle />
                 </div>
             </div>
         </header>

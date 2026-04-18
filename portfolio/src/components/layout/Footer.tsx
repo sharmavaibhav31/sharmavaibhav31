@@ -1,4 +1,4 @@
-// Theme: Redacted × Kernel/Log hybrid
+// Theme: Redacted × Kernel/Log hybrid — CSS variables for light/dark support
 // Data: untouched — presentation layer only
 
 import React from 'react';
@@ -8,37 +8,35 @@ export const Footer: React.FC = () => {
     const year = new Date().getFullYear();
     
     return (
-        <footer className="w-full h-[48px] bg-bg-primary border-t-[0.5px] border-white/[0.06] px-4 md:px-8 flex items-center justify-between mt-auto">
+        <footer className="w-full h-[48px] border-t-[0.5px] px-4 md:px-8 flex items-center justify-between mt-auto"
+            style={{ background: 'var(--bg-surface)', borderColor: 'var(--border-default)' }}>
             
             {/* Left: System log end */}
-            <div className="font-mono text-[9px] text-white/30 tracking-[0.12em] uppercase">
+            <div className="font-mono text-[9px] tracking-[0.12em] uppercase"
+                style={{ color: 'var(--text-muted)' }}>
                 © {year} VAIBHAV SHARMA. SYSTEM_LOG_END.
             </div>
 
             {/* Right: Social Links */}
             <div className="flex items-center gap-[1rem]">
-                <a
-                    href={resumeData.socials.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono text-[9px] tracking-[0.12em] text-white/20 hover:text-[#4ade80]/70 transition-colors duration-150"
-                >
-                    [GITHUB]
-                </a>
-                <a
-                    href={resumeData.socials.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono text-[9px] tracking-[0.12em] text-white/20 hover:text-[#4ade80]/70 transition-colors duration-150"
-                >
-                    [LINKEDIN]
-                </a>
-                <a
-                    href={resumeData.socials.email}
-                    className="font-mono text-[9px] tracking-[0.12em] text-white/20 hover:text-[#4ade80]/70 transition-colors duration-150"
-                >
-                    [EMAIL]
-                </a>
+                {[
+                    { label: '[GITHUB]', href: resumeData.socials.github, external: true },
+                    { label: '[LINKEDIN]', href: resumeData.socials.linkedin, external: true },
+                    { label: '[EMAIL]', href: resumeData.socials.email },
+                ].map(link => (
+                    <a
+                        key={link.label}
+                        href={link.href}
+                        target={link.external ? '_blank' : undefined}
+                        rel={link.external ? 'noopener noreferrer' : undefined}
+                        className="font-mono text-[9px] tracking-[0.12em] transition-colors duration-150"
+                        style={{ color: 'var(--text-muted)' }}
+                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
+                        onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
+                    >
+                        {link.label}
+                    </a>
+                ))}
             </div>
             
         </footer>

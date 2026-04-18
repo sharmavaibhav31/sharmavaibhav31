@@ -1,4 +1,4 @@
-// Theme: Redacted × Kernel/Log hybrid
+// Theme: Redacted × Kernel/Log hybrid — CSS variables for light/dark support
 // Data: untouched — presentation layer only
 
 import React from 'react';
@@ -9,19 +9,20 @@ import projectsData from '../../data/projects.json';
 export const HeroSection: React.FC = () => {
     const specialization = resumeData.tagline;
     
-    // Extract top 5 backend skills
     const primaryStack = skillsData.capabilities
         .find(c => c.category === 'Backend Engineering')
         ?.items.slice(0, 5).map(i => i.name).join(' · ') || 'Java · Spring Boot · PostgreSQL · Docker';
 
     return (
-        <section id="hero" className="w-full min-h-screen flex flex-col bg-bg-primary pt-[48px]">
+        <section id="hero" className="w-full min-h-screen flex flex-col pt-[48px]" style={{ background: 'var(--bg-primary)' }}>
             {/* DOCUMENT HEADER BAR */}
-            <div className="w-full h-[36px] bg-[#111111] border-y-[0.5px] border-white/[0.06] px-8 flex justify-between items-center z-10 shrink-0">
-                <div className="font-mono text-[9px] text-white/[0.55] tracking-[0.22em]">
+            <div className="w-full h-[36px] border-y-[0.5px] px-8 flex justify-between items-center z-10 shrink-0"
+                style={{ background: 'var(--bg-surface)', borderColor: 'var(--border-default)' }}>
+                <div className="font-mono text-[9px] tracking-[0.22em]" style={{ color: 'var(--text-muted)' }}>
                     PERSONNEL FILE
                 </div>
-                <div className="font-mono text-[8px] font-bold tracking-[0.2em] text-[#ff5050]/80 border border-[#ff5050]/35 px-[10px] py-[2px] -rotate-[1.5deg] inline-block">
+                <div className="font-mono text-[8px] font-bold tracking-[0.2em] -rotate-[1.5deg] inline-block border px-[10px] py-[2px]"
+                    style={{ color: 'var(--accent-red)', borderColor: 'var(--accent-red-border)' }}>
                     ACTIVE
                 </div>
             </div>
@@ -33,105 +34,150 @@ export const HeroSection: React.FC = () => {
                     
                     {/* Top section */}
                     <div>
-                        <div className="font-mono text-[10px] text-white/[0.50] tracking-[0.2em] mb-[2rem]">
+                        <div className="font-mono text-[10px] tracking-[0.2em] mb-[2rem]" style={{ color: 'var(--text-muted)' }}>
                             // PERSONNEL FILE
                         </div>
-                        <h1 className="font-sans text-[48px] lg:text-[72px] font-black leading-[0.88] tracking-[-2px] text-white/[0.92] uppercase mb-2">
+                        <h1 className="font-sans text-[48px] lg:text-[72px] font-black leading-[0.88] tracking-[-2px] uppercase mb-2" style={{ color: 'var(--text-primary)' }}>
                             {resumeData.name.split(' ').map((n, i) => <React.Fragment key={i}>{n}<br className="hidden sm:block" /></React.Fragment>)}
                         </h1>
-                        <div className="font-mono text-[10px] tracking-[0.16em] text-white/[0.55] mb-[2.5rem] uppercase">
+                        <div className="font-mono text-[10px] tracking-[0.16em] mb-[2.5rem] uppercase" style={{ color: 'var(--text-muted)' }}>
                             {resumeData.title}
                         </div>
                     </div>
 
                     {/* Middle section — FIELD ROWS */}
                     <div className="flex flex-col">
-                        <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] border-white/[0.06] gap-[1.5rem]">
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] text-white/[0.55] tracking-[0.14em] uppercase">SPECIALIZATION</span>
-                            <span className="font-mono text-[12.5px] text-white/[0.82] leading-[1.6]">{specialization}</span>
+                        {[
+                            { key: 'SPECIALIZATION', val: specialization },
+                            { key: 'PRIMARY STACK',  val: primaryStack },
+                            { key: 'CLEARANCE',      val: 'Java · C · Python · seccomp · llama.cpp' },
+                            { key: 'SYSTEMS BUILT',  val: `${projectsData.length} active` },
+                            { key: 'USERS SERVED',   val: '8,000+' },
+                        ].map(row => (
+                            <div key={row.key} className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] gap-[1.5rem]"
+                                style={{ borderColor: 'var(--border-default)' }}>
+                                <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] tracking-[0.14em] uppercase"
+                                    style={{ color: 'var(--text-muted)' }}>{row.key}</span>
+                                <span className="font-mono text-[12.5px] leading-[1.6]"
+                                    style={{ color: 'var(--text-secondary)' }}>{row.val}</span>
+                            </div>
+                        ))}
+
+                        {/* LOCATION — redacted */}
+                        <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] gap-[1.5rem]"
+                            style={{ borderColor: 'var(--border-default)' }}>
+                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] tracking-[0.14em] uppercase"
+                                style={{ color: 'var(--text-muted)' }}>LOCATION</span>
+                            <span
+                                className="font-mono text-[12.5px] leading-[1.6] select-none cursor-pointer px-[4px] py-[1px] min-w-[140px] inline-block transition-all duration-250"
+                                style={{ background: 'var(--border-default)', color: 'transparent' }}
+                                title="hover to reveal"
+                                onMouseEnter={e => {
+                                    e.currentTarget.style.background = 'transparent';
+                                    e.currentTarget.style.color = 'var(--text-secondary)';
+                                }}
+                                onMouseLeave={e => {
+                                    e.currentTarget.style.background = 'var(--border-default)';
+                                    e.currentTarget.style.color = 'transparent';
+                                }}
+                            >Bengaluru, India</span>
                         </div>
-                        <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] border-white/[0.06] gap-[1.5rem]">
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] text-white/[0.55] tracking-[0.14em] uppercase">PRIMARY STACK</span>
-                            <span className="font-mono text-[12.5px] text-white/[0.82] leading-[1.6]">{primaryStack}</span>
+
+                        {/* CONTACT — redacted */}
+                        <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] gap-[1.5rem]"
+                            style={{ borderColor: 'var(--border-default)' }}>
+                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] tracking-[0.14em] uppercase"
+                                style={{ color: 'var(--text-muted)' }}>CONTACT</span>
+                            <span
+                                className="font-mono text-[12.5px] leading-[1.6] select-none cursor-pointer px-[4px] py-[1px] min-w-[140px] inline-block transition-all duration-250"
+                                style={{ background: 'var(--border-default)', color: 'transparent' }}
+                                title="hover to reveal"
+                                onMouseEnter={e => {
+                                    e.currentTarget.style.background = 'transparent';
+                                    e.currentTarget.style.color = 'var(--text-secondary)';
+                                }}
+                                onMouseLeave={e => {
+                                    e.currentTarget.style.background = 'var(--border-default)';
+                                    e.currentTarget.style.color = 'transparent';
+                                }}
+                            >{resumeData.socials.email.replace('mailto:', '')}</span>
                         </div>
-                        <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] border-white/[0.06] gap-[1.5rem]">
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] text-white/[0.55] tracking-[0.14em] uppercase">CLEARANCE</span>
-                            <span className="font-mono text-[12.5px] text-white/[0.82] leading-[1.6]">Java · C · Python · seccomp · llama.cpp</span>
-                        </div>
-                        <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] border-white/[0.06] gap-[1.5rem]">
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] text-white/[0.55] tracking-[0.14em] uppercase">SYSTEMS BUILT</span>
-                            <span className="font-mono text-[12.5px] text-white/[0.82] leading-[1.6]">{projectsData.length} active</span>
-                        </div>
-                        <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] border-white/[0.06] gap-[1.5rem]">
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] text-white/[0.55] tracking-[0.14em] uppercase">USERS SERVED</span>
-                            <span className="font-mono text-[12.5px] text-white/[0.82] leading-[1.6]">8,000+</span>
-                        </div>
-                        <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] border-white/[0.06] gap-[1.5rem]">
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] text-white/[0.55] tracking-[0.14em] uppercase">LOCATION</span>
-                            <span className="font-mono text-[12.5px] leading-[1.6] bg-white/[0.12] text-transparent select-none cursor-pointer px-[4px] py-[1px] min-w-[140px] inline-block transition-all duration-250 ease-out hover:bg-transparent hover:text-white/[0.82]" title="hover to reveal">Bengaluru, India</span>
-                        </div>
-                        <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] border-white/[0.06] gap-[1.5rem]">
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] text-white/[0.55] tracking-[0.14em] uppercase">CONTACT</span>
-                            <span className="font-mono text-[12.5px] leading-[1.6] bg-white/[0.12] text-transparent select-none cursor-pointer px-[4px] py-[1px] min-w-[140px] inline-block transition-all duration-250 ease-out hover:bg-transparent hover:text-white/[0.82]" title="hover to reveal">{resumeData.socials.email.replace('mailto:', '')}</span>
-                        </div>
-                        <div className="flex flex-row items-center pt-[9px] pb-[9px] border-b-[0.5px] border-white/[0.06] gap-[1.5rem]">
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] text-white/[0.55] tracking-[0.14em] uppercase">STATUS</span>
+
+                        {/* STATUS */}
+                        <div className="flex flex-row items-center pt-[9px] pb-[9px] border-b-[0.5px] gap-[1.5rem]"
+                            style={{ borderColor: 'var(--border-default)' }}>
+                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] tracking-[0.14em] uppercase"
+                                style={{ color: 'var(--text-muted)' }}>STATUS</span>
                             <div className="flex items-center">
-                                <div className="w-[6px] h-[6px] rounded-full bg-[#4ade80] animate-pulse-dot mr-2 shrink-0"></div>
-                                <span className="font-mono text-[10px] tracking-[0.12em] text-[#4ade80]">ACTIVE — AVAILABLE</span>
+                                <div className="w-[6px] h-[6px] rounded-full animate-pulse-dot mr-2 shrink-0"
+                                    style={{ background: 'var(--accent-green)' }}></div>
+                                <span className="font-mono text-[10px] tracking-[0.12em]"
+                                    style={{ color: 'var(--accent-green)' }}>ACTIVE — AVAILABLE</span>
                             </div>
                         </div>
                     </div>
 
                     {/* Bottom section — buttons */}
                     <div className="flex flex-row gap-4 mt-[2.5rem]">
-                        <a href="#work" className="font-mono text-[10px] tracking-[0.08em] uppercase bg-[#ff5050]/[0.08] text-[#ff5050]/[0.85] border-[0.5px] border-[#ff5050]/30 px-[22px] py-[9px] hover:bg-[#ff5050]/[0.14] hover:border-[#ff5050]/50 transition-all duration-150 rounded-none">
+                        <a href="#work"
+                            className="font-mono text-[10px] tracking-[0.08em] uppercase border-[0.5px] px-[22px] py-[9px] transition-all duration-150 rounded-none"
+                            style={{ background: 'var(--accent-red-bg)', color: 'var(--accent-red)', borderColor: 'var(--accent-red-border)' }}>
                             VIEW PROJECTS
                         </a>
-                        <a href={`${import.meta.env.BASE_URL}Vaibhav_Sharma_resume.pdf`} target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] tracking-[0.08em] uppercase bg-transparent text-white/[0.60] border-[0.5px] border-white/[0.12] px-[22px] py-[9px] hover:text-white/[0.82] hover:border-white/[0.25] transition-all duration-150 rounded-none">
+                        <a href={`${import.meta.env.BASE_URL}Vaibhav_Sharma_resume.pdf`} target="_blank" rel="noopener noreferrer"
+                            className="font-mono text-[10px] tracking-[0.08em] uppercase bg-transparent border-[0.5px] px-[22px] py-[9px] transition-all duration-150 rounded-none"
+                            style={{ color: 'var(--text-secondary)', borderColor: 'var(--border-default)' }}>
                             DOWNLOAD RESUME
                         </a>
                     </div>
                 </div>
 
                 {/* RIGHT COLUMN */}
-                <div className="group relative w-full lg:w-[35%] bg-[#0e0e0e] border-t-[0.5px] lg:border-t-0 lg:border-l-[0.5px] border-white/[0.06] min-h-[300px] lg:min-h-[calc(100vh-84px)] p-[3rem_2.5rem] flex flex-col items-center justify-center">
+                <div className="group relative w-full lg:w-[35%] border-t-[0.5px] lg:border-t-0 lg:border-l-[0.5px] min-h-[300px] lg:min-h-[calc(100vh-84px)] p-[3rem_2.5rem] flex flex-col items-center justify-center"
+                    style={{ background: 'var(--bg-raised)', borderColor: 'var(--border-default)' }}>
                     
-                    {/* Wrapper that takes up the inner padded space naturally */}
                     <div className="relative w-full flex flex-col items-center justify-center">
                         
-                        {/* Actual Photo (dictates flow size, fades in on hover) */}
+                        {/* Actual Photo — fades in on hover */}
                         <div className="flex flex-col items-center justify-center w-full opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out z-20">
                             <img 
                                 src={`${import.meta.env.BASE_URL}vaibhav_sharma.png`} 
                                 alt="Vaibhav Sharma" 
-                                className="w-full h-auto max-h-[75vh] object-cover object-top block border-[0.5px] border-white/[0.08]"
+                                className="w-full h-auto max-h-[75vh] object-cover object-top block border-[0.5px]"
+                                style={{ borderColor: 'var(--border-default)' }}
                             />
-                            <div className="text-center mt-[10px] text-[9px] font-mono tracking-[0.14em] text-white/[0.55]">
+                            <div className="text-center mt-[10px] text-[9px] font-mono tracking-[0.14em]"
+                                style={{ color: 'var(--text-muted)' }}>
                                 // IDENTITY CONFIRMED
                             </div>
                         </div>
 
-                        {/* Placeholder content (fades out on hover, perfectly covers the img) */}
-                        <div className="absolute inset-0 flex flex-col items-center transition-opacity duration-400 ease-in-out group-hover:opacity-0 z-10 pb-[22px] /* account for caption space */">
-                            <div className="relative w-full h-full border-[0.5px] border-white/[0.1] flex flex-col items-center justify-center p-1">
-                                {/* Pattern/Noise Fill */}
-                                <div className="absolute inset-1 bg-white/[0.03]"></div>
+                        {/* Placeholder — fades out on hover */}
+                        <div className="absolute inset-0 flex flex-col items-center transition-opacity duration-400 ease-in-out group-hover:opacity-0 z-10 pb-[22px]">
+                            <div className="relative w-full h-full border-[0.5px] flex flex-col items-center justify-center p-1"
+                                style={{ borderColor: 'var(--border-default)' }}>
+                                <div className="absolute inset-1" style={{ background: 'var(--border-subtle)' }}></div>
                                 
                                 {/* Corner Markers */}
-                                <div className="absolute -top-[1px] -left-[1px] w-[10px] h-[10px] border-t-[1px] border-l-[1px] border-white/[0.2] group-hover:border-white/[0.08] transition-colors duration-400 z-20"></div>
-                                <div className="absolute -top-[1px] -right-[1px] w-[10px] h-[10px] border-t-[1px] border-r-[1px] border-white/[0.2] group-hover:border-white/[0.08] transition-colors duration-400 z-20"></div>
-                                <div className="absolute -bottom-[1px] -left-[1px] w-[10px] h-[10px] border-b-[1px] border-l-[1px] border-white/[0.2] group-hover:border-white/[0.08] transition-colors duration-400 z-20"></div>
-                                <div className="absolute -bottom-[1px] -right-[1px] w-[10px] h-[10px] border-b-[1px] border-r-[1px] border-white/[0.2] group-hover:border-white/[0.08] transition-colors duration-400 z-20"></div>
+                                {[
+                                    '-top-[1px] -left-[1px] border-t-[1px] border-l-[1px]',
+                                    '-top-[1px] -right-[1px] border-t-[1px] border-r-[1px]',
+                                    '-bottom-[1px] -left-[1px] border-b-[1px] border-l-[1px]',
+                                    '-bottom-[1px] -right-[1px] border-b-[1px] border-r-[1px]',
+                                ].map((pos, i) => (
+                                    <div key={i} className={`absolute ${pos} w-[10px] h-[10px] z-20`}
+                                        style={{ borderColor: 'var(--text-muted)' }}></div>
+                                ))}
 
-                                {/* Centered Labels */}
                                 <div className="relative z-10 flex flex-col items-center">
-                                    <span className="font-mono text-[8px] text-white/[0.55] tracking-[0.2em]">PHOTO</span>
-                                    <span className="font-mono text-[8px] text-[#ff5050]/40 tracking-[0.2em] mt-1">REDACTED</span>
+                                    <span className="font-mono text-[8px] tracking-[0.2em]"
+                                        style={{ color: 'var(--text-muted)' }}>PHOTO</span>
+                                    <span className="font-mono text-[8px] tracking-[0.2em] mt-1"
+                                        style={{ color: 'var(--accent-red)' }}>REDACTED</span>
                                 </div>
                             </div>
-                            {/* VS. label */}
-                            <div className="absolute bottom-[-18px] font-mono text-[11px] text-white/[0.20] tracking-[0.1em]">
+                            <div className="absolute bottom-[-18px] font-mono text-[11px] tracking-[0.1em]"
+                                style={{ color: 'var(--text-muted)' }}>
                                 VS.
                             </div>
                         </div>

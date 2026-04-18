@@ -1,4 +1,4 @@
-// Theme: Redacted × Kernel/Log hybrid
+// Theme: Redacted × Kernel/Log hybrid — CSS variables for light/dark support
 // Data: untouched — presentation layer only
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -21,9 +21,7 @@ const ProjectRow: React.FC<{ project: Project; index: number }> = ({ project, in
 
     const pid = 1042 + (index * 65);
     const desc = project.solution ? (project.solution.length > 60 ? project.solution.slice(0, 60) + '...' : project.solution) : '';
-    
     const stack = (project.stack || []).slice(0, 3);
-    
     const isRun = project.category && (project.category.toUpperCase().includes('SECURITY') || project.category.toUpperCase().includes('ML') || project.category.toUpperCase().includes('AI'));
 
     const archPoints = typeof project.architecture === 'string' 
@@ -33,20 +31,23 @@ const ProjectRow: React.FC<{ project: Project; index: number }> = ({ project, in
     return (
         <>
             <div 
-                className="grid grid-cols-2 sm:grid-cols-[60px_1fr_90px_70px] md:grid-cols-[60px_1fr_220px_90px_70px] gap-x-4 gap-y-3 px-[2rem] py-[14px] border-b-[0.5px] border-white/[0.04] cursor-pointer transition-colors duration-150 hover:bg-white/[0.02] items-center"
+                className="grid grid-cols-2 sm:grid-cols-[60px_1fr_90px_70px] md:grid-cols-[60px_1fr_220px_90px_70px] gap-x-4 gap-y-3 px-[2rem] py-[14px] border-b-[0.5px] cursor-pointer transition-colors duration-150 items-center"
+                style={{ borderColor: 'var(--border-subtle)' }}
                 onClick={() => setIsOpen(!isOpen)}
+                onMouseEnter={e => (e.currentTarget.style.background = 'var(--bg-surface)')}
+                onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
             >
                 {/* PID */}
-                <div className="hidden sm:block font-mono text-[9px] text-white/[0.15]">
+                <div className="hidden sm:block font-mono text-[9px]" style={{ color: 'var(--text-muted)' }}>
                     {pid}
                 </div>
 
                 {/* PROCESS */}
                 <div className="col-span-2 sm:col-span-1 flex flex-col">
-                    <div className="font-sans text-[13px] font-semibold text-white/[0.82]">
+                    <div className="font-sans text-[13px] font-semibold" style={{ color: 'var(--text-primary)' }}>
                         {project.title}
                     </div>
-                    <div className="font-mono text-[10px] text-white/[0.28] mt-[2px]">
+                    <div className="font-mono text-[10px] mt-[2px]" style={{ color: 'var(--text-muted)' }}>
                         {desc}
                     </div>
                 </div>
@@ -54,7 +55,8 @@ const ProjectRow: React.FC<{ project: Project; index: number }> = ({ project, in
                 {/* STACK */}
                 <div className="hidden md:flex flex-row flex-wrap gap-[4px]">
                     {stack.map(tech => (
-                        <span key={tech} className="font-mono text-[9px] text-white/[0.35] bg-white/[0.04] border-[0.5px] border-white/[0.08] px-[6px] py-[1px]">
+                        <span key={tech} className="font-mono text-[9px] px-[6px] py-[1px] border-[0.5px]"
+                            style={{ color: 'var(--text-muted)', background: 'var(--bg-raised)', borderColor: 'var(--border-default)' }}>
                             {tech}
                         </span>
                     ))}
@@ -63,9 +65,11 @@ const ProjectRow: React.FC<{ project: Project; index: number }> = ({ project, in
                 {/* STATUS */}
                 <div className="flex items-center">
                     {isRun ? (
-                        <span className="font-mono text-[8px] font-bold bg-[#e05c2a]/10 text-[#e05c2a] border-[0.5px] border-[#e05c2a]/30 px-[8px] py-[2px]">RUN</span>
+                        <span className="font-mono text-[8px] font-bold px-[8px] py-[2px] border-[0.5px]"
+                            style={{ background: 'var(--accent-orange-bg)', color: 'var(--accent-orange)', borderColor: 'var(--accent-orange-border)' }}>RUN</span>
                     ) : (
-                        <span className="font-mono text-[8px] font-bold bg-white/[0.04] text-white/30 border-[0.5px] border-white/[0.1] px-[8px] py-[2px]">SLP</span>
+                        <span className="font-mono text-[8px] font-bold px-[8px] py-[2px] border-[0.5px]"
+                            style={{ background: 'var(--bg-raised)', color: 'var(--text-muted)', borderColor: 'var(--border-default)' }}>SLP</span>
                     )}
                 </div>
 
@@ -73,7 +77,8 @@ const ProjectRow: React.FC<{ project: Project; index: number }> = ({ project, in
                 <div className="flex items-center justify-end">
                     {project.github && (
                         <button 
-                            className="font-mono text-[9px] px-[10px] py-[4px] bg-[#ff5050]/[0.08] text-[#ff5050]/70 border-[0.5px] border-[#ff5050]/25 hover:bg-[#ff5050]/[0.14] transition-colors"
+                            className="font-mono text-[9px] px-[10px] py-[4px] border-[0.5px] transition-colors"
+                            style={{ background: 'var(--accent-red-bg)', color: 'var(--accent-red)', borderColor: 'var(--accent-red-border)' }}
                             onClick={(e) => {
                                 e.stopPropagation();
                                 window.open(project.github, '_blank', 'noopener,noreferrer');
@@ -87,23 +92,25 @@ const ProjectRow: React.FC<{ project: Project; index: number }> = ({ project, in
 
             {/* ACCORDION ROW */}
             <div 
-                className="overflow-hidden transition-[max-height] duration-300 ease-in-out bg-[#111111]"
-                style={{ maxHeight }}
+                className="overflow-hidden transition-[max-height] duration-300 ease-in-out"
+                style={{ maxHeight, background: 'var(--bg-surface)' }}
             >
-                <div ref={contentRef} className="border-b-[0.5px] border-white/[0.06]">
+                <div ref={contentRef} className="border-b-[0.5px]" style={{ borderColor: 'var(--border-default)' }}>
                     <div className="p-6 md:p-[1.5rem_2rem_1.5rem_60px] grid grid-cols-1 md:grid-cols-2 gap-[2rem]">
                         
                         {/* Left column */}
                         <div className="flex flex-col">
-                            <div className="font-mono text-[8px] text-white/20 tracking-[0.14em] mb-[6px]">ROLE</div>
-                            <div className="font-mono text-[11px] text-white/[0.45] border-l-[2px] border-[#4ade80]/25 bg-[#4ade80]/[0.03] px-[10px] py-[8px] leading-[1.7]">
+                            <div className="font-mono text-[8px] tracking-[0.14em] mb-[6px]" style={{ color: 'var(--text-muted)' }}>ROLE</div>
+                            <div className="font-mono text-[11px] border-l-[2px] px-[10px] py-[8px] leading-[1.7]"
+                                style={{ color: 'var(--text-secondary)', borderColor: 'var(--accent-green-border)', background: 'var(--accent-green-bg)' }}>
                                 {project.role}
                             </div>
 
                             {project.solution && (
                                 <>
-                                    <div className="font-mono text-[8px] text-white/20 tracking-[0.14em] mb-[6px] mt-[1rem]">PROBLEM</div>
-                                    <div className="font-mono text-[11px] text-white/[0.45] border-l-[2px] border-[#4ade80]/25 bg-[#4ade80]/[0.03] px-[10px] py-[8px] leading-[1.7]">
+                                    <div className="font-mono text-[8px] tracking-[0.14em] mb-[6px] mt-[1rem]" style={{ color: 'var(--text-muted)' }}>PROBLEM</div>
+                                    <div className="font-mono text-[11px] border-l-[2px] px-[10px] py-[8px] leading-[1.7]"
+                                        style={{ color: 'var(--text-secondary)', borderColor: 'var(--accent-green-border)', background: 'var(--accent-green-bg)' }}>
                                         {project.solution}
                                     </div>
                                 </>
@@ -112,20 +119,24 @@ const ProjectRow: React.FC<{ project: Project; index: number }> = ({ project, in
 
                         {/* Right column */}
                         <div className="flex flex-col">
-                            <div className="font-mono text-[8px] text-white/20 tracking-[0.14em] mb-[6px]">ARCHITECTURE</div>
+                            <div className="font-mono text-[8px] tracking-[0.14em] mb-[6px]" style={{ color: 'var(--text-muted)' }}>ARCHITECTURE</div>
                             <div className="flex flex-col">
                                 {archPoints.map((pt, i) => (
-                                    <div key={i} className="flex items-start gap-[8px] py-[5px] border-b-[0.5px] border-white/[0.04]">
-                                        <span className="w-[3px] h-[3px] bg-[#4ade80] rounded-full shrink-0 mt-[6px]"></span>
-                                        <span className="font-mono text-[11px] text-white/[0.4] leading-[1.6]">{pt}</span>
+                                    <div key={i} className="flex items-start gap-[8px] py-[5px] border-b-[0.5px]"
+                                        style={{ borderColor: 'var(--border-subtle)' }}>
+                                        <span className="w-[3px] h-[3px] rounded-full shrink-0 mt-[6px]"
+                                            style={{ background: 'var(--accent-green)' }}></span>
+                                        <span className="font-mono text-[11px] leading-[1.6]"
+                                            style={{ color: 'var(--text-secondary)' }}>{pt}</span>
                                     </div>
                                 ))}
                             </div>
 
                             {project.impact && (
                                 <>
-                                    <div className="font-mono text-[8px] text-white/20 tracking-[0.14em] mb-[8px] mt-[1rem]">IMPACT</div>
-                                    <div className="bg-[#4ade80]/[0.03] border-[0.5px] border-[#4ade80]/15 px-[10px] py-[8px] font-mono text-[11px] text-white/[0.4] leading-[1.6]">
+                                    <div className="font-mono text-[8px] tracking-[0.14em] mb-[8px] mt-[1rem]" style={{ color: 'var(--text-muted)' }}>IMPACT</div>
+                                    <div className="border-[0.5px] px-[10px] py-[8px] font-mono text-[11px] leading-[1.6]"
+                                        style={{ background: 'var(--accent-green-bg)', borderColor: 'var(--accent-green-border)', color: 'var(--text-secondary)' }}>
                                         {project.impact}
                                     </div>
                                 </>
@@ -153,30 +164,32 @@ export const ProjectsSection: React.FC = () => {
     );
 
     return (
-        <section id="work" className="w-full bg-bg-primary flex flex-col pt-0">
+        <section id="work" className="w-full flex flex-col pt-0" style={{ background: 'var(--bg-primary)' }}>
             {/* SECTION HEADER BAR */}
-            <div className="w-full h-[36px] bg-[#111111] border-y-[0.5px] border-white/[0.06] px-4 md:px-8 flex justify-between items-center shrink-0">
-                <div className="font-mono text-[8px] sm:text-[9px] text-white/20 tracking-[0.18em]">
+            <div className="w-full h-[36px] border-y-[0.5px] px-4 md:px-8 flex justify-between items-center shrink-0"
+                style={{ background: 'var(--bg-surface)', borderColor: 'var(--border-default)' }}>
+                <div className="font-mono text-[8px] sm:text-[9px] tracking-[0.18em]" style={{ color: 'var(--text-muted)' }}>
                     PROCESS TABLE — SELECTED WORK
                 </div>
-                <div className="font-mono text-[8px] sm:text-[9px] text-white/[0.18]">
+                <div className="font-mono text-[8px] sm:text-[9px]" style={{ color: 'var(--text-muted)' }}>
                     {projectsData.length} processes · 0 errors
                 </div>
             </div>
 
             {/* FILTER ROW */}
-            <div className="w-full px-4 md:px-8 py-[1rem] flex flex-wrap gap-0 border-b-[0.5px] border-white/[0.06]">
+            <div className="w-full px-4 md:px-8 py-[1rem] flex flex-wrap gap-0 border-b-[0.5px]"
+                style={{ borderColor: 'var(--border-default)' }}>
                 {filters.map(filter => {
                     const isActive = activeFilter === filter;
                     return (
                         <button
                             key={filter}
                             onClick={() => setActiveFilter(filter)}
-                            className={`font-mono text-[9px] tracking-[0.12em] px-[16px] py-[6px] bg-transparent cursor-pointer transition-all duration-150 border-b-[2px] ${
-                                isActive 
-                                    ? 'text-[#4ade80] border-b-[#4ade80]' 
-                                    : 'text-white/25 border-b-transparent hover:text-white/50'
-                            }`}
+                            className="font-mono text-[9px] tracking-[0.12em] px-[16px] py-[6px] bg-transparent cursor-pointer transition-all duration-150 border-b-[2px]"
+                            style={{
+                                color: isActive ? 'var(--accent-green)' : 'var(--text-muted)',
+                                borderBottomColor: isActive ? 'var(--accent-green)' : 'transparent',
+                            }}
                         >
                             {filter}
                         </button>
@@ -185,12 +198,14 @@ export const ProjectsSection: React.FC = () => {
             </div>
 
             {/* TABLE COLUMN HEADERS */}
-            <div className="hidden sm:grid sm:grid-cols-[60px_1fr_90px_70px] md:grid-cols-[60px_1fr_220px_90px_70px] gap-4 px-[2rem] py-[8px] border-b-[0.5px] border-white/[0.1] items-center">
-                <div className="font-mono text-[8px] tracking-[0.16em] text-white/[0.18]">PID</div>
-                <div className="font-mono text-[8px] tracking-[0.16em] text-white/[0.18]">PROCESS</div>
-                <div className="hidden md:block font-mono text-[8px] tracking-[0.16em] text-white/[0.18]">STACK</div>
-                <div className="font-mono text-[8px] tracking-[0.16em] text-white/[0.18]">STATUS</div>
-                <div className="font-mono text-[8px] tracking-[0.16em] text-white/[0.18] text-right">SRC</div>
+            <div className="hidden sm:grid sm:grid-cols-[60px_1fr_90px_70px] md:grid-cols-[60px_1fr_220px_90px_70px] gap-4 px-[2rem] py-[8px] border-b-[0.5px] items-center"
+                style={{ borderColor: 'var(--border-default)' }}>
+                {['PID', 'PROCESS', null, 'STATUS', 'SRC'].map((h, i) => (
+                    <div key={i} className={`font-mono text-[8px] tracking-[0.16em] ${i === 4 ? 'text-right' : ''} ${i === 2 ? 'hidden md:block' : ''}`}
+                        style={{ color: 'var(--text-muted)' }}>
+                        {h === null ? 'STACK' : h}
+                    </div>
+                ))}
             </div>
 
             {/* PROJECT ROWS */}

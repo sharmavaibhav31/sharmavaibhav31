@@ -24,9 +24,13 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         const root = document.documentElement;
         if (isDark) {
             root.classList.add('dark');
+            root.classList.remove('light');
+            root.removeAttribute('data-theme');
             localStorage.setItem('portfolio-theme', 'dark');
         } else {
             root.classList.remove('dark');
+            root.classList.add('light');
+            root.setAttribute('data-theme', 'light');
             localStorage.setItem('portfolio-theme', 'light');
         }
     }, [isDark]);
