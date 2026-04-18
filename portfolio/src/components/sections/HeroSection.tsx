@@ -1,6 +1,6 @@
 import { useIntersectionObserver } from '../../hooks/useScrollReveal';
 import { useParallax } from '../../hooks/useParallax';
-import { ArchitectureDiagram } from './ArchitectureSection';
+import { SystemsMetricsPanel } from './SystemsMetricsPanel';
 
 export const HeroSection: React.FC = () => {
     useIntersectionObserver();
@@ -14,16 +14,33 @@ export const HeroSection: React.FC = () => {
             className="relative min-h-screen flex items-center border-b border-border/50 dark:border-slate-800/50 bg-slate-50 dark:bg-[#0B1120] overflow-hidden transition-colors duration-300"
             aria-label="Hero"
         >
-            {/* Subtle engineering blueprint grid overlay */}
-            <div className="absolute inset-0 pointer-events-none select-none opacity-[0.05] dark:opacity-[0.03]" aria-hidden="true">
-                <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-slate-900 dark:text-white" />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#hero-grid)" />
-                </svg>
+            {/* Subtle line-grid and horizontal scanline */}
+            <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+                <div 
+                    className="absolute inset-0" 
+                    style={{
+                        backgroundImage: `
+                            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
+                        `,
+                        backgroundSize: '40px 40px',
+                    }}
+                />
+                <div 
+                    className="absolute left-0 w-full h-[1px] bg-[rgba(0,255,180,0.15)] animate-[heroScanline_4s_linear_infinite]"
+                    style={{
+                        maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+                        WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+                    }}
+                />
+                <style>{`
+                    @keyframes heroScanline {
+                        0% { top: 0%; opacity: 0; }
+                        5% { opacity: 1; }
+                        95% { opacity: 1; }
+                        100% { top: 100%; opacity: 0; }
+                    }
+                `}</style>
             </div>
 
             {/* Content — fluid padding and flexible stacked/row layout */}
@@ -93,9 +110,9 @@ export const HeroSection: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Right Side: Architecture Diagram */}
-                <div className="w-full lg:w-[50%] xl:w-[55%] relative pointer-events-none flex items-center justify-center mt-4 border-t border-border/50 lg:border-t-0 pt-8 lg:mt-0 lg:pt-0">
-                    <ArchitectureDiagram />
+                {/* Right Side: Systems Metrics Panel */}
+                <div className="w-full lg:w-[48%] relative pointer-events-none flex items-center justify-center mt-4 border-t border-border/50 lg:border-t-0 pt-8 lg:mt-0 lg:pt-0">
+                    <SystemsMetricsPanel />
                 </div>
             </div>
         </section>
