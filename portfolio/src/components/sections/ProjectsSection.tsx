@@ -1,211 +1,214 @@
-import React from 'react';
+// Refactored project grid — data sourced from ../../data/projects.json
+// Architecture drawer toggle, category filter, 1px-gap dashboard grid
+
+import React, { useState, useRef, useEffect } from 'react';
 import projectsData from '../../data/projects.json';
 
 type Project = typeof projectsData[0];
 
-const GitHubIcon: React.FC = () => (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        className="w-3.5 h-3.5"
-    >
-        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-    </svg>
-);
-
-const CategoryIcon: React.FC<{ category?: string }> = ({ category }) => {
-    if (!category) return null;
-    return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 whitespace-nowrap mb-4">
-            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                {category === 'Security' && <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />}
-                {category === 'Automation' && <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />}
-                {category === 'HCI' && <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />}
-                {category === 'ML Orchestration' && <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />}
-                {category === 'Scalability' && <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />}
-                {category === 'IoT Systems' && <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />}
-            </svg>
-            {category}
-        </span>
-    );
+const getCategoryBadgeStyles = (category?: string) => {
+    const cat = (category || '').toUpperCase();
+    if (cat.includes('AUTOMATION')) return 'bg-blue-500/10 border-blue-500/30 text-blue-400';
+    if (cat.includes('SECURITY')) return 'bg-purple-500/10 border-purple-500/30 text-purple-400';
+    if (cat.includes('ML') || cat.includes('MACHINE LEARNING')) return 'bg-teal-500/10 border-teal-500/30 text-teal-400';
+    if (cat.includes('SCALABILITY')) return 'bg-amber-500/10 border-amber-500/30 text-amber-400';
+    if (cat.includes('HCI')) return 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400';
+    if (cat.includes('IOT')) return 'bg-pink-500/10 border-pink-500/30 text-pink-400';
+    return 'bg-slate-500/10 border-slate-500/30 text-slate-400';
 };
 
-// CategoryIcon removed as categories are no longer in the dataset
+const ProjectCard: React.FC<{ project: Project; originalIndex: number }> = ({ project, originalIndex }) => {
+    const [isArchOpen, setIsArchOpen] = useState(false);
+    const contentRef = useRef<HTMLDivElement>(null);
+    const [maxHeight, setMaxHeight] = useState('0px');
 
-const ProjectCard: React.FC<{ project: Project; delay: number; forceVisible?: boolean }> = ({ project, delay, forceVisible }) => {
-    const [isRoleExpanded, setIsRoleExpanded] = React.useState(false);
-    const [isArchitectureExpanded, setIsArchitectureExpanded] = React.useState(false);
-    const ROLE_LIMIT = 50;
-    const shouldTruncate = project.role.length > ROLE_LIMIT;
+    useEffect(() => {
+        if (isArchOpen && contentRef.current) {
+            setMaxHeight(`${contentRef.current.scrollHeight}px`);
+        } else {
+            setMaxHeight('0px');
+        }
+    }, [isArchOpen]);
+
+    const archPoints = typeof project.architecture === 'string' 
+        ? project.architecture.split('→').map(s => s.trim()).filter(Boolean)
+        : Array.isArray(project.architecture) ? project.architecture : [];
+
+    const indexStr = (originalIndex + 1).toString().padStart(2, '0');
 
     return (
-        <article
-            className={`${forceVisible ? 'is-visible' : 'reveal'} group flex flex-col h-full p-8 border border-border dark:border-slate-800 bg-surface dark:bg-[#0F172A] shadow-sm hover:shadow-md transition-all duration-300 relative`}
-            style={{ transitionDelay: `${delay}ms` }}
-        >
-            {/* Top: Project Name + Category Badge + Tech Tags */}
-            <div className="mb-6">
-                <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-xl font-bold text-primary dark:text-slate-100 leading-snug">
-                        {project.title}
-                    </h3>
-                    <CategoryIcon category={project.category} />
-                </div>
-
-                {/* Stack tags */}
-                <div className="flex flex-wrap gap-2">
-                    {project.stack.map((tag) => (
-                        <span
-                            key={tag}
-                            className="text-[10px] px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-medium"
-                        >
-                            {tag}
-                        </span>
-                    ))}
-                </div>
+        <article className="flex flex-col h-full bg-[#0B1120] p-6 sm:p-8 relative">
+            {/* 1. TOP ROW */}
+            <div className="flex justify-between items-center mb-6">
+                <span className="text-[12px] font-mono font-medium text-white/30">{indexStr}</span>
+                {project.category && (
+                    <span className={`text-[9px] uppercase tracking-[0.1em] px-2 py-0.5 rounded border ${getCategoryBadgeStyles(project.category)}`}>
+                        {project.category}
+                    </span>
+                )}
             </div>
 
-            {/* Middle: Summary & Highlights */}
-            <div className="flex-1 mb-8">
-                <p className="text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed mb-5">
-                    {project.solution}
-                </p>
+            {/* 2. PROJECT TITLE */}
+            <h3 className="text-[15px] font-bold text-white leading-[1.3] mb-3">
+                {project.title}
+            </h3>
 
-                <ul className="space-y-2">
-                    {project.problem && (
-                        <li className="flex items-start gap-2.5">
-                            <span className="text-slate-300 dark:text-slate-600 mt-1 shrink-0 text-[10px]">●</span>
-                            <span className="text-[12px] text-slate-500 dark:text-slate-400 leading-relaxed">
-                                <strong className="font-semibold text-slate-600 dark:text-slate-300">Problem: </strong>
-                                {project.problem}
-                            </span>
-                        </li>
-                    )}
-                    {project.impact && (
-                        <li className="flex items-start gap-2.5">
-                            <span className="text-slate-300 dark:text-slate-600 mt-1 shrink-0 text-[10px]">●</span>
-                            <span className="text-[12px] text-slate-500 dark:text-slate-400 leading-relaxed">
-                                <strong className="font-semibold text-slate-600 dark:text-slate-300">Impact: </strong>
-                                {project.impact}
-                            </span>
-                        </li>
-                    )}
-                </ul>
+            {/* 3. SHORT DESCRIPTION */}
+            <p className="text-[12px] text-white/50 leading-[1.6] mb-5 line-clamp-3">
+                {project.solution}
+            </p>
+
+            {/* 4. TECH TAGS */}
+            <div className="flex flex-wrap gap-2 mb-8">
+                {(project.stack || []).map(tag => (
+                    <span key={tag} className="text-[10px] font-mono text-white/50 bg-white/[0.03] border border-white/10 px-2 py-1 rounded-full">
+                        {tag}
+                    </span>
+                ))}
             </div>
 
-            {/* Bottom Actions & Role */}
-            <div className="mt-auto">
-                <div className="pt-5 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-                    <div className="flex-1 min-w-0 pr-4">
-                        <span
-                            className={`text-[11px] text-slate-400 dark:text-slate-500 font-medium tracking-wide block ${!isRoleExpanded ? 'truncate' : ''}`}
-                            title={!isRoleExpanded ? project.role : undefined}
-                        >
-                            Role: {project.role}
-                        </span>
-                        {shouldTruncate && (
-                            <button
-                                onClick={() => setIsRoleExpanded(!isRoleExpanded)}
-                                className="text-[10px] text-accent dark:text-[#3B82F6] hover:underline mt-1 focus:outline-none"
-                            >
-                                {isRoleExpanded ? 'Read Less' : 'Read More...'}
-                            </button>
+            <div className="mt-auto flex flex-col">
+                {/* 5. ARCHITECTURE DRAWER */}
+                <div 
+                    className="overflow-hidden transition-[max-height] duration-300 ease-in-out" 
+                    style={{ maxHeight }}
+                >
+                    <div ref={contentRef} className="pb-6">
+                        {archPoints.length > 0 && (
+                            <div className="mb-4">
+                                <div className="text-[9px] tracking-[0.12em] text-white/30 uppercase mb-3">ARCHITECTURE</div>
+                                <div className="flex flex-col gap-2">
+                                    {archPoints.map((pt, i) => (
+                                        <div key={i} className="flex items-start gap-2 text-[11px] text-white/60">
+                                            <span className="w-1 h-1 rounded-full bg-[#00ffb4] shrink-0 mt-1.5"></span>
+                                            <span className="leading-relaxed">{pt}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                        
+                        {project.impact && (
+                            <div className="mt-4">
+                                <div className="text-[9px] tracking-[0.12em] text-white/30 uppercase mb-2">IMPACT</div>
+                                <div className="p-3 bg-[#00ffb4]/[0.05] border-[0.5px] border-[#00ffb4]/30 text-[11px] text-[#00ffb4]/90 leading-relaxed rounded">
+                                    {project.impact}
+                                </div>
+                            </div>
                         )}
                     </div>
+                </div>
 
-                    <div className="flex items-center gap-4 flex-shrink-0 mt-1">
-                        {project.architecture && (
-                            <button
-                                onClick={() => setIsArchitectureExpanded(!isArchitectureExpanded)}
-                                className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-accent dark:hover:text-[#3B82F6] transition-colors duration-150 focus:outline-none"
+                {/* 6. CARD FOOTER */}
+                <div className="flex flex-row items-center justify-between pt-4 border-t border-white/10 mt-2">
+                    <div 
+                        className="text-[10px] italic text-white/40 truncate pr-4 max-w-[55%]"
+                        title={project.role}
+                    >
+                        {project.role}
+                    </div>
+                    
+                    <div className="flex items-center gap-2 shrink-0">
+                        {archPoints.length > 0 && (
+                            <button 
+                                onClick={() => setIsArchOpen(!isArchOpen)}
+                                className="text-[10px] font-mono text-white/60 border border-white/20 px-2.5 py-1.5 hover:bg-white/5 hover:text-white transition-colors flex items-center gap-1.5 rounded"
                             >
-                                <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${isArchitectureExpanded ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                                </svg>
                                 Architecture
+                                <svg 
+                                    className={`w-3 h-3 transition-transform duration-300 ${isArchOpen ? 'rotate-180' : ''}`} 
+                                    fill="none" 
+                                    viewBox="0 0 24 24" 
+                                    stroke="currentColor"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                                </svg>
                             </button>
                         )}
                         {project.github && (
-                            <a
+                            <a 
                                 href={project.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-1.5 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 bg-slate-900 text-white dark:bg-white dark:text-slate-900 rounded shadow-sm hover:bg-accent dark:hover:bg-[#10B981] dark:hover:text-white hover:text-white transition-all duration-200"
-                                aria-label={`View ${project.title} on GitHub`}
+                                className="text-[10px] font-mono font-bold text-[#0B1120] bg-white px-3 py-1.5 hover:bg-white/90 transition-colors rounded"
                             >
-                                <GitHubIcon />
-                                Source
+                                SOURCE
                             </a>
                         )}
                     </div>
                 </div>
-
-                {/* Expandable Architecture Flow */}
-                {isArchitectureExpanded && typeof project.architecture === 'string' && project.architecture.length > 0 && (
-                    <div className="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800/50">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3 block">System Architecture Flow</span>
-                        <div className="flex flex-col space-y-1.5 bg-slate-50 dark:bg-[#0B1120] p-4 rounded-md border border-slate-200 dark:border-slate-800">
-                            {project.architecture.split(' → ').map((node, index, arr) => (
-                                <div key={index} className="flex flex-col">
-                                    <div className="px-3 py-2 text-[11px] leading-snug font-mono text-slate-600 dark:text-slate-300 bg-white dark:bg-[#0F172A] rounded border border-slate-100 dark:border-slate-800 shadow-sm inline-block self-start">
-                                        {node.trim()}
-                                    </div>
-                                    {index < arr.length - 1 && (
-                                        <div className="flex justify-start ml-4 my-1 opacity-40">
-                                            <svg className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                                            </svg>
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
             </div>
         </article>
     );
 };
 
 export const ProjectsSection: React.FC = () => {
-    const [showAll, setShowAll] = React.useState(false);
-    const displayedProjects = showAll ? projectsData : projectsData.slice(0, 6);
+    const [activeFilter, setActiveFilter] = useState<string>('All');
+
+    // Extract unique categories
+    const categories = Array.from(new Set(
+        projectsData.map(p => p.category).filter(Boolean)
+    )) as string[];
+
+    const filters = ['All', ...categories];
 
     return (
-        <section id="work" className="py-28 border-b border-border dark:border-slate-800/50 dark:bg-[#0B1120] transition-colors duration-300" aria-labelledby="work-heading">
-            <div className="w-full max-w-[1920px] mx-auto px-6 md:px-12 xl:px-16">
-                <div className="reveal mb-16">
-                    <p className="text-[11px] font-semibold text-accent dark:text-[#3B82F6] tracking-widest uppercase mb-3">
-                        Selected Work
-                    </p>
-                    <h2
-                        id="work-heading"
-                        className="font-display font-bold text-primary dark:text-white"
-                        style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', letterSpacing: '-0.02em' }}
-                    >
-                        Systems Built
-                    </h2>
-                </div>
-
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 auto-rows-fr">
-                    {displayedProjects.map((project, i) => (
-                        <div key={project.id} className="bg-canvas dark:bg-[#0B1120] h-full">
-                            <ProjectCard project={project} delay={(i % 4) * 50} forceVisible={showAll && i >= 6} />
-                        </div>
-                    ))}
-                </div>
-
-                {projectsData.length > 6 && (
-                    <div className="mt-12 flex justify-center reveal">
-                        <button
-                            onClick={() => setShowAll(!showAll)}
-                            className="px-6 py-3 border border-border dark:border-slate-600 text-sm font-semibold text-primary dark:text-white uppercase tracking-wider hover:bg-primary hover:text-white dark:hover:bg-slate-800 transition-colors duration-200"
-                        >
-                            {showAll ? 'View Less' : 'Explore More'}
-                        </button>
+        <section id="work" className="py-24 border-b border-border dark:border-slate-800 bg-[#0B1120] transition-colors duration-300 relative">
+            <div className="w-full max-w-[1200px] mx-auto px-6 md:px-12">
+                
+                {/* Header */}
+                <div className="mb-12 reveal">
+                    <div className="text-[10px] tracking-[0.16em] text-accent dark:text-[#00ffb4] uppercase mb-4">
+                        SELECTED WORK
                     </div>
-                )}
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                        <div>
+                            <h2 className="text-4xl md:text-5xl font-bold text-white font-display mb-2">
+                                Systems Built
+                            </h2>
+                            <p className="text-xs text-white/40 italic">click architecture to expand</p>
+                        </div>
+                        
+                        {/* Filters */}
+                        <div className="flex flex-wrap gap-2">
+                            {filters.map(filter => {
+                                const isActive = activeFilter === filter;
+                                return (
+                                    <button
+                                        key={filter}
+                                        onClick={() => setActiveFilter(filter)}
+                                        className={`text-[11px] font-mono px-3 py-1.5 rounded transition-all duration-200 border ${
+                                            isActive 
+                                                ? 'border-accent text-accent dark:border-[#00ffb4] dark:text-[#00ffb4] bg-accent/5 dark:bg-[#00ffb4]/5' 
+                                                : 'border-white/10 text-white/50 hover:border-white/30 hover:text-white'
+                                        }`}
+                                    >
+                                        {filter}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Project Grid */}
+                <div className="reveal grid grid-cols-1 lg:grid-cols-2 gap-[1px] bg-[rgba(255,255,255,0.06)] border border-white/10 rounded-xl overflow-hidden">
+                    {projectsData.map((project, index) => {
+                        const isVisible = activeFilter === 'All' || project.category === activeFilter;
+                        
+                        if (!isVisible) return null;
+                        
+                        return (
+                            <div key={project.id || index} className="bg-[#0B1120]">
+                                <ProjectCard 
+                                    project={project as Project} 
+                                    originalIndex={index} 
+                                />
+                            </div>
+                        );
+                    })}
+                </div>
+
             </div>
         </section>
     );
