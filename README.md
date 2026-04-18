@@ -1,14 +1,14 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=30&duration=2800&pause=1500&color=4F46E5&center=true&vCenter=true&width=700&lines=Hi%2C+I'm+Vaibhav+Sharma;Backend+%26+Systems+Engineer;I+build+systems+used+by+real+users" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=30&duration=2800&pause=1500&color=4F46E5&center=true&vCenter=true&width=800&lines=Hi%2C+I'm+Vaibhav+Sharma;Backend+Engineer+%7C+Systems+Programming;I+design+systems+that+solves+real+problems" />
 
 <br/>
+Backend Engineer • Systems Programming • ML Exploration
 
-Backend & Systems Engineering Student · AIML Intern @ Infosys Springboard · President, Coders Club @ MITE  
-B.E. Computer Science & Engineering (2027)
+B.E. Computer Science & Engineering (2027)  
+AI/ML Intern @ Infosys Springboard • President @ Coders Club, MITE
 
 <br/>
-
 <a href="mailto:sharma31stmay@gmail.com">
   <img src="https://img.shields.io/badge/Email-Contact-4F46E5?style=for-the-badge&logo=gmail&logoColor=white"/>
 </a>
@@ -27,140 +27,198 @@ B.E. Computer Science & Engineering (2027)
 
 ---
 
-## 🧭 Who I am
+# 🧠 Engineering Identity
 
-I’m a **backend & Systems-focused engineering Student** who builds software that runs in the real world.
+I’m a **backend & systems-focused engineer** interested in building reliable software infrastructure.
 
-I’ve worked on:
-- A **Flutter mobile app used by 10,000+ students across India**
-- **AI-powered data systems** for training machine learning models
-- **Secure backend pipelines** and cloud-based applications
+My work spans:
 
-My core interest sits at the intersection of:
-**Machine Learning · Backend Systems · Security-aware design**
+• Backend APIs and data systems  
+• Systems programming and Linux security  
+• Distributed systems concepts  
+• ML-powered backend services  
 
----
-
-## 💼 Experience
-
-### **AI/ML Intern — Infosys Springboard**
-*Sep 2025 – Nov 2025*  
-Working on applied ML systems, model pipelines, and real-world AI integration.
+I enjoy designing systems that **handle real workloads, respect constraints, and remain understandable for the engineers who maintain them.**
 
 ---
 
-### **Mobile Application Developer — ClubChat (IIIT Delhi Startup)**
-*Jul 2025 – Sep 2025*
+# ⚙️ What I Like Building
+```
+Backend Systems
+├── REST APIs
+├── Data Pipelines
+└── Scheduling Engines
 
-Worked on a production Flutter app connecting **10,000+ college students across India**.
+Systems Programming
+├── Linux tools
+├── Process isolation
+└── Secure execution environments
 
-- Shipped **core features** used by real users  
-- Fixed **20+ production bugs**  
-- Implemented **UI/UX improvements**  
-- Collaborated with **backend engineers & designers**  
-- Worked inside **agile release cycles**
+ML Infrastructure
+├── model orchestration
+├── inference pipelines
+└── local AI systems
+```
+
+---
+# 🚀 Selected Systems
+
+These projects represent **engineering problems I tried to solve**, not just apps I built.
 
 ---
 
-## 🚀 Project Spotlight
+## 🧩 Academic Timetable Scheduling Engine
+Constraint-based backend system that generates **conflict-free university timetables automatically**.
 
-These are systems that I have built and tried to solve real problems.
+**Key Ideas**
 
-### 🥇 **Synthetic Data Generator**
-AI-powered tool for generating **realistic training data** when real datasets are missing.
+• Faculty load balancing  
+• Room capacity constraints  
+• Section conflict detection  
+• Automated schedule generation  
 
-- Auto-generates dataset schemas
-- Uses Hugging Face models to synthesize records
-- Exports directly for ML training (CSV / Excel)
+**Stack**
 
-**Stack:** Python · Transformers · Pandas · Flask · Streamlit  
-🔗 https://github.com/sharmavaibhav31/Synthetic-Data-Generator
+Java · Spring Boot · PostgreSQL · Flyway · Docker · React
 
----
-
-### 🥈 **FinTrix — AI Personal Finance System**
-AI-powered expense tracking & budgeting for students and professionals.
-
-- Spending analysis
-- Budget forecasting
-- Anomaly detection
-- Personalized insights
-
-**Stack:** Flutter · Firebase · Supabase · ML Kit  
-🔗 https://github.com/sharmavaibhav31/PersonalFinanceTracker
+🔗  https://github.com/sharmavaibhav31/timetable_management
 
 ---
 
-### 🥉 **Offline AI Assistant (Mini OS Shell)**
-A C-based OS shell with an **offline local LLM** for privacy-first AI use.
+## 🔒 Secure AI Assistant Shell
+A **C-based command shell with an embedded local LLM** designed with security-first architecture.
 
-**Stack:** C · OS-level programming · Offline LLM  
-🔗 https://github.com/sharmavaibhav31/mini-shell-C-programming
+**Key Ideas**
 
----
+• Seccomp syscall filtering  
+• Linux namespace isolation  
+• Resource limits for safe execution  
+• Offline AI inference via llama.cpp  
 
-## 🧠 What I focus on
+**Stack**
 
-I don’t try to be “everything”.
+C · Linux · Seccomp · Namespaces · TinyLlama
 
-I specialize in:
-- Backend engineering
-- Machine learning pipelines
-- Data systems
-- Secure, privacy-aware architectures
-- Production-grade applications
+🔗  https://github.com/sharmavaibhav31/mini-shell-C-programming
 
 ---
 
-## 🧩 Tech I actually use
+## 🌐 Distributed URL Shortener
+Backend service implementing URL shortening with **rate limiting and scaling concepts**.
 
-**Languages**  
-Python · Java · C · Dart  
+**Key Ideas**
 
-**Backend & Cloud**  
-Firebase · Supabase · PostgreSQL · REST APIs · Google Cloud  
+• Base62 ID encoding  
+• Sliding window rate limiter  
+• Click analytics  
+• multi-instance load balancing simulation  
 
-**AI & Data**  
-Hugging Face · Pandas · NumPy · Scikit-learn  
+**Stack**
 
-**Frontend & Mobile**  
-Flutter · React  
+Java · Spring Boot · React
 
-**Security & Systems**  
-Linux · Burp Suite · Wireshark  
+🔗  https://github.com/sharmavaibhav31/urlshortner
 
 ---
 
-## 📊 Engineering Footprint
+## 🎵 ML Music Generation System
+Multi-model ML system orchestrating **music generation, lyrics synthesis, and genre classification**.
+
+**Key Ideas**
+
+• Model orchestration pipelines  
+• inference preloading  
+• fallback inference paths  
+• REST API integration  
+
+**Stack**
+
+Python · Flask · PyTorch · TensorFlow · MongoDB
+🔗  https://github.com/sharmavaibhav31/MoodHarmonics
+
+---
+
+# 💼 Experience
+
+### AI / ML Intern  
+**Infosys Springboard**
+
+• Built backend APIs orchestrating multiple ML models for music generation  
+• Implemented model preloading reducing inference latency by **45%**  
+• Designed REST endpoints for music generation and metadata storage  
+
+---
+
+### Mobile Developer Intern  
+**ClubChat Startup**
+
+• Worked on production Flutter app used by **8,000+ users**  
+• Implemented event feed and chat features  
+• Fixed **18+ stability issues across two releases**
+
+---
+
+# 🧰 Tech Stack
+
+### Languages
+
+Java · C · Python · SQL · Dart
+
+### Backend
+
+Spring Boot · REST APIs · Flask · PostgreSQL
+
+### Systems
+
+Linux · Seccomp · Namespaces · Process Isolation
+
+
+### Infrastructure
+
+Docker · Flyway · Google Cloud · GitHub Actions
+
+
+### ML / Data
+(Exploring)  
+PyTorch · TensorFlow · HuggingFace · OpenCV
+
+---
+
+# 📊 Engineering Activity
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=sharmavaibhav31&show_icons=true&count_private=true&include_all_commits=true&theme=tokyonight" height="160"/>
+
+<img src="https://github-readme-stats.vercel.app/api?username=sharmavaibhav31&show_icons=true&include_all_commits=true&theme=tokyonight&cache_seconds=1800" height="160"/>
+
+<img src="https://streak-stats.demolab.com?user=sharmavaibhav31&theme=tokyonight" height="160"/>
+
 </p>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=sharmavaibhav31&theme=tokyonight" height="160"/>
-</p>
-
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=sharmavaibhav31&theme=tokyo-night&area=true" />
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=sharmavaibhav31&theme=tokyo-night&area=true"/>
 </p>
 
 ---
 
-## 🎯 What I’m looking for
+# 🧪 Engineering Interests
 
-Backend, ML, or applied AI roles where:
-- Systems matter
-- Data matters
-- Users matter
+Distributed Systems | Backend Infrastructure | System Security | Machine Learning Systems | Developer Tooling
 
-If you’re building real products, and you need someone who can: understand systems, work with data, and ship code
-> We Should Talk.
+---
+
+# 🎯 Currently Exploring
+
+• distributed rate limiting  
+• backend reliability patterns  
+• secure runtime environments  
+• ML systems infrastructure  
 
 ---
 
 <div align="center">
 
-⭐ *I build systems where intelligence meets reliability.*
+### ⚡ Engineering Philosophy
+
+*"Good systems are predictable, maintainable, and resilient under real-world constraints."*
 
 </div>
