@@ -1,131 +1,138 @@
-import { useIntersectionObserver } from '../../hooks/useScrollReveal';
-import { useParallax } from '../../hooks/useParallax';
-import { SystemsMetricsPanel } from './SystemsMetricsPanel';
+// Theme: Redacted × Kernel/Log — new branch
+// Data source: resume.json, skills.json, projects.json — untouched
+
+import React from 'react';
+import resumeData from '../../data/resume.json';
+import skillsData from '../../data/skills.json';
+import projectsData from '../../data/projects.json';
 
 export const HeroSection: React.FC = () => {
-    useIntersectionObserver();
+    const specialization = resumeData.tagline;
+    
+    // Extract top 5 backend skills
+    const primaryStack = skillsData.capabilities
+        .find(c => c.category === 'Backend Engineering')
+        ?.items.slice(0, 5).map(i => i.name).join(' · ') || 'Java · Spring Boot · PostgreSQL · Docker';
 
-    // Hero text floats very subtly upward — understated depth
-    const textOffset = useParallax(0.08);
+    const renderBadge = (category: string) => {
+        switch (category) {
+            case 'Security':
+                return <span className="font-mono text-[8px] tracking-[0.14em] px-[6px] py-[1px] font-bold border-[0.5px] border-accent-red-border text-accent-red">CLASSIFIED</span>;
+            case 'ML Orchestration':
+            case 'ML / AI':
+            case 'Scalability':
+            case 'IoT Systems':
+                return <span className="font-mono text-[8px] tracking-[0.14em] px-[6px] py-[1px] font-bold border-[0.5px] border-accent-amber-border text-accent-amber">RESTRICTED</span>;
+            case 'Automation':
+            case 'HCI':
+            default:
+                return <span className="font-mono text-[8px] tracking-[0.14em] px-[6px] py-[1px] font-bold border-[0.5px] border-accent-green-border text-accent-green">UNCLASSIFIED</span>;
+        }
+    };
 
     return (
-        <section
-            id="hero"
-            className="relative min-h-screen flex items-center border-b border-border/50 dark:border-slate-800/50 bg-slate-50 dark:bg-[#0B1120] overflow-hidden transition-colors duration-300"
-            aria-label="Hero"
-        >
-            {/* Subtle line-grid and horizontal scanline */}
-            <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
-                {/* Light Mode Grid */}
-                <div 
-                    className="absolute inset-0 block dark:hidden" 
-                    style={{
-                        backgroundImage: `
-                            linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px)
-                        `,
-                        backgroundSize: '40px 40px',
-                    }}
-                />
-                {/* Dark Mode Grid */}
-                <div 
-                    className="absolute inset-0 hidden dark:block" 
-                    style={{
-                        backgroundImage: `
-                            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
-                        `,
-                        backgroundSize: '40px 40px',
-                    }}
-                />
-                {/* Scanline */}
-                <div 
-                    className="absolute left-0 w-full h-[1px] bg-black/10 dark:bg-[#00ffb4]/15 animate-[heroScanline_4s_linear_infinite]"
-                    style={{
-                        maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-                        WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-                    }}
-                />
-                <style>{`
-                    @keyframes heroScanline {
-                        0% { top: 0%; opacity: 0; }
-                        5% { opacity: 1; }
-                        95% { opacity: 1; }
-                        100% { top: 100%; opacity: 0; }
-                    }
-                `}</style>
+        <section id="hero" className="w-full min-h-screen flex flex-col bg-bg-primary pt-[48px]">
+            {/* DOCUMENT HEADER BAR */}
+            <div className="w-full bg-bg-surface border-b-[0.5px] border-border-default px-6 py-2 flex justify-between items-center z-10 shrink-0">
+                <div className="font-mono text-[12px] text-text-muted tracking-[0.2em]">
+                    PERSONNEL FILE
+                </div>
+                <div className="font-mono text-[8px] tracking-[0.2em] px-2 py-[2px] border border-accent-red-border text-accent-red -rotate-[1.5deg]">
+                    ACTIVE
+                </div>
             </div>
 
-            {/* Content — fluid padding and flexible stacked/row layout */}
-            <div
-                className="relative z-20 w-full max-w-[1920px] mx-auto px-6 md:px-12 xl:px-16 pt-32 pb-24 lg:py-0 min-h-screen flex flex-col lg:flex-row items-center justify-center lg:justify-between pointer-events-none gap-10 lg:gap-8"
-                style={{
-                    transform: `translateY(${-textOffset}px)`,
-                    willChange: 'transform',
-                }}
-            >
-                {/* Left Side: Hero Text */}
-                <div className="w-full lg:w-[45%] xl:w-[40%] flex flex-col items-start text-left relative pointer-events-auto shrink-0 z-20">
-                    {/* Status label */}
-                    <div className="reveal flex items-center gap-2 mb-6">
-                        <span className="relative flex h-2.5 w-2.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent dark:bg-[#61dca3] opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent dark:bg-[#61dca3]"></span>
-                        </span>
-                        <span className="text-xs font-semibold tracking-wide text-secondary dark:text-white/90">
-                            $ system.status
-                            <br />
-                            ACTIVE — AVAILABLE FOR BACKEND ROLES
-                        </span>
+            {/* HERO BODY */}
+            <div className="flex flex-col lg:flex-row flex-1">
+                {/* LEFT COLUMN */}
+                <div className="w-full lg:w-[55%] p-6 sm:p-14 flex flex-col justify-center">
+                    {/* Top section */}
+                    <div className="mb-12">
+                        <div className="font-mono text-[9px] text-text-muted tracking-[0.2em] mb-6">
+                            // PERSONNEL FILE
+                        </div>
+                        <h1 className="font-sans text-[48px] sm:text-[72px] font-black leading-[0.88] tracking-[-2px] text-text-primary uppercase">
+                            {resumeData.name.split(' ').map((n, i) => <React.Fragment key={i}>{n}<br className="hidden sm:block" /></React.Fragment>)}
+                        </h1>
+                        <div className="font-mono text-[9px] tracking-[0.18em] text-text-muted mt-3 uppercase">
+                            {resumeData.title}
+                        </div>
                     </div>
 
-                    {/* Name */}
-                    <h1
-                        className="reveal font-display font-extrabold text-primary dark:text-white leading-none tracking-tight mb-6"
-                        style={{ fontSize: 'clamp(3.5rem, 8vw, 6.5rem)', letterSpacing: '-0.04em' }}
-                    >
-                        VAIBHAV<br />SHARMA
-                    </h1>
+                    {/* Middle section — FIELD ROWS */}
+                    <div className="flex flex-col gap-3 mb-12">
+                        <div className="flex flex-row items-baseline">
+                            <span className="w-[120px] shrink-0 font-mono text-[9px] text-text-muted tracking-[0.1em] uppercase">SPECIALIZATION</span>
+                            <span className="font-mono text-[11px] text-text-secondary">{specialization}</span>
+                        </div>
+                        <div className="flex flex-row items-baseline">
+                            <span className="w-[120px] shrink-0 font-mono text-[9px] text-text-muted tracking-[0.1em] uppercase">PRIMARY STACK</span>
+                            <span className="font-mono text-[11px] text-text-secondary">{primaryStack}</span>
+                        </div>
+                        <div className="flex flex-row items-baseline">
+                            <span className="w-[120px] shrink-0 font-mono text-[9px] text-text-muted tracking-[0.1em] uppercase">CLEARANCE</span>
+                            <span className="font-mono text-[11px] text-text-secondary">Java · C · Python · seccomp</span>
+                        </div>
+                        <div className="flex flex-row items-baseline">
+                            <span className="w-[120px] shrink-0 font-mono text-[9px] text-text-muted tracking-[0.1em] uppercase">SYSTEMS BUILT</span>
+                            <span className="font-mono text-[11px] text-text-secondary">{projectsData.length}</span>
+                        </div>
+                        <div className="flex flex-row items-baseline">
+                            <span className="w-[120px] shrink-0 font-mono text-[9px] text-text-muted tracking-[0.1em] uppercase">USERS SERVED</span>
+                            <span className="font-mono text-[11px] text-text-secondary">8,000+</span>
+                        </div>
+                        <div className="flex flex-row items-baseline">
+                            <span className="w-[120px] shrink-0 font-mono text-[9px] text-text-muted tracking-[0.1em] uppercase">LOCATION</span>
+                            <span className="font-mono text-[11px] redacted cursor-help" title="hover to reveal">Bengaluru, India</span>
+                        </div>
+                        <div className="flex flex-row items-baseline">
+                            <span className="w-[120px] shrink-0 font-mono text-[9px] text-text-muted tracking-[0.1em] uppercase">CONTACT</span>
+                            <span className="font-mono text-[11px] redacted cursor-help" title="hover to reveal">{resumeData.socials.email.replace('mailto:', '')}</span>
+                        </div>
+                        <div className="flex flex-row items-center mt-2">
+                            <span className="w-[120px] shrink-0 font-mono text-[9px] text-text-muted tracking-[0.1em] uppercase">STATUS</span>
+                            <div className="flex items-center gap-2">
+                                <div className="w-[6px] h-[6px] rounded-full bg-accent-green animate-pulse-dot"></div>
+                                <span className="font-mono text-[11px] text-accent-green font-bold">ACTIVE — AVAILABLE</span>
+                            </div>
+                        </div>
+                    </div>
 
-                    {/* Subtitle */}
-                    <p
-                        className="reveal text-secondary dark:text-white/75 font-bold mb-6 tracking-widest uppercase"
-                        style={{ fontSize: 'clamp(0.85rem, 1.5vw, 1rem)' }}
-                    >
-                        Backend / Systems Engineering Student
-                    </p>
-
-                    {/* Positioning statement */}
-                    <p
-                        className="reveal text-secondary dark:text-white/90 leading-relaxed mb-10 max-w-xl"
-                        style={{ fontSize: 'clamp(1.05rem, 1.8vw, 1.25rem)' }}
-                    >
-                        I build reliable backend systems, scalable APIs, and ML-powered applications.                    </p>
-
-                    {/* CTAs */}
-                    <div className="reveal flex flex-wrap gap-6 mt-4">
-                        <a
-                            href="#work"
-                            id="hero-cta-work"
-                            className="inline-flex items-center justify-center px-8 py-4 bg-primary dark:bg-white text-white dark:text-[#0B1120] text-sm font-bold shadow-lg hover:shadow-xl hover:bg-primary/90 dark:hover:bg-slate-100 hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto border border-transparent dark:border-white/10"
-                        >
-                            View Projects
+                    {/* Bottom section — buttons */}
+                    <div className="flex flex-row gap-4 mt-auto lg:mt-0">
+                        <a href="#work" className="font-mono text-[10px] tracking-[0.08em] uppercase bg-accent-red-bg text-accent-red border-[0.5px] border-accent-red-border px-5 py-2 hover:border-accent-red hover:bg-accent-red/10 transition-all duration-150 rounded-none">
+                            VIEW PROJECTS
                         </a>
-                        <a
-                            href={`${import.meta.env.BASE_URL}Vaibhav_Sharma_resume.pdf`}
-                            id="hero-cta-resume"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center px-8 py-4 border-2 border-primary/20 dark:border-white/20 text-primary dark:text-white text-sm font-bold hover:border-primary/50 dark:hover:border-white/50 hover:bg-primary/5 dark:hover:bg-white/5 transition-all duration-300 w-full sm:w-auto"
-                        >
-                            Download Resume
+                        <a href={`${import.meta.env.BASE_URL}Vaibhav_Sharma_resume.pdf`} target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] tracking-[0.08em] uppercase bg-transparent text-text-secondary border-[0.5px] border-text-muted px-5 py-2 hover:border-text-secondary hover:text-text-primary transition-all duration-150 rounded-none">
+                            DOWNLOAD RESUME
                         </a>
                     </div>
                 </div>
 
-                {/* Right Side: Systems Metrics Panel */}
-                <div className="w-full lg:w-[48%] relative pointer-events-none flex items-center justify-center mt-4 border-t border-border/50 lg:border-t-0 pt-8 lg:mt-0 lg:pt-0">
-                    <SystemsMetricsPanel />
+                {/* RIGHT COLUMN */}
+                <div className="w-full lg:w-[45%] border-t-[0.5px] lg:border-t-0 lg:border-l-[0.5px] border-border-default p-6 sm:p-14 flex flex-col">
+                    <div className="font-mono text-[9px] text-text-muted tracking-[0.2em] mb-5">
+                        SYSTEMS MANIFEST
+                    </div>
+                    
+                    <div className="flex-1 flex flex-col">
+                        {projectsData.slice(0, 7).map((project, index) => (
+                            <a href="#work" key={project.id} className="flex flex-row items-center border-b-[0.5px] border-border-subtle py-3 hover:bg-white/[0.02] cursor-pointer group transition-colors">
+                                <span className="w-[40px] font-mono text-[9px] text-text-muted">{(index + 1).toString().padStart(3, '0')}</span>
+                                <span className="flex-1 font-sans text-[12px] font-semibold text-text-secondary truncate pr-4 group-hover:text-text-primary transition-colors">
+                                    {project.title}
+                                </span>
+                                <div className="flex flex-row items-center gap-4 shrink-0">
+                                    {renderBadge(project.category)}
+                                    <span className="text-text-muted group-hover:translate-x-1 transition-transform">→</span>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+
+                    <div className="font-mono text-[9px] text-text-muted mt-8">
+                        hover CONTACT and LOCATION fields to reveal
+                    </div>
                 </div>
             </div>
         </section>
