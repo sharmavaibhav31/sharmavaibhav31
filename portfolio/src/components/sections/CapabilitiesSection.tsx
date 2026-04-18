@@ -1,7 +1,8 @@
+// Theme: Redacted × Kernel/Log hybrid
+// Data: untouched — presentation layer only
+
 import React from 'react';
-import { SquareTerminal, Database, Braces, Link as LinkIcon, Info, Cpu } from 'lucide-react';
 import skillsData from '../../data/skills.json';
-import projectsData from '../../data/projects.json';
 
 type SkillItem = {
     name: string;
@@ -16,84 +17,74 @@ type CapabilityCategory = {
 
 const typedSkillsData = skillsData as { capabilities: CapabilityCategory[] };
 
-const CardIcon = ({ category }: { category: string }) => {
-    switch (category) {
-        case 'Backend Engineering':
-            return <Braces className="w-5 h-5 text-accent dark:text-[#10B981]" />;
-        case 'Distributed Systems':
-            return <Database className="w-5 h-5 text-accent dark:text-[#10B981]" />;
-        case 'Infrastructure & DevOps':
-            return <SquareTerminal className="w-5 h-5 text-accent dark:text-[#10B981]" />;
-        case 'Applied ML Systems':
-            return <Cpu className="w-5 h-5 text-accent dark:text-[#10B981]" />;
-        default:
-            return <SquareTerminal className="w-5 h-5 text-accent dark:text-[#10B981]" />;
-    }
+const getCategoryGlyph = (category: string) => {
+    if (category.includes('Backend')) return '{ }';
+    if (category.includes('Distributed')) return '>_';
+    if (category.includes('Infrastructure') || category.includes('DevOps')) return '[·]';
+    if (category.includes('ML')) return '~>';
+    return '[]';
 };
 
-export const CapabilitiesSection: React.FC = () => (
-    <section id="capabilities" className="py-28 border-b border-border dark:border-slate-800/50 dark:bg-[#0B1120] transition-colors duration-300" aria-labelledby="capabilities-heading">
-        <div className="max-w-7xl mx-auto px-6 lg:px-16">
-            <div className="reveal mb-16">
-                <p className="text-[11px] font-semibold text-accent dark:text-[#10B981] tracking-widest uppercase mb-3">
-                    Capabilities
-                </p>
-                <h2
-                    id="capabilities-heading"
-                    className="font-display font-bold text-primary dark:text-white"
-                    style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', letterSpacing: '-0.02em' }}
-                >
-                    Core Competencies
-                </h2>
+export const CapabilitiesSection: React.FC = () => {
+    const totalSkills = typedSkillsData.capabilities.reduce((acc, cat) => acc + cat.items.length, 0);
+
+    return (
+        <section id="capabilities" className="w-full bg-bg-primary flex flex-col pt-0">
+            {/* SECTION HEADER BAR */}
+            <div className="w-full h-[36px] bg-[#111111] border-y-[0.5px] border-white/[0.06] px-4 md:px-8 flex justify-between items-center shrink-0">
+                <div className="font-mono text-[8px] sm:text-[9px] text-white/20 tracking-[0.18em]">
+                    CAPABILITIES MANIFEST
+                </div>
+                <div className="font-mono text-[8px] sm:text-[9px] text-white/[0.18]">
+                    {totalSkills} capabilities
+                </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {typedSkillsData.capabilities.map((cap, i) => (
-                    <div
-                        key={cap.category}
-                        className="reveal flex flex-col p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow"
-                        style={{ transitionDelay: `${i * 100}ms` }}
-                    >
-                        <div className="flex items-center gap-3 mb-6">
-                            <CardIcon category={cap.category} />
-                            <h3 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight">
-                                {cap.category}
-                            </h3>
-                        </div>
-                        
-                        <div className="flex flex-wrap items-center gap-2">
-                            {cap.items.map((item, index) => (
-                                <div key={index} className="group relative">
-                                    <div className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700/50 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-default">
-                                        <span>{item.name}</span>
-                                        {item.tooltip && (
-                                            <Info className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 hidden sm:block" />
-                                        )}
+            {/* CONTENT */}
+            <div className="w-full px-4 md:px-8 py-[2rem]">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[4rem] gap-y-[2.5rem]">
+                    {typedSkillsData.capabilities.map((cap) => (
+                        <div key={cap.category} className="border-t-[0.5px] border-white/[0.06] flex flex-col">
+                            {/* Category Header */}
+                            <div className="flex items-center gap-[10px] pt-[1rem] pb-[0.6rem]">
+                                <span className="font-mono text-[11px] text-white/20">
+                                    {getCategoryGlyph(cap.category)}
+                                </span>
+                                <span className="font-sans text-[12px] font-bold text-white/[0.7]">
+                                    {cap.category}
+                                </span>
+                            </div>
+
+                            {/* Skill Items */}
+                            <div className="flex flex-col">
+                                {cap.items.map((item, index) => (
+                                    <div 
+                                        key={index}
+                                        className="group flex items-center justify-between py-[6px] border-b-[0.5px] border-white/[0.03] transition-colors duration-150 hover:bg-white/[0.02] cursor-default"
+                                        title={item.tooltip}
+                                    >
+                                        <span className="font-mono text-[11px] text-white/[0.38] transition-colors duration-150 group-hover:text-white/[0.65]">
+                                            {item.name}
+                                        </span>
                                         {item.projectRef && (
                                             <a 
-                                                href={`#${item.projectRef}`}
-                                                className="ml-0.5 text-accent dark:text-[#10B981] hover:underline flex items-center"
-                                                title={`View project: ${projectsData.find(p => p.id === item.projectRef)?.title || 'Project'}`}
+                                                href={`#work`} // or directly to the project if specific ID mapping is needed, but we used `#work` for now. Could be `#${item.projectRef}`
+                                                onClick={(e) => {
+                                                    if (!item.projectRef) e.preventDefault();
+                                                }}
+                                                className="font-mono text-white/[0.15] hover:text-[#4ade80]/60 transition-colors duration-150 px-2 cursor-pointer"
+                                                title={`View related project`}
                                             >
-                                                <LinkIcon className="w-3.5 h-3.5" />
+                                                →
                                             </a>
                                         )}
                                     </div>
-                                    
-                                    {/* Tooltip */}
-                                    {item.tooltip && (
-                                        <div className="absolute opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-20 bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[250px] p-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs text-center rounded shadow-lg pointer-events-none">
-                                            {item.tooltip}
-                                            {/* Tooltip Arrow */}
-                                            <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900 dark:border-t-white"></div>
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
-        </div>
-    </section>
-);
+        </section>
+    );
+};

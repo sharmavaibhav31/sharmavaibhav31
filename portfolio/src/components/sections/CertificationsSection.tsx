@@ -1,66 +1,69 @@
+// Theme: Redacted × Kernel/Log hybrid
+// Data: untouched — presentation layer only
+
 import React from 'react';
 import certData from '../../data/certifications.json';
 
-export const CertificationsSection: React.FC = () => (
-    <section id="certifications" className="py-28 border-b border-border dark:border-slate-800/50 dark:bg-[#0B1120] transition-colors duration-300" aria-labelledby="certifications-heading">
-        <div className="max-w-7xl mx-auto px-6 lg:px-16">
-            <div className="reveal mb-16">
-                <p className="text-[11px] font-semibold text-accent dark:text-[#94A3B8] tracking-widest uppercase mb-3">
-                    Credentials
-                </p>
-                <h2
-                    id="certifications-heading"
-                    className="font-display font-bold text-primary dark:text-white"
-                    style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', letterSpacing: '-0.02em' }}
-                >
-                    Certifications
-                </h2>
+export const CertificationsSection: React.FC = () => {
+    // Flatten all certs into one list
+    const allCerts = certData.flatMap(group => group.items);
+    
+    // Sort by date descending
+    const sortedCerts = [...allCerts].sort((a, b) => {
+        const dateA = new Date(a.date).getTime();
+        const dateB = new Date(b.date).getTime();
+        if (!isNaN(dateA) && !isNaN(dateB)) {
+            return dateB - dateA;
+        }
+        return 0;
+    });
+
+    return (
+        <section id="certifications" className="w-full bg-bg-primary flex flex-col pt-0">
+            {/* SECTION HEADER BAR */}
+            <div className="w-full h-[36px] bg-[#111111] border-y-[0.5px] border-white/[0.06] px-4 md:px-8 flex justify-between items-center shrink-0">
+                <div className="font-mono text-[8px] sm:text-[9px] text-white/20 tracking-[0.18em]">
+                    CREDENTIALS VERIFIED
+                </div>
+                <div className="font-mono text-[8px] sm:text-[9px] text-white/[0.18]">
+                    {sortedCerts.length} credentials
+                </div>
             </div>
 
-            <div className="space-y-16">
-                {certData.map((group, i) => (
-                    <div
-                        key={group.category}
-                        className="reveal"
-                        style={{ transitionDelay: `${i * 60}ms` }}
+            {/* CONTENT */}
+            <div className="w-full flex flex-col">
+                {sortedCerts.map((cert, i) => (
+                    <a 
+                        key={i}
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full p-[12px_2rem] border-b-[0.5px] border-white/[0.04] hover:bg-white/[0.02] transition-colors duration-150 grid grid-cols-1 sm:grid-cols-[1fr_180px_100px] items-center gap-2 sm:gap-0"
                     >
-                        {/* Tier Heading */}
-                        <h3 className="text-sm font-semibold text-primary dark:text-slate-100 uppercase tracking-wide mb-4">
-                            {group.category}
-                        </h3>
-
-                        <div className="flex flex-col border border-slate-200 dark:border-slate-800 rounded-lg overflow-hidden bg-white dark:bg-[#0B1120]">
-                            {group.items.map((cert, j) => (
-                                <div
-                                    key={j}
-                                    className="group flex flex-col sm:flex-row sm:items-center justify-between p-4 border-b last:border-0 border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-[#0F172A] transition-colors"
-                                >
-                                    <div className="flex-1">
-                                        <h4 className="text-sm font-semibold text-primary dark:text-slate-200">
-                                            {cert.title}
-                                        </h4>
-                                        <div className="text-[12px] text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-2">
-                                            <span>{cert.issuer}</span>
-                                            <span className="opacity-50">•</span>
-                                            <span className="font-mono">{cert.date}</span>
-                                        </div>
-                                    </div>
-                                    <div className="mt-3 sm:mt-0">
-                                        <a
-                                            href={cert.link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-[11px] font-semibold text-accent dark:text-[#3B82F6] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
-                                        >
-                                            Verify Status →
-                                        </a>
-                                    </div>
-                                </div>
-                            ))}
+                        {/* Left: Name & Issuer */}
+                        <div className="flex flex-col">
+                            <span className="font-sans text-[12px] font-semibold text-white/[0.72] mb-[2px]">
+                                {cert.title}
+                            </span>
+                            <span className="font-mono text-[10px] text-white/[0.25]">
+                                {cert.issuer}
+                            </span>
                         </div>
-                    </div>
+                        
+                        {/* Middle: Date */}
+                        <div className="font-mono text-[10px] text-white/[0.22] sm:text-center">
+                            {cert.date}
+                        </div>
+                        
+                        {/* Right: Badge */}
+                        <div className="flex justify-start sm:justify-end">
+                            <span className="font-mono text-[8px] tracking-[0.14em] font-bold text-[#4ade80]/[0.7] border-[0.5px] border-[#4ade80]/25 px-[8px] py-[2px] text-center">
+                                VERIFIED
+                            </span>
+                        </div>
+                    </a>
                 ))}
             </div>
-        </div>
-    </section>
-);
+        </section>
+    );
+};
