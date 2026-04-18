@@ -9,9 +9,7 @@ import { ExperienceSection } from '../components/sections/ExperienceSection';
 import { AboutSection } from '../components/sections/AboutSection';
 import { CertificationsSection } from '../components/sections/CertificationsSection';
 import { useIntersectionObserver } from '../hooks/useScrollReveal';
-import { ShootingStars } from '../components/ui/ShootingStars';
 import { useTheme } from '../context/ThemeContext';
-// ArchitectureSection is now integrated directly into the HeroSection
 
 const PortfolioContent: React.FC = () => {
     useIntersectionObserver();
@@ -19,10 +17,6 @@ const PortfolioContent: React.FC = () => {
 
     return (
         <div className="min-h-screen" style={{ backgroundColor: isDark ? '#000000' : '#F8FAFC', color: isDark ? '#fff' : '#0F172A' }}>
-
-            {/* Shooting stars — behind all content */}
-            <ShootingStars />
-
             <Header />
             <main id="main-content">
                 <HeroSection />

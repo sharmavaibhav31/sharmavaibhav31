@@ -16,8 +16,20 @@ export const HeroSection: React.FC = () => {
         >
             {/* Subtle line-grid and horizontal scanline */}
             <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+                {/* Light Mode Grid */}
                 <div 
-                    className="absolute inset-0" 
+                    className="absolute inset-0 block dark:hidden" 
+                    style={{
+                        backgroundImage: `
+                            linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px)
+                        `,
+                        backgroundSize: '40px 40px',
+                    }}
+                />
+                {/* Dark Mode Grid */}
+                <div 
+                    className="absolute inset-0 hidden dark:block" 
                     style={{
                         backgroundImage: `
                             linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
@@ -26,8 +38,9 @@ export const HeroSection: React.FC = () => {
                         backgroundSize: '40px 40px',
                     }}
                 />
+                {/* Scanline */}
                 <div 
-                    className="absolute left-0 w-full h-[1px] bg-[rgba(0,255,180,0.15)] animate-[heroScanline_4s_linear_infinite]"
+                    className="absolute left-0 w-full h-[1px] bg-black/10 dark:bg-[#00ffb4]/15 animate-[heroScanline_4s_linear_infinite]"
                     style={{
                         maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
                         WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
