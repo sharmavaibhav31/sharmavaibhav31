@@ -22,3 +22,27 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+.cursor/
+.cursorrules
+*.claude/
+.github/
+.vibecheck/
+.islstudio/
+.claudecode/
+.gemini/
+.geminicode/
+.codex/
+.codexrules/
+.codexrules.v2/
+.opencode/
+.opencode.rules/
+.opencode.rules.v2/
+.cursor/
+.cursorrules/
+.claude/
+.claude.rules/
+.claude.rules.v2/
+.github\ copy
+.vscode/
+.agent/
