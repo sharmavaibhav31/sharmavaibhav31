@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
         <header className="sticky top-0 z-[100] w-full h-[48px] bg-bg-primary border-b-[0.5px] border-border-default px-4 md:px-8 flex items-center justify-between">
             
             {/* Left: Logo */}
-            <div className="font-mono text-[12px] tracking-[0.1em] shrink-0">
+            <div className="font-mono text-[13.5px] tracking-[0.1em] shrink-0">
                 <span className="text-white/20">// SHARMA, </span>
                 <span className="text-white/[0.85] font-bold">VAIBHAV</span>
             </div>
@@ -32,7 +32,7 @@ export const Header: React.FC = () => {
                     <a
                         key={link.label}
                         href={link.href}
-                        className="font-mono text-[9px] tracking-[0.16em] uppercase text-white/25 hover:text-white/70 transition-colors duration-150"
+                        className="font-mono text-[10.5px] tracking-[0.16em] uppercase text-white/25 hover:text-white/70 transition-colors duration-150"
                     >
                         {link.label}
                     </a>
@@ -60,7 +60,7 @@ export const Header: React.FC = () => {
                     href={`${import.meta.env.BASE_URL}Vaibhav_Sharma_resume.pdf`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-mono text-[9px] tracking-[0.12em] px-[14px] py-[5px] bg-transparent text-white/50 border-[0.5px] border-white/20 hover:text-[#ff5050]/80 hover:border-[#ff5050]/30 transition-all duration-150 uppercase"
+                    className="font-mono text-[10.5px] tracking-[0.12em] px-[14px] py-[5px] bg-transparent text-white/50 border-[0.5px] border-white/20 hover:text-[#ff5050]/80 hover:border-[#ff5050]/30 transition-all duration-150 uppercase"
                 >
                     RESUME
                 </a>

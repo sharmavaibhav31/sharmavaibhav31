@@ -18,7 +18,7 @@ export const HeroSection: React.FC = () => {
         <section id="hero" className="w-full min-h-screen flex flex-col bg-bg-primary pt-[48px]">
             {/* DOCUMENT HEADER BAR */}
             <div className="w-full h-[36px] bg-[#111111] border-y-[0.5px] border-white/[0.06] px-8 flex justify-between items-center z-10 shrink-0">
-                <div className="font-mono text-[9px] text-white/20 tracking-[0.22em]">
+                <div className="font-mono text-[9px] text-white/[0.55] tracking-[0.22em]">
                     PERSONNEL FILE
                 </div>
                 <div className="font-mono text-[8px] font-bold tracking-[0.2em] text-[#ff5050]/80 border border-[#ff5050]/35 px-[10px] py-[2px] -rotate-[1.5deg] inline-block">
@@ -33,13 +33,13 @@ export const HeroSection: React.FC = () => {
                     
                     {/* Top section */}
                     <div>
-                        <div className="font-mono text-[10px] text-white/[0.35] tracking-[0.2em] mb-[2rem]">
+                        <div className="font-mono text-[10px] text-white/[0.50] tracking-[0.2em] mb-[2rem]">
                             // PERSONNEL FILE
                         </div>
                         <h1 className="font-sans text-[48px] lg:text-[72px] font-black leading-[0.88] tracking-[-2px] text-white/[0.92] uppercase mb-2">
                             {resumeData.name.split(' ').map((n, i) => <React.Fragment key={i}>{n}<br className="hidden sm:block" /></React.Fragment>)}
                         </h1>
-                        <div className="font-mono text-[10px] tracking-[0.16em] text-white/[0.45] mb-[2.5rem] uppercase">
+                        <div className="font-mono text-[10px] tracking-[0.16em] text-white/[0.55] mb-[2.5rem] uppercase">
                             {resumeData.title}
                         </div>
                     </div>
@@ -47,35 +47,35 @@ export const HeroSection: React.FC = () => {
                     {/* Middle section — FIELD ROWS */}
                     <div className="flex flex-col">
                         <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] border-white/[0.06] gap-[1.5rem]">
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10px] text-white/[0.38] tracking-[0.14em] uppercase">SPECIALIZATION</span>
-                            <span className="font-mono text-[12px] text-white/[0.75] leading-[1.6]">{specialization}</span>
+                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] text-white/[0.55] tracking-[0.14em] uppercase">SPECIALIZATION</span>
+                            <span className="font-mono text-[12.5px] text-white/[0.82] leading-[1.6]">{specialization}</span>
                         </div>
                         <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] border-white/[0.06] gap-[1.5rem]">
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10px] text-white/[0.38] tracking-[0.14em] uppercase">PRIMARY STACK</span>
-                            <span className="font-mono text-[12px] text-white/[0.75] leading-[1.6]">{primaryStack}</span>
+                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] text-white/[0.55] tracking-[0.14em] uppercase">PRIMARY STACK</span>
+                            <span className="font-mono text-[12.5px] text-white/[0.82] leading-[1.6]">{primaryStack}</span>
                         </div>
                         <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] border-white/[0.06] gap-[1.5rem]">
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10px] text-white/[0.38] tracking-[0.14em] uppercase">CLEARANCE</span>
-                            <span className="font-mono text-[12px] text-white/[0.75] leading-[1.6]">Java · C · Python · seccomp · llama.cpp</span>
+                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] text-white/[0.55] tracking-[0.14em] uppercase">CLEARANCE</span>
+                            <span className="font-mono text-[12.5px] text-white/[0.82] leading-[1.6]">Java · C · Python · seccomp · llama.cpp</span>
                         </div>
                         <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] border-white/[0.06] gap-[1.5rem]">
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10px] text-white/[0.38] tracking-[0.14em] uppercase">SYSTEMS BUILT</span>
-                            <span className="font-mono text-[12px] text-white/[0.75] leading-[1.6]">{projectsData.length} active</span>
+                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] text-white/[0.55] tracking-[0.14em] uppercase">SYSTEMS BUILT</span>
+                            <span className="font-mono text-[12.5px] text-white/[0.82] leading-[1.6]">{projectsData.length} active</span>
                         </div>
                         <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] border-white/[0.06] gap-[1.5rem]">
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10px] text-white/[0.38] tracking-[0.14em] uppercase">USERS SERVED</span>
-                            <span className="font-mono text-[12px] text-white/[0.75] leading-[1.6]">8,000+</span>
+                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] text-white/[0.55] tracking-[0.14em] uppercase">USERS SERVED</span>
+                            <span className="font-mono text-[12.5px] text-white/[0.82] leading-[1.6]">8,000+</span>
                         </div>
                         <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] border-white/[0.06] gap-[1.5rem]">
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10px] text-white/[0.38] tracking-[0.14em] uppercase">LOCATION</span>
-                            <span className="font-mono text-[12px] leading-[1.6] bg-white/[0.12] text-transparent select-none cursor-pointer px-[4px] py-[1px] min-w-[140px] inline-block transition-all duration-250 ease-out hover:bg-transparent hover:text-white/[0.75]" title="hover to reveal">Bengaluru, India</span>
+                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] text-white/[0.55] tracking-[0.14em] uppercase">LOCATION</span>
+                            <span className="font-mono text-[12.5px] leading-[1.6] bg-white/[0.12] text-transparent select-none cursor-pointer px-[4px] py-[1px] min-w-[140px] inline-block transition-all duration-250 ease-out hover:bg-transparent hover:text-white/[0.82]" title="hover to reveal">Bengaluru, India</span>
                         </div>
                         <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] border-white/[0.06] gap-[1.5rem]">
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10px] text-white/[0.38] tracking-[0.14em] uppercase">CONTACT</span>
-                            <span className="font-mono text-[12px] leading-[1.6] bg-white/[0.12] text-transparent select-none cursor-pointer px-[4px] py-[1px] min-w-[140px] inline-block transition-all duration-250 ease-out hover:bg-transparent hover:text-white/[0.75]" title="hover to reveal">{resumeData.socials.email.replace('mailto:', '')}</span>
+                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] text-white/[0.55] tracking-[0.14em] uppercase">CONTACT</span>
+                            <span className="font-mono text-[12.5px] leading-[1.6] bg-white/[0.12] text-transparent select-none cursor-pointer px-[4px] py-[1px] min-w-[140px] inline-block transition-all duration-250 ease-out hover:bg-transparent hover:text-white/[0.82]" title="hover to reveal">{resumeData.socials.email.replace('mailto:', '')}</span>
                         </div>
                         <div className="flex flex-row items-center pt-[9px] pb-[9px] border-b-[0.5px] border-white/[0.06] gap-[1.5rem]">
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10px] text-white/[0.38] tracking-[0.14em] uppercase">STATUS</span>
+                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] text-white/[0.55] tracking-[0.14em] uppercase">STATUS</span>
                             <div className="flex items-center">
                                 <div className="w-[6px] h-[6px] rounded-full bg-[#4ade80] animate-pulse-dot mr-2 shrink-0"></div>
                                 <span className="font-mono text-[10px] tracking-[0.12em] text-[#4ade80]">ACTIVE — AVAILABLE</span>
@@ -88,7 +88,7 @@ export const HeroSection: React.FC = () => {
                         <a href="#work" className="font-mono text-[10px] tracking-[0.08em] uppercase bg-[#ff5050]/[0.08] text-[#ff5050]/[0.85] border-[0.5px] border-[#ff5050]/30 px-[22px] py-[9px] hover:bg-[#ff5050]/[0.14] hover:border-[#ff5050]/50 transition-all duration-150 rounded-none">
                             VIEW PROJECTS
                         </a>
-                        <a href={`${import.meta.env.BASE_URL}Vaibhav_Sharma_resume.pdf`} target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] tracking-[0.08em] uppercase bg-transparent text-white/[0.35] border-[0.5px] border-white/[0.12] px-[22px] py-[9px] hover:text-white/[0.6] hover:border-white/[0.25] transition-all duration-150 rounded-none">
+                        <a href={`${import.meta.env.BASE_URL}Vaibhav_Sharma_resume.pdf`} target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] tracking-[0.08em] uppercase bg-transparent text-white/[0.60] border-[0.5px] border-white/[0.12] px-[22px] py-[9px] hover:text-white/[0.82] hover:border-white/[0.25] transition-all duration-150 rounded-none">
                             DOWNLOAD RESUME
                         </a>
                     </div>
@@ -107,7 +107,7 @@ export const HeroSection: React.FC = () => {
                                 alt="Vaibhav Sharma" 
                                 className="w-full h-auto max-h-[75vh] object-cover object-top block border-[0.5px] border-white/[0.08]"
                             />
-                            <div className="text-center mt-[10px] text-[9px] font-mono tracking-[0.14em] text-white/[0.18]">
+                            <div className="text-center mt-[10px] text-[9px] font-mono tracking-[0.14em] text-white/[0.55]">
                                 // IDENTITY CONFIRMED
                             </div>
                         </div>
@@ -126,9 +126,13 @@ export const HeroSection: React.FC = () => {
 
                                 {/* Centered Labels */}
                                 <div className="relative z-10 flex flex-col items-center">
-                                    <span className="font-mono text-[8px] text-white/[0.12] tracking-[0.2em]">PHOTO</span>
+                                    <span className="font-mono text-[8px] text-white/[0.55] tracking-[0.2em]">PHOTO</span>
                                     <span className="font-mono text-[8px] text-[#ff5050]/40 tracking-[0.2em] mt-1">REDACTED</span>
                                 </div>
+                            </div>
+                            {/* VS. label */}
+                            <div className="absolute bottom-[-18px] font-mono text-[11px] text-white/[0.20] tracking-[0.1em]">
+                                VS.
                             </div>
                         </div>
                     </div>
