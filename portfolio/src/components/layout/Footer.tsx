@@ -1,36 +1,46 @@
+// Theme: Redacted × Kernel/Log hybrid
+// Data: untouched — presentation layer only
+
 import React from 'react';
 import resumeData from '../../data/resume.json';
 
-export const Footer: React.FC = () => (
-    <footer className="py-8 border-t border-border dark:border-slate-800/50 dark:bg-[#0B1120] transition-colors duration-300" role="contentinfo">
-        <div className="max-w-7xl mx-auto px-6 lg:px-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <p className="text-xs text-muted dark:text-slate-500 font-medium">
-                © 2026 Vaibhav Sharma. Systems / Backend Engineer.
-            </p>
-            <div className="flex items-center gap-6">
+export const Footer: React.FC = () => {
+    const year = new Date().getFullYear();
+    
+    return (
+        <footer className="w-full h-[48px] bg-bg-primary border-t-[0.5px] border-white/[0.06] px-4 md:px-8 flex items-center justify-between mt-auto">
+            
+            {/* Left: System log end */}
+            <div className="font-mono text-[9px] text-white/30 tracking-[0.12em] uppercase">
+                © {year} VAIBHAV SHARMA. SYSTEM_LOG_END.
+            </div>
+
+            {/* Right: Social Links */}
+            <div className="flex items-center gap-[1rem]">
                 <a
                     href={resumeData.socials.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-secondary dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors link-underline font-medium"
+                    className="font-mono text-[9px] tracking-[0.12em] text-white/20 hover:text-[#4ade80]/70 transition-colors duration-150"
                 >
-                    GitHub
+                    [GITHUB]
                 </a>
                 <a
                     href={resumeData.socials.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-secondary dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors link-underline font-medium"
+                    className="font-mono text-[9px] tracking-[0.12em] text-white/20 hover:text-[#4ade80]/70 transition-colors duration-150"
                 >
-                    LinkedIn
+                    [LINKEDIN]
                 </a>
                 <a
                     href={resumeData.socials.email}
-                    className="text-xs text-secondary dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors link-underline font-medium"
+                    className="font-mono text-[9px] tracking-[0.12em] text-white/20 hover:text-[#4ade80]/70 transition-colors duration-150"
                 >
-                    Email
+                    [EMAIL]
                 </a>
             </div>
-        </div>
-    </footer>
-);
+            
+        </footer>
+    );
+};
