@@ -33,10 +33,10 @@ export const CapabilitiesSection: React.FC = () => {
             {/* SECTION HEADER BAR */}
             <div className="w-full h-[36px] border-y-[0.5px] px-4 md:px-8 flex justify-between items-center shrink-0"
                 style={{ background: 'var(--bg-surface)', borderColor: 'var(--border-default)' }}>
-                <div className="font-mono text-[8px] sm:text-[9px] tracking-[0.18em]" style={{ color: 'var(--text-muted)' }}>
+                <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.18em]" style={{ color: 'var(--text-muted)' }}>
                     CAPABILITIES MANIFEST
                 </div>
-                <div className="font-mono text-[8px] sm:text-[9px]" style={{ color: 'var(--text-muted)' }}>
+                <div className="font-mono text-[9px] sm:text-[10px]" style={{ color: 'var(--text-muted)' }}>
                     {totalSkills} capabilities
                 </div>
             </div>
@@ -49,10 +49,10 @@ export const CapabilitiesSection: React.FC = () => {
                             style={{ borderColor: 'var(--border-default)' }}>
                             {/* Category Header */}
                             <div className="flex items-center gap-[10px] pt-[1rem] pb-[0.6rem]">
-                                <span className="font-mono text-[11px]" style={{ color: 'var(--text-muted)' }}>
+                                <span className="font-mono text-[12px]" style={{ color: 'var(--text-muted)' }}>
                                     {getCategoryGlyph(cap.category)}
                                 </span>
-                                <span className="font-sans text-[12px] font-bold" style={{ color: 'var(--text-primary)' }}>
+                                <span className="font-sans text-[13px] font-bold" style={{ color: 'var(--text-primary)' }}>
                                     {cap.category}
                                 </span>
                             </div>
@@ -68,7 +68,7 @@ export const CapabilitiesSection: React.FC = () => {
                                         onMouseEnter={e => (e.currentTarget.style.background = 'var(--bg-surface)')}
                                         onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
                                     >
-                                        <span className="font-mono text-[11px] transition-colors duration-150"
+                                        <span className="font-mono text-[12px] transition-colors duration-150"
                                             style={{ color: 'var(--text-secondary)' }}>
                                             {item.name}
                                         </span>

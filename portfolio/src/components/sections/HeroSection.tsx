@@ -14,14 +14,14 @@ export const HeroSection: React.FC = () => {
         ?.items.slice(0, 5).map(i => i.name).join(' · ') || 'Java · Spring Boot · PostgreSQL · Docker';
 
     return (
-        <section id="hero" className="w-full min-h-screen flex flex-col pt-[48px]" style={{ background: 'var(--bg-primary)' }}>
+        <section id="hero" className="w-full min-h-screen flex flex-col" style={{ background: 'var(--bg-primary)' }}>
             {/* DOCUMENT HEADER BAR */}
             <div className="w-full h-[36px] border-y-[0.5px] px-8 flex justify-between items-center z-10 shrink-0"
                 style={{ background: 'var(--bg-surface)', borderColor: 'var(--border-default)' }}>
-                <div className="font-mono text-[9px] tracking-[0.22em]" style={{ color: 'var(--text-muted)' }}>
+                <div className="font-mono text-[11.5px] tracking-[0.22em]" style={{ color: 'var(--text-muted)' }}>
                     PERSONNEL FILE
                 </div>
-                <div className="font-mono text-[8px] font-bold tracking-[0.2em] -rotate-[1.5deg] inline-block border px-[10px] py-[2px]"
+                <div className="font-mono text-[10.5px] font-bold tracking-[0.2em] -rotate-[1.5deg] inline-block border px-[10px] py-[2px]"
                     style={{ color: 'var(--accent-red)', borderColor: 'var(--accent-red-border)' }}>
                     ACTIVE
                 </div>
@@ -34,13 +34,13 @@ export const HeroSection: React.FC = () => {
                     
                     {/* Top section */}
                     <div>
-                        <div className="font-mono text-[10px] tracking-[0.2em] mb-[2rem]" style={{ color: 'var(--text-muted)' }}>
+                        <div className="font-mono text-[11px] tracking-[0.2em] mb-[0.5rem]" style={{ color: 'var(--text-muted)' }}>
                             // PERSONNEL FILE
                         </div>
-                        <h1 className="font-sans text-[48px] lg:text-[72px] font-black leading-[0.88] tracking-[-2px] uppercase mb-2" style={{ color: 'var(--text-primary)' }}>
+                        <h1 className="font-sans text-[49px] lg:text-[73px] font-black leading-[0.88] tracking-[-2px] uppercase mb-2" style={{ color: 'var(--text-primary)' }}>
                             {resumeData.name.split(' ').map((n, i) => <React.Fragment key={i}>{n}<br className="hidden sm:block" /></React.Fragment>)}
                         </h1>
-                        <div className="font-mono text-[10px] tracking-[0.16em] mb-[2.5rem] uppercase" style={{ color: 'var(--text-muted)' }}>
+                        <div className="font-mono text-[11px] tracking-[0.16em] mb-[2.5rem] uppercase" style={{ color: 'var(--text-muted)' }}>
                             {resumeData.title}
                         </div>
                     </div>
@@ -56,9 +56,9 @@ export const HeroSection: React.FC = () => {
                         ].map(row => (
                             <div key={row.key} className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] gap-[1.5rem]"
                                 style={{ borderColor: 'var(--border-default)' }}>
-                                <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] tracking-[0.14em] uppercase"
+                                <span className="min-w-[140px] shrink-0 font-mono text-[11.5px] tracking-[0.14em] uppercase"
                                     style={{ color: 'var(--text-muted)' }}>{row.key}</span>
-                                <span className="font-mono text-[12.5px] leading-[1.6]"
+                                <span className="font-mono text-[13.5px] leading-[1.6]"
                                     style={{ color: 'var(--text-secondary)' }}>{row.val}</span>
                             </div>
                         ))}
@@ -66,10 +66,10 @@ export const HeroSection: React.FC = () => {
                         {/* LOCATION — redacted */}
                         <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] gap-[1.5rem]"
                             style={{ borderColor: 'var(--border-default)' }}>
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] tracking-[0.14em] uppercase"
+                            <span className="min-w-[140px] shrink-0 font-mono text-[11.5px] tracking-[0.14em] uppercase"
                                 style={{ color: 'var(--text-muted)' }}>LOCATION</span>
                             <span
-                                className="font-mono text-[12.5px] leading-[1.6] select-none cursor-pointer px-[4px] py-[1px] min-w-[140px] inline-block transition-all duration-250"
+                                className="font-mono text-[13.5px] leading-[1.6] select-none cursor-pointer px-[4px] py-[1px] min-w-[140px] inline-block transition-all duration-250"
                                 style={{ background: 'var(--border-default)', color: 'transparent' }}
                                 title="hover to reveal"
                                 onMouseEnter={e => {
@@ -86,10 +86,10 @@ export const HeroSection: React.FC = () => {
                         {/* CONTACT — redacted */}
                         <div className="flex flex-row items-baseline pt-[9px] pb-[9px] border-b-[0.5px] gap-[1.5rem]"
                             style={{ borderColor: 'var(--border-default)' }}>
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] tracking-[0.14em] uppercase"
+                            <span className="min-w-[140px] shrink-0 font-mono text-[11.5px] tracking-[0.14em] uppercase"
                                 style={{ color: 'var(--text-muted)' }}>CONTACT</span>
                             <span
-                                className="font-mono text-[12.5px] leading-[1.6] select-none cursor-pointer px-[4px] py-[1px] min-w-[140px] inline-block transition-all duration-250"
+                                className="font-mono text-[13.5px] leading-[1.6] select-none cursor-pointer px-[4px] py-[1px] min-w-[140px] inline-block transition-all duration-250"
                                 style={{ background: 'var(--border-default)', color: 'transparent' }}
                                 title="hover to reveal"
                                 onMouseEnter={e => {
@@ -106,12 +106,12 @@ export const HeroSection: React.FC = () => {
                         {/* STATUS */}
                         <div className="flex flex-row items-center pt-[9px] pb-[9px] border-b-[0.5px] gap-[1.5rem]"
                             style={{ borderColor: 'var(--border-default)' }}>
-                            <span className="min-w-[140px] shrink-0 font-mono text-[10.5px] tracking-[0.14em] uppercase"
+                            <span className="min-w-[140px] shrink-0 font-mono text-[11.5px] tracking-[0.14em] uppercase"
                                 style={{ color: 'var(--text-muted)' }}>STATUS</span>
                             <div className="flex items-center">
                                 <div className="w-[6px] h-[6px] rounded-full animate-pulse-dot mr-2 shrink-0"
                                     style={{ background: 'var(--accent-green)' }}></div>
-                                <span className="font-mono text-[10px] tracking-[0.12em]"
+                                <span className="font-mono text-[11px] tracking-[0.12em]"
                                     style={{ color: 'var(--accent-green)' }}>ACTIVE — AVAILABLE</span>
                             </div>
                         </div>
@@ -120,12 +120,12 @@ export const HeroSection: React.FC = () => {
                     {/* Bottom section — buttons */}
                     <div className="flex flex-row gap-4 mt-[2.5rem]">
                         <a href="#work"
-                            className="font-mono text-[10px] tracking-[0.08em] uppercase border-[0.5px] px-[22px] py-[9px] transition-all duration-150 rounded-none"
+                            className="font-mono text-[11px] tracking-[0.08em] uppercase border-[0.5px] px-[22px] py-[9px] transition-all duration-150 rounded-none"
                             style={{ background: 'var(--accent-red-bg)', color: 'var(--accent-red)', borderColor: 'var(--accent-red-border)' }}>
                             VIEW PROJECTS
                         </a>
                         <a href={`${import.meta.env.BASE_URL}Vaibhav_Sharma_resume.pdf`} target="_blank" rel="noopener noreferrer"
-                            className="font-mono text-[10px] tracking-[0.08em] uppercase bg-transparent border-[0.5px] px-[22px] py-[9px] transition-all duration-150 rounded-none"
+                            className="font-mono text-[11px] tracking-[0.08em] uppercase bg-transparent border-[0.5px] px-[22px] py-[9px] transition-all duration-150 rounded-none"
                             style={{ color: 'var(--text-secondary)', borderColor: 'var(--border-default)' }}>
                             DOWNLOAD RESUME
                         </a>
@@ -146,7 +146,7 @@ export const HeroSection: React.FC = () => {
                                 className="w-full h-auto max-h-[75vh] object-cover object-top block border-[0.5px]"
                                 style={{ borderColor: 'var(--border-default)' }}
                             />
-                            <div className="text-center mt-[10px] text-[9px] font-mono tracking-[0.14em]"
+                            <div className="text-center mt-[10px] text-[10px] font-mono tracking-[0.14em]"
                                 style={{ color: 'var(--text-muted)' }}>
                                 // IDENTITY CONFIRMED
                             </div>
@@ -170,13 +170,13 @@ export const HeroSection: React.FC = () => {
                                 ))}
 
                                 <div className="relative z-10 flex flex-col items-center">
-                                    <span className="font-mono text-[8px] tracking-[0.2em]"
+                                    <span className="font-mono text-[9px] tracking-[0.2em]"
                                         style={{ color: 'var(--text-muted)' }}>PHOTO</span>
-                                    <span className="font-mono text-[8px] tracking-[0.2em] mt-1"
+                                    <span className="font-mono text-[9px] tracking-[0.2em] mt-1"
                                         style={{ color: 'var(--accent-red)' }}>REDACTED</span>
                                 </div>
                             </div>
-                            <div className="absolute bottom-[-18px] font-mono text-[11px] tracking-[0.1em]"
+                            <div className="absolute bottom-[-18px] font-mono text-[12px] tracking-[0.1em]"
                                 style={{ color: 'var(--text-muted)' }}>
                                 VS.
                             </div>

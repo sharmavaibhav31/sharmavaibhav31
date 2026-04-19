@@ -12,10 +12,10 @@ export const AboutSection: React.FC = () => (
         {/* SECTION HEADER BAR */}
         <div className="w-full h-[36px] border-y-[0.5px] px-4 md:px-8 flex justify-between items-center shrink-0"
             style={{ background: 'var(--bg-surface)', borderColor: 'var(--border-default)' }}>
-            <div className="font-mono text-[8px] sm:text-[9px] tracking-[0.18em]" style={{ color: 'var(--text-muted)' }}>
+            <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.18em]" style={{ color: 'var(--text-muted)' }}>
                 OPERATIVE PROFILE
             </div>
-            <div className="font-mono text-[8px] sm:text-[9px] tracking-[0.12em] font-bold"
+            <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.12em] font-bold"
                 style={{ color: 'var(--accent-green)' }}>
                 CLEARANCE: LEVEL 5
             </div>
@@ -27,11 +27,11 @@ export const AboutSection: React.FC = () => (
                 
                 {/* Left Column - Philosophy/Paragraphs */}
                 <div className="flex flex-col gap-[1.5rem]">
-                    <div className="font-mono text-[8px] tracking-[0.14em] mb-[4px]" style={{ color: 'var(--text-muted)' }}>
+                    <div className="font-mono text-[9px] tracking-[0.14em] mb-[4px]" style={{ color: 'var(--text-muted)' }}>
                         STATEMENT_OF_INTENT
                     </div>
                     {paragraphs.map((para: string, i: number) => (
-                        <div key={i} className="font-mono text-[13px] leading-[1.8]"
+                        <div key={i} className="font-mono text-[14px] leading-[1.8]"
                             style={{ color: 'var(--text-secondary)' }}>
                             {i === 0 && (
                                 <span className="mr-2" style={{ color: 'var(--accent-green)' }}>{'>'}</span>
@@ -43,7 +43,7 @@ export const AboutSection: React.FC = () => (
 
                 {/* Right Column - Off-duty / Hobbies */}
                 <div className="flex flex-col">
-                    <div className="font-mono text-[8px] tracking-[0.14em] mb-[1.5rem]" style={{ color: 'var(--text-muted)' }}>
+                    <div className="font-mono text-[9px] tracking-[0.14em] mb-[1.5rem]" style={{ color: 'var(--text-muted)' }}>
                         OFF_DUTY_LOGS
                     </div>
                     <div className="flex flex-col">
@@ -51,7 +51,7 @@ export const AboutSection: React.FC = () => (
                             <div key={i} className="flex items-center gap-[10px] mb-[12px]">
                                 <span className="w-[3px] h-[3px] rounded-full shrink-0"
                                     style={{ background: 'var(--accent-red)' }}></span>
-                                <span className="font-mono text-[11px]" style={{ color: 'var(--text-secondary)' }}>
+                                <span className="font-mono text-[12px]" style={{ color: 'var(--text-secondary)' }}>
                                     {hobby}
                                 </span>
                             </div>
@@ -71,7 +71,7 @@ export const AboutSection: React.FC = () => (
                                 href={link.href}
                                 target={link.external ? '_blank' : undefined}
                                 rel={link.external ? 'noopener noreferrer' : undefined}
-                                className="font-mono text-[10px] transition-colors"
+                                className="font-mono text-[11px] transition-colors"
                                 style={{ color: 'var(--text-muted)' }}
                                 onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
                                 onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}

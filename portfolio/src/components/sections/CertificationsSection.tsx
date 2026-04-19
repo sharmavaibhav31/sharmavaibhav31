@@ -19,10 +19,10 @@ export const CertificationsSection: React.FC = () => {
             {/* SECTION HEADER BAR */}
             <div className="w-full h-[36px] border-y-[0.5px] px-4 md:px-8 flex justify-between items-center shrink-0"
                 style={{ background: 'var(--bg-surface)', borderColor: 'var(--border-default)' }}>
-                <div className="font-mono text-[8px] sm:text-[9px] tracking-[0.18em]" style={{ color: 'var(--text-muted)' }}>
+                <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.18em]" style={{ color: 'var(--text-muted)' }}>
                     CREDENTIALS VERIFIED
                 </div>
-                <div className="font-mono text-[8px] sm:text-[9px]" style={{ color: 'var(--text-muted)' }}>
+                <div className="font-mono text-[9px] sm:text-[10px]" style={{ color: 'var(--text-muted)' }}>
                     {sortedCerts.length} credentials
                 </div>
             </div>
@@ -42,23 +42,23 @@ export const CertificationsSection: React.FC = () => {
                     >
                         {/* Left: Name & Issuer */}
                         <div className="flex flex-col">
-                            <span className="font-sans text-[12px] font-semibold mb-[2px]"
+                            <span className="font-sans text-[13px] font-semibold mb-[2px]"
                                 style={{ color: 'var(--text-primary)' }}>
                                 {cert.title}
                             </span>
-                            <span className="font-mono text-[10px]" style={{ color: 'var(--text-muted)' }}>
+                            <span className="font-mono text-[11px]" style={{ color: 'var(--text-muted)' }}>
                                 {cert.issuer}
                             </span>
                         </div>
                         
                         {/* Middle: Date */}
-                        <div className="font-mono text-[10px] sm:text-center" style={{ color: 'var(--text-muted)' }}>
+                        <div className="font-mono text-[11px] sm:text-center" style={{ color: 'var(--text-muted)' }}>
                             {cert.date}
                         </div>
                         
                         {/* Right: Badge */}
                         <div className="flex justify-start sm:justify-end">
-                            <span className="font-mono text-[8px] tracking-[0.14em] font-bold border-[0.5px] px-[8px] py-[2px] text-center"
+                            <span className="font-mono text-[9px] tracking-[0.14em] font-bold border-[0.5px] px-[8px] py-[2px] text-center"
                                 style={{ color: 'var(--accent-green)', borderColor: 'var(--accent-green-border)' }}>
                                 VERIFIED
                             </span>

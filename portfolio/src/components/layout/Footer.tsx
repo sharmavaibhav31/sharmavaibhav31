@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
             style={{ background: 'var(--bg-surface)', borderColor: 'var(--border-default)' }}>
             
             {/* Left: System log end */}
-            <div className="font-mono text-[9px] tracking-[0.12em] uppercase"
+            <div className="font-mono text-[10px] tracking-[0.12em] uppercase"
                 style={{ color: 'var(--text-muted)' }}>
                 © {year} VAIBHAV SHARMA. SYSTEM_LOG_END.
             </div>
@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
                         href={link.href}
                         target={link.external ? '_blank' : undefined}
                         rel={link.external ? 'noopener noreferrer' : undefined}
-                        className="font-mono text-[9px] tracking-[0.12em] transition-colors duration-150"
+                        className="font-mono text-[10px] tracking-[0.12em] transition-colors duration-150"
                         style={{ color: 'var(--text-muted)' }}
                         onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
                         onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
