@@ -1,0 +1,352 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+
+%----------FONT OPTIONS----------
+% Sans-serif: \usepackage[sfdefault]{roboto}
+% Serif: \usepackage{CormorantGaramond}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+{\Huge \scshape \href{https://vaibhavsharmaa.me}{Vaibhav Sharma}} \\ \vspace{1pt}    Bangalore, India \\ \vspace{1pt}
+    \small \faPhone\ +91 70107 63467   ~ 
+    \href{mailto:sharma31stmay@gmail.com}{\faEnvelope\ \underline{sharma31stmay@gmail.com  }} ~     
+    \href{https://linkedin.com/in/sharmavaibhav31}{\faLinkedin\ \underline{linkedin.com/in/sharmavaibhav31  }} \\~
+    \href{https://github.com/sharmavaibhav31}{\faGithub\ \underline{github.com/sharmavaibhav31}}
+    \href{https://vaibhavsharmaa.me}{\faGlobe\ \underline{Portfolio}}
+    \vspace{-8pt}
+\end{center}
+\vspace{1pt}
+
+%-----------SUMMARY-----------
+\section{Summary}
+
+\small{
+Software Engineering student with experience building backend services, workflow-driven applications, and enterprise-style systems using Java, Spring Boot, PostgreSQL, and Python.
+Hands-on experience in software testing, debugging, API development, code reviews, and collaborative Agile development through internships, open-source leadership, and engineering projects.
+Strong foundation in data structures, object-oriented programming, software design, and scalable application development.
+% Backend and systems engineering student focused on building secure, scalable, and maintainable software systems.
+% Experienced in developing workflow-driven applications, transactional APIs, and event-driven services using Java, Spring Boot, PostgreSQL, and Redis.
+% Built production-oriented projects spanning authentication systems, microservices, scheduling engines, and backend automation platforms.
+}
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHeadingListStart
+\resumeSubheading
+{Mangalore Institute of Technology and Engineering}{Sep 2023 -- Jun 2027}
+{B.E. Computer Science and Engineering (CGPA: 9.43)}{Karnataka, India}
+\resumeSubHeadingListEnd
+\vspace{0.5pt}
+
+%-----------TECHNICAL SKILLS-----------
+% \section{Technical Skills}
+% \begin{itemize}[leftmargin=0.15in, label={}]
+% \small{\item{
+% \textbf{Languages:} Java, Python, SQL, C \\
+% \textbf{Backend:} Spring Boot, Spring Data JPA, Spring Security, FastAPI, REST APIs, Flask \\
+% \textbf{Databases:} PostgreSQL, MySQL, MongoDB, Redis, Firestore \\
+% % \textbf{Software Engineering:} OOP, Unit Testing, Integration Testing, SDLC, Agile, Debugging, Documentation \\
+% \textbf{Systems \& DevOps:} Docker, Linux, Bash, Git, GitHub Actions, Flyway, GCP \\
+% \textbf{Architecture:} Microservices, Event-Driven Systems, Redis Streams, API Gateway, RBAC
+% }}
+% \end{itemize}
+% \section{Technical Skills}
+% \begin{tabularx}{\textwidth}{@{} l X @{}}
+% \textbf{Languages: } & Java, Python, SQL, C \\[3pt]
+% \textbf{Backend: } & Spring Boot, Spring Data JPA, Spring Security, REST APIs, FastAPI, Flask \\[3pt]
+% \textbf{Databases: } & PostgreSQL, MySQL, Redis, MongoDB,  Firestore \\[3pt]
+% \textbf{Systems:  } & Linux, Bash, Git, GitHub Actions, Docker, Flyway, GCP \\[3pt]
+% \textbf{Architecture:    } & Microservices, Event-Driven Systems, Redis Streams, API Gateway, RBAC
+% \end{tabularx}
+% \section{Technical Skills}
+% \begin{tabularx}{\textwidth}{@{} l X @{}}
+% \textbf{Languages:} & Java, SQL, Python, C \\[3pt]
+
+% \textbf{Backend:} & Spring Boot, Spring Security, Spring Data JPA, REST APIs, FastAPI, Flask \\[3pt]
+
+% \textbf{Databases:} & PostgreSQL, MySQL, Redis, MongoDB\\[3pt]
+
+% \textbf{Systems \& DevOps:} & Git, GitHub, Docker, Linux, GitHub Actions \\[3pt]
+
+% \textbf{Core Concepts:} & OOP, DBMS, API Design, Authentication, RBAC, Database Modeling, Rate Limiting, Transaction Management
+% \end{tabularx}
+% \vspace{0.5pt}
+
+\section{Technical Skills}
+\begin{tabularx}{\textwidth}{@{} l X @{}}
+
+\textbf{Languages:} & Java, SQL, Python, C \\[3pt]
+
+\textbf{Backend Technologies:} & Spring Boot, Spring Security, Spring Data JPA, REST APIs, FastAPI \\[3pt]
+
+\textbf{Databases:} & PostgreSQL, MySQL, Redis, MongoDB \\[3pt]
+
+\textbf{Tools \& DevOps:} & Git, Docker, Linux, GitHub Actions \\[3pt]
+
+\textbf{Core Concepts:} & OOP, Database Design, Authentication \& Authorization, RBAC, Software Testing, Transaction Management, API Design, Rate Limiting, Data Structures, Debugging \\
+
+\end{tabularx}
+\vspace{0.5pt}
+
+%-----------EXPERIENCE-----------
+\section{Internship}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Backend Engineering Intern}{June 2026 -- Present}
+{LazyStudents.in}{Remote}
+\resumeItemListStart
+\resumeItem{Performed end-to-end validation and quality assurance across 150+ platform tools and workflows, identifying functional, usability, and workflow issues.}
+\resumeItem{Created structured QA documentation and testing matrices used to track defects, feature readiness, and release validation.}
+\resumeItem{Collaborated with engineering and product teams to review requirements, propose improvements, and prioritize backend enhancements within Agile development cycles.}
+\resumeItem{Contributing to backend feature development, bug resolution, and API improvements following code review and team collaboration practices.}
+\resumeItemListEnd
+
+
+
+\resumeSubheading
+{AI/ML Intern}{Sep 2025 -- Nov 2025}
+{Infosys Springboard}{Virtual}
+\resumeItemListStart
+\resumeItem{Built backend APIs coordinating multiple ML inference models using Flask within an AI music generation system.}
+\resumeItem{Implemented model preloading and fallback logic, reducing initialization latency by \textbf{45\%} and ensuring seamless inference workflows for high-concurrency requests.}
+\resumeItem{Designed REST endpoints for music generation, metadata storage, and genre classification backed by MongoDB.}
+% \resumeItem{Designed and developed Flask-based software APIs integrating multiple ML inference modules for an AI music generation platform.}
+% \resumeItem{Implemented model preloading, validation checks, and fallback execution logic, reducing initialization latency by \textbf{45\%}.}
+% \resumeItem{Built and tested REST interfaces for music generation, metadata persistence, and genre classification using MongoDB.}
+\resumeItemListEnd
+
+\resumeSubheading
+{Flutter Developer Intern}{Jul 2025 -- Sep 2025}
+{ClubChat -- Startup}{Remote}
+\resumeItemListStart
+\resumeItem{Contributed to a production mobile application serving \textbf{8,000+ users}.}
+\resumeItem{Developed event feed and real-time chat features using Flutter and Dart.}
+\resumeItem{Resolved \textbf{18+ stability issues} through debugging, root-cause analysis, and validation across two production releases.}
+% \resumeItem{Designed and implemented user-facing software features including event feeds and real-time chat modules for a production application used by \textbf{8,000+ users}.}
+% \resumeItem{Performed debugging, issue triaging, and minor defect fixes across \textbf{18+ stability issues} over two production releases.}
+% \resumeItem{Collaborated in sprint-based development cycles, feature reviews, and release validation to ensure production readiness on schedule.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+\resumeProjectHeading
+{\textbf{Appraisal Management System} \\ \textit{Java, Spring Boot, PostgreSQL, Hibernate}}{2026}
+\resumeItemListStart
+\resumeItem{Engineered a workflow automation platform to digitize annual faculty appraisal processes involving multi-level reviews, approvals, and performance evaluations.}
+\resumeItem{Designed a state-driven approval workflow with JWT authentication, role-based access control, configurable scoring rules, and audit-trail tracking.}
+\resumeItem{Built transactional APIs and normalized data models to ensure secure, traceable, and consistent appraisal lifecycle management.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Arachnode: Automated Job Discovery \& Outreach Platform} \\ \textit{Python, FastAPI, Redis Streams, PostgreSQL, Docker}}{2026}
+\resumeItemListStart
+\resumeItem{Architected a self-hosted platform automating job discovery, recruiter contact enrichment, and AI-assisted outreach workflows.}
+\resumeItem{Designed an event-driven microservice architecture with six independent services communicating through Redis Streams and asynchronous pipelines.}
+\resumeItem{Automated end-to-end outreach operations, reducing manual job search and recruiter engagement effort by \textbf{80\%+}.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Academic Timetable Scheduling System} \\ \textit{Java, Spring Boot, PostgreSQL, Docker}}{2026}
+\resumeItemListStart
+\resumeItem{Developed a constraint-based scheduling engine to automate timetable generation across multiple academic departments and semesters.}
+\resumeItem{Implemented conflict-detection algorithms preventing faculty, classroom, and section allocation overlaps while maintaining scheduling consistency.}
+\resumeItem{Designed scalable domain models with 14 relational entities, schema versioning, and secure role-based workflow management.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Offline AI Assistant Shell} \\ \textit{C, Linux Syscalls, Seccomp}}{2025}
+\resumeItemListStart
+\resumeItem{Built a secure Linux-based command shell integrating an offline large language model for local AI-assisted system interactions.}
+\resumeItem{Implemented process isolation using Seccomp filtering, Linux namespaces, and resource controls to restrict unsafe execution paths.}
+\resumeItem{Developed sandboxing, auditing, and validation mechanisms to ensure safe execution of generated commands in constrained environments.}
+\resumeItemListEnd
+
+
+% \resumeProjectHeading
+% {\textbf{Appraisal Management System} $|$ Java, Spring Boot, PostgreSQL, Hibernate}{2026}
+% \resumeItemListStart
+% \resumeItem{Developed a backend application for managing faculty appraisal workflows using Java and Spring Boot.}
+% \resumeItem{Built REST APIs for appraisal submission, reviewer assignment, authentication, and approval workflows.}
+% \resumeItem{Designed normalized PostgreSQL database schemas and implemented entity relationships using Hibernate and Spring Data JPA.}
+% % \resumeItem{Designed normalized PostgreSQL schemas, entity mappings, validation layers, and transactional APIs using Spring Boot and Hibernate.}
+% \resumeItem{Implemented JWT-based authentication, role-based authorization, request validation, and transactional database operations.}
+
+% \resumeItem{Designed and implemented a modular monolith backend for a college appraisal workflow management system.}
+% \resumeItem{Built JWT-based authentication and domain-specific authorization workflows for faculty, reviewers, and administrators.}
+% \resumeItem{Designed normalized PostgreSQL schemas, entity mappings, validation layers, and transactional APIs using Spring Boot and Hibernate.}
+% \resumeItem{Applied SOLID design principles, input sanitization, and role-based access control to improve maintainability and backend security.}
+% \resumeItemListEnd
+
+
+
+% \resumeProjectHeading
+% {\textbf{Academic Timetable Scheduling System} $|$ Java, Spring Boot, PostgreSQL, Docker  }{2026}
+% \resumeItemListStart
+% % \resumeItem{Designed and implemented a scheduling software system for automated timetable generation across \textbf{8 semesters}.}
+% % \resumeItem{Analyzed software requirements and implemented constraint-based allocation logic to prevent faculty, room, and section conflicts.}
+% % \resumeItem{Designed \textbf{14 normalized JPA entities}, interface mappings, and Flyway schema migrations with transactional rollback safety.}
+% % \resumeItem{Performed integration testing and containerized deployment using Docker with secure role-based access control.}
+% \resumeItem{Developed a backend scheduling system for automated timetable generation across multiple academic departments and semesters.}
+% \resumeItem{Applied OOP principles, collections, exception handling, and layered architecture patterns in backend service development.}
+% \resumeItem{Implemented conflict-free scheduling logic for faculty, classrooms, and sections using Java and Spring Boot.}
+% \resumeItem{Designed relational database schemas with 14 JPA entities and managed schema migrations using Flyway.}
+% \resumeItem{Built secure REST APIs with role-based access control and tested backend workflows using integration testing.}
+
+% % \resumeItem{Designed and implemented an ERP-style scheduling and resource allocation system for academic operations across \textbf{8 semesters}.}
+% % \resumeItem{Built normalized transactional schemas with \textbf{14 JPA entities}, audit-safe migrations, and conflict-free scheduling workflows.}
+% % \resumeItem{Implemented role-based access control, request validation, and integration-tested APIs for admin, faculty, and timetable workflows.}
+% % \resumeItem{Containerized deployment workflows using Docker with production-safe rollback support via Flyway migrations.}
+% \resumeItemListEnd
+
+% \resumeProjectHeading
+% {\textbf{Arachnode: Automated Job Discovery \& Outreach Platform} \\$|$ Python, FastAPI, Redis Streams, PostgreSQL, Docker}{2026}
+% \resumeItemListStart
+% \resumeItem{Designed and built a self-hosted \textbf{event-driven microservice platform} automating job discovery, recruiter contact enrichment, and AI-assisted personalized cold email drafting and recruiter-priority scoring.}
+% \resumeItem{Architected \textbf{6 loosely coupled services} using FastAPI, Scrapy, Playwright, Redis Streams, and PostgreSQL, enabling independent scaling of crawling, aggregation, contact discovery, and email workflows.}
+% \resumeItem{Implemented asynchronous ingestion pipelines with \textbf{Redis consumer groups}, deduplication logic, and atomic application-state tracking across job, contact, and email entities.}
+% \resumeItem{Built a unified API gateway, APScheduler-based automation cycles, and a dashboard for funnel analytics, reducing manual job search and outreach workflow time by \textbf{80\%+}.}
+% \resumeItem{Built a self-hosted \textbf{event-driven microservice platform} for automated job discovery, recruiter contact enrichment, and AI-assisted cold email drafting.}
+% \resumeItem{Designed \textbf{6 independent services} with FastAPI, Scrapy, Playwright, Redis Streams, and PostgreSQL.}
+% \resumeItem{Implemented \textbf{Redis consumer-group pipelines} with job deduplication and atomic state tracking.}
+% \resumeItem{Developed an API gateway, scheduler-driven workflows, and analytics dashboard, \\cutting manual outreach effort by \textbf{80\%+}.}
+% \resumeItemListEnd
+
+% \resumeProjectHeading
+% {\textbf{VulnGraph: Attack Path Visualization Prototype} $|$ FastAPI, React, NetworkX}{2026}
+% \resumeItemListStart
+% \resumeItem{Built a prototype for visualizing vulnerability attack paths across Python codebases using graph traversal techniques.}
+% \resumeItem{Implemented AST-based source-to-sink taint tracking and interactive attack-path visualization using NetworkX and React force graphs.}
+% \resumeItem{Integrated natural language query handling and patch simulation workflows for security analysis demonstrations.}
+% \resumeItem{Designed graph-based risk scoring and Git-based vulnerability tracing workflows within a 24-hour team hackathon environment.}
+% \resumeItemListEnd
+
+
+
+% \resumeProjectHeading
+% {\textbf{Offline AI Assistant Shell} $|$ C, Linux Syscalls, Seccomp}{2025}
+% \resumeItemListStart
+% \resumeItem{Designed and developed a secure C-based Linux utility program integrating an offline LLM using \texttt{llama.cpp}.}
+% \resumeItem{Implemented system-level software isolation using Seccomp syscall filtering, Linux namespaces, and resource constraints.}
+% \resumeItem{Built validation checks, syscall auditing, and debugging workflows to ensure safe execution in sandboxed environments.}
+% \resumeItemListEnd
+
+
+
+% % \resumeProjectHeading
+% % {\textbf{URL Shortener System} $|$ Spring Boot, React}{2026}
+% % \resumeItemListStart
+% % % \resumeItem{Developed a full-stack URL shortening service implementing Base62 encoding and click tracking.}
+% % % \resumeItem{Implemented thread-safe sliding-window rate limiting using ConcurrentHashMap.}
+% % % \resumeItem{Designed REST APIs for URL creation, redirection, and analytics dashboards.}
+% % \resumeItem{Designed backend APIs and React interfaces for URL creation, analytics visibility, and redirection workflows.}
+% % \resumeItem{Implemented thread-safe rate limiting and request validation to ensure API reliability under concurrent traffic.}
+% % \resumeItem{Built dashboard components for click analytics and tested end-to-end API-to-UI data consistency.}
+% % \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------LEADERSHIP-----------
+\section{Leadership \& Community}
+\resumeSubHeadingListStart
+\resumeSubheading
+{Open Source Contributor \& Project Admin}{Feb 2026 -- Present}
+{GSSoC / ELUSOC / Aperture}{}
+\resumeItemListStart
+\resumeItem{Serve as Project Admin for \textbf{Arachnode}, mentoring contributors and reviewing backend architecture, API workflows, and system integration changes.}
+\resumeItem{Collaborate using Git, GitHub, and GitHub Actions workflows including pull requests, CI validation, code reviews, and release coordination.}
+\resumeItem{Contributed to the GitCanvas open-source project under Aperture 3.0 with \textbf{2 pull requests merged} after maintainer review.}
+\resumeItemListEnd
+
+\resumeSubheading
+{President, Coders Club}{Oct 2025 -- Present}
+{MITE Campus}{}
+\resumeItemListStart
+\resumeItem{Mentor students in Git, Data Structures, and backend development through technical sessions and collaborative coding activities.}
+\resumeItem{Organized \textbf{Hack n' Seek}, a hybrid technical event with \textbf{700+ online participants} across multiple colleges and \textbf{180+ on-site attendees}.}
+\resumeItem{Engage with developer communities including GDG, cloud, AI, and cybersecurity groups through workshops, hackathons, and technical events.}
+\resumeItemListEnd
+
+% \resumeSubheading
+% {Open Source Contributor}{Feb, 2026}
+% {Aperture Project}{}
+% \resumeItemListStart
+% \resumeItem{Contributed to the GitCanvas open-source codebase with \textbf{2 pull requests merged} after maintainer review.}
+% \resumeItem{Opened and discussed issues, helping identify bugs and suggesting fixes to other contributors.}
+% \resumeItemListEnd
+
+
+
+\end{document}
