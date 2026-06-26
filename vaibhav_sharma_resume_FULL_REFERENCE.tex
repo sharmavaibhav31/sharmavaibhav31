@@ -1,0 +1,247 @@
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{microtype}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-.6in}
+\addtolength{\textheight}{1.2in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\newcommand{\resumeItem}[1]{
+  \item\small{{#1 \vspace{-2pt}}}
+}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \small#2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.2in, itemsep=-1pt, topsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+  {\LARGE \scshape \href{https://vaibhavsharmaa.me}{Vaibhav Sharma}} \\ \vspace{3pt}
+  \small
+  \faPhone\ +91 70107 63467 ~
+  \href{mailto:sharma31stmay@gmail.com}{\faEnvelope\ \underline{sharma31stmay@gmail.com}} ~
+  \href{https://linkedin.com/in/sharmavaibhav31}{\faLinkedin\ \underline{linkedin.com/in/sharmavaibhav31}} ~
+  \href{https://github.com/sharmavaibhav31}{\faGithub\ \underline{github.com/sharmavaibhav31}} ~
+  \href{https://vaibhavsharmaa.me}{\faGlobe\ \underline{vaibhavsharmaa.me}}
+\end{center}
+\vspace{-6pt}
+
+%-----------SUMMARY-----------
+\section{Summary}
+\small{Backend and systems engineering student specializing in event-driven microservices, enterprise workflow backends, and secure Linux-level programming. Open-sourced Arachnode — a distributed job-discovery pipeline (Redis Streams, FastAPI, Docker) with \textbf{26 stars \& 47 forks} — and serves as Project Admin mentoring GSSoC contributors. Built production-oriented systems spanning distributed pipelines, constraint-based scheduling, multi-role approval workflows, QR-based gate management, and AI model orchestration. Strong in API design, transactional data modeling, RBAC, and multi-service integration. Graduating 2027. \textbf{Targeting SDE-1 / Junior Backend Engineer roles.}}
+
+\vspace{-2pt}
+
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Mangalore Institute of Technology and Engineering}{Sep 2023 -- Jun 2027}
+    {B.E. Computer Science and Engineering $|$ \textbf{CGPA: 9.43 / 10}}{Karnataka, India}
+\resumeSubHeadingListEnd
+\vspace{-2pt}
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+\small{\item{
+  \textbf{Languages:} Java, Python, SQL, C, JavaScript (Node.js) \\
+  \textbf{Backend:} Spring Boot, Spring Security, Spring Data JPA, FastAPI, Flask, Express.js, REST API Design, JWT, RBAC \\
+  \textbf{Databases \& Messaging:} PostgreSQL, Redis Streams, MySQL, MongoDB, Firestore, Flyway, Prisma ORM \\
+  \textbf{DevOps \& Tooling:} Docker, Docker Compose, Nginx, GitHub Actions, Linux, Bash, Git, Maven \\
+  \textbf{Testing:} pytest, testcontainers, H2 (integration), Unit / Contract / e2e \\
+  \textbf{Architecture:} Event-Driven Microservices, Consumer Groups, Modular Monolith, API Gateway, State Machines, Audit Trails, Constraint Scheduling \\
+  \textbf{Systems:} Linux Namespaces, Seccomp, rlimits, llama.cpp, Syscall Analysis, .NET (bridge layer) \\
+  \textbf{ML / CV:} PyTorch, TensorFlow, MusicGen, YAMNet, MediaPipe, OpenCV, Ollama, Model Serving, Inference Optimization \\
+  \textbf{Frontend:} React, Vite, Flutter, Dart
+}}
+\end{itemize}
+\vspace{-4pt}
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {Backend Engineering Intern}{Jun 2026 -- Present}
+    {LazyStudents.in}{Remote}
+  \resumeItemListStart
+    \resumeItem{Primary backend engineer on a plagiarism detection and reduction service — designing the text-comparison pipeline, backend API, and suggestion engine from scratch as the sole engineer on the feature.}
+    \resumeItem{Own end-to-end quality of \textbf{40+ platform tools}: writing structured test plans, identifying integration failures, and filing reproducible bug reports consumed directly by the backend team for prioritization and hotfixes.}
+    \resumeItem{Leading the interns team, coordinating task allocation, review cycles, and delivery timelines in an Agile environment.}
+    \resumeItem{Next assignment: building an AI-based workspace product — full backend ownership from design through delivery.}
+  \resumeItemListEnd
+
+  \resumeSubheading
+    {AI/ML Backend Intern}{Sep 2025 -- Nov 2025}
+    {Infosys Springboard}{Virtual}
+  \resumeItemListStart
+    \resumeItem{Orchestrated 3 heterogeneous ML models (MusicGen audio generation, fine-tuned GPT lyric model, YAMNet + GTZAN genre classifier) behind a Flask API layer for MoodHarmonics, an end-to-end AI music generation platform.}
+    \resumeItem{Implemented model preloading at server startup and graceful fallback routing (local inference preferred, Hugging Face fallback), cutting average initialization latency from $\sim$2.2s to $\sim$1.2s (\textbf{45\% reduction}), measured over 500+ sequential requests.}
+    \resumeItem{Designed error-handling middleware ensuring inference continuity under model failures; persisted semi-structured song metadata and hashed user credentials in MongoDB.}
+    \resumeItem{Coordinated frontend--backend interactions under real CORS and latency constraints; enforced lyric structure via fine-tuning over base GPT-2 (which produced descriptive text, not lyrical verse/chorus output).}
+  \resumeItemListEnd
+
+  \resumeSubheading
+    {Flutter Developer Intern}{Jul 2025 -- Sep 2025}
+    {ClubChat}{Remote}
+  \resumeItemListStart
+    \resumeItem{Shipped event-feed and real-time chat features to a production mobile application with \textbf{8,000+ users}.}
+    \resumeItem{Resolved \textbf{18 production stability issues} across two releases — including 3 critical crash-on-launch regressions — through systematic log analysis, root-cause isolation, and device-level reproduction.}
+    \resumeItem{Operated inside sprint-based release cycles collaborating with backend engineers and product designers.}
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+  % ── ARACHNODE ──
+  \resumeProjectHeading
+    {\textbf{\href{https://github.com/sharmavaibhav31/arachnode}{Arachnode}} $|$ \textit{Python, FastAPI, Redis Streams, PostgreSQL, Docker, Scrapy, Playwright, pytest, testcontainers} $|$ \href{https://github.com/sharmavaibhav31/arachnode}{\underline{26 \faGithub\ stars · 47 forks · 143 commits}}}{2026}
+  \resumeItemListStart
+    \resumeItem{Architected a self-hosted event-driven job-discovery platform across \textbf{7 independent microservices} (crawler, platform scraper, aggregator, contact discovery, email generator, APScheduler orchestrator, API gateway) communicating via Redis Streams consumer groups — chose Redis Streams over Kafka for sufficient at-least-once delivery semantics with significantly lower operational overhead for a self-hosted single-node deployment.}
+    \resumeItem{Implemented a \textbf{4-tier test suite}: unit tests against mock objects; integration tests using \texttt{testcontainers} (ephemeral Postgres + Redis spun per test run); contract tests asserting API schema consistency across decoupled services; e2e tests traversing full dashboard flows.}
+    \resumeItem{Built OSINT-based recruiter contact enrichment (GitHub API + SMTP domain verification) and Ollama-powered cold-email drafting via Jinja2 templates; full discovery-to-draft cycle automated via APScheduler cron jobs, eliminating hours of daily manual job-search effort.}
+    \resumeItem{Serves as Project Admin: reviewing \textbf{25+ PRs}, enforcing API contract standards, managing CI/GitHub Actions pipelines, coordinating releases, and mentoring GSSoC / ELUSOC contributors across an active open-source community.}
+  \resumeItemListEnd
+
+  % ── HPMS ──
+  \resumeProjectHeading
+    {\textbf{HPMS — Hostel Permission Management System} $|$ \textit{Node.js, Express, PostgreSQL, Prisma, React, JWT, Docker, Nginx, QR Codes}}{2024--2025}
+  \resumeItemListStart
+    \resumeItem{Designed and built a full digital replacement for the college hostel's paper-based permission-slip process: \textbf{5-role workflow} (Student / Warden / Chief Warden / Admin / Security) with JWT-signed QR certificates generated on approval — valid for exactly 2 scans (exit + entry), auto-invalidated on completion.}
+    \resumeItem{Modular monolith backend (Node.js + Express + Prisma) across 7 feature modules (auth, users, master, requests, certificates, gate, admin) served behind Nginx reverse proxy with SSL termination — required for \texttt{getUserMedia} camera access in the gate scanner web app (\texttt{html5-qrcode}).}
+    \resumeItem{node-cron scheduled job detecting overdue student returns and triggering warden alerts; SMTP notification pipeline to parents on request approval, exit scan, and return scan (with warden contact included per SRS requirement).}
+    \resumeItem{Attempted Tatvik TMF20 biometric integration: built a .NET 4.8 bridge (TMF20Bridge) exposing the proprietary SDK over HTTP and a .NET 8 FingerprintService calling it, storing fingerprint templates in Firestore — hit a firmware wall (SDK designed to block third-party callers); pivoted to the QR-based flow as the production-viable solution.}
+    \resumeItem{Delivered a full SRS (40+ functional requirements, ERD, 4 system process flow diagrams); proposed to college administration for institutional deployment.}
+  \resumeItemListEnd
+
+  % ── APPRAISAL ──
+  \resumeProjectHeading
+    {\textbf{Appraisal Management System} $|$ \textit{Java 21, Spring Boot 4, Spring Security, PostgreSQL, Flyway, JWT, Docker, OpenAPI}}{2026}
+  \resumeItemListStart
+    \resumeItem{Built a state-machine-driven enterprise workflow backend replacing a paper-based faculty appraisal process: \texttt{DRAFT → SUBMITTED → HOD\_REVIEWED → FINALIZED → LOCKED}, with legal revert paths and immutability enforcement post-finalization.}
+    \resumeItem{Full audit trail on every state transition (userId, timestamp, old/new value); JWT authentication with RBAC across 4 roles (Faculty / HOD / Principal / Admin); configurable scoring weights with server-side validation that weights sum to exactly 100\%.}
+    \resumeItem{13 Flyway migrations applied cleanly; \texttt{@Valid} request validation on all controller endpoints; env-injected credentials via Docker Compose with no hardcoded secrets in image; Swagger/OpenAPI documentation auto-generated.}
+    \resumeItem{Full API surface: auth, faculty lifecycle, appraisal submission, reviewer workflows (approve/reject/revert), cycle management, form structure configuration, scoring weight management, and export endpoints.}
+  \resumeItemListEnd
+
+  % ── TIMETABLE ──
+  \resumeProjectHeading
+    {\textbf{\href{https://github.com/sharmavaibhav31/timetable_management}{Academic Timetable Scheduling Engine}} $|$ \textit{Java 17, Spring Boot 3, PostgreSQL, Flyway, H2, Apache POI, OpenPDF, Docker}}{2026}
+  \resumeItemListStart
+    \resumeItem{Greedy constraint-propagation scheduling engine enforcing \textbf{8 hard constraints}: no double-booking across faculty/room/section, 55-minute consecutive-class gap enforcement, designation-based load limits (maxLectureHours, maxLabHours, maxTotalHours), room-type matching (LAB vs CLASSROOM), break slot isolation, Saturday post-lunch exclusion.}
+    \resumeItem{Section-first generation strategy prevents partial slot starvation — each section fully secures its lab slots before the next begins. Fallback faculty assignment iterates priority-ranked \texttt{FacultyPreference} entries before failing.}
+    \resumeItem{Semester parity partitioning (ODD: 1,3,5,7 / EVEN: 2,4,6,8) enables half-semester regeneration without disturbing published schedules. Drag-and-drop slot update endpoint re-validates all constraints before committing.}
+    \resumeItem{14-entity normalized domain model; Flyway V1--V10; H2-backed integration tests validating constraint correctness; Apache POI Excel and OpenPDF export; two-stage Docker build with env-injected credentials; generates conflict-free timetables in \textbf{under 2 minutes} vs. days of manual scheduling.}
+  \resumeItemListEnd
+
+  % ── OFFLINE SHELL ──
+  \resumeProjectHeading
+    {\textbf{\href{https://github.com/sharmavaibhav31/mini-shell-C-programming}{Offline AI Assistant Shell}} $|$ \textit{C, llama.cpp, TinyLlama-1.1B, Seccomp, Linux Namespaces, rlimits, CMake}}{2025}
+  \resumeItemListStart
+    \resumeItem{Built a sandboxed C shell integrating TinyLlama-1.1B via \texttt{llama.cpp} for offline AI-assisted command guidance — fully air-gapped, no internet connection required post-setup.}
+    \resumeItem{Four-layer security model: Seccomp syscall whitelist (blocking unsafe system calls), PID/mount namespace isolation (containing the AI worker process), capability dropping (preventing privilege escalation), rlimit caps (bounding CPU and memory usage).}
+    \resumeItem{First-query latency $\sim$2--3s (model load); subsequent queries $\sim$1--2s reusing context; 10--20 tok/s on CPU at $\sim$1--1.5GB memory. Functional test suite (\texttt{test\_assist.sh}), MD5 model integrity verification, stress test script, and \texttt{strace}-based syscall audit workflow.}
+  \resumeItemListEnd
+
+  % ── MOODHARMONICS ──
+  \resumeProjectHeading
+    {\textbf{MoodHarmonics} $|$ \textit{Python, Flask, MusicGen, YAMNet, GPT (fine-tuned), PyTorch, TensorFlow, MongoDB, React}}{2025}
+  \resumeItemListStart
+    \resumeItem{Orchestrated 3 heterogeneous ML models with different runtimes and constraints behind a single Flask API: Meta MusicGen (text-to-audio), a fine-tuned GPT lyric model (verse/chorus structure enforcement), and YAMNet + GTZAN classifier (genre + confidence score for automatic categorization).}
+    \resumeItem{Model preloading at server startup + graceful local-first / Hugging Face fallback paths to manage heavy initialization ($\sim$seconds) and model failure modes; error-handling middleware ensuring continuity across all 3 inference paths.}
+    \resumeItem{Semi-structured song metadata and hashed user credentials stored in MongoDB; generated audio served from local file storage; frontend--backend CORS and latency constraints handled under real performance pressure.}
+  \resumeItemListEnd
+
+  % ── AIR NOTEPAD ──
+  \resumeProjectHeading
+    {\textbf{Air Notepad} $|$ \textit{Python, OpenCV, MediaPipe, NumPy, Jupyter}}{2024}
+  \resumeItemListStart
+    \resumeItem{Real-time gesture-based drawing application tracking \textbf{21 hand landmarks per hand} via MediaPipe Hand Landmarker, mapping raw landmark coordinates to drawing strokes via weighted moving-average smoothing (configurable factor, default 0.3) to reduce jitter.}
+    \resumeItem{Dual-hand control: left hand for tool/color selection via pinch gesture (Euclidean distance threshold between thumb and index); right hand for drawing via index-finger extension detection using relative Y-coordinates.}
+    \resumeItem{HD canvas (1280$\times$720), 3 drawing tools (Pen 3px / Brush 8px / Eraser 20px), 8-color palette; detection and tracking confidence thresholds at 0.8; NumPy array operations for minimal per-frame latency. LinkedIn post reached \textbf{176,000+ impressions}.}
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------CERTIFICATIONS-----------
+\section{Certifications}
+\begin{itemize}[leftmargin=0.15in, label={}]
+\small{\item{
+  \textbf{Oracle (4 certs):} OCI 2025 DevOps Professional (Nov 2025) · OCI 2025 Data Science Professional (Oct 2025) · OCI 2025 Generative AI Professional (Oct 2025) · OCI 2025 Generative AI Foundations Associate (Sep 2025) \\
+  \textbf{Google Cloud / Coursera (3 certs):} Cloud Security Engineer Specialization (Jul 2024) · Security in Google Cloud Specialization (Sep 2024) · Google Cybersecurity Professional Certificate
+}}
+\end{itemize}
+\vspace{-4pt}
+
+%-----------LEADERSHIP-----------
+\section{Leadership \& Open Source}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {Project Admin --- Arachnode $|$ GSSoC / ELUSOC / Aperture 3.0}{Feb 2026 -- Present}{}{}
+  \resumeItemListStart
+    \resumeItem{Reviewing and merging contributor PRs, enforcing API contract standards, maintaining CI/GitHub Actions pipelines, and coordinating releases for an active open-source project with \textbf{26 stars and 47 forks}.}
+    \resumeItem{Mentoring first-time open-source contributors from GSSoC and ELUSOC programs on backend API design and Python best practices.}
+    \resumeItem{Merged 2 PRs into the GitCanvas project under Aperture 3.0 after maintainer review.}
+  \resumeItemListEnd
+
+  \resumeSubheading
+    {President, Coders Club --- MITE}{Oct 2025 -- Present}{}{}
+  \resumeItemListStart
+    \resumeItem{Organized \textbf{Hack n' Seek}, a hybrid technical event drawing \textbf{700+ online and 180 on-site participants} across multiple colleges.}
+    \resumeItem{Delivered 6 technical workshops on Git internals, Data Structures, and backend architecture to \textbf{60+ students}.}
+    \resumeItem{Active engagement with developer communities including GDG, cloud, AI, and cybersecurity groups.}
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\end{document}
