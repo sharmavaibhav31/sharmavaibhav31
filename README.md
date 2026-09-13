@@ -31,9 +31,9 @@ B.E. Computer Science & Engineering · MITE · 2027 · CGPA 9.43
 
 Backend and systems engineering student specializing in **event-driven microservices**, **enterprise workflow backends**, and **secure Linux-level programming**.
 
-I build things because I need them or because the problem is interesting; not to pad a portfolio.
+I build things because I need them or because the problem is interesting.
 
-**Currently:** Backend Engineering Intern at LazyStudents.in — building a new product from scratch as the primary backend engineer, and leading the interns team.
+**Currently:** Backend Engineering Intern at LazyStudents.in — building new products from scratch as the primary backend engineer, and leading the interns team.
 
 **Open source:** Project Admin for [Arachnode](https://github.com/sharmavaibhav31/arachnode) — a distributed job-discovery platform with **26 stars · 47 forks · 143 commits**, contributing community from GSSoC and ELUSOC.
 
@@ -44,7 +44,7 @@ I build things because I need them or because the problem is interesting; not to
 ## `> ls systems/`
 
 ### [`arachnode`](https://github.com/sharmavaibhav31/arachnode) — Automated Job Discovery & Outreach Platform
-> *Built because I genuinely needed it. Manual job tracking was unscalable.*
+> *Manually tracking job postings and cold-emailing recruiters was unscalable as placement season approached. I built the system I actually needed.*
 
 ![Stars](https://img.shields.io/github/stars/sharmavaibhav31/arachnode?color=00e676&style=flat-square&labelColor=111111)
 ![Forks](https://img.shields.io/github/forks/sharmavaibhav31/arachnode?color=00e676&style=flat-square&labelColor=111111)
